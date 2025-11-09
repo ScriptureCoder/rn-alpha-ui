@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "ESNext",
+    "lib": ["ES2019"],
+    "jsx": "react-jsx",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowJs": false,
+    "allowImportingTsExtensions": true,
+    "baseUrl": "./src",
+    "paths": {
+      "constants/*": ["./constants/*"],
+      "hooks/*": ["./hooks/*"],
+      "theme/*": ["./theme/*"],
+      "utils/*": ["./utils/*"],
+      "assets/*": ["./assets/*"],
+      "types": ["./types"],
+      "types/*": ["./types/*"]
+    }
+  },
+  "include": [
+    "src/index.ts",
+    "src/rn-alpha/**/*",
+    "src/hooks/**/*",
+    "src/constants/**/*",
+    "src/utils/**/*",
+    "src/assets/**/*",
+    "src/theme/**/*",
+    "src/@types/**/*",
+    "src/config.ts",
+    "src/types.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}
