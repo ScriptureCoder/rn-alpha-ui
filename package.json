@@ -1,6 +1,6 @@
 {
   "name": "@scripturecoder/rn-alpha-ui",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "description": "Extracted React Native UI component library from @scripturecoder/rn-alpha-ui.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

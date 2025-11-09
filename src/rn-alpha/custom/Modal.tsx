@@ -151,8 +151,6 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                                 onGestureEvent={onGestureEvent}
                                 onHandlerStateChange={onHandlerStateChange}
                                 activeOffsetY={10}
-                                failOffsetX={[-15, 15]}
-                                activeOffsetX={[-999999, 999999]}
                             >
                                 <Animated.View
                                     style={{

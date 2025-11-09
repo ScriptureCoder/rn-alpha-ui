@@ -3709,7 +3709,7 @@ var Page_default = Page;
 // src/rn-alpha/custom/Modal.tsx
 import { useRef, useEffect as useEffect2 } from "react";
 import { TouchableWithoutFeedback, Modal as Mod, Animated as Animated4, Dimensions as Dimensions3, StyleSheet } from "react-native";
-import { PanGestureHandler, State } from "react-native-gesture-handler";
+import { PanGestureHandler, State, gestureHandlerRootHOC } from "react-native-gesture-handler";
 
 // src/assets/icons/index.ts
 var check = `
@@ -4292,7 +4292,7 @@ var backspace = `
 
 // src/rn-alpha/custom/Modal.tsx
 import { Fragment as Fragment3, jsx as jsx16, jsxs as jsxs4 } from "react/jsx-runtime";
-var Modal3 = (props) => {
+var ModalContent = (props) => {
   const { modal, setModal, onClose, full, children, enableSwipeToClose = true, showCloseBtn } = props;
   const translateY = useRef(new Animated4.Value(0)).current;
   const sheetTranslateY = useRef(new Animated4.Value(full ? 0 : height)).current;
@@ -4496,6 +4496,7 @@ var Modal3 = (props) => {
     }
   ) });
 };
+var Modal3 = gestureHandlerRootHOC(ModalContent);
 var Modal_default = Modal3;
 
 // src/rn-alpha/custom/Button.tsx
@@ -5806,6 +5807,30 @@ var LinearGradientComponent = ({
 };
 var Gradient_default = LinearGradientComponent;
 
+// src/rn-alpha/custom/TabButton.tsx
+import { useState as useState8 } from "react";
+import { jsx as jsx38 } from "react/jsx-runtime";
+var TabButton = (props) => {
+  const {
+    ph,
+    bc,
+    index,
+    options,
+    onTabPress,
+    mt,
+    color,
+    textColor,
+    activeColor,
+    activeTextColor
+  } = props;
+  const [tab, setTab] = useState8(index || 0);
+  return /* @__PURE__ */ jsx38(View_default, { ph: ph || 15, mt: mt || 5, children: /* @__PURE__ */ jsx38(View_default, { color: color || "shade", p: 3, br: 20, fd: "flex-row", bc: bc || "border", bw: 0.5, overflow: "hidden", children: options.map((title, i) => /* @__PURE__ */ jsx38(View_default, { flex: 1, color: tab === i ? activeColor || "primary" : "", br: 20, children: /* @__PURE__ */ jsx38(TouchableOpacity_default, { onPress: () => {
+    setTab(i);
+    onTabPress(i);
+  }, children: /* @__PURE__ */ jsx38(View_default, { pv: 8, children: /* @__PURE__ */ jsx38(Text_default, { align: "center", size: 13, weight: "SemiBold", color: tab === i ? activeTextColor || "light" : textColor || "text", children: title }) }) }) }, KEY + i)) }) });
+};
+var TabButton_default = TabButton;
+
 // src/hooks/use-page-config.ts
 import { useSafeAreaInsets as useSafeAreaInsets3 } from "react-native-safe-area-context";
 var usePageConfig = (options) => {
@@ -5860,6 +5885,7 @@ export {
   Select_default as Select,
   Svg_default as Svg,
   Switch_default as Switch,
+  TabButton_default as TabButton,
   Text_default as Text,
   TextInput_default as TextInput,
   TouchableHighlight_default as TouchableHighlight,

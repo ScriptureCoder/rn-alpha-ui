@@ -73,6 +73,7 @@ __export(index_exports, {
   Select: () => Select_default,
   Svg: () => Svg_default,
   Switch: () => Switch_default,
+  TabButton: () => TabButton_default,
   Text: () => Text_default,
   TextInput: () => TextInput_default,
   TouchableHighlight: () => TouchableHighlight_default,
@@ -4465,7 +4466,7 @@ var backspace = `
 
 // src/rn-alpha/custom/Modal.tsx
 var import_jsx_runtime16 = require("react/jsx-runtime");
-var Modal3 = (props) => {
+var ModalContent = (props) => {
   const { modal, setModal, onClose, full, children, enableSwipeToClose = true, showCloseBtn } = props;
   const translateY = (0, import_react14.useRef)(new import_react_native15.Animated.Value(0)).current;
   const sheetTranslateY = (0, import_react14.useRef)(new import_react_native15.Animated.Value(full ? 0 : height)).current;
@@ -4669,6 +4670,7 @@ var Modal3 = (props) => {
     }
   ) });
 };
+var Modal3 = (0, import_react_native_gesture_handler.gestureHandlerRootHOC)(ModalContent);
 var Modal_default = Modal3;
 
 // src/rn-alpha/custom/Button.tsx
@@ -5975,6 +5977,30 @@ var LinearGradientComponent = ({
 };
 var Gradient_default = LinearGradientComponent;
 
+// src/rn-alpha/custom/TabButton.tsx
+var import_react24 = require("react");
+var import_jsx_runtime38 = require("react/jsx-runtime");
+var TabButton = (props) => {
+  const {
+    ph,
+    bc,
+    index,
+    options,
+    onTabPress,
+    mt,
+    color,
+    textColor,
+    activeColor,
+    activeTextColor
+  } = props;
+  const [tab, setTab] = (0, import_react24.useState)(index || 0);
+  return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(View_default, { ph: ph || 15, mt: mt || 5, children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(View_default, { color: color || "shade", p: 3, br: 20, fd: "flex-row", bc: bc || "border", bw: 0.5, overflow: "hidden", children: options.map((title, i) => /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(View_default, { flex: 1, color: tab === i ? activeColor || "primary" : "", br: 20, children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(TouchableOpacity_default, { onPress: () => {
+    setTab(i);
+    onTabPress(i);
+  }, children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(View_default, { pv: 8, children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(Text_default, { align: "center", size: 13, weight: "SemiBold", color: tab === i ? activeTextColor || "light" : textColor || "text", children: title }) }) }) }, KEY + i)) }) });
+};
+var TabButton_default = TabButton;
+
 // src/hooks/use-page-config.ts
 var import_react_native_safe_area_context5 = require("react-native-safe-area-context");
 var usePageConfig = (options) => {
@@ -6030,6 +6056,7 @@ var KEY = Math.random().toString(36).substring(2, 20);
   Select,
   Svg,
   Switch,
+  TabButton,
   Text,
   TextInput,
   TouchableHighlight,
