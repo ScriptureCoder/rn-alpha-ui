@@ -1694,752 +1694,56 @@ FlatList.displayName = "FlatList";
 var FlatList_default = FlatList;
 
 // src/rn-alpha/default/TouchableHighlight.tsx
-import React6, { useMemo as useMemo6, useCallback as useCallback5 } from "react";
 import { TouchableHighlight as Touch } from "react-native";
-import { jsx as jsx7 } from "react/jsx-runtime";
-var TouchableHighlight = React6.forwardRef((props, ref) => {
+import { Fragment, jsx as jsx7 } from "react/jsx-runtime";
+var TouchableHighlight = (props) => {
   const { colors } = use_color_default();
-  const { componentProps } = useUIContext();
-  const touchableDefaults = componentProps.TouchableHighlight || {};
-  const mergedProps = {
-    ...touchableDefaults,
-    ...props
-  };
-  const {
-    // Layout props
-    w,
-    h,
-    size,
-    flex,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    // Border props
-    br,
-    bc,
-    bw,
-    bbw,
-    btw,
-    blw,
-    brw,
-    brc,
-    blc,
-    btc,
-    bbc,
-    btrr,
-    btlr,
-    bbrr,
-    bblr,
-    bs,
-    // Color props
-    color,
-    backgroundColor,
-    underlayColor,
-    // Animation props
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    skewX,
-    skewY,
-    perspective,
-    // Spacing props
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    // Other props (all standard TouchableHighlight props)
-    style,
-    children,
-    ...otherProps
-  } = mergedProps;
-  const resolveColor = useCallback5((colorValue) => {
-    if (!colorValue) return void 0;
-    return colors[colorValue] || colorValue;
-  }, [colors]);
-  const computedStyle = useMemo6(() => {
-    let finalWidth = size != null ? size : w;
-    let finalHeight = size != null ? size : h;
-    if (fullWidth) finalWidth = "100%";
-    if (fullHeight) finalHeight = "100%";
-    let centerStyles = {};
-    if (center) {
-      centerStyles = { alignItems: "center", justifyContent: "center" };
-    } else {
-      if (centerX) centerStyles = { ...centerStyles, alignItems: "center" };
-      if (centerY) centerStyles = { ...centerStyles, justifyContent: "center" };
-    }
-    let finalPadding = padding != null ? padding : p;
-    let finalMargin = margin != null ? margin : m;
-    const transform = [];
-    if (scale) transform.push({ scale });
-    if (translateX) transform.push({ translateX });
-    if (translateY) transform.push({ translateY });
-    if (rotate) transform.push({ rotate: `${rotate}deg` });
-    if (skewX) transform.push({ skewX: `${skewX}deg` });
-    if (skewY) transform.push({ skewY: `${skewY}deg` });
-    let finalOpacity = opacity;
-    if (hidden) finalOpacity = 0;
-    if (visible) finalOpacity = 1;
-    if (disabled) finalOpacity = 0.5;
-    let finalPosition = void 0;
-    if (absolute) finalPosition = "absolute";
-    if (relative) finalPosition = "relative";
-    const viewStyle = {
-      flex,
-      width: finalWidth,
-      // Cast to any to handle string values like '100%'
-      height: finalHeight,
-      // Cast to any to handle string values like '100%'
-      borderRadius: br,
-      backgroundColor: resolveColor(backgroundColor),
-      ...centerStyles,
-      // Spacing
-      padding: finalPadding,
-      // Cast to any to handle string values
-      margin: finalMargin,
-      // Cast to any to handle string values
-      marginTop: mt,
-      marginBottom: mb,
-      marginRight: mr,
-      marginLeft: ml,
-      marginHorizontal: mh,
-      marginVertical: mv,
-      paddingTop: pt,
-      paddingBottom: pb,
-      paddingVertical: pv != null ? pv : py,
-      paddingHorizontal: ph != null ? ph : px,
-      paddingLeft: pl,
-      paddingRight: pr,
-      // Position
-      position: finalPosition,
-      // Border
-      borderWidth: bw,
-      borderBottomWidth: bbw,
-      borderTopWidth: btw,
-      borderLeftWidth: blw,
-      borderRightWidth: brw,
-      borderColor: resolveColor(bc),
-      borderRightColor: resolveColor(brc),
-      borderLeftColor: resolveColor(blc),
-      borderTopColor: resolveColor(btc),
-      borderBottomColor: resolveColor(bbc),
-      borderTopRightRadius: btrr,
-      borderTopLeftRadius: btlr,
-      borderBottomLeftRadius: bblr,
-      borderBottomRightRadius: bbrr,
-      borderStyle: bs,
-      // Animation
-      opacity: finalOpacity,
-      transform: transform.length > 0 ? transform : void 0
-    };
-    return viewStyle;
-  }, [
-    w,
-    h,
-    size,
-    flex,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    br,
-    bc,
-    bw,
-    bbw,
-    btw,
-    blw,
-    brw,
-    brc,
-    blc,
-    btc,
-    bbc,
-    btrr,
-    btlr,
-    bbrr,
-    bblr,
-    bs,
-    color,
-    backgroundColor,
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    skewX,
-    skewY,
-    perspective,
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    resolveColor
-  ]);
-  const finalUnderlayColor = useMemo6(() => {
-    if (underlayColor) {
-      return colors[underlayColor] || underlayColor;
-    }
-    return colors.shade;
-  }, [underlayColor, colors]);
-  return /* @__PURE__ */ jsx7(
+  return /* @__PURE__ */ jsx7(Fragment, { children: /* @__PURE__ */ jsx7(
     Touch,
     {
-      ref,
-      ...otherProps,
-      style: [computedStyle, style],
-      underlayColor: finalUnderlayColor,
-      children
+      ...props,
+      underlayColor: props.underlayColor || colors.shade,
+      children: /* @__PURE__ */ jsx7(Fragment, { children: props.children })
     }
-  );
-});
-TouchableHighlight.displayName = "TouchableHighlight";
+  ) });
+};
 var TouchableHighlight_default = TouchableHighlight;
 
 // src/rn-alpha/default/TouchableNativeFeedback.tsx
-import { useMemo as useMemo7 } from "react";
 import { TouchableNativeFeedback as Touch2 } from "react-native";
-import { jsx as jsx8 } from "react/jsx-runtime";
+import { Fragment as Fragment2, jsx as jsx8 } from "react/jsx-runtime";
 var TouchableNativeFeedback = (props) => {
+  const { borderless = false, onPress, children, disabled, onLongPress } = props;
   const { colors } = use_color_default();
-  const {
-    // Layout props
-    w,
-    h,
-    size,
-    flex,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    // Border props
-    br,
-    bc,
-    bw,
-    bbw,
-    btw,
-    blw,
-    brw,
-    brc,
-    blc,
-    btc,
-    bbc,
-    btrr,
-    btlr,
-    bbrr,
-    bblr,
-    bs,
-    // Color props
-    color,
-    backgroundColor,
-    rippleColor,
-    // Animation props
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    skewX,
-    skewY,
-    perspective,
-    // Touchable props
-    borderless = false,
-    onPress,
-    onLongPress,
-    onPressIn,
-    onPressOut,
-    hitSlop,
-    pressRetentionOffset,
-    delayPressIn,
-    delayPressOut,
-    delayLongPress,
-    // Accessibility
-    accessibilityLabel,
-    accessibilityHint,
-    accessibilityRole,
-    accessibilityState,
-    // Spacing props
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    // Other props
-    style,
-    children,
-    ...otherProps
-  } = props;
-  const computedStyle = useMemo7(() => {
-    const resolveColor = (colorValue) => {
-      if (!colorValue) return void 0;
-      return colors[colorValue] || colorValue;
-    };
-    let finalWidth = size != null ? size : w;
-    let finalHeight = size != null ? size : h;
-    if (fullWidth) finalWidth = "100%";
-    if (fullHeight) finalHeight = "100%";
-    let centerStyles = {};
-    if (center) {
-      centerStyles = { alignItems: "center", justifyContent: "center" };
-    } else {
-      if (centerX) centerStyles = { ...centerStyles, alignItems: "center" };
-      if (centerY) centerStyles = { ...centerStyles, justifyContent: "center" };
-    }
-    let finalPadding = padding != null ? padding : p;
-    let finalMargin = margin != null ? margin : m;
-    const transform = [];
-    if (scale) transform.push({ scale });
-    if (translateX) transform.push({ translateX });
-    if (translateY) transform.push({ translateY });
-    if (rotate) transform.push({ rotate: `${rotate}deg` });
-    if (skewX) transform.push({ skewX: `${skewX}deg` });
-    if (skewY) transform.push({ skewY: `${skewY}deg` });
-    let finalOpacity = opacity;
-    if (hidden) finalOpacity = 0;
-    if (visible) finalOpacity = 1;
-    if (disabled) finalOpacity = 0.5;
-    let finalPosition = void 0;
-    if (absolute) finalPosition = "absolute";
-    if (relative) finalPosition = "relative";
-    const viewStyle = {
-      flex,
-      width: finalWidth,
-      // Cast to any to handle string values like '100%'
-      height: finalHeight,
-      // Cast to any to handle string values like '100%'
-      borderRadius: br,
-      backgroundColor: resolveColor(backgroundColor),
-      ...centerStyles,
-      // Spacing
-      padding: finalPadding,
-      // Cast to any to handle string values
-      margin: finalMargin,
-      // Cast to any to handle string values
-      marginTop: mt,
-      marginBottom: mb,
-      marginRight: mr,
-      marginLeft: ml,
-      marginHorizontal: mh,
-      marginVertical: mv,
-      paddingTop: pt,
-      paddingBottom: pb,
-      paddingVertical: pv != null ? pv : py,
-      paddingHorizontal: ph != null ? ph : px,
-      paddingLeft: pl,
-      paddingRight: pr,
-      // Position
-      position: finalPosition,
-      // Border
-      borderWidth: bw,
-      borderBottomWidth: bbw,
-      borderTopWidth: btw,
-      borderLeftWidth: blw,
-      borderRightWidth: brw,
-      borderColor: resolveColor(bc),
-      borderRightColor: resolveColor(brc),
-      borderLeftColor: resolveColor(blc),
-      borderTopColor: resolveColor(btc),
-      borderBottomColor: resolveColor(bbc),
-      borderTopRightRadius: btrr,
-      borderTopLeftRadius: btlr,
-      borderBottomLeftRadius: bblr,
-      borderBottomRightRadius: bbrr,
-      borderStyle: bs,
-      // Animation
-      opacity: finalOpacity,
-      transform: transform.length > 0 ? transform : void 0
-    };
-    return viewStyle;
-  }, [
-    w,
-    h,
-    size,
-    flex,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    br,
-    bc,
-    bw,
-    bbw,
-    btw,
-    blw,
-    brw,
-    brc,
-    blc,
-    btc,
-    bbc,
-    btrr,
-    btlr,
-    bbrr,
-    bblr,
-    bs,
-    color,
-    backgroundColor,
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    skewX,
-    skewY,
-    perspective,
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    colors
-  ]);
-  const rippleBackground = useMemo7(() => {
-    const rippleColorValue = rippleColor ? colors[rippleColor] || rippleColor : colors.shade;
-    return Touch2.Ripple(rippleColorValue, borderless);
-  }, [rippleColor, borderless, colors]);
-  return /* @__PURE__ */ jsx8(
-    Touch2,
-    {
-      ...otherProps,
-      background: rippleBackground,
-      onPress,
-      onLongPress,
-      onPressIn,
-      onPressOut,
-      disabled,
-      hitSlop,
-      pressRetentionOffset,
-      delayPressIn,
-      delayPressOut,
-      delayLongPress,
-      accessibilityLabel,
-      accessibilityHint,
-      accessibilityRole,
-      accessibilityState,
-      style: [computedStyle, style],
-      children
-    }
-  );
+  return /* @__PURE__ */ jsx8(Fragment2, { children: /* @__PURE__ */ jsx8(Touch2, { background: Touch2.Ripple(colors.shade, borderless), onLongPress, disabled, onPress, children }) });
 };
 var TouchableNativeFeedback_default = TouchableNativeFeedback;
 
 // src/rn-alpha/default/TouchableOpacity.tsx
-import React8, { useMemo as useMemo8, useCallback as useCallback6 } from "react";
 import { TouchableOpacity as Touch3 } from "react-native";
-import { jsx as jsx9 } from "react/jsx-runtime";
-var TouchableOpacity = React8.forwardRef((props, ref) => {
-  const { colors } = use_color_default();
-  const { componentProps } = useUIContext();
-  const touchableDefaults = componentProps.TouchableOpacity || {};
-  const mergedProps = {
-    ...touchableDefaults,
-    ...props
-  };
-  const {
-    // Layout props
-    w,
-    h,
-    size,
-    flex,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    // Border props
-    br,
-    bc,
-    bw,
-    bbw,
-    btw,
-    blw,
-    brw,
-    brc,
-    blc,
-    btc,
-    bbc,
-    btrr,
-    btlr,
-    bbrr,
-    bblr,
-    bs,
-    // Color props
-    color,
-    backgroundColor,
-    // Animation props
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    skewX,
-    skewY,
-    perspective,
-    // Spacing props
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    // Other props (all standard TouchableOpacity props)
-    style,
-    children,
-    ...otherProps
-  } = mergedProps;
-  const resolveColor = useCallback6((colorValue) => {
-    if (!colorValue) return void 0;
-    return colors[colorValue] || colorValue;
-  }, [colors]);
-  const computedStyle = useMemo8(() => {
-    let finalWidth = size != null ? size : w;
-    let finalHeight = size != null ? size : h;
-    if (fullWidth) finalWidth = "100%";
-    if (fullHeight) finalHeight = "100%";
-    let centerStyles = {};
-    if (center) {
-      centerStyles = { alignItems: "center", justifyContent: "center" };
-    } else {
-      if (centerX) centerStyles = { ...centerStyles, alignItems: "center" };
-      if (centerY) centerStyles = { ...centerStyles, justifyContent: "center" };
-    }
-    let finalPadding = padding != null ? padding : p;
-    let finalMargin = margin != null ? margin : m;
-    const transform = [];
-    if (scale) transform.push({ scale });
-    if (translateX) transform.push({ translateX });
-    if (translateY) transform.push({ translateY });
-    if (rotate) transform.push({ rotate: `${rotate}deg` });
-    if (skewX) transform.push({ skewX: `${skewX}deg` });
-    if (skewY) transform.push({ skewY: `${skewY}deg` });
-    let finalOpacity = opacity;
-    if (hidden) finalOpacity = 0;
-    if (visible) finalOpacity = 1;
-    if (disabled) finalOpacity = 0.5;
-    let finalPosition = void 0;
-    if (absolute) finalPosition = "absolute";
-    if (relative) finalPosition = "relative";
-    const viewStyle = {
-      flex,
-      width: finalWidth,
-      // Cast to any to handle string values like '100%'
-      height: finalHeight,
-      // Cast to any to handle string values like '100%'
-      borderRadius: br,
-      backgroundColor: resolveColor(backgroundColor),
-      ...centerStyles,
-      // Spacing
-      padding: finalPadding,
-      // Cast to any to handle string values
-      margin: finalMargin,
-      // Cast to any to handle string values
-      marginTop: mt,
-      marginBottom: mb,
-      marginRight: mr,
-      marginLeft: ml,
-      marginHorizontal: mh,
-      marginVertical: mv,
-      paddingTop: pt,
-      paddingBottom: pb,
-      paddingVertical: pv != null ? pv : py,
-      paddingHorizontal: ph != null ? ph : px,
-      paddingLeft: pl,
-      paddingRight: pr,
-      // Position
-      position: finalPosition,
-      // Border
-      borderWidth: bw,
-      borderBottomWidth: bbw,
-      borderTopWidth: btw,
-      borderLeftWidth: blw,
-      borderRightWidth: brw,
-      borderColor: resolveColor(bc),
-      borderRightColor: resolveColor(brc),
-      borderLeftColor: resolveColor(blc),
-      borderTopColor: resolveColor(btc),
-      borderBottomColor: resolveColor(bbc),
-      borderTopRightRadius: btrr,
-      borderTopLeftRadius: btlr,
-      borderBottomLeftRadius: bblr,
-      borderBottomRightRadius: bbrr,
-      borderStyle: bs,
-      // Animation
-      opacity: finalOpacity,
-      transform: transform.length > 0 ? transform : void 0
-    };
-    return viewStyle;
-  }, [
-    w,
-    h,
-    size,
-    flex,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    br,
-    bc,
-    bw,
-    bbw,
-    btw,
-    blw,
-    brw,
-    brc,
-    blc,
-    btc,
-    bbc,
-    btrr,
-    btlr,
-    bbrr,
-    bblr,
-    bs,
-    color,
-    backgroundColor,
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    skewX,
-    skewY,
-    perspective,
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    resolveColor
-  ]);
-  return /* @__PURE__ */ jsx9(
+import { Fragment as Fragment3, jsx as jsx9 } from "react/jsx-runtime";
+var TouchableOpacity = (props) => {
+  const { style, flex, w } = props;
+  return /* @__PURE__ */ jsx9(Fragment3, { children: /* @__PURE__ */ jsx9(
     Touch3,
     {
-      ref,
-      ...otherProps,
-      style: [computedStyle, style],
-      children
+      ...props,
+      style: [
+        {
+          flex,
+          width: w
+        },
+        style
+      ],
+      children: /* @__PURE__ */ jsx9(Fragment3, { children: props.children })
     }
-  );
-});
-TouchableOpacity.displayName = "TouchableOpacity";
+  ) });
+};
 var TouchableOpacity_default = TouchableOpacity;
 
 // src/rn-alpha/default/Image.tsx
 import FastImage from "@d11/react-native-fast-image";
-import { Fragment, jsx as jsx10 } from "react/jsx-runtime";
+import { Fragment as Fragment4, jsx as jsx10 } from "react/jsx-runtime";
 var Image = (props) => {
   const { colors } = use_color_default();
   const {
@@ -2543,7 +1847,7 @@ var Image = (props) => {
       onLoad();
     }
   };
-  return /* @__PURE__ */ jsx10(Fragment, { children: (source == null ? void 0 : source.uri) ? !isValidSource(source) ? /* @__PURE__ */ jsx10(View_default, { style: baseStyle, fd: "flex-center" }) : /* @__PURE__ */ jsx10(
+  return /* @__PURE__ */ jsx10(Fragment4, { children: (source == null ? void 0 : source.uri) ? !isValidSource(source) ? /* @__PURE__ */ jsx10(View_default, { style: baseStyle, fd: "flex-center" }) : /* @__PURE__ */ jsx10(
     FastImage,
     {
       ...otherProps,
@@ -2568,7 +1872,7 @@ var Image = (props) => {
 var Image_default = Image;
 
 // src/rn-alpha/default/KeyboardView.tsx
-import { useMemo as useMemo9 } from "react";
+import { useMemo as useMemo6 } from "react";
 
 // src/constants/layout.ts
 import { Dimensions as Dimensions2, Platform, StatusBar } from "react-native";
@@ -2664,7 +1968,7 @@ var KeyboardView = (props) => {
     children,
     ...otherProps
   } = props;
-  const computedStyle = useMemo9(() => {
+  const computedStyle = useMemo6(() => {
     const resolveColor = (colorValue) => {
       if (!colorValue) return void 0;
       return colors[colorValue] || colorValue;
@@ -2806,11 +2110,11 @@ var KeyboardView = (props) => {
     py,
     colors
   ]);
-  const keyboardBehavior = useMemo9(() => {
+  const keyboardBehavior = useMemo6(() => {
     if (behavior) return behavior;
     return ios ? "padding" : "height";
   }, [behavior, ios]);
-  const keyboardOffset = useMemo9(() => {
+  const keyboardOffset = useMemo6(() => {
     if (keyboardVerticalOffset !== void 0) return keyboardVerticalOffset;
     if (ios && iosOffset !== void 0) return iosOffset;
     if (Platform2.OS === "android" && androidOffset !== void 0) return androidOffset;
@@ -2835,7 +2139,7 @@ var KeyboardView = (props) => {
 var KeyboardView_default = KeyboardView;
 
 // src/rn-alpha/default/ImageBackground.tsx
-import { useMemo as useMemo10 } from "react";
+import { useMemo as useMemo7 } from "react";
 import { ImageBackground as Parent3 } from "react-native";
 import { jsx as jsx12 } from "react/jsx-runtime";
 var ImageBackground = (props) => {
@@ -2933,7 +2237,7 @@ var ImageBackground = (props) => {
     children,
     ...otherProps
   } = props;
-  const computedStyle = useMemo10(() => {
+  const computedStyle = useMemo7(() => {
     const resolveColor = (colorValue) => {
       if (!colorValue) return void 0;
       return colors[colorValue] || colorValue;
@@ -3116,7 +2420,7 @@ var ImageBackground = (props) => {
 var ImageBackground_default = ImageBackground;
 
 // src/rn-alpha/custom/AlertModal.tsx
-import { useMemo as useMemo11 } from "react";
+import { useMemo as useMemo8 } from "react";
 import { Modal } from "react-native";
 import { jsx as jsx13, jsxs } from "react/jsx-runtime";
 var AlertModal = (props) => {
@@ -3225,26 +2529,26 @@ var AlertModal = (props) => {
     style,
     ...otherProps
   } = props;
-  const closeFunc = useMemo11(() => {
+  const closeFunc = useMemo8(() => {
     return () => {
       setModal(false);
     };
   }, [setModal]);
-  const backdropStyle = useMemo11(() => {
+  const backdropStyle = useMemo8(() => {
     const backdropColorValue = backdropColor ? colors[backdropColor] || backdropColor : colors.modal;
     return {
       backgroundColor: backdropColorValue,
       opacity: backdropOpacity
     };
   }, [backdropColor, backdropOpacity, colors]);
-  const computedContentStyle = useMemo11(() => {
+  const computedContentStyle = useMemo8(() => {
     return {
       maxWidth: 400,
       flex: 1,
       ...contentStyle
     };
   }, [contentStyle]);
-  const computedTitleStyle = useMemo11(() => {
+  const computedTitleStyle = useMemo8(() => {
     return {
       fontSize: 16,
       fontWeight: "600",
@@ -3252,14 +2556,14 @@ var AlertModal = (props) => {
       ...titleStyle
     };
   }, [titleStyle]);
-  const computedTextStyle = useMemo11(() => {
+  const computedTextStyle = useMemo8(() => {
     return {
       fontSize: 13,
       textAlign: "center",
       ...textStyle
     };
   }, [textStyle]);
-  const computedButtonContainerStyle = useMemo11(() => {
+  const computedButtonContainerStyle = useMemo8(() => {
     return {
       gap: 12,
       ...buttonContainerStyle
@@ -3278,7 +2582,7 @@ var AlertModal = (props) => {
     closeFunc();
     onCancel == null ? void 0 : onCancel();
   };
-  const modalContent = useMemo11(() => {
+  const modalContent = useMemo8(() => {
     if (customContent) {
       return customContent;
     }
@@ -3354,7 +2658,7 @@ var AlertModal = (props) => {
 var AlertModal_default = AlertModal;
 
 // src/rn-alpha/custom/OptionModal.tsx
-import { useMemo as useMemo12 } from "react";
+import { useMemo as useMemo9 } from "react";
 import { Modal as Modal2 } from "react-native";
 import { jsx as jsx14, jsxs as jsxs2 } from "react/jsx-runtime";
 var OptionModal = (props) => {
@@ -3461,19 +2765,19 @@ var OptionModal = (props) => {
     style,
     ...otherProps
   } = props;
-  const closeFunc = useMemo12(() => {
+  const closeFunc = useMemo9(() => {
     return () => {
       setModal(false);
     };
   }, [setModal]);
-  const backdropStyle = useMemo12(() => {
+  const backdropStyle = useMemo9(() => {
     const backdropColorValue = backdropColor ? colors[backdropColor] || backdropColor : colors.modal;
     return {
       backgroundColor: backdropColorValue,
       opacity: backdropOpacity
     };
   }, [backdropColor, backdropOpacity, colors]);
-  const computedContentStyle = useMemo12(() => {
+  const computedContentStyle = useMemo9(() => {
     return {
       maxWidth: maxWidth || 400,
       minWidth: minWidth || 280,
@@ -3482,7 +2786,7 @@ var OptionModal = (props) => {
       ...contentStyle
     };
   }, [maxWidth, minWidth, maxHeight, minHeight, contentStyle]);
-  const computedOptionStyle = useMemo12(() => {
+  const computedOptionStyle = useMemo9(() => {
     return {
       flexDirection: "row",
       alignItems: "center",
@@ -3492,13 +2796,13 @@ var OptionModal = (props) => {
       ...optionStyle
     };
   }, [optionStyle]);
-  const computedOptionTextStyle = useMemo12(() => {
+  const computedOptionTextStyle = useMemo9(() => {
     return {
       fontSize: 13,
       ...optionTextStyle
     };
   }, [optionTextStyle]);
-  const computedOptionIconStyle = useMemo12(() => {
+  const computedOptionIconStyle = useMemo9(() => {
     return {
       width: 40,
       height: 40,
@@ -3521,7 +2825,7 @@ var OptionModal = (props) => {
       closeFunc();
     }
   };
-  const optionsList = useMemo12(() => {
+  const optionsList = useMemo9(() => {
     if (customContent) {
       return customContent;
     }
@@ -3618,10 +2922,10 @@ var OptionModal = (props) => {
 var OptionModal_default = OptionModal;
 
 // src/rn-alpha/custom/Page.tsx
-import { useMemo as useMemo13 } from "react";
+import { useMemo as useMemo10 } from "react";
 import { StatusBar as StatusBar2, Platform as Platform3 } from "react-native";
 import { useSafeAreaInsets as useSafeAreaInsets2 } from "react-native-safe-area-context";
-import { Fragment as Fragment2, jsx as jsx15, jsxs as jsxs3 } from "react/jsx-runtime";
+import { Fragment as Fragment5, jsx as jsx15, jsxs as jsxs3 } from "react/jsx-runtime";
 var Page = ({
   children,
   statusBarStyle,
@@ -3645,7 +2949,7 @@ var Page = ({
 }) => {
   const { colors, colorMode } = use_color_default();
   const insets = useSafeAreaInsets2();
-  const resolvedStatusColor = useMemo13(() => {
+  const resolvedStatusColor = useMemo10(() => {
     if (statusBarColor) {
       return typeof statusBarColor === "string" && colors[statusBarColor] ? colors[statusBarColor] : statusBarColor;
     }
@@ -3654,7 +2958,7 @@ var Page = ({
     }
     return typeof color === "string" && colors[color] ? colors[color] : void 0;
   }, [statusBarColor, color, colors, edgeToEdge]);
-  const inferredStatusStyle = useMemo13(() => {
+  const inferredStatusStyle = useMemo10(() => {
     if (statusTextColor === "light") return "light-content";
     if (statusTextColor === "dark") return "dark-content";
     if (statusTextColor) return statusTextColor;
@@ -3663,7 +2967,7 @@ var Page = ({
     }
     return colorMode === "dark" ? "light-content" : "dark-content";
   }, [statusTextColor, colorMode, edgeToEdge, resolvedStatusColor]);
-  const safeAreaPadding = useMemo13(() => {
+  const safeAreaPadding = useMemo10(() => {
     var _a, _b, _c, _d;
     if (safeAreaMode === "none") return {};
     if (safeAreaMode === "manual" && customInsets) {
@@ -3682,7 +2986,7 @@ var Page = ({
     };
   }, [safeAreaMode, customInsets, insets, pt, pb, pl, pr]);
   const barStyle = statusBarStyle != null ? statusBarStyle : inferredStatusStyle;
-  return /* @__PURE__ */ jsxs3(Fragment2, { children: [
+  return /* @__PURE__ */ jsxs3(Fragment5, { children: [
     /* @__PURE__ */ jsx15(
       StatusBar2,
       {
@@ -3709,7 +3013,7 @@ var Page_default = Page;
 // src/rn-alpha/custom/Modal.tsx
 import { useRef, useEffect as useEffect2 } from "react";
 import { TouchableWithoutFeedback, Modal as Mod, Animated as Animated4, Dimensions as Dimensions3, StyleSheet } from "react-native";
-import { PanGestureHandler, State, gestureHandlerRootHOC } from "react-native-gesture-handler";
+import { PanGestureHandler, State, GestureHandlerRootView } from "react-native-gesture-handler";
 
 // src/assets/icons/index.ts
 var check = `
@@ -4291,8 +3595,8 @@ var backspace = `
 `;
 
 // src/rn-alpha/custom/Modal.tsx
-import { Fragment as Fragment3, jsx as jsx16, jsxs as jsxs4 } from "react/jsx-runtime";
-var ModalContent = (props) => {
+import { Fragment as Fragment6, jsx as jsx16, jsxs as jsxs4 } from "react/jsx-runtime";
+var Modal3 = (props) => {
   const { modal, setModal, onClose, full, children, enableSwipeToClose = true, showCloseBtn } = props;
   const translateY = useRef(new Animated4.Value(0)).current;
   const sheetTranslateY = useRef(new Animated4.Value(full ? 0 : height)).current;
@@ -4383,14 +3687,14 @@ var ModalContent = (props) => {
       }
     }
   };
-  return /* @__PURE__ */ jsx16(Fragment3, { children: /* @__PURE__ */ jsx16(
+  return /* @__PURE__ */ jsx16(Fragment6, { children: /* @__PURE__ */ jsx16(
     Mod,
     {
       animationType: "none",
       transparent: true,
       visible: modal,
       onRequestClose: closeFunc,
-      children: /* @__PURE__ */ jsx16(KeyboardView_default, { children: /* @__PURE__ */ jsxs4(View_default, { flex: 1, children: [
+      children: /* @__PURE__ */ jsx16(GestureHandlerRootView, { style: { flex: 1 }, children: /* @__PURE__ */ jsx16(KeyboardView_default, { children: /* @__PURE__ */ jsxs4(View_default, { flex: 1, children: [
         /* @__PURE__ */ jsx16(
           Animated4.View,
           {
@@ -4407,8 +3711,6 @@ var ModalContent = (props) => {
             onGestureEvent,
             onHandlerStateChange,
             activeOffsetY: 10,
-            failOffsetX: [-15, 15],
-            activeOffsetX: [-999999, 999999],
             children: /* @__PURE__ */ jsx16(
               Animated4.View,
               {
@@ -4417,7 +3719,8 @@ var ModalContent = (props) => {
                     { translateY: Animated4.add(translateY, sheetTranslateY) }
                   ],
                   ...full ? {
-                    flex: 1
+                    flex: 1,
+                    paddingTop: height * 0.1
                   } : {
                     position: "absolute",
                     bottom: 0,
@@ -4442,10 +3745,10 @@ var ModalContent = (props) => {
                       maxHeight: height * 0.9
                     },
                     children: [
-                      /* @__PURE__ */ jsx16(View_default, { pv: 10, pb: 25, children: /* @__PURE__ */ jsx16(View_default, { width: 50, height: 4, color: "medium", br: 3, align: "center" }) }),
+                      /* @__PURE__ */ jsx16(View_default, { onTouchEnd: closeFunc, pv: 10, pb: 25, children: /* @__PURE__ */ jsx16(View_default, { width: 50, height: 4, color: "medium", br: 3, align: "center" }) }),
                       showCloseBtn && /* @__PURE__ */ jsx16(View_default, { absolute: true, right: 10, top: 10, children: /* @__PURE__ */ jsx16(TouchableOpacity_default, { onPress: closeFunc, children: /* @__PURE__ */ jsx16(View_default, { size: 32, br: 32 / 2, fd: "flex-center", color: "shade", children: /* @__PURE__ */ jsx16(Svg_default, { icon: cancel, size: 10, color: "text" }) }) }) }),
                       children,
-                      /* @__PURE__ */ jsx16(View_default, { height: ios ? 40 : 5 })
+                      /* @__PURE__ */ jsx16(View_default, { height: ios ? 40 : 20 })
                     ]
                   }
                 )
@@ -4458,7 +3761,8 @@ var ModalContent = (props) => {
             style: {
               transform: [{ translateY: sheetTranslateY }],
               ...full ? {
-                flex: 1
+                flex: 1,
+                paddingTop: height * 0.1
               } : {
                 position: "absolute",
                 bottom: 0,
@@ -4486,23 +3790,22 @@ var ModalContent = (props) => {
                   /* @__PURE__ */ jsx16(View_default, { pv: 10, pb: 25, onTouchStart: closeFunc, children: /* @__PURE__ */ jsx16(View_default, { width: 50, height: 4, color: "medium", br: 3, align: "center" }) }),
                   showCloseBtn && /* @__PURE__ */ jsx16(View_default, { absolute: true, right: 10, top: 10, children: /* @__PURE__ */ jsx16(TouchableOpacity_default, { onPress: closeFunc, children: /* @__PURE__ */ jsx16(View_default, { size: 32, br: 32 / 2, fd: "flex-center", color: "shade", children: /* @__PURE__ */ jsx16(Svg_default, { icon: cancel, size: 10, color: "text" }) }) }) }),
                   children,
-                  /* @__PURE__ */ jsx16(View_default, { height: ios ? 40 : 5 })
+                  /* @__PURE__ */ jsx16(View_default, { height: ios ? 40 : 20 })
                 ]
               }
             )
           }
         )
-      ] }) })
+      ] }) }) })
     }
   ) });
 };
-var Modal3 = gestureHandlerRootHOC(ModalContent);
 var Modal_default = Modal3;
 
 // src/rn-alpha/custom/Button.tsx
 import { useEffect as useEffect3, useRef as useRef2 } from "react";
 import { Animated as Animated5, Easing } from "react-native";
-import { Fragment as Fragment4, jsx as jsx17, jsxs as jsxs5 } from "react/jsx-runtime";
+import { Fragment as Fragment7, jsx as jsx17, jsxs as jsxs5 } from "react/jsx-runtime";
 var DOT_COUNT = 3;
 var LoadingDots = ({ color, size = 6, duration = 600 }) => {
   const progress = useRef2(
@@ -4589,7 +3892,7 @@ var Button = (props) => {
   } = mergedProps;
   const disable = disabled || loading;
   const loaderColor = (_a = colors[textColor]) != null ? _a : textColor;
-  return /* @__PURE__ */ jsx17(Fragment4, { children: /* @__PURE__ */ jsx17(TouchableOpacity_default, { onPress, disabled: disable, children: /* @__PURE__ */ jsxs5(
+  return /* @__PURE__ */ jsx17(Fragment7, { children: /* @__PURE__ */ jsx17(TouchableOpacity_default, { onPress, disabled: disable, children: /* @__PURE__ */ jsxs5(
     View_default,
     {
       mv,
@@ -4742,11 +4045,11 @@ var inputConfig = {
 var InputConfig_default = inputConfig;
 
 // src/rn-alpha/custom/Inputs/Label.tsx
-import { Fragment as Fragment5, jsx as jsx19 } from "react/jsx-runtime";
+import { Fragment as Fragment8, jsx as jsx19 } from "react/jsx-runtime";
 var Label = (props) => {
   const { label, error, focus, value } = props;
   const color = error ? "danger" : focus ? "primary" : "text";
-  return /* @__PURE__ */ jsx19(Fragment5, { children: /* @__PURE__ */ jsx19(View_default, { mb: InputConfig_default.label.spacingBottom, children: /* @__PURE__ */ jsx19(
+  return /* @__PURE__ */ jsx19(Fragment8, { children: /* @__PURE__ */ jsx19(View_default, { mb: InputConfig_default.label.spacingBottom, children: /* @__PURE__ */ jsx19(
     Text_default,
     {
       size: InputConfig_default.label.size,
@@ -4870,7 +4173,7 @@ var Input_default = Input;
 
 // src/rn-alpha/custom/Inputs/NumPadKeyboard.tsx
 import { TouchableWithoutFeedback as TouchableWithoutFeedback2 } from "react-native";
-import { Fragment as Fragment6, jsx as jsx22 } from "react/jsx-runtime";
+import { Fragment as Fragment9, jsx as jsx22 } from "react/jsx-runtime";
 var NumPadKeyboard = (props) => {
   const { setValue, max, onDone } = props;
   const numbers = [
@@ -4879,7 +4182,7 @@ var NumPadKeyboard = (props) => {
     ["7", "8", "9"],
     ["", "0", "Del"]
   ];
-  return /* @__PURE__ */ jsx22(Fragment6, { children: /* @__PURE__ */ jsx22(View_default, { fd: "col-between", gap: 25, children: numbers.map((item, i) => /* @__PURE__ */ jsx22(View_default, { fd: "flex-center", children: item.map((value, i2) => /* @__PURE__ */ jsx22(View_default, { flex: 1, fd: "flex-center", children: !!value && /* @__PURE__ */ jsx22(TouchableWithoutFeedback2, { onPress: () => {
+  return /* @__PURE__ */ jsx22(Fragment9, { children: /* @__PURE__ */ jsx22(View_default, { fd: "col-between", gap: 25, children: numbers.map((item, i) => /* @__PURE__ */ jsx22(View_default, { fd: "flex-center", children: item.map((value, i2) => /* @__PURE__ */ jsx22(View_default, { flex: 1, fd: "flex-center", children: !!value && /* @__PURE__ */ jsx22(TouchableWithoutFeedback2, { onPress: () => {
     if (value === "Del") {
       setValue((pin2) => pin2.slice(0, -1));
     } else {
@@ -4925,10 +4228,10 @@ import { UIActivityIndicator } from "react-native-indicators";
 
 // src/rn-alpha/custom/Loader.tsx
 import { SkypeIndicator as Animate } from "react-native-indicators";
-import { Fragment as Fragment7, jsx as jsx24, jsxs as jsxs7 } from "react/jsx-runtime";
+import { Fragment as Fragment10, jsx as jsx24, jsxs as jsxs7 } from "react/jsx-runtime";
 var Loader = ({ text, loading, color }) => {
   const { colors } = use_color_default();
-  return /* @__PURE__ */ jsx24(Fragment7, { children: loading && /* @__PURE__ */ jsxs7(View_default, { flex: 1, fd: "col-center", pv: 25, children: [
+  return /* @__PURE__ */ jsx24(Fragment10, { children: loading && /* @__PURE__ */ jsxs7(View_default, { flex: 1, fd: "col-center", pv: 25, children: [
     /* @__PURE__ */ jsx24(Animate, { size: 35, count: 6, color: color || colors.primary }),
     text && /* @__PURE__ */ jsx24(Text_default, { size: 15, mt: 15, color: "text", children: text })
   ] }) });
@@ -4936,7 +4239,7 @@ var Loader = ({ text, loading, color }) => {
 var Loader_default = Loader;
 
 // src/rn-alpha/custom/Inputs/Select.tsx
-import { Fragment as Fragment8, jsx as jsx25, jsxs as jsxs8 } from "react/jsx-runtime";
+import { Fragment as Fragment11, jsx as jsx25, jsxs as jsxs8 } from "react/jsx-runtime";
 var Select = (props) => {
   var _a, _b;
   const {
@@ -4993,7 +4296,7 @@ var Select = (props) => {
     onChange(current);
     setFilter("");
   };
-  return /* @__PURE__ */ jsxs8(Fragment8, { children: [
+  return /* @__PURE__ */ jsxs8(Fragment11, { children: [
     renderSelect ? /* @__PURE__ */ jsx25(TouchableWithoutFeedback3, { disabled, onPress: () => {
       Keyboard.dismiss();
       setModal(true);
@@ -5127,12 +4430,12 @@ var IconBtn = ({
 var IconBtn_default = IconBtn;
 
 // src/rn-alpha/custom/Inputs/SearchInput.tsx
-import { Fragment as Fragment9, jsx as jsx27, jsxs as jsxs9 } from "react/jsx-runtime";
+import { Fragment as Fragment12, jsx as jsx27, jsxs as jsxs9 } from "react/jsx-runtime";
 var SearchInput = (props) => {
   const { filter: filter2, setFilter, placeholder = "Search", style, onSubmit, focus } = props;
   const { colors } = use_color_default();
   const searchField = InputConfig_default.searchField;
-  return /* @__PURE__ */ jsx27(Fragment9, { children: /* @__PURE__ */ jsxs9(
+  return /* @__PURE__ */ jsx27(Fragment12, { children: /* @__PURE__ */ jsxs9(
     View_default,
     {
       br: searchField.radius,
@@ -5446,7 +4749,7 @@ var Password_default = Password;
 // src/rn-alpha/custom/Preloader.tsx
 import { useEffect as useEffect6, useRef as useRef3 } from "react";
 import { Animated as Animated6, Easing as Easing2, Modal as Modal4 } from "react-native";
-import { Fragment as Fragment10, jsx as jsx32, jsxs as jsxs13 } from "react/jsx-runtime";
+import { Fragment as Fragment13, jsx as jsx32, jsxs as jsxs13 } from "react/jsx-runtime";
 var Preloader = (props) => {
   const { text, title, loading, close, opacity } = props;
   const { colors } = use_color_default();
@@ -5487,7 +4790,7 @@ var Preloader = (props) => {
       loopRef.current = null;
     };
   }, [loading, scaleAnimation]);
-  return /* @__PURE__ */ jsx32(Fragment10, { children: /* @__PURE__ */ jsx32(
+  return /* @__PURE__ */ jsx32(Fragment13, { children: /* @__PURE__ */ jsx32(
     Modal4,
     {
       transparent: true,
@@ -5555,10 +4858,10 @@ var ProgressBar = ({
 var ProgressBar_default = ProgressBar;
 
 // src/rn-alpha/custom/Inputs/TextInput.tsx
-import React22 from "react";
+import React19 from "react";
 import { TextInput as Element } from "react-native";
 import { jsx as jsx34, jsxs as jsxs14 } from "react/jsx-runtime";
-var TextInput4 = React22.forwardRef((props, ref) => {
+var TextInput4 = React19.forwardRef((props, ref) => {
   const { colors } = use_color_default();
   const {
     onChangeText,
@@ -5621,7 +4924,7 @@ var TextInput_default = TextInput4;
 // src/rn-alpha/custom/Inputs/OtpInput.tsx
 import { OtpInput as Input2 } from "react-native-otp-entry";
 import { Keyboard as Keyboard3 } from "react-native";
-import { Fragment as Fragment11, jsx as jsx35 } from "react/jsx-runtime";
+import { Fragment as Fragment14, jsx as jsx35 } from "react/jsx-runtime";
 var OtpInput = (props) => {
   const { pinCount = 4, setCode, secureTextEntry = true, color } = props;
   const { colors } = use_color_default();
@@ -5629,7 +4932,7 @@ var OtpInput = (props) => {
   const otp = InputConfig_default.otp;
   const cellWidth = pinCount > 4 ? size : otp.width;
   const cellHeight = pinCount > 4 ? size + 5 : otp.height;
-  return /* @__PURE__ */ jsx35(Fragment11, { children: /* @__PURE__ */ jsx35(
+  return /* @__PURE__ */ jsx35(Fragment14, { children: /* @__PURE__ */ jsx35(
     Input2,
     {
       numberOfDigits: pinCount || 6,
@@ -5669,12 +4972,12 @@ var OtpInput_default = OtpInput;
 // src/rn-alpha/custom/Menu.tsx
 import { useState as useState7 } from "react";
 import { Menu as Component, MenuItem } from "react-native-material-menu";
-import { Fragment as Fragment12, jsx as jsx36 } from "react/jsx-runtime";
+import { Fragment as Fragment15, jsx as jsx36 } from "react/jsx-runtime";
 var Menu = (props) => {
   const { anchor, options, color, pressColor } = props;
   const [modal, setModal] = useState7(false);
   const { colors } = use_color_default();
-  return /* @__PURE__ */ jsx36(Fragment12, { children: /* @__PURE__ */ jsx36(
+  return /* @__PURE__ */ jsx36(Fragment15, { children: /* @__PURE__ */ jsx36(
     Component,
     {
       visible: modal,

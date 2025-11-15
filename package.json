@@ -1,6 +1,6 @@
 {
   "name": "@scripturecoder/rn-alpha-ui",
-  "version": "0.2.3",
+  "version": "0.2.9",
   "description": "Extracted React Native UI component library from @scripturecoder/rn-alpha-ui.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -30,6 +30,7 @@
     "@d11/react-native-fast-image": "^8.9.2",
     "country-code-emoji": "^2.3.0",
     "dayjs": "^1.11.13",
+    "formik": "^2.4.5",
     "react-native-date-picker": "5.0.12",
     "react-native-gesture-handler": "^2.28.0",
     "react-native-indicators": "^0.17.0",
@@ -37,7 +38,8 @@
     "react-native-material-menu": "^2.0.0",
     "react-native-otp-entry": "^1.8.5",
     "react-native-safe-area-context": "^5.4.1",
-    "react-native-svg": "^15.14.0"
+    "react-native-svg": "^15.14.0",
+    "yup": "^1.4.0"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

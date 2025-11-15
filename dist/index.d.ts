@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, ReactElement } from 'react';
-import { ViewProps, FlexAlignType, View as View$1, StyleProp, ViewStyle, TextProps, ScrollViewProps, Animated, ScrollView as ScrollView$1, FlatListProps, FlatList as FlatList$1, TouchableHighlightProps, AccessibilityRole, TouchableOpacityProps, ImageSourcePropType, ImageBackgroundProps, TextStyle, StatusBarStyle, KeyboardTypeOptions, TextInput as TextInput$1, TextInputProps, DimensionValue } from 'react-native';
+import { ViewProps, FlexAlignType, View as View$1, StyleProp, ViewStyle, TextProps, ScrollViewProps, Animated, ScrollView as ScrollView$1, FlatListProps, FlatList as FlatList$1, TouchableHighlightProps, TouchableOpacityProps, ImageSourcePropType, AccessibilityRole, ImageBackgroundProps, TextStyle, StatusBarStyle, KeyboardTypeOptions, TextInput as TextInput$1, TextInputProps, DimensionValue } from 'react-native';
 import * as react_native_safe_area_context from 'react-native-safe-area-context';
 import { Edge } from 'react-native-safe-area-context';
 import FastImage from '@d11/react-native-fast-image';
@@ -179,7 +179,7 @@ type AnimatedProps = {
     skewY?: number;
     perspective?: number;
 };
-type SpacingProps$a = {
+type SpacingProps$7 = {
     padding?: number;
     margin?: number;
     p?: number;
@@ -212,16 +212,16 @@ type PositionProps$1 = {
     right?: number;
     left?: number;
 };
-declare const View: React.ForwardRefExoticComponent<CustomViewProps & AnimatedProps & SpacingProps$a & PositionProps$1 & React.RefAttributes<View$1>>;
+declare const View: React.ForwardRefExoticComponent<CustomViewProps & AnimatedProps & SpacingProps$7 & PositionProps$1 & React.RefAttributes<View$1>>;
 
-type SafeAreaProps = Omit<CustomViewProps, 'children'> & SpacingProps$a & PositionProps$1 & {
+type SafeAreaProps = Omit<CustomViewProps, 'children'> & SpacingProps$7 & PositionProps$1 & {
     edges?: Edge[];
     children?: React.ReactNode;
     containerStyle?: StyleProp<ViewStyle>;
 };
 declare const SafeAreaView: React.FC<SafeAreaProps>;
 
-type SpacingProps$9 = {
+type SpacingProps$6 = {
     padding?: number;
     margin?: number;
     p?: number;
@@ -268,7 +268,7 @@ type TypographyProps = {
     maxFontSizeMultiplier?: number;
     allowFontScaling?: boolean;
 };
-type AnimationProps$7 = {
+type AnimationProps$4 = {
     opacity?: number;
     scale?: number;
     rotate?: number;
@@ -281,10 +281,10 @@ type AdaptiveProps = {
     minSize?: number;
     maxSize?: number;
 };
-type Props$8 = TextProps & SpacingProps$9 & TypographyProps & AnimationProps$7 & AdaptiveProps;
+type Props$8 = TextProps & SpacingProps$6 & TypographyProps & AnimationProps$4 & AdaptiveProps;
 declare const Text: React.FC<Props$8>;
 
-type SpacingProps$8 = {
+type SpacingProps$5 = {
     padding?: number | string;
     margin?: number | string;
     p?: number | string;
@@ -304,7 +304,7 @@ type SpacingProps$8 = {
     px?: number;
     py?: number;
 };
-type LayoutProps$8 = {
+type LayoutProps$5 = {
     flex?: number;
     width?: number | string;
     height?: number | string;
@@ -348,9 +348,9 @@ type ScrollProps = {
     refreshTitle?: string;
     refreshTitleColor?: ColorProps | string;
 };
-declare const ScrollView: React.ForwardRefExoticComponent<ScrollViewProps & SpacingProps$8 & LayoutProps$8 & ScrollProps & React.RefAttributes<ScrollView$1>>;
+declare const ScrollView: React.ForwardRefExoticComponent<ScrollViewProps & SpacingProps$5 & LayoutProps$5 & ScrollProps & React.RefAttributes<ScrollView$1>>;
 
-type SpacingProps$7 = {
+type SpacingProps$4 = {
     padding?: number | string;
     margin?: number | string;
     p?: number | string;
@@ -370,7 +370,7 @@ type SpacingProps$7 = {
     px?: number;
     py?: number;
 };
-type LayoutProps$7 = {
+type LayoutProps$4 = {
     flex?: number;
     width?: number | string;
     height?: number | string;
@@ -414,324 +414,23 @@ type FlatListCustomProps = {
     refreshTitle?: string;
     refreshTitleColor?: ColorProps | string;
 };
-declare const FlatList: React.ForwardRefExoticComponent<FlatListProps<any> & SpacingProps$7 & LayoutProps$7 & FlatListCustomProps & React.RefAttributes<FlatList$1<any>>>;
+declare const FlatList: React.ForwardRefExoticComponent<FlatListProps<any> & SpacingProps$4 & LayoutProps$4 & FlatListCustomProps & React.RefAttributes<FlatList$1<any>>>;
 
-type SpacingProps$6 = {
-    padding?: number | string;
-    margin?: number | string;
-    p?: number | string;
-    m?: number | string;
-    ph?: number;
-    pv?: number;
-    pt?: number;
-    pb?: number;
-    pl?: number;
-    pr?: number;
-    mh?: number;
-    mv?: number;
-    mt?: number;
-    mb?: number;
-    ml?: number;
-    mr?: number;
-    px?: number;
-    py?: number;
-};
-type LayoutProps$6 = {
-    flex?: number;
-    width?: number | string;
-    height?: number | string;
-    w?: number | string;
-    h?: number | string;
-    minW?: number | string;
-    maxW?: number | string;
-    minH?: number | string;
-    maxH?: number | string;
-    size?: number | string;
-    fullWidth?: boolean;
-    fullHeight?: boolean;
-    center?: boolean;
-    centerX?: boolean;
-    centerY?: boolean;
-    absolute?: boolean;
-    relative?: boolean;
-    hidden?: boolean;
-    visible?: boolean;
-    disabled?: boolean;
-};
-type BorderProps$6 = {
-    br?: number;
-    bc?: ColorProps | string;
-    bw?: number;
-    bbw?: number;
-    btw?: number;
-    blw?: number;
-    brw?: number;
-    brc?: ColorProps | string;
-    blc?: ColorProps | string;
-    btc?: ColorProps | string;
-    bbc?: ColorProps | string;
-    btrr?: number;
-    btlr?: number;
-    bbrr?: number;
-    bblr?: number;
-    bs?: "solid" | "dotted" | "dashed";
-};
-type AnimationProps$6 = {
-    opacity?: number;
-    scale?: number;
-    rotate?: number;
-    translateX?: number;
-    translateY?: number;
-    skewX?: number;
-    skewY?: number;
-    perspective?: number;
-};
-type TouchableHighlightCustomProps = {
-    color?: ColorProps | string;
-    backgroundColor?: ColorProps | string;
-    underlayColor?: ColorProps | string;
-    opacity?: number;
-    scale?: number;
-    rotate?: number;
-    translateX?: number;
-    translateY?: number;
-    skewX?: number;
-    skewY?: number;
-    perspective?: number;
-};
-declare const TouchableHighlight: React.ForwardRefExoticComponent<TouchableHighlightProps & SpacingProps$6 & LayoutProps$6 & BorderProps$6 & AnimationProps$6 & TouchableHighlightCustomProps & React.RefAttributes<any>>;
+declare const TouchableHighlight: React.FC<TouchableHighlightProps>;
 
-type SpacingProps$5 = {
-    padding?: number | string;
-    margin?: number | string;
-    p?: number | string;
-    m?: number | string;
-    ph?: number;
-    pv?: number;
-    pt?: number;
-    pb?: number;
-    pl?: number;
-    pr?: number;
-    mh?: number;
-    mv?: number;
-    mt?: number;
-    mb?: number;
-    ml?: number;
-    mr?: number;
-    px?: number;
-    py?: number;
-};
-type LayoutProps$5 = {
-    flex?: number;
-    width?: number | string;
-    height?: number | string;
-    w?: number | string;
-    h?: number | string;
-    minW?: number | string;
-    maxW?: number | string;
-    minH?: number | string;
-    maxH?: number | string;
-    size?: number | string;
-    fullWidth?: boolean;
-    fullHeight?: boolean;
-    center?: boolean;
-    centerX?: boolean;
-    centerY?: boolean;
-    absolute?: boolean;
-    relative?: boolean;
-    hidden?: boolean;
-    visible?: boolean;
-    disabled?: boolean;
-};
-type BorderProps$5 = {
-    br?: number;
-    bc?: ColorProps | string;
-    bw?: number;
-    bbw?: number;
-    btw?: number;
-    blw?: number;
-    brw?: number;
-    brc?: ColorProps | string;
-    blc?: ColorProps | string;
-    btc?: ColorProps | string;
-    bbc?: ColorProps | string;
-    btrr?: number;
-    btlr?: number;
-    bbrr?: number;
-    bblr?: number;
-    bs?: "solid" | "dotted" | "dashed";
-};
-type AnimationProps$5 = {
-    opacity?: number;
-    scale?: number;
-    rotate?: number;
-    translateX?: number;
-    translateY?: number;
-    skewX?: number;
-    skewY?: number;
-    perspective?: number;
-};
-type TouchableNativeFeedbackCustomProps = {
-    w?: number | string;
-    h?: number | string;
-    size?: number | string;
-    flex?: number;
-    fullWidth?: boolean;
-    fullHeight?: boolean;
-    center?: boolean;
-    centerX?: boolean;
-    centerY?: boolean;
-    absolute?: boolean;
-    relative?: boolean;
-    hidden?: boolean;
-    visible?: boolean;
-    disabled?: boolean;
-    br?: number;
-    bc?: ColorProps | string;
-    bw?: number;
-    bbw?: number;
-    btw?: number;
-    blw?: number;
-    brw?: number;
-    brc?: ColorProps | string;
-    blc?: ColorProps | string;
-    btc?: ColorProps | string;
-    bbc?: ColorProps | string;
-    btrr?: number;
-    btlr?: number;
-    bbrr?: number;
-    bblr?: number;
-    bs?: "solid" | "dotted" | "dashed";
-    color?: ColorProps | string;
-    backgroundColor?: ColorProps | string;
-    rippleColor?: ColorProps | string;
-    opacity?: number;
-    scale?: number;
-    rotate?: number;
-    translateX?: number;
-    translateY?: number;
-    skewX?: number;
-    skewY?: number;
-    perspective?: number;
+type TouchableNativeFeedbackProps = {
     borderless?: boolean;
     onPress: () => void;
     onLongPress?: () => void;
-    onPressIn?: () => void;
-    onPressOut?: () => void;
-    hitSlop?: {
-        top?: number;
-        bottom?: number;
-        left?: number;
-        right?: number;
-    };
-    pressRetentionOffset?: {
-        top?: number;
-        bottom?: number;
-        left?: number;
-        right?: number;
-    };
-    delayPressIn?: number;
-    delayPressOut?: number;
-    delayLongPress?: number;
-    accessibilityLabel?: string;
-    accessibilityHint?: string;
-    accessibilityRole?: AccessibilityRole;
-    accessibilityState?: {
-        disabled?: boolean;
-        selected?: boolean;
-        checked?: boolean | 'mixed';
-        busy?: boolean;
-        expanded?: boolean;
-    };
-};
-type Props$7 = PropsWithChildren<TouchableNativeFeedbackCustomProps & SpacingProps$5 & LayoutProps$5 & BorderProps$5 & AnimationProps$5> & {
-    style?: any;
-};
-declare const TouchableNativeFeedback: React.FC<Props$7>;
-
-type SpacingProps$4 = {
-    padding?: number | string;
-    margin?: number | string;
-    p?: number | string;
-    m?: number | string;
-    ph?: number;
-    pv?: number;
-    pt?: number;
-    pb?: number;
-    pl?: number;
-    pr?: number;
-    mh?: number;
-    mv?: number;
-    mt?: number;
-    mb?: number;
-    ml?: number;
-    mr?: number;
-    px?: number;
-    py?: number;
-};
-type LayoutProps$4 = {
-    flex?: number;
-    width?: number | string;
-    height?: number | string;
-    w?: number | string;
-    h?: number | string;
-    minW?: number | string;
-    maxW?: number | string;
-    minH?: number | string;
-    maxH?: number | string;
-    size?: number | string;
-    fullWidth?: boolean;
-    fullHeight?: boolean;
-    center?: boolean;
-    centerX?: boolean;
-    centerY?: boolean;
-    absolute?: boolean;
-    relative?: boolean;
-    hidden?: boolean;
-    visible?: boolean;
     disabled?: boolean;
 };
-type BorderProps$4 = {
-    br?: number;
-    bc?: ColorProps | string;
-    bw?: number;
-    bbw?: number;
-    btw?: number;
-    blw?: number;
-    brw?: number;
-    brc?: ColorProps | string;
-    blc?: ColorProps | string;
-    btc?: ColorProps | string;
-    bbc?: ColorProps | string;
-    btrr?: number;
-    btlr?: number;
-    bbrr?: number;
-    bblr?: number;
-    bs?: "solid" | "dotted" | "dashed";
+declare const TouchableNativeFeedback: React.FC<PropsWithChildren<TouchableNativeFeedbackProps>>;
+
+type Props$7 = {
+    flex?: number;
+    w?: number;
 };
-type AnimationProps$4 = {
-    opacity?: number;
-    scale?: number;
-    rotate?: number;
-    translateX?: number;
-    translateY?: number;
-    skewX?: number;
-    skewY?: number;
-    perspective?: number;
-};
-type TouchableCustomProps = {
-    color?: ColorProps | string;
-    backgroundColor?: ColorProps | string;
-    opacity?: number;
-    scale?: number;
-    rotate?: number;
-    translateX?: number;
-    translateY?: number;
-    skewX?: number;
-    skewY?: number;
-    perspective?: number;
-};
-declare const TouchableOpacity: React.ForwardRefExoticComponent<TouchableOpacityProps & SpacingProps$4 & LayoutProps$4 & BorderProps$4 & AnimationProps$4 & TouchableCustomProps & React.RefAttributes<any>>;
+declare const TouchableOpacity: React.FC<TouchableOpacityProps & Props$7>;
 
 interface CustomImageProps extends React.ComponentProps<typeof FastImage> {
     w?: number;
@@ -1240,7 +939,7 @@ type Props$3 = OptionModalCustomProps & SpacingProps & LayoutProps & BorderProps
 };
 declare const OptionModal: React.FC<Props$3>;
 
-type PageProps = CustomViewProps & SpacingProps$a & PositionProps$1 & {
+type PageProps = CustomViewProps & SpacingProps$7 & PositionProps$1 & {
     statusBarStyle?: StatusBarStyle;
     statusBarColor?: ColorProps | string;
     statusTextColor?: 'light' | 'dark' | StatusBarStyle;
@@ -1263,7 +962,7 @@ type Props$2 = {
     enableSwipeToClose?: boolean;
     showCloseBtn?: boolean;
 };
-declare const Modal: React.ComponentType<ModalProps & Props$2>;
+declare const Modal: React.FC<ModalProps & Props$2>;
 
 type ButtonProps = {
     title: string;
@@ -1462,7 +1161,7 @@ type props = {
 };
 declare const Preloader: React.FC<props>;
 
-type ProgressBarProps = SpacingProps$a & {
+type ProgressBarProps = SpacingProps$7 & {
     progress?: number;
     color?: ColorProps | string;
     background?: ColorProps | string;

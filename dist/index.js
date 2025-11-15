@@ -1868,747 +1868,51 @@ FlatList.displayName = "FlatList";
 var FlatList_default = FlatList;
 
 // src/rn-alpha/default/TouchableHighlight.tsx
-var import_react6 = __toESM(require("react"));
 var import_react_native6 = require("react-native");
 var import_jsx_runtime7 = require("react/jsx-runtime");
-var TouchableHighlight = import_react6.default.forwardRef((props, ref) => {
+var TouchableHighlight = (props) => {
   const { colors } = use_color_default();
-  const { componentProps } = useUIContext();
-  const touchableDefaults = componentProps.TouchableHighlight || {};
-  const mergedProps = {
-    ...touchableDefaults,
-    ...props
-  };
-  const {
-    // Layout props
-    w,
-    h,
-    size,
-    flex,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    // Border props
-    br,
-    bc,
-    bw,
-    bbw,
-    btw,
-    blw,
-    brw,
-    brc,
-    blc,
-    btc,
-    bbc,
-    btrr,
-    btlr,
-    bbrr,
-    bblr,
-    bs,
-    // Color props
-    color,
-    backgroundColor,
-    underlayColor,
-    // Animation props
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    skewX,
-    skewY,
-    perspective,
-    // Spacing props
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    // Other props (all standard TouchableHighlight props)
-    style,
-    children,
-    ...otherProps
-  } = mergedProps;
-  const resolveColor = (0, import_react6.useCallback)((colorValue) => {
-    if (!colorValue) return void 0;
-    return colors[colorValue] || colorValue;
-  }, [colors]);
-  const computedStyle = (0, import_react6.useMemo)(() => {
-    let finalWidth = size != null ? size : w;
-    let finalHeight = size != null ? size : h;
-    if (fullWidth) finalWidth = "100%";
-    if (fullHeight) finalHeight = "100%";
-    let centerStyles = {};
-    if (center) {
-      centerStyles = { alignItems: "center", justifyContent: "center" };
-    } else {
-      if (centerX) centerStyles = { ...centerStyles, alignItems: "center" };
-      if (centerY) centerStyles = { ...centerStyles, justifyContent: "center" };
-    }
-    let finalPadding = padding != null ? padding : p;
-    let finalMargin = margin != null ? margin : m;
-    const transform = [];
-    if (scale) transform.push({ scale });
-    if (translateX) transform.push({ translateX });
-    if (translateY) transform.push({ translateY });
-    if (rotate) transform.push({ rotate: `${rotate}deg` });
-    if (skewX) transform.push({ skewX: `${skewX}deg` });
-    if (skewY) transform.push({ skewY: `${skewY}deg` });
-    let finalOpacity = opacity;
-    if (hidden) finalOpacity = 0;
-    if (visible) finalOpacity = 1;
-    if (disabled) finalOpacity = 0.5;
-    let finalPosition = void 0;
-    if (absolute) finalPosition = "absolute";
-    if (relative) finalPosition = "relative";
-    const viewStyle = {
-      flex,
-      width: finalWidth,
-      // Cast to any to handle string values like '100%'
-      height: finalHeight,
-      // Cast to any to handle string values like '100%'
-      borderRadius: br,
-      backgroundColor: resolveColor(backgroundColor),
-      ...centerStyles,
-      // Spacing
-      padding: finalPadding,
-      // Cast to any to handle string values
-      margin: finalMargin,
-      // Cast to any to handle string values
-      marginTop: mt,
-      marginBottom: mb,
-      marginRight: mr,
-      marginLeft: ml,
-      marginHorizontal: mh,
-      marginVertical: mv,
-      paddingTop: pt,
-      paddingBottom: pb,
-      paddingVertical: pv != null ? pv : py,
-      paddingHorizontal: ph != null ? ph : px,
-      paddingLeft: pl,
-      paddingRight: pr,
-      // Position
-      position: finalPosition,
-      // Border
-      borderWidth: bw,
-      borderBottomWidth: bbw,
-      borderTopWidth: btw,
-      borderLeftWidth: blw,
-      borderRightWidth: brw,
-      borderColor: resolveColor(bc),
-      borderRightColor: resolveColor(brc),
-      borderLeftColor: resolveColor(blc),
-      borderTopColor: resolveColor(btc),
-      borderBottomColor: resolveColor(bbc),
-      borderTopRightRadius: btrr,
-      borderTopLeftRadius: btlr,
-      borderBottomLeftRadius: bblr,
-      borderBottomRightRadius: bbrr,
-      borderStyle: bs,
-      // Animation
-      opacity: finalOpacity,
-      transform: transform.length > 0 ? transform : void 0
-    };
-    return viewStyle;
-  }, [
-    w,
-    h,
-    size,
-    flex,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    br,
-    bc,
-    bw,
-    bbw,
-    btw,
-    blw,
-    brw,
-    brc,
-    blc,
-    btc,
-    bbc,
-    btrr,
-    btlr,
-    bbrr,
-    bblr,
-    bs,
-    color,
-    backgroundColor,
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    skewX,
-    skewY,
-    perspective,
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    resolveColor
-  ]);
-  const finalUnderlayColor = (0, import_react6.useMemo)(() => {
-    if (underlayColor) {
-      return colors[underlayColor] || underlayColor;
-    }
-    return colors.shade;
-  }, [underlayColor, colors]);
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_jsx_runtime7.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
     import_react_native6.TouchableHighlight,
     {
-      ref,
-      ...otherProps,
-      style: [computedStyle, style],
-      underlayColor: finalUnderlayColor,
-      children
+      ...props,
+      underlayColor: props.underlayColor || colors.shade,
+      children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_jsx_runtime7.Fragment, { children: props.children })
     }
-  );
-});
-TouchableHighlight.displayName = "TouchableHighlight";
+  ) });
+};
 var TouchableHighlight_default = TouchableHighlight;
 
 // src/rn-alpha/default/TouchableNativeFeedback.tsx
-var import_react7 = require("react");
 var import_react_native7 = require("react-native");
 var import_jsx_runtime8 = require("react/jsx-runtime");
 var TouchableNativeFeedback = (props) => {
+  const { borderless = false, onPress, children, disabled, onLongPress } = props;
   const { colors } = use_color_default();
-  const {
-    // Layout props
-    w,
-    h,
-    size,
-    flex,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    // Border props
-    br,
-    bc,
-    bw,
-    bbw,
-    btw,
-    blw,
-    brw,
-    brc,
-    blc,
-    btc,
-    bbc,
-    btrr,
-    btlr,
-    bbrr,
-    bblr,
-    bs,
-    // Color props
-    color,
-    backgroundColor,
-    rippleColor,
-    // Animation props
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    skewX,
-    skewY,
-    perspective,
-    // Touchable props
-    borderless = false,
-    onPress,
-    onLongPress,
-    onPressIn,
-    onPressOut,
-    hitSlop,
-    pressRetentionOffset,
-    delayPressIn,
-    delayPressOut,
-    delayLongPress,
-    // Accessibility
-    accessibilityLabel,
-    accessibilityHint,
-    accessibilityRole,
-    accessibilityState,
-    // Spacing props
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    // Other props
-    style,
-    children,
-    ...otherProps
-  } = props;
-  const computedStyle = (0, import_react7.useMemo)(() => {
-    const resolveColor = (colorValue) => {
-      if (!colorValue) return void 0;
-      return colors[colorValue] || colorValue;
-    };
-    let finalWidth = size != null ? size : w;
-    let finalHeight = size != null ? size : h;
-    if (fullWidth) finalWidth = "100%";
-    if (fullHeight) finalHeight = "100%";
-    let centerStyles = {};
-    if (center) {
-      centerStyles = { alignItems: "center", justifyContent: "center" };
-    } else {
-      if (centerX) centerStyles = { ...centerStyles, alignItems: "center" };
-      if (centerY) centerStyles = { ...centerStyles, justifyContent: "center" };
-    }
-    let finalPadding = padding != null ? padding : p;
-    let finalMargin = margin != null ? margin : m;
-    const transform = [];
-    if (scale) transform.push({ scale });
-    if (translateX) transform.push({ translateX });
-    if (translateY) transform.push({ translateY });
-    if (rotate) transform.push({ rotate: `${rotate}deg` });
-    if (skewX) transform.push({ skewX: `${skewX}deg` });
-    if (skewY) transform.push({ skewY: `${skewY}deg` });
-    let finalOpacity = opacity;
-    if (hidden) finalOpacity = 0;
-    if (visible) finalOpacity = 1;
-    if (disabled) finalOpacity = 0.5;
-    let finalPosition = void 0;
-    if (absolute) finalPosition = "absolute";
-    if (relative) finalPosition = "relative";
-    const viewStyle = {
-      flex,
-      width: finalWidth,
-      // Cast to any to handle string values like '100%'
-      height: finalHeight,
-      // Cast to any to handle string values like '100%'
-      borderRadius: br,
-      backgroundColor: resolveColor(backgroundColor),
-      ...centerStyles,
-      // Spacing
-      padding: finalPadding,
-      // Cast to any to handle string values
-      margin: finalMargin,
-      // Cast to any to handle string values
-      marginTop: mt,
-      marginBottom: mb,
-      marginRight: mr,
-      marginLeft: ml,
-      marginHorizontal: mh,
-      marginVertical: mv,
-      paddingTop: pt,
-      paddingBottom: pb,
-      paddingVertical: pv != null ? pv : py,
-      paddingHorizontal: ph != null ? ph : px,
-      paddingLeft: pl,
-      paddingRight: pr,
-      // Position
-      position: finalPosition,
-      // Border
-      borderWidth: bw,
-      borderBottomWidth: bbw,
-      borderTopWidth: btw,
-      borderLeftWidth: blw,
-      borderRightWidth: brw,
-      borderColor: resolveColor(bc),
-      borderRightColor: resolveColor(brc),
-      borderLeftColor: resolveColor(blc),
-      borderTopColor: resolveColor(btc),
-      borderBottomColor: resolveColor(bbc),
-      borderTopRightRadius: btrr,
-      borderTopLeftRadius: btlr,
-      borderBottomLeftRadius: bblr,
-      borderBottomRightRadius: bbrr,
-      borderStyle: bs,
-      // Animation
-      opacity: finalOpacity,
-      transform: transform.length > 0 ? transform : void 0
-    };
-    return viewStyle;
-  }, [
-    w,
-    h,
-    size,
-    flex,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    br,
-    bc,
-    bw,
-    bbw,
-    btw,
-    blw,
-    brw,
-    brc,
-    blc,
-    btc,
-    bbc,
-    btrr,
-    btlr,
-    bbrr,
-    bblr,
-    bs,
-    color,
-    backgroundColor,
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    skewX,
-    skewY,
-    perspective,
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    colors
-  ]);
-  const rippleBackground = (0, import_react7.useMemo)(() => {
-    const rippleColorValue = rippleColor ? colors[rippleColor] || rippleColor : colors.shade;
-    return import_react_native7.TouchableNativeFeedback.Ripple(rippleColorValue, borderless);
-  }, [rippleColor, borderless, colors]);
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
-    import_react_native7.TouchableNativeFeedback,
-    {
-      ...otherProps,
-      background: rippleBackground,
-      onPress,
-      onLongPress,
-      onPressIn,
-      onPressOut,
-      disabled,
-      hitSlop,
-      pressRetentionOffset,
-      delayPressIn,
-      delayPressOut,
-      delayLongPress,
-      accessibilityLabel,
-      accessibilityHint,
-      accessibilityRole,
-      accessibilityState,
-      style: [computedStyle, style],
-      children
-    }
-  );
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_jsx_runtime8.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_react_native7.TouchableNativeFeedback, { background: import_react_native7.TouchableNativeFeedback.Ripple(colors.shade, borderless), onLongPress, disabled, onPress, children }) });
 };
 var TouchableNativeFeedback_default = TouchableNativeFeedback;
 
 // src/rn-alpha/default/TouchableOpacity.tsx
-var import_react8 = __toESM(require("react"));
 var import_react_native8 = require("react-native");
 var import_jsx_runtime9 = require("react/jsx-runtime");
-var TouchableOpacity = import_react8.default.forwardRef((props, ref) => {
-  const { colors } = use_color_default();
-  const { componentProps } = useUIContext();
-  const touchableDefaults = componentProps.TouchableOpacity || {};
-  const mergedProps = {
-    ...touchableDefaults,
-    ...props
-  };
-  const {
-    // Layout props
-    w,
-    h,
-    size,
-    flex,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    // Border props
-    br,
-    bc,
-    bw,
-    bbw,
-    btw,
-    blw,
-    brw,
-    brc,
-    blc,
-    btc,
-    bbc,
-    btrr,
-    btlr,
-    bbrr,
-    bblr,
-    bs,
-    // Color props
-    color,
-    backgroundColor,
-    // Animation props
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    skewX,
-    skewY,
-    perspective,
-    // Spacing props
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    // Other props (all standard TouchableOpacity props)
-    style,
-    children,
-    ...otherProps
-  } = mergedProps;
-  const resolveColor = (0, import_react8.useCallback)((colorValue) => {
-    if (!colorValue) return void 0;
-    return colors[colorValue] || colorValue;
-  }, [colors]);
-  const computedStyle = (0, import_react8.useMemo)(() => {
-    let finalWidth = size != null ? size : w;
-    let finalHeight = size != null ? size : h;
-    if (fullWidth) finalWidth = "100%";
-    if (fullHeight) finalHeight = "100%";
-    let centerStyles = {};
-    if (center) {
-      centerStyles = { alignItems: "center", justifyContent: "center" };
-    } else {
-      if (centerX) centerStyles = { ...centerStyles, alignItems: "center" };
-      if (centerY) centerStyles = { ...centerStyles, justifyContent: "center" };
-    }
-    let finalPadding = padding != null ? padding : p;
-    let finalMargin = margin != null ? margin : m;
-    const transform = [];
-    if (scale) transform.push({ scale });
-    if (translateX) transform.push({ translateX });
-    if (translateY) transform.push({ translateY });
-    if (rotate) transform.push({ rotate: `${rotate}deg` });
-    if (skewX) transform.push({ skewX: `${skewX}deg` });
-    if (skewY) transform.push({ skewY: `${skewY}deg` });
-    let finalOpacity = opacity;
-    if (hidden) finalOpacity = 0;
-    if (visible) finalOpacity = 1;
-    if (disabled) finalOpacity = 0.5;
-    let finalPosition = void 0;
-    if (absolute) finalPosition = "absolute";
-    if (relative) finalPosition = "relative";
-    const viewStyle = {
-      flex,
-      width: finalWidth,
-      // Cast to any to handle string values like '100%'
-      height: finalHeight,
-      // Cast to any to handle string values like '100%'
-      borderRadius: br,
-      backgroundColor: resolveColor(backgroundColor),
-      ...centerStyles,
-      // Spacing
-      padding: finalPadding,
-      // Cast to any to handle string values
-      margin: finalMargin,
-      // Cast to any to handle string values
-      marginTop: mt,
-      marginBottom: mb,
-      marginRight: mr,
-      marginLeft: ml,
-      marginHorizontal: mh,
-      marginVertical: mv,
-      paddingTop: pt,
-      paddingBottom: pb,
-      paddingVertical: pv != null ? pv : py,
-      paddingHorizontal: ph != null ? ph : px,
-      paddingLeft: pl,
-      paddingRight: pr,
-      // Position
-      position: finalPosition,
-      // Border
-      borderWidth: bw,
-      borderBottomWidth: bbw,
-      borderTopWidth: btw,
-      borderLeftWidth: blw,
-      borderRightWidth: brw,
-      borderColor: resolveColor(bc),
-      borderRightColor: resolveColor(brc),
-      borderLeftColor: resolveColor(blc),
-      borderTopColor: resolveColor(btc),
-      borderBottomColor: resolveColor(bbc),
-      borderTopRightRadius: btrr,
-      borderTopLeftRadius: btlr,
-      borderBottomLeftRadius: bblr,
-      borderBottomRightRadius: bbrr,
-      borderStyle: bs,
-      // Animation
-      opacity: finalOpacity,
-      transform: transform.length > 0 ? transform : void 0
-    };
-    return viewStyle;
-  }, [
-    w,
-    h,
-    size,
-    flex,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    br,
-    bc,
-    bw,
-    bbw,
-    btw,
-    blw,
-    brw,
-    brc,
-    blc,
-    btc,
-    bbc,
-    btrr,
-    btlr,
-    bbrr,
-    bblr,
-    bs,
-    color,
-    backgroundColor,
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    skewX,
-    skewY,
-    perspective,
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    resolveColor
-  ]);
-  return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+var TouchableOpacity = (props) => {
+  const { style, flex, w } = props;
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_jsx_runtime9.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
     import_react_native8.TouchableOpacity,
     {
-      ref,
-      ...otherProps,
-      style: [computedStyle, style],
-      children
+      ...props,
+      style: [
+        {
+          flex,
+          width: w
+        },
+        style
+      ],
+      children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_jsx_runtime9.Fragment, { children: props.children })
     }
-  );
-});
-TouchableOpacity.displayName = "TouchableOpacity";
+  ) });
+};
 var TouchableOpacity_default = TouchableOpacity;
 
 // src/rn-alpha/default/Image.tsx
@@ -2742,7 +2046,7 @@ var Image = (props) => {
 var Image_default = Image;
 
 // src/rn-alpha/default/KeyboardView.tsx
-var import_react9 = require("react");
+var import_react6 = require("react");
 
 // src/constants/layout.ts
 var import_react_native9 = require("react-native");
@@ -2838,7 +2142,7 @@ var KeyboardView = (props) => {
     children,
     ...otherProps
   } = props;
-  const computedStyle = (0, import_react9.useMemo)(() => {
+  const computedStyle = (0, import_react6.useMemo)(() => {
     const resolveColor = (colorValue) => {
       if (!colorValue) return void 0;
       return colors[colorValue] || colorValue;
@@ -2980,11 +2284,11 @@ var KeyboardView = (props) => {
     py,
     colors
   ]);
-  const keyboardBehavior = (0, import_react9.useMemo)(() => {
+  const keyboardBehavior = (0, import_react6.useMemo)(() => {
     if (behavior) return behavior;
     return ios ? "padding" : "height";
   }, [behavior, ios]);
-  const keyboardOffset = (0, import_react9.useMemo)(() => {
+  const keyboardOffset = (0, import_react6.useMemo)(() => {
     if (keyboardVerticalOffset !== void 0) return keyboardVerticalOffset;
     if (ios && iosOffset !== void 0) return iosOffset;
     if (import_react_native10.Platform.OS === "android" && androidOffset !== void 0) return androidOffset;
@@ -3009,7 +2313,7 @@ var KeyboardView = (props) => {
 var KeyboardView_default = KeyboardView;
 
 // src/rn-alpha/default/ImageBackground.tsx
-var import_react10 = require("react");
+var import_react7 = require("react");
 var import_react_native11 = require("react-native");
 var import_jsx_runtime12 = require("react/jsx-runtime");
 var ImageBackground = (props) => {
@@ -3107,7 +2411,7 @@ var ImageBackground = (props) => {
     children,
     ...otherProps
   } = props;
-  const computedStyle = (0, import_react10.useMemo)(() => {
+  const computedStyle = (0, import_react7.useMemo)(() => {
     const resolveColor = (colorValue) => {
       if (!colorValue) return void 0;
       return colors[colorValue] || colorValue;
@@ -3290,7 +2594,7 @@ var ImageBackground = (props) => {
 var ImageBackground_default = ImageBackground;
 
 // src/rn-alpha/custom/AlertModal.tsx
-var import_react11 = require("react");
+var import_react8 = require("react");
 var import_react_native12 = require("react-native");
 var import_jsx_runtime13 = require("react/jsx-runtime");
 var AlertModal = (props) => {
@@ -3399,26 +2703,26 @@ var AlertModal = (props) => {
     style,
     ...otherProps
   } = props;
-  const closeFunc = (0, import_react11.useMemo)(() => {
+  const closeFunc = (0, import_react8.useMemo)(() => {
     return () => {
       setModal(false);
     };
   }, [setModal]);
-  const backdropStyle = (0, import_react11.useMemo)(() => {
+  const backdropStyle = (0, import_react8.useMemo)(() => {
     const backdropColorValue = backdropColor ? colors[backdropColor] || backdropColor : colors.modal;
     return {
       backgroundColor: backdropColorValue,
       opacity: backdropOpacity
     };
   }, [backdropColor, backdropOpacity, colors]);
-  const computedContentStyle = (0, import_react11.useMemo)(() => {
+  const computedContentStyle = (0, import_react8.useMemo)(() => {
     return {
       maxWidth: 400,
       flex: 1,
       ...contentStyle
     };
   }, [contentStyle]);
-  const computedTitleStyle = (0, import_react11.useMemo)(() => {
+  const computedTitleStyle = (0, import_react8.useMemo)(() => {
     return {
       fontSize: 16,
       fontWeight: "600",
@@ -3426,14 +2730,14 @@ var AlertModal = (props) => {
       ...titleStyle
     };
   }, [titleStyle]);
-  const computedTextStyle = (0, import_react11.useMemo)(() => {
+  const computedTextStyle = (0, import_react8.useMemo)(() => {
     return {
       fontSize: 13,
       textAlign: "center",
       ...textStyle
     };
   }, [textStyle]);
-  const computedButtonContainerStyle = (0, import_react11.useMemo)(() => {
+  const computedButtonContainerStyle = (0, import_react8.useMemo)(() => {
     return {
       gap: 12,
       ...buttonContainerStyle
@@ -3452,7 +2756,7 @@ var AlertModal = (props) => {
     closeFunc();
     onCancel == null ? void 0 : onCancel();
   };
-  const modalContent = (0, import_react11.useMemo)(() => {
+  const modalContent = (0, import_react8.useMemo)(() => {
     if (customContent) {
       return customContent;
     }
@@ -3528,7 +2832,7 @@ var AlertModal = (props) => {
 var AlertModal_default = AlertModal;
 
 // src/rn-alpha/custom/OptionModal.tsx
-var import_react12 = require("react");
+var import_react9 = require("react");
 var import_react_native13 = require("react-native");
 var import_jsx_runtime14 = require("react/jsx-runtime");
 var OptionModal = (props) => {
@@ -3635,19 +2939,19 @@ var OptionModal = (props) => {
     style,
     ...otherProps
   } = props;
-  const closeFunc = (0, import_react12.useMemo)(() => {
+  const closeFunc = (0, import_react9.useMemo)(() => {
     return () => {
       setModal(false);
     };
   }, [setModal]);
-  const backdropStyle = (0, import_react12.useMemo)(() => {
+  const backdropStyle = (0, import_react9.useMemo)(() => {
     const backdropColorValue = backdropColor ? colors[backdropColor] || backdropColor : colors.modal;
     return {
       backgroundColor: backdropColorValue,
       opacity: backdropOpacity
     };
   }, [backdropColor, backdropOpacity, colors]);
-  const computedContentStyle = (0, import_react12.useMemo)(() => {
+  const computedContentStyle = (0, import_react9.useMemo)(() => {
     return {
       maxWidth: maxWidth || 400,
       minWidth: minWidth || 280,
@@ -3656,7 +2960,7 @@ var OptionModal = (props) => {
       ...contentStyle
     };
   }, [maxWidth, minWidth, maxHeight, minHeight, contentStyle]);
-  const computedOptionStyle = (0, import_react12.useMemo)(() => {
+  const computedOptionStyle = (0, import_react9.useMemo)(() => {
     return {
       flexDirection: "row",
       alignItems: "center",
@@ -3666,13 +2970,13 @@ var OptionModal = (props) => {
       ...optionStyle
     };
   }, [optionStyle]);
-  const computedOptionTextStyle = (0, import_react12.useMemo)(() => {
+  const computedOptionTextStyle = (0, import_react9.useMemo)(() => {
     return {
       fontSize: 13,
       ...optionTextStyle
     };
   }, [optionTextStyle]);
-  const computedOptionIconStyle = (0, import_react12.useMemo)(() => {
+  const computedOptionIconStyle = (0, import_react9.useMemo)(() => {
     return {
       width: 40,
       height: 40,
@@ -3695,7 +2999,7 @@ var OptionModal = (props) => {
       closeFunc();
     }
   };
-  const optionsList = (0, import_react12.useMemo)(() => {
+  const optionsList = (0, import_react9.useMemo)(() => {
     if (customContent) {
       return customContent;
     }
@@ -3792,7 +3096,7 @@ var OptionModal = (props) => {
 var OptionModal_default = OptionModal;
 
 // src/rn-alpha/custom/Page.tsx
-var import_react13 = require("react");
+var import_react10 = require("react");
 var import_react_native14 = require("react-native");
 var import_react_native_safe_area_context4 = require("react-native-safe-area-context");
 var import_jsx_runtime15 = require("react/jsx-runtime");
@@ -3819,7 +3123,7 @@ var Page = ({
 }) => {
   const { colors, colorMode } = use_color_default();
   const insets = (0, import_react_native_safe_area_context4.useSafeAreaInsets)();
-  const resolvedStatusColor = (0, import_react13.useMemo)(() => {
+  const resolvedStatusColor = (0, import_react10.useMemo)(() => {
     if (statusBarColor) {
       return typeof statusBarColor === "string" && colors[statusBarColor] ? colors[statusBarColor] : statusBarColor;
     }
@@ -3828,7 +3132,7 @@ var Page = ({
     }
     return typeof color === "string" && colors[color] ? colors[color] : void 0;
   }, [statusBarColor, color, colors, edgeToEdge]);
-  const inferredStatusStyle = (0, import_react13.useMemo)(() => {
+  const inferredStatusStyle = (0, import_react10.useMemo)(() => {
     if (statusTextColor === "light") return "light-content";
     if (statusTextColor === "dark") return "dark-content";
     if (statusTextColor) return statusTextColor;
@@ -3837,7 +3141,7 @@ var Page = ({
     }
     return colorMode === "dark" ? "light-content" : "dark-content";
   }, [statusTextColor, colorMode, edgeToEdge, resolvedStatusColor]);
-  const safeAreaPadding = (0, import_react13.useMemo)(() => {
+  const safeAreaPadding = (0, import_react10.useMemo)(() => {
     var _a, _b, _c, _d;
     if (safeAreaMode === "none") return {};
     if (safeAreaMode === "manual" && customInsets) {
@@ -3881,7 +3185,7 @@ var Page = ({
 var Page_default = Page;
 
 // src/rn-alpha/custom/Modal.tsx
-var import_react14 = require("react");
+var import_react11 = require("react");
 var import_react_native15 = require("react-native");
 var import_react_native_gesture_handler = require("react-native-gesture-handler");
 
@@ -4466,11 +3770,11 @@ var backspace = `
 
 // src/rn-alpha/custom/Modal.tsx
 var import_jsx_runtime16 = require("react/jsx-runtime");
-var ModalContent = (props) => {
+var Modal3 = (props) => {
   const { modal, setModal, onClose, full, children, enableSwipeToClose = true, showCloseBtn } = props;
-  const translateY = (0, import_react14.useRef)(new import_react_native15.Animated.Value(0)).current;
-  const sheetTranslateY = (0, import_react14.useRef)(new import_react_native15.Animated.Value(full ? 0 : height)).current;
-  const backdropOpacity = (0, import_react14.useRef)(new import_react_native15.Animated.Value(0)).current;
+  const translateY = (0, import_react11.useRef)(new import_react_native15.Animated.Value(0)).current;
+  const sheetTranslateY = (0, import_react11.useRef)(new import_react_native15.Animated.Value(full ? 0 : height)).current;
+  const backdropOpacity = (0, import_react11.useRef)(new import_react_native15.Animated.Value(0)).current;
   const screenHeight = import_react_native15.Dimensions.get("window").height;
   const closeFunc = () => {
     import_react_native15.Animated.parallel([
@@ -4489,7 +3793,7 @@ var ModalContent = (props) => {
       setModal(false);
     });
   };
-  (0, import_react14.useEffect)(() => {
+  (0, import_react11.useEffect)(() => {
     if (modal) {
       translateY.setValue(0);
       import_react_native15.Animated.parallel([
@@ -4564,7 +3868,7 @@ var ModalContent = (props) => {
       transparent: true,
       visible: modal,
       onRequestClose: closeFunc,
-      children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(KeyboardView_default, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(View_default, { flex: 1, children: [
+      children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_react_native_gesture_handler.GestureHandlerRootView, { style: { flex: 1 }, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(KeyboardView_default, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(View_default, { flex: 1, children: [
         /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
           import_react_native15.Animated.View,
           {
@@ -4581,8 +3885,6 @@ var ModalContent = (props) => {
             onGestureEvent,
             onHandlerStateChange,
             activeOffsetY: 10,
-            failOffsetX: [-15, 15],
-            activeOffsetX: [-999999, 999999],
             children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
               import_react_native15.Animated.View,
               {
@@ -4591,7 +3893,8 @@ var ModalContent = (props) => {
                     { translateY: import_react_native15.Animated.add(translateY, sheetTranslateY) }
                   ],
                   ...full ? {
-                    flex: 1
+                    flex: 1,
+                    paddingTop: height * 0.1
                   } : {
                     position: "absolute",
                     bottom: 0,
@@ -4616,10 +3919,10 @@ var ModalContent = (props) => {
                       maxHeight: height * 0.9
                     },
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { pv: 10, pb: 25, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { width: 50, height: 4, color: "medium", br: 3, align: "center" }) }),
+                      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { onTouchEnd: closeFunc, pv: 10, pb: 25, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { width: 50, height: 4, color: "medium", br: 3, align: "center" }) }),
                       showCloseBtn && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { absolute: true, right: 10, top: 10, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(TouchableOpacity_default, { onPress: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { size: 32, br: 32 / 2, fd: "flex-center", color: "shade", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Svg_default, { icon: cancel, size: 10, color: "text" }) }) }) }),
                       children,
-                      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { height: ios ? 40 : 5 })
+                      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { height: ios ? 40 : 20 })
                     ]
                   }
                 )
@@ -4632,7 +3935,8 @@ var ModalContent = (props) => {
             style: {
               transform: [{ translateY: sheetTranslateY }],
               ...full ? {
-                flex: 1
+                flex: 1,
+                paddingTop: height * 0.1
               } : {
                 position: "absolute",
                 bottom: 0,
@@ -4660,29 +3964,28 @@ var ModalContent = (props) => {
                   /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { pv: 10, pb: 25, onTouchStart: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { width: 50, height: 4, color: "medium", br: 3, align: "center" }) }),
                   showCloseBtn && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { absolute: true, right: 10, top: 10, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(TouchableOpacity_default, { onPress: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { size: 32, br: 32 / 2, fd: "flex-center", color: "shade", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Svg_default, { icon: cancel, size: 10, color: "text" }) }) }) }),
                   children,
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { height: ios ? 40 : 5 })
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { height: ios ? 40 : 20 })
                 ]
               }
             )
           }
         )
-      ] }) })
+      ] }) }) })
     }
   ) });
 };
-var Modal3 = (0, import_react_native_gesture_handler.gestureHandlerRootHOC)(ModalContent);
 var Modal_default = Modal3;
 
 // src/rn-alpha/custom/Button.tsx
-var import_react15 = require("react");
+var import_react12 = require("react");
 var import_react_native16 = require("react-native");
 var import_jsx_runtime17 = require("react/jsx-runtime");
 var DOT_COUNT = 3;
 var LoadingDots = ({ color, size = 6, duration = 600 }) => {
-  const progress = (0, import_react15.useRef)(
+  const progress = (0, import_react12.useRef)(
     Array.from({ length: DOT_COUNT }, () => new import_react_native16.Animated.Value(0))
   ).current;
-  (0, import_react15.useEffect)(() => {
+  (0, import_react12.useEffect)(() => {
     const animations = progress.map(
       (value, index) => import_react_native16.Animated.loop(
         import_react_native16.Animated.sequence([
@@ -4806,7 +4109,7 @@ var Svg = ({ icon, color, size, w }) => {
 var Svg_default = Svg;
 
 // src/rn-alpha/custom/Inputs/Input.tsx
-var import_react16 = require("react");
+var import_react13 = require("react");
 var import_react_native17 = require("react-native");
 
 // src/utils/money.ts
@@ -4951,7 +4254,7 @@ var ErrorText_default = ErrorText;
 // src/rn-alpha/custom/Inputs/Input.tsx
 var import_jsx_runtime21 = require("react/jsx-runtime");
 var Input = (props) => {
-  const [focus, setFocus] = (0, import_react16.useState)(false);
+  const [focus, setFocus] = (0, import_react13.useState)(false);
   const { colors } = use_color_default();
   const { componentProps } = useUIContext();
   const inputDefaults = componentProps.Input || {};
@@ -5089,7 +4392,7 @@ var Switch = (props) => {
 var Switch_default = Switch;
 
 // src/rn-alpha/custom/Inputs/Select.tsx
-var import_react17 = require("react");
+var import_react14 = require("react");
 var import_react_native20 = require("react-native");
 var import_react_native_indicators2 = require("react-native-indicators");
 
@@ -5128,13 +4431,13 @@ var Select = (props) => {
     renderSelect,
     color
   } = props;
-  const [modal, setModal] = (0, import_react17.useState)(false);
-  const [current, setCurrent] = (0, import_react17.useState)({ value: "", label: "", text: "", icon: null, output: null });
-  const [filter2, setFilter] = (0, import_react17.useState)("");
+  const [modal, setModal] = (0, import_react14.useState)(false);
+  const [current, setCurrent] = (0, import_react14.useState)({ value: "", label: "", text: "", icon: null, output: null });
+  const [filter2, setFilter] = (0, import_react14.useState)("");
   const { colors } = use_color_default();
   const { control, select: selectConfig } = InputConfig_default;
   const fieldColor = color ? (_a = colors[color]) != null ? _a : color : (_b = colors[control.backgroundColorToken]) != null ? _b : colors.background;
-  (0, import_react17.useEffect)(() => {
+  (0, import_react14.useEffect)(() => {
     var _a2;
     const selected = (_a2 = options == null ? void 0 : options.filter((r) => r.value === defaultValue)) == null ? void 0 : _a2[0];
     if (selected) {
@@ -5355,14 +4658,14 @@ var SearchInput = (props) => {
 var SearchInput_default = SearchInput;
 
 // src/rn-alpha/custom/Inputs/DateSelect.tsx
-var import_react18 = require("react");
+var import_react15 = require("react");
 var import_react_native23 = require("react-native");
 var import_react_native_date_picker = __toESM(require("react-native-date-picker"));
 var import_jsx_runtime28 = require("react/jsx-runtime");
 var DateSelect = ({ placeholder, bw, mt, label, error, onChangeText, value = /* @__PURE__ */ new Date(), style, minimumDate }) => {
-  const [open, setOpen] = (0, import_react18.useState)(false);
-  const [date, setDate] = (0, import_react18.useState)(value);
-  const [edited, setEdited] = (0, import_react18.useState)(false);
+  const [open, setOpen] = (0, import_react15.useState)(false);
+  const [date, setDate] = (0, import_react15.useState)(value);
+  const [edited, setEdited] = (0, import_react15.useState)(false);
   const isDarkMode = (0, import_react_native23.useColorScheme)() === "dark";
   const { colors } = use_color_default();
   const textColor = isDarkMode ? colors.background : colors.text;
@@ -5417,21 +4720,21 @@ var DateSelect = ({ placeholder, bw, mt, label, error, onChangeText, value = /* 
 var DateSelect_default = DateSelect;
 
 // src/rn-alpha/custom/Inputs/DateTimeInput.tsx
-var import_react19 = require("react");
+var import_react16 = require("react");
 var import_react_native24 = require("react-native");
 var import_react_native_date_picker2 = __toESM(require("react-native-date-picker"));
 var import_jsx_runtime29 = require("react/jsx-runtime");
 var DateTimeInput = (props) => {
   const { disabled, placeholder, mode = "date", bw, mt, label, error, onChangeText, value, style, minimumDate } = props;
-  const [open, setOpen] = (0, import_react19.useState)(false);
-  const [date, setDate] = (0, import_react19.useState)();
-  const [edited, setEdited] = (0, import_react19.useState)(false);
+  const [open, setOpen] = (0, import_react16.useState)(false);
+  const [date, setDate] = (0, import_react16.useState)();
+  const [edited, setEdited] = (0, import_react16.useState)(false);
   const isDarkMode = (0, import_react_native24.useColorScheme)() === "dark";
   const { colors } = use_color_default();
   const textColor = isDarkMode ? colors.light : colors.dark;
   const { control, datePicker } = InputConfig_default;
   const backgroundColor = colors[control.backgroundColorToken] || colors.background;
-  (0, import_react19.useEffect)(() => {
+  (0, import_react16.useEffect)(() => {
     if (value) {
       setDate(value);
       setEdited(true);
@@ -5537,10 +4840,10 @@ var Checkbox = (props) => {
 var Checkbox_default = Checkbox;
 
 // src/rn-alpha/custom/Inputs/Password.tsx
-var import_react20 = require("react");
+var import_react17 = require("react");
 var import_react_native26 = require("react-native");
 var import_jsx_runtime31 = require("react/jsx-runtime");
-var Password = (0, import_react20.forwardRef)((props, ref) => {
+var Password = (0, import_react17.forwardRef)((props, ref) => {
   const {
     placeholder,
     mt,
@@ -5553,8 +4856,8 @@ var Password = (0, import_react20.forwardRef)((props, ref) => {
     label,
     onSubmitEditing
   } = props;
-  const [focus, setFocus] = (0, import_react20.useState)(false);
-  const [show, setShow] = (0, import_react20.useState)(false);
+  const [focus, setFocus] = (0, import_react17.useState)(false);
+  const [show, setShow] = (0, import_react17.useState)(false);
   const { colors } = use_color_default();
   const bc = error ? colors.danger : focus ? colors.primary : colors.border;
   const { control, textField, password } = InputConfig_default;
@@ -5614,15 +4917,15 @@ var Password = (0, import_react20.forwardRef)((props, ref) => {
 var Password_default = Password;
 
 // src/rn-alpha/custom/Preloader.tsx
-var import_react21 = require("react");
+var import_react18 = require("react");
 var import_react_native27 = require("react-native");
 var import_jsx_runtime32 = require("react/jsx-runtime");
 var Preloader = (props) => {
   const { text, title, loading, close, opacity } = props;
   const { colors } = use_color_default();
-  const scaleAnimation = (0, import_react21.useRef)(new import_react_native27.Animated.Value(1)).current;
-  const loopRef = (0, import_react21.useRef)(null);
-  (0, import_react21.useEffect)(() => {
+  const scaleAnimation = (0, import_react18.useRef)(new import_react_native27.Animated.Value(1)).current;
+  const loopRef = (0, import_react18.useRef)(null);
+  (0, import_react18.useEffect)(() => {
     var _a;
     (_a = loopRef.current) == null ? void 0 : _a.stop();
     if (loading) {
@@ -5725,10 +5028,10 @@ var ProgressBar = ({
 var ProgressBar_default = ProgressBar;
 
 // src/rn-alpha/custom/Inputs/TextInput.tsx
-var import_react22 = __toESM(require("react"));
+var import_react19 = __toESM(require("react"));
 var import_react_native28 = require("react-native");
 var import_jsx_runtime34 = require("react/jsx-runtime");
-var TextInput4 = import_react22.default.forwardRef((props, ref) => {
+var TextInput4 = import_react19.default.forwardRef((props, ref) => {
   const { colors } = use_color_default();
   const {
     onChangeText,
@@ -5837,12 +5140,12 @@ var OtpInput = (props) => {
 var OtpInput_default = OtpInput;
 
 // src/rn-alpha/custom/Menu.tsx
-var import_react23 = require("react");
+var import_react20 = require("react");
 var import_react_native_material_menu = require("react-native-material-menu");
 var import_jsx_runtime36 = require("react/jsx-runtime");
 var Menu = (props) => {
   const { anchor, options, color, pressColor } = props;
-  const [modal, setModal] = (0, import_react23.useState)(false);
+  const [modal, setModal] = (0, import_react20.useState)(false);
   const { colors } = use_color_default();
   return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_jsx_runtime36.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
     import_react_native_material_menu.Menu,
@@ -5978,7 +5281,7 @@ var LinearGradientComponent = ({
 var Gradient_default = LinearGradientComponent;
 
 // src/rn-alpha/custom/TabButton.tsx
-var import_react24 = require("react");
+var import_react21 = require("react");
 var import_jsx_runtime38 = require("react/jsx-runtime");
 var TabButton = (props) => {
   const {
@@ -5993,7 +5296,7 @@ var TabButton = (props) => {
     activeColor,
     activeTextColor
   } = props;
-  const [tab, setTab] = (0, import_react24.useState)(index || 0);
+  const [tab, setTab] = (0, import_react21.useState)(index || 0);
   return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(View_default, { ph: ph || 15, mt: mt || 5, children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(View_default, { color: color || "shade", p: 3, br: 20, fd: "flex-row", bc: bc || "border", bw: 0.5, overflow: "hidden", children: options.map((title, i) => /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(View_default, { flex: 1, color: tab === i ? activeColor || "primary" : "", br: 20, children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(TouchableOpacity_default, { onPress: () => {
     setTab(i);
     onTabPress(i);

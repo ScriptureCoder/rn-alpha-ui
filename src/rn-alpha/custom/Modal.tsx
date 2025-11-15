@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import {TouchableWithoutFeedback, Modal as Mod, Animated, Dimensions, StyleSheet} from "react-native";
-import {PanGestureHandler, State} from "react-native-gesture-handler";
+import {PanGestureHandler, State, GestureHandlerRootView} from "react-native-gesture-handler";
 import {ModalProps} from "types";
 import View from '../default/View';
 import {height, ios} from "constants/layout.ts";
@@ -132,6 +132,7 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                 visible={modal}
                 onRequestClose={closeFunc}
             >
+                <GestureHandlerRootView style={{ flex: 1 }}>
                 <KeyboardView>
                     <View flex={1}>
                         <Animated.View
@@ -159,6 +160,7 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                                         ],
                                         ...(full ? {
                                             flex: 1,
+                                            paddingTop: height * 0.1
                                         } : {
                                             position: "absolute",
                                             bottom: 0, left: 0, right: 0,
@@ -178,7 +180,7 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                                             maxHeight: height * 0.9
                                         }}
                                     >
-                                        <View pv={10} pb={25}>
+                                        <View onTouchEnd={closeFunc} pv={10} pb={25}>
                                             <View width={50} height={4} color={"medium"} br={3} align={"center"}/>
                                         </View>
 
@@ -192,7 +194,7 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                                             </View>
                                         )}
                                         {children}
-                                        <View height={ios ? 40 : 5}/>
+                                        <View height={ios ? 40 : 20}/>
                                     </View>
                                 </Animated.View>
                             </PanGestureHandler>
@@ -202,6 +204,7 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                                     transform: [{ translateY: sheetTranslateY }],
                                     ...(full ? {
                                         flex: 1,
+                                        paddingTop: height * 0.1
                                     } : {
                                         position: "absolute",
                                         bottom: 0, left: 0, right: 0,
@@ -234,12 +237,13 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                                 </View>
                             )}
                             {children}
-                            <View height={ios ? 40 : 5}/>
+                            <View height={ios ? 40 : 20}/>
                         </View>
                             </Animated.View>
                         )}
                     </View>
                 </KeyboardView>
+                </GestureHandlerRootView>
             </Mod>
         </>
     );
