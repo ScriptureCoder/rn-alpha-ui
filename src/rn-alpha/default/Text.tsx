@@ -17,6 +17,7 @@ export type SpacingProps = {
 }
 
 export type Alignment = 'right' | 'left' | 'center' | 'justify' | 'auto';
+
 export type TypographyProps = {
     color?: ColorProps | string;
     align?: Alignment

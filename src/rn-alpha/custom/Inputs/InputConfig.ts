@@ -135,6 +135,7 @@ const inputConfig: InputDesignTokens = {
     modalPadding: 24,
     optionGap: 15,
     optionPaddingVertical: 15,
+    align: "left"
   },
   datePicker: {
     paddingHorizontal: basePaddingHorizontal,
