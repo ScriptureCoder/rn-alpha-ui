@@ -23,5 +23,7 @@ export type {
   UIProviderProps,
   ColorProviderProps,
 } from './theme/alpha-ui-context';
-export * from 'formik';
-export * as yup from 'yup';
+
+import * as Yup from "yup";
+export { Yup }
+export { Formik, Field, Form, ErrorMessage, useFormik, useField } from "formik";

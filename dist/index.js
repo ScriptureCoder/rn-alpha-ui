@@ -20,7 +20,6 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
-var __reExport = (target2, mod, secondTarget) => (__copyProps(target2, mod, "default"), secondTarget && __copyProps(secondTarget, mod, "default"));
 var __toESM = (mod, isNodeMode, target2) => (target2 = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
   // If the importer is in node compatibility mode or this is not an ESM
   // file that has been converted to a CommonJS file using a Babel-
@@ -48,8 +47,12 @@ __export(index_exports, {
   ColorProvider: () => ColorProvider,
   DateSelect: () => DateSelect_default,
   DateTimeInput: () => DateTimeInput_default,
+  ErrorMessage: () => import_formik.ErrorMessage,
   ErrorText: () => ErrorText_default,
+  Field: () => import_formik.Field,
   FlatList: () => FlatList_default,
+  Form: () => import_formik.Form,
+  Formik: () => import_formik.Formik,
   IconButton: () => IconBtn_default,
   Image: () => Image_default,
   ImageBackground: () => ImageBackground_default,
@@ -82,6 +85,7 @@ __export(index_exports, {
   TouchableOpacity: () => TouchableOpacity_default,
   UIProvider: () => UIProvider,
   View: () => View_default,
+  Yup: () => Yup,
   add: () => add,
   addUser: () => addUser,
   arrow: () => arrow,
@@ -188,13 +192,14 @@ __export(index_exports, {
   useColor: () => use_color_default,
   useColorContext: () => useColorContext,
   useDimensions: () => use_dimensions_default,
+  useField: () => import_formik.useField,
+  useFormik: () => import_formik.useFormik,
   usePageConfig: () => usePageConfig,
   useUIContext: () => useUIContext,
   user: () => user,
   users: () => users,
   video: () => video,
-  volume: () => volume,
-  yup: () => yup
+  volume: () => volume
 });
 module.exports = __toCommonJS(index_exports);
 
@@ -5328,8 +5333,8 @@ import_dayjs.default.extend(import_timezone.default);
 var KEY = Math.random().toString(36).substring(2, 20);
 
 // src/index.ts
-__reExport(index_exports, require("formik"), module.exports);
-var yup = __toESM(require("yup"));
+var Yup = __toESM(require("yup"));
+var import_formik = require("formik");
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   AlertModal,
@@ -5339,8 +5344,12 @@ var yup = __toESM(require("yup"));
   ColorProvider,
   DateSelect,
   DateTimeInput,
+  ErrorMessage,
   ErrorText,
+  Field,
   FlatList,
+  Form,
+  Formik,
   IconButton,
   Image,
   ImageBackground,
@@ -5373,6 +5382,7 @@ var yup = __toESM(require("yup"));
   TouchableOpacity,
   UIProvider,
   View,
+  Yup,
   add,
   addUser,
   arrow,
@@ -5479,13 +5489,13 @@ var yup = __toESM(require("yup"));
   useColor,
   useColorContext,
   useDimensions,
+  useField,
+  useFormik,
   usePageConfig,
   useUIContext,
   user,
   users,
   video,
-  volume,
-  yup,
-  ...require("formik")
+  volume
 });
 //# sourceMappingURL=index.js.map
