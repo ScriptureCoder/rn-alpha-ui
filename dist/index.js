@@ -3988,17 +3988,17 @@ var Modal_default = Modal3;
 var import_react12 = require("react");
 var import_react_native16 = require("react-native");
 var import_jsx_runtime17 = require("react/jsx-runtime");
-var DOT_COUNT = 3;
 var LoadingDots = (props) => {
-  const { color, size = 6, duration = 600 } = props;
+  const { color, size = 6, duration = 600, count = 3 } = props;
+  const { colors } = use_color_default();
   const progress = (0, import_react12.useRef)(
-    Array.from({ length: DOT_COUNT }, () => new import_react_native16.Animated.Value(0))
+    Array.from({ length: count }, () => new import_react_native16.Animated.Value(0))
   ).current;
   (0, import_react12.useEffect)(() => {
     const animations = progress.map(
       (value, index) => import_react_native16.Animated.loop(
         import_react_native16.Animated.sequence([
-          import_react_native16.Animated.delay(index * (duration / DOT_COUNT)),
+          import_react_native16.Animated.delay(index * (duration / count)),
           import_react_native16.Animated.timing(value, {
             toValue: 1,
             duration: duration / 2,
@@ -4018,7 +4018,7 @@ var LoadingDots = (props) => {
     return () => {
       animations.forEach((animation) => animation.stop());
     };
-  }, [progress, duration]);
+  }, [progress, duration, count]);
   return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(View_default, { fd: "flex-row", children: progress.map((value, index) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
     import_react_native16.Animated.View,
     {
@@ -4026,7 +4026,7 @@ var LoadingDots = (props) => {
         width: size,
         height: size,
         borderRadius: size / 2,
-        backgroundColor: color,
+        backgroundColor: colors[color],
         marginLeft: index === 0 ? 0 : size * 0.6,
         opacity: value.interpolate({
           inputRange: [0, 1],
@@ -4050,7 +4050,6 @@ var LoadingDots_default = LoadingDots;
 // src/rn-alpha/custom/Button.tsx
 var import_jsx_runtime18 = require("react/jsx-runtime");
 var Button = (props) => {
-  var _a;
   const { colors } = use_color_default();
   const { componentProps } = useUIContext();
   const buttonDefaults = componentProps.Button || {};
@@ -4078,7 +4077,6 @@ var Button = (props) => {
     loading
   } = mergedProps;
   const disable = disabled || loading;
-  const loaderColor = (_a = colors[textColor]) != null ? _a : textColor;
   return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_jsx_runtime18.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(TouchableOpacity_default, { onPress, disabled: disable, children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
     View_default,
     {
@@ -4104,7 +4102,7 @@ var Button = (props) => {
             children: title
           }
         ),
-        loading && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(View_default, { ml: 10, children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(LoadingDots_default, { color: typeof loaderColor === "string" ? loaderColor : String(loaderColor), size: 6 }) })
+        loading && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(View_default, { ml: 10, children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(LoadingDots_default, { color: textColor, size: 6 }) })
       ]
     }
   ) }) });
@@ -4550,7 +4548,7 @@ var Select = (props) => {
             })) || [],
             ListHeaderComponent: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(View_default, { h: 20 }),
             showsVerticalScrollIndicator: true,
-            keyExtractor: (item) => item.value,
+            keyExtractor: (item, index) => item.value + "select" + index,
             renderItem: ({ item, index }) => /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_react_native20.TouchableOpacity, { onPress: () => handleSelect(item), children: /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(View_default, { fd: "flex-between", pv: selectConfig.optionPaddingVertical, btw: index ? 1 : 0, bc: "border", children: [
               /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(View_default, { flex: 1, mr: 10, fd: "flex-item", gap: selectConfig.optionGap, children: [
                 item.icon,
@@ -4560,7 +4558,7 @@ var Select = (props) => {
                 ] })
               ] }),
               /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Checkbox_default, { selected: current.value === item.value, setSelected: () => handleSelect(item), color: "primary" })
-            ] }) }, item.value)
+            ] }) })
           }
         )
       ] })
