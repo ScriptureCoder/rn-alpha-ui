@@ -40,6 +40,7 @@ export { default as OtpInput } from './custom/Inputs/OtpInput';
 export { default as Menu } from './custom/Menu';
 export { default as LinearGradient } from './custom/Gradient';
 export { default as TabButton } from './custom/TabButton';
+export { default as LoadingDots } from './custom/LoadingDots';
 
 export { default as useColor } from 'hooks/use-color.ts';
 export { default as useDimensions } from 'hooks/use-dimensions.ts';
