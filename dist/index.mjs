@@ -3992,7 +3992,8 @@ var inputConfig = {
     dropdownIconSize: 10,
     modalPadding: 24,
     optionGap: 15,
-    optionPaddingVertical: 15
+    optionPaddingVertical: 15,
+    align: "left"
   },
   datePicker: {
     paddingHorizontal: basePaddingHorizontal,
@@ -4350,8 +4351,8 @@ var Select = (props) => {
       ) }),
       error && /* @__PURE__ */ jsx25(ErrorText_default, { error })
     ] }),
-    /* @__PURE__ */ jsx25(Modal_default, { setModal: submit, modal, full: search2, children: /* @__PURE__ */ jsxs8(View_default, { flex: 1, children: [
-      /* @__PURE__ */ jsx25(View_default, { ph: selectConfig.modalPadding, pv: 5, children: /* @__PURE__ */ jsx25(Text_default, { size: 17, align: "center", weight: "Bold", color: "text", children: label || placeholder || "Select" }) }),
+    /* @__PURE__ */ jsx25(Modal_default, { setModal: submit, modal, full: search2, showCloseBtn: true, children: /* @__PURE__ */ jsxs8(View_default, { flex: 1, children: [
+      /* @__PURE__ */ jsx25(View_default, { ph: selectConfig.modalPadding, pb: 5, children: /* @__PURE__ */ jsx25(Text_default, { size: 17, align: selectConfig.align || "left", weight: "Bold", color: "text", children: label || placeholder || "Select" }) }),
       search2 && /* @__PURE__ */ jsx25(View_default, { ph: selectConfig.modalPadding, children: /* @__PURE__ */ jsx25(SearchInput_default, { filter: filter2, setFilter }) }),
       /* @__PURE__ */ jsxs8(View_default, { flex: 1, mt: 10, children: [
         /* @__PURE__ */ jsx25(Loader_default, { loading: loading || false }),

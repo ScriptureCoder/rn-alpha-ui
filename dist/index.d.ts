@@ -244,9 +244,10 @@ type SpacingProps$6 = {
     px?: number;
     py?: number;
 };
+type Alignment = 'right' | 'left' | 'center' | 'justify' | 'auto';
 type TypographyProps = {
     color?: ColorProps | string;
-    align?: 'right' | 'left' | 'center' | 'justify' | 'auto';
+    align?: Alignment;
     size?: number;
     weight?: Weight;
     lineHeight?: number;

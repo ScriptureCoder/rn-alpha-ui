@@ -174,21 +174,24 @@ const Select: React.FC<SelectProps> = (props) => {
 
             <Modal setModal={submit} modal={modal} full={search} showCloseBtn>
                 <View flex={1}>
-                    <View ph={selectConfig.modalPadding} pb={5}>
-                        <Text size={17} align={selectConfig.align||"left"} weight={"Bold"} color={"text"}>{label||placeholder||"Select"}</Text>
-                    </View>
-                    {search&&(
-                        <View ph={selectConfig.modalPadding}>
-                            <SearchInput filter={filter} setFilter={setFilter}/>
+                    <View ph={selectConfig.modalPadding} gap={10}>
+                        <View pb={10}>
+                            <Text size={17} align={selectConfig.align||"left"} weight={"Bold"} color={"text"}>{label||placeholder||"Select"}</Text>
                         </View>
-                    )}
-                    <View flex={1} mt={10}>
+                        {search&&(
+                            <View>
+                                <SearchInput filter={filter} setFilter={setFilter}/>
+                            </View>
+                        )}
+                    </View>
+                    <View flex={1}>
                         <Loader loading={loading||false}/>
                         <FlatList
                             style={{paddingHorizontal:selectConfig.modalPadding}}
                             data={!loading&&options?.filter((r:any)=>{
                                 return r.label.toLowerCase().indexOf(filter.toLowerCase()) > -1
                             })||[]}
+                            ListHeaderComponent={<View h={20}/>}
                             showsVerticalScrollIndicator={true}
                             keyExtractor={(item)=>item.value}
                             renderItem={({item,index})=> (

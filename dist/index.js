@@ -4173,7 +4173,8 @@ var inputConfig = {
     dropdownIconSize: 10,
     modalPadding: 24,
     optionGap: 15,
-    optionPaddingVertical: 15
+    optionPaddingVertical: 15,
+    align: "left"
   },
   datePicker: {
     paddingHorizontal: basePaddingHorizontal,
@@ -4527,8 +4528,8 @@ var Select = (props) => {
       ) }),
       error && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(ErrorText_default, { error })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Modal_default, { setModal: submit, modal, full: search2, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(View_default, { flex: 1, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(View_default, { ph: selectConfig.modalPadding, pv: 5, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Text_default, { size: 17, align: "center", weight: "Bold", color: "text", children: label || placeholder || "Select" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Modal_default, { setModal: submit, modal, full: search2, showCloseBtn: true, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(View_default, { flex: 1, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(View_default, { ph: selectConfig.modalPadding, pb: 5, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Text_default, { size: 17, align: selectConfig.align || "left", weight: "Bold", color: "text", children: label || placeholder || "Select" }) }),
       search2 && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(View_default, { ph: selectConfig.modalPadding, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(SearchInput_default, { filter: filter2, setFilter }) }),
       /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(View_default, { flex: 1, mt: 10, children: [
         /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Loader_default, { loading: loading || false }),
