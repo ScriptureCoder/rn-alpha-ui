@@ -59,7 +59,6 @@ const Button: React.FC<ButtonProps> = (props) => {
     } = mergedProps;
 
     const disable = disabled || loading
-    const loaderColor = colors[textColor as ColorProps] ?? textColor;
 
     return (
         <>
@@ -91,7 +90,7 @@ const Button: React.FC<ButtonProps> = (props) => {
                     </Text>
                     {loading&&(
                         <View ml={10}>
-                            <LoadingDots color={typeof loaderColor === "string" ? loaderColor : String(loaderColor)} size={6} />
+                            <LoadingDots color={textColor} size={6} />
                         </View>
                     )}
                 </View>

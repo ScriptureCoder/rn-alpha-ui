@@ -1,25 +1,28 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Animated, Easing} from "react-native";
-import {View} from "../index.ts";
+import {useColor, View} from "../index.ts";
+import {ColorProps} from "constants/colors.ts";
 
 type LoadingDotsProps = {
-    color: string; size?: number; duration?: number
+    color: ColorProps | string;
+    size?: number;
+    duration?: number
+    count?: number
 }
 
-const DOT_COUNT = 3;
-
 const LoadingDots: React.FC<LoadingDotsProps> = (props) => {
-    const { color, size = 6, duration = 600 } = props;
+    const { color, size = 6, duration = 600, count = 3 } = props;
+    const { colors } = useColor();
 
     const progress = useRef(
-        Array.from({length: DOT_COUNT}, () => new Animated.Value(0))
+        Array.from({length: count}, () => new Animated.Value(0))
     ).current;
 
     useEffect(() => {
         const animations = progress.map((value, index) =>
             Animated.loop(
                 Animated.sequence([
-                    Animated.delay(index * (duration / DOT_COUNT)),
+                    Animated.delay(index * (duration / count)),
                     Animated.timing(value, {
                         toValue: 1,
                         duration: duration / 2,
@@ -41,7 +44,7 @@ const LoadingDots: React.FC<LoadingDotsProps> = (props) => {
         return () => {
             animations.forEach((animation) => animation.stop());
         };
-    }, [progress, duration]);
+    }, [progress, duration, count]);
 
     return (
         <View fd={"flex-row"}>
@@ -52,7 +55,7 @@ const LoadingDots: React.FC<LoadingDotsProps> = (props) => {
                         width: size,
                         height: size,
                         borderRadius: size / 2,
-                        backgroundColor: color,
+                        backgroundColor: colors[color],
                         marginLeft: index === 0 ? 0 : size * 0.6,
                         opacity: value.interpolate({
                             inputRange: [0, 1],

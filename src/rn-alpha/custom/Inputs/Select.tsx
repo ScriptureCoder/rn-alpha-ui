@@ -193,9 +193,9 @@ const Select: React.FC<SelectProps> = (props) => {
                             })||[]}
                             ListHeaderComponent={<View h={20}/>}
                             showsVerticalScrollIndicator={true}
-                            keyExtractor={(item)=>item.value}
+                            keyExtractor={(item, index)=>item.value+"select"+index}
                             renderItem={({item,index})=> (
-                                <TouchableOpacity key={item.value} onPress={()=>handleSelect(item)}>
+                                <TouchableOpacity onPress={()=>handleSelect(item)}>
                                     <View fd={"flex-between"} pv={selectConfig.optionPaddingVertical} btw={index?1:0} bc={"border"}>
                                         <View flex={1} mr={10} fd={"flex-item"} gap={selectConfig.optionGap}>
                                             {item.icon}
