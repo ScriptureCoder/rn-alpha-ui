@@ -16,9 +16,10 @@ export type SpacingProps = {
     px?: number; py?: number;
 }
 
+export type Alignment = 'right' | 'left' | 'center' | 'justify' | 'auto';
 export type TypographyProps = {
     color?: ColorProps | string;
-    align?: 'right' | 'left' | 'center' | 'justify' | 'auto';
+    align?: Alignment
     size?: number;
     weight?: Weight;
     lineHeight?: number;
@@ -120,14 +121,14 @@ const Text: React.FC<Props> = React.forwardRef<Char, Props>((props, ref) => {
         // Helper function to calculate adaptive font size using normalized scaling
         const getAdaptiveFontSize = (fontSize?: number) => {
             if (!adaptiveSize || !fontSize) return fontSize;
-            
+
             // Calculate scale factor based on reference width (iPhone 11 width ~375)
             const scale = width / referenceWidth;
-            
+
             // Apply scaling with PixelRatio for pixel-perfect rendering
             const scaledSize = fontSize * scale;
             const normalizedSize = PixelRatio.roundToNearestPixel(scaledSize);
-            
+
             // Apply device-specific adjustments (optional)
             let adjustedSize = normalizedSize;
             if (isSmallDevice) {
@@ -135,7 +136,7 @@ const Text: React.FC<Props> = React.forwardRef<Char, Props>((props, ref) => {
             } else if (isBigDevice) {
                 adjustedSize *= 1.05; // Slightly larger on large devices
             }
-            
+
             // Clamp between min and max values
             return Math.max(minSize, Math.min(maxSize, adjustedSize));
         };
@@ -168,17 +169,17 @@ const Text: React.FC<Props> = React.forwardRef<Char, Props>((props, ref) => {
                 ExtraBold: 'ExtraBold',
                 Custom: 'Custom',
             };
-            
+
             // Handle custom font family
             if (weight === 'Custom' && customFont) {
                 return customFont;
             }
-            
+
             // If base font is provided, generate the font family name
             if (baseFont) {
                 return `${baseFont}-${weightMap[weight]}`;
             }
-            
+
             // Otherwise, use explicit values or fallback to defaults
             const explicitValues: Record<Weight, string | undefined> = {
                 Regular: contextFontFamily.regular,
@@ -191,7 +192,7 @@ const Text: React.FC<Props> = React.forwardRef<Char, Props>((props, ref) => {
                 ExtraBold: contextFontFamily.extraBold,
                 Custom: contextFontFamily.custom,
             };
-            
+
             return explicitValues[weight] || `NunitoSans-${weightMap[weight]}`;
         };
 

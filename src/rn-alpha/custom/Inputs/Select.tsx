@@ -172,10 +172,10 @@ const Select: React.FC<SelectProps> = (props) => {
                 </View>
             }
 
-            <Modal setModal={submit} modal={modal} full={search}>
+            <Modal setModal={submit} modal={modal} full={search} showCloseBtn>
                 <View flex={1}>
-                    <View ph={selectConfig.modalPadding} pv={5}>
-                        <Text size={17} align={"center"} weight={"Bold"} color={"text"}>{label||placeholder||"Select"}</Text>
+                    <View ph={selectConfig.modalPadding} pb={5}>
+                        <Text size={17} align={selectConfig.align||"left"} weight={"Bold"} color={"text"}>{label||placeholder||"Select"}</Text>
                     </View>
                     {search&&(
                         <View ph={selectConfig.modalPadding}>

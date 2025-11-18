@@ -1,4 +1,5 @@
 import { ios } from "constants/layout.ts";
+import {Alignment} from "../../default/Text.tsx";
 
 export type InputDesignTokens = {
   control: {
@@ -38,6 +39,7 @@ export type InputDesignTokens = {
     loaderSize: number;
     dropdownIconSize: number;
     modalPadding: number;
+    align: Alignment;
     optionGap: number;
     optionPaddingVertical: number;
   };
