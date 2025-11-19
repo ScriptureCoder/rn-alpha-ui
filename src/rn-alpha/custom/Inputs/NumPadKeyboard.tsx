@@ -7,13 +7,14 @@ type NumPadKeyboardProps = {
     setValue: React.Dispatch<React.SetStateAction<string>>;
     max?: number;
     onDone?: (value: string)=> void
+    children?: React.ReactNode;
 }
 
 const NumPadKeyboard: React.FC<NumPadKeyboardProps> = (props) => {
-    const {setValue, max, onDone} = props;
+    const {setValue, max, onDone, children} = props;
 
     const numbers = [
-        ["1","2","3"],["4","5","6"],["7","8","9"],["","0", "Del"]
+        ["1","2","3"],["4","5","6"],["7","8","9"],["children","0", "Del"]
     ]
 
     return (
@@ -39,7 +40,9 @@ const NumPadKeyboard: React.FC<NumPadKeyboardProps> = (props) => {
                                         <View size={72} br={36} fd={"flex-center"} color={"shade"}>
                                             {value==="Del"?
                                                 <Svg icon={backspace} color={"danger"} size={24}/>:
-                                                <Text size={25} color={"text"} weight={"Bold"}>{value}</Text>
+                                                value==="children"?
+                                                    children:
+                                                    <Text size={25} color={"text"} weight={"Bold"}>{value}</Text>
                                             }
                                         </View>
                                     </TouchableWithoutFeedback>

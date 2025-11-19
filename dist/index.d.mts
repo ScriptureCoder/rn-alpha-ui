@@ -1026,6 +1026,7 @@ type NumPadKeyboardProps = {
     setValue: React.Dispatch<React.SetStateAction<string>>;
     max?: number;
     onDone?: (value: string) => void;
+    children?: React.ReactNode;
 };
 declare const NumPadKeyboard: React.FC<NumPadKeyboardProps>;
 
