@@ -4366,20 +4366,23 @@ var NumPadKeyboard = (props) => {
     ["1", "2", "3"],
     ["4", "5", "6"],
     ["7", "8", "9"],
-    ["children", "0", "Del"]
+    ["", "0", "Del"]
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_jsx_runtime23.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(View_default, { fd: "col-between", gap: 25, children: numbers.map((item, i) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(View_default, { fd: "flex-center", children: item.map((value, i2) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(View_default, { flex: 1, fd: "flex-center", children: !!value && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_react_native18.TouchableWithoutFeedback, { onPress: () => {
-    if (value === "Del") {
-      setValue((pin2) => pin2.slice(0, -1));
-    } else {
-      setValue((pin2) => {
-        if ((pin2 + value).length === max) {
-          onDone(pin2 + value);
-        }
-        return pin2.length < max ? pin2 + value : pin2;
-      });
-    }
-  }, children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(View_default, { size: 72, br: 36, fd: "flex-center", color: "shade", children: value === "Del" ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Svg_default, { icon: backspace, color: "danger", size: 24 }) : value === "children" ? children : /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Text_default, { size: 25, color: "text", weight: "Bold", children: value }) }) }) }, KEY + "ww" + i2 + value)) }, KEY + "key" + i)) }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_jsx_runtime23.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(View_default, { fd: "col-between", gap: 25, children: numbers.map((item, i) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(View_default, { fd: "flex-center", children: item.map((value, i2) => /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(View_default, { flex: 1, fd: "flex-center", children: [
+    !!value && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_react_native18.TouchableWithoutFeedback, { onPress: () => {
+      if (value === "Del") {
+        setValue((pin2) => pin2.slice(0, -1));
+      } else {
+        setValue((pin2) => {
+          if ((pin2 + value).length === max) {
+            onDone(pin2 + value);
+          }
+          return pin2.length < max ? pin2 + value : pin2;
+        });
+      }
+    }, children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(View_default, { size: 72, br: 36, fd: "flex-center", color: "shade", children: value === "Del" ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Svg_default, { icon: backspace, color: "danger", size: 24 }) : /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Text_default, { size: 25, color: "text", weight: "Bold", children: value }) }) }),
+    value === "" && children
+  ] }, KEY + "ww" + i2 + value)) }, KEY + "key" + i)) }) });
 };
 var NumPadKeyboard_default = NumPadKeyboard;
 

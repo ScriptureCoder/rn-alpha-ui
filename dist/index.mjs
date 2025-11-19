@@ -4177,27 +4177,30 @@ var Input_default = Input;
 
 // src/rn-alpha/custom/Inputs/NumPadKeyboard.tsx
 import { TouchableWithoutFeedback as TouchableWithoutFeedback2 } from "react-native";
-import { Fragment as Fragment9, jsx as jsx23 } from "react/jsx-runtime";
+import { Fragment as Fragment9, jsx as jsx23, jsxs as jsxs7 } from "react/jsx-runtime";
 var NumPadKeyboard = (props) => {
   const { setValue, max, onDone, children } = props;
   const numbers = [
     ["1", "2", "3"],
     ["4", "5", "6"],
     ["7", "8", "9"],
-    ["children", "0", "Del"]
+    ["", "0", "Del"]
   ];
-  return /* @__PURE__ */ jsx23(Fragment9, { children: /* @__PURE__ */ jsx23(View_default, { fd: "col-between", gap: 25, children: numbers.map((item, i) => /* @__PURE__ */ jsx23(View_default, { fd: "flex-center", children: item.map((value, i2) => /* @__PURE__ */ jsx23(View_default, { flex: 1, fd: "flex-center", children: !!value && /* @__PURE__ */ jsx23(TouchableWithoutFeedback2, { onPress: () => {
-    if (value === "Del") {
-      setValue((pin2) => pin2.slice(0, -1));
-    } else {
-      setValue((pin2) => {
-        if ((pin2 + value).length === max) {
-          onDone(pin2 + value);
-        }
-        return pin2.length < max ? pin2 + value : pin2;
-      });
-    }
-  }, children: /* @__PURE__ */ jsx23(View_default, { size: 72, br: 36, fd: "flex-center", color: "shade", children: value === "Del" ? /* @__PURE__ */ jsx23(Svg_default, { icon: backspace, color: "danger", size: 24 }) : value === "children" ? children : /* @__PURE__ */ jsx23(Text_default, { size: 25, color: "text", weight: "Bold", children: value }) }) }) }, KEY + "ww" + i2 + value)) }, KEY + "key" + i)) }) });
+  return /* @__PURE__ */ jsx23(Fragment9, { children: /* @__PURE__ */ jsx23(View_default, { fd: "col-between", gap: 25, children: numbers.map((item, i) => /* @__PURE__ */ jsx23(View_default, { fd: "flex-center", children: item.map((value, i2) => /* @__PURE__ */ jsxs7(View_default, { flex: 1, fd: "flex-center", children: [
+    !!value && /* @__PURE__ */ jsx23(TouchableWithoutFeedback2, { onPress: () => {
+      if (value === "Del") {
+        setValue((pin2) => pin2.slice(0, -1));
+      } else {
+        setValue((pin2) => {
+          if ((pin2 + value).length === max) {
+            onDone(pin2 + value);
+          }
+          return pin2.length < max ? pin2 + value : pin2;
+        });
+      }
+    }, children: /* @__PURE__ */ jsx23(View_default, { size: 72, br: 36, fd: "flex-center", color: "shade", children: value === "Del" ? /* @__PURE__ */ jsx23(Svg_default, { icon: backspace, color: "danger", size: 24 }) : /* @__PURE__ */ jsx23(Text_default, { size: 25, color: "text", weight: "Bold", children: value }) }) }),
+    value === "" && children
+  ] }, KEY + "ww" + i2 + value)) }, KEY + "key" + i)) }) });
 };
 var NumPadKeyboard_default = NumPadKeyboard;
 
@@ -4232,10 +4235,10 @@ import { UIActivityIndicator } from "react-native-indicators";
 
 // src/rn-alpha/custom/Loader.tsx
 import { SkypeIndicator as Animate } from "react-native-indicators";
-import { Fragment as Fragment10, jsx as jsx25, jsxs as jsxs7 } from "react/jsx-runtime";
+import { Fragment as Fragment10, jsx as jsx25, jsxs as jsxs8 } from "react/jsx-runtime";
 var Loader = ({ text, loading, color }) => {
   const { colors } = use_color_default();
-  return /* @__PURE__ */ jsx25(Fragment10, { children: loading && /* @__PURE__ */ jsxs7(View_default, { flex: 1, fd: "col-center", pv: 25, children: [
+  return /* @__PURE__ */ jsx25(Fragment10, { children: loading && /* @__PURE__ */ jsxs8(View_default, { flex: 1, fd: "col-center", pv: 25, children: [
     /* @__PURE__ */ jsx25(Animate, { size: 35, count: 6, color: color || colors.primary }),
     text && /* @__PURE__ */ jsx25(Text_default, { size: 15, mt: 15, color: "text", children: text })
   ] }) });
@@ -4243,7 +4246,7 @@ var Loader = ({ text, loading, color }) => {
 var Loader_default = Loader;
 
 // src/rn-alpha/custom/Inputs/Select.tsx
-import { Fragment as Fragment11, jsx as jsx26, jsxs as jsxs8 } from "react/jsx-runtime";
+import { Fragment as Fragment11, jsx as jsx26, jsxs as jsxs9 } from "react/jsx-runtime";
 var Select = (props) => {
   var _a, _b;
   const {
@@ -4300,16 +4303,16 @@ var Select = (props) => {
     onChange(current);
     setFilter("");
   };
-  return /* @__PURE__ */ jsxs8(Fragment11, { children: [
+  return /* @__PURE__ */ jsxs9(Fragment11, { children: [
     renderSelect ? /* @__PURE__ */ jsx26(TouchableWithoutFeedback3, { disabled, onPress: () => {
       Keyboard.dismiss();
       setModal(true);
-    }, children: renderSelect(current) }) : /* @__PURE__ */ jsxs8(View_default, { style: { marginTop: mt, ...style }, children: [
+    }, children: renderSelect(current) }) : /* @__PURE__ */ jsxs9(View_default, { style: { marginTop: mt, ...style }, children: [
       label && /* @__PURE__ */ jsx26(Label_default, { label }),
       /* @__PURE__ */ jsx26(TouchableWithoutFeedback3, { disabled, onPress: () => {
         Keyboard.dismiss();
         setModal(true);
-      }, children: /* @__PURE__ */ jsxs8(
+      }, children: /* @__PURE__ */ jsxs9(
         View_default,
         {
           opacity: disabled ? control.disabledOpacity : 1,
@@ -4336,7 +4339,7 @@ var Select = (props) => {
               }
             ),
             current.icon,
-            /* @__PURE__ */ jsxs8(View_default, { style: { flex: 1 }, ml: current.icon ? 10 : 0, children: [
+            /* @__PURE__ */ jsxs9(View_default, { style: { flex: 1 }, ml: current.icon ? 10 : 0, children: [
               /* @__PURE__ */ jsx26(
                 Text_default,
                 {
@@ -4354,12 +4357,12 @@ var Select = (props) => {
       ) }),
       error && /* @__PURE__ */ jsx26(ErrorText_default, { error })
     ] }),
-    /* @__PURE__ */ jsx26(Modal_default, { setModal: submit, modal, full: search2, showCloseBtn: true, children: /* @__PURE__ */ jsxs8(View_default, { flex: 1, children: [
-      /* @__PURE__ */ jsxs8(View_default, { ph: selectConfig.modalPadding, gap: 10, children: [
+    /* @__PURE__ */ jsx26(Modal_default, { setModal: submit, modal, full: search2, showCloseBtn: true, children: /* @__PURE__ */ jsxs9(View_default, { flex: 1, children: [
+      /* @__PURE__ */ jsxs9(View_default, { ph: selectConfig.modalPadding, gap: 10, children: [
         /* @__PURE__ */ jsx26(View_default, { pb: 10, children: /* @__PURE__ */ jsx26(Text_default, { size: 17, align: selectConfig.align || "left", weight: "Bold", color: "text", children: label || placeholder || "Select" }) }),
         search2 && /* @__PURE__ */ jsx26(View_default, { children: /* @__PURE__ */ jsx26(SearchInput_default, { filter: filter2, setFilter }) })
       ] }),
-      /* @__PURE__ */ jsxs8(View_default, { flex: 1, children: [
+      /* @__PURE__ */ jsxs9(View_default, { flex: 1, children: [
         /* @__PURE__ */ jsx26(Loader_default, { loading: loading || false }),
         /* @__PURE__ */ jsx26(
           FlatList_default,
@@ -4371,10 +4374,10 @@ var Select = (props) => {
             ListHeaderComponent: /* @__PURE__ */ jsx26(View_default, { h: 20 }),
             showsVerticalScrollIndicator: true,
             keyExtractor: (item, index) => item.value + "select" + index,
-            renderItem: ({ item, index }) => /* @__PURE__ */ jsx26(TouchableOpacity2, { onPress: () => handleSelect(item), children: /* @__PURE__ */ jsxs8(View_default, { fd: "flex-between", pv: selectConfig.optionPaddingVertical, btw: index ? 1 : 0, bc: "border", children: [
-              /* @__PURE__ */ jsxs8(View_default, { flex: 1, mr: 10, fd: "flex-item", gap: selectConfig.optionGap, children: [
+            renderItem: ({ item, index }) => /* @__PURE__ */ jsx26(TouchableOpacity2, { onPress: () => handleSelect(item), children: /* @__PURE__ */ jsxs9(View_default, { fd: "flex-between", pv: selectConfig.optionPaddingVertical, btw: index ? 1 : 0, bc: "border", children: [
+              /* @__PURE__ */ jsxs9(View_default, { flex: 1, mr: 10, fd: "flex-item", gap: selectConfig.optionGap, children: [
                 item.icon,
-                /* @__PURE__ */ jsxs8(View_default, { flex: 1, ml: item.icon ? 5 : 0, children: [
+                /* @__PURE__ */ jsxs9(View_default, { flex: 1, ml: item.icon ? 5 : 0, children: [
                   /* @__PURE__ */ jsx26(Text_default, { size: 13, color: "text", children: item.label }),
                   !!item.text && /* @__PURE__ */ jsx26(Text_default, { size: 13, color: "text2", children: item.text })
                 ] })
@@ -4437,12 +4440,12 @@ var IconBtn = ({
 var IconBtn_default = IconBtn;
 
 // src/rn-alpha/custom/Inputs/SearchInput.tsx
-import { Fragment as Fragment12, jsx as jsx28, jsxs as jsxs9 } from "react/jsx-runtime";
+import { Fragment as Fragment12, jsx as jsx28, jsxs as jsxs10 } from "react/jsx-runtime";
 var SearchInput = (props) => {
   const { filter: filter2, setFilter, placeholder = "Search", style, onSubmit, focus } = props;
   const { colors } = use_color_default();
   const searchField = InputConfig_default.searchField;
-  return /* @__PURE__ */ jsx28(Fragment12, { children: /* @__PURE__ */ jsxs9(
+  return /* @__PURE__ */ jsx28(Fragment12, { children: /* @__PURE__ */ jsxs10(
     View_default,
     {
       br: searchField.radius,
@@ -4498,7 +4501,7 @@ var SearchInput_default = SearchInput;
 import { useState as useState5 } from "react";
 import { TouchableWithoutFeedback as TouchableWithoutFeedback4, useColorScheme } from "react-native";
 import DatePicker from "react-native-date-picker";
-import { jsx as jsx29, jsxs as jsxs10 } from "react/jsx-runtime";
+import { jsx as jsx29, jsxs as jsxs11 } from "react/jsx-runtime";
 var DateSelect = ({ placeholder, bw, mt, label, error, onChangeText, value = /* @__PURE__ */ new Date(), style, minimumDate }) => {
   const [open, setOpen] = useState5(false);
   const [date, setDate] = useState5(value);
@@ -4517,9 +4520,9 @@ var DateSelect = ({ placeholder, bw, mt, label, error, onChangeText, value = /* 
   const onOpen = () => {
     setOpen(true);
   };
-  return /* @__PURE__ */ jsxs10(View_default, { mt, style, children: [
+  return /* @__PURE__ */ jsxs11(View_default, { mt, style, children: [
     label && /* @__PURE__ */ jsx29(Label_default, { label }),
-    /* @__PURE__ */ jsx29(TouchableWithoutFeedback4, { onPress: onOpen, children: /* @__PURE__ */ jsxs10(
+    /* @__PURE__ */ jsx29(TouchableWithoutFeedback4, { onPress: onOpen, children: /* @__PURE__ */ jsxs11(
       View_default,
       {
         br: control.radius,
@@ -4560,7 +4563,7 @@ var DateSelect_default = DateSelect;
 import { useEffect as useEffect5, useState as useState6 } from "react";
 import { Keyboard as Keyboard2, TouchableWithoutFeedback as TouchableWithoutFeedback5, useColorScheme as useColorScheme2 } from "react-native";
 import DatePicker2 from "react-native-date-picker";
-import { jsx as jsx30, jsxs as jsxs11 } from "react/jsx-runtime";
+import { jsx as jsx30, jsxs as jsxs12 } from "react/jsx-runtime";
 var DateTimeInput = (props) => {
   const { disabled, placeholder, mode = "date", bw, mt, label, error, onChangeText, value, style, minimumDate } = props;
   const [open, setOpen] = useState6(false);
@@ -4589,14 +4592,14 @@ var DateTimeInput = (props) => {
       setOpen(true);
     }, 40);
   };
-  return /* @__PURE__ */ jsxs11(View_default, { mt, style, children: [
+  return /* @__PURE__ */ jsxs12(View_default, { mt, style, children: [
     label && /* @__PURE__ */ jsx30(Label_default, { label, focus: open, value: edited, error: !!error }),
     /* @__PURE__ */ jsx30(
       TouchableWithoutFeedback5,
       {
         onPress: onOpen,
         disabled,
-        children: /* @__PURE__ */ jsxs11(
+        children: /* @__PURE__ */ jsxs12(
           View_default,
           {
             br: control.radius,
@@ -4679,7 +4682,7 @@ var Checkbox_default = Checkbox;
 // src/rn-alpha/custom/Inputs/Password.tsx
 import { forwardRef, useState as useState7 } from "react";
 import { TextInput as TextInput3 } from "react-native";
-import { jsx as jsx32, jsxs as jsxs12 } from "react/jsx-runtime";
+import { jsx as jsx32, jsxs as jsxs13 } from "react/jsx-runtime";
 var Password = forwardRef((props, ref) => {
   const {
     placeholder,
@@ -4699,9 +4702,9 @@ var Password = forwardRef((props, ref) => {
   const bc = error ? colors.danger : focus ? colors.primary : colors.border;
   const { control, textField, password } = InputConfig_default;
   const backgroundColor = colors[control.backgroundColorToken] || colors.background;
-  return /* @__PURE__ */ jsxs12(View_default, { mt, style, children: [
+  return /* @__PURE__ */ jsxs13(View_default, { mt, style, children: [
     label && /* @__PURE__ */ jsx32(Label_default, { label, focus, value, error: !!error }),
-    /* @__PURE__ */ jsxs12(
+    /* @__PURE__ */ jsxs13(
       View_default,
       {
         br: control.radius,
@@ -4756,7 +4759,7 @@ var Password_default = Password;
 // src/rn-alpha/custom/Preloader.tsx
 import { useEffect as useEffect6, useRef as useRef3 } from "react";
 import { Animated as Animated6, Easing as Easing2, Modal as Modal4 } from "react-native";
-import { Fragment as Fragment13, jsx as jsx33, jsxs as jsxs13 } from "react/jsx-runtime";
+import { Fragment as Fragment13, jsx as jsx33, jsxs as jsxs14 } from "react/jsx-runtime";
 var Preloader = (props) => {
   const { text, title, loading, close, opacity } = props;
   const { colors } = use_color_default();
@@ -4807,7 +4810,7 @@ var Preloader = (props) => {
           close(false);
         }
       },
-      children: /* @__PURE__ */ jsx33(View_default, { flex: 1, color: "#1F2021A3", fd: "flex-center", children: /* @__PURE__ */ jsxs13(View_default, { height: 120, position: "absolute", fd: "col-center", opacity, children: [
+      children: /* @__PURE__ */ jsx33(View_default, { flex: 1, color: "#1F2021A3", fd: "flex-center", children: /* @__PURE__ */ jsxs14(View_default, { height: 120, position: "absolute", fd: "col-center", opacity, children: [
         /* @__PURE__ */ jsx33(Text_default, { size: 16, color: "text", weight: "Bold", children: title }),
         /* @__PURE__ */ jsx33(
           Animated6.View,
@@ -4867,7 +4870,7 @@ var ProgressBar_default = ProgressBar;
 // src/rn-alpha/custom/Inputs/TextInput.tsx
 import React19 from "react";
 import { TextInput as Element } from "react-native";
-import { jsx as jsx35, jsxs as jsxs14 } from "react/jsx-runtime";
+import { jsx as jsx35, jsxs as jsxs15 } from "react/jsx-runtime";
 var TextInput4 = React19.forwardRef((props, ref) => {
   const { colors } = use_color_default();
   const {
@@ -4893,7 +4896,7 @@ var TextInput4 = React19.forwardRef((props, ref) => {
     error,
     ...others
   } = props;
-  return /* @__PURE__ */ jsxs14(View_default, { mt, children: [
+  return /* @__PURE__ */ jsxs15(View_default, { mt, children: [
     label && /* @__PURE__ */ jsx35(Text_default, { size: 13, color: "text", children: label }),
     /* @__PURE__ */ jsx35(
       Element,

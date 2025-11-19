@@ -14,7 +14,7 @@ const NumPadKeyboard: React.FC<NumPadKeyboardProps> = (props) => {
     const {setValue, max, onDone, children} = props;
 
     const numbers = [
-        ["1","2","3"],["4","5","6"],["7","8","9"],["children","0", "Del"]
+        ["1","2","3"],["4","5","6"],["7","8","9"],["","0", "Del"]
     ]
 
     return (
@@ -47,7 +47,7 @@ const NumPadKeyboard: React.FC<NumPadKeyboardProps> = (props) => {
                                 )}
 
                                 {
-                                    value==="children" && children
+                                    value==="" && children
                                 }
                             </View>
                         ))}
