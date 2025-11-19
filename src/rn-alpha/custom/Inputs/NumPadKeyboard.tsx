@@ -40,13 +40,15 @@ const NumPadKeyboard: React.FC<NumPadKeyboardProps> = (props) => {
                                         <View size={72} br={36} fd={"flex-center"} color={"shade"}>
                                             {value==="Del"?
                                                 <Svg icon={backspace} color={"danger"} size={24}/>:
-                                                value==="children"?
-                                                    children:
-                                                    <Text size={25} color={"text"} weight={"Bold"}>{value}</Text>
+                                                <Text size={25} color={"text"} weight={"Bold"}>{value}</Text>
                                             }
                                         </View>
                                     </TouchableWithoutFeedback>
                                 )}
+
+                                {
+                                    value==="children" && children
+                                }
                             </View>
                         ))}
                     </View>
