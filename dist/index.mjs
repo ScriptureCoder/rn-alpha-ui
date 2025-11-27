@@ -3695,6 +3695,7 @@ var Modal3 = (props) => {
       visible: modal,
       onRequestClose: closeFunc,
       navigationBarTranslucent: true,
+      statusBarTranslucent: true,
       children: /* @__PURE__ */ jsx16(GestureHandlerRootView, { style: { flex: 1 }, children: /* @__PURE__ */ jsx16(KeyboardView_default, { children: /* @__PURE__ */ jsxs4(View_default, { flex: 1, children: [
         /* @__PURE__ */ jsx16(
           Animated4.View,

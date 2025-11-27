@@ -3877,6 +3877,7 @@ var Modal3 = (props) => {
       visible: modal,
       onRequestClose: closeFunc,
       navigationBarTranslucent: true,
+      statusBarTranslucent: true,
       children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_react_native_gesture_handler.GestureHandlerRootView, { style: { flex: 1 }, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(KeyboardView_default, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(View_default, { flex: 1, children: [
         /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
           import_react_native15.Animated.View,

@@ -5,7 +5,7 @@ import {ModalProps} from "types";
 import View from '../default/View';
 import {height, ios} from "constants/layout.ts";
 import KeyboardView from '../default/KeyboardView';
-import {Svg, TouchableOpacity} from "../index.ts";
+import {Svg, TouchableOpacity, useDimensions} from "../index.ts";
 import {cancel} from "assets/icons";
 
 type Props = {
@@ -124,6 +124,8 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
         }
     };
 
+    const { bottom } = useDimensions()
+
     return (
         <>
             <Mod
@@ -196,7 +198,7 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                                                 </View>
                                             )}
                                             {children}
-                                            <View height={ios ? 40 : 20}/>
+                                            <View height={ bottom+10 }/>
                                         </View>
                                     </Animated.View>
                                 </PanGestureHandler>
@@ -239,7 +241,7 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                                             </View>
                                         )}
                                         {children}
-                                        <View height={ios ? 40 : 20}/>
+                                        <View height={ bottom+10 }/>
                                     </View>
                                 </Animated.View>
                             )}
