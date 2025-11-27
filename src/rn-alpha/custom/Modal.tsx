@@ -131,33 +131,78 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                 transparent={true}
                 visible={modal}
                 onRequestClose={closeFunc}
+                navigationBarTranslucent
             >
                 <GestureHandlerRootView style={{ flex: 1 }}>
-                <KeyboardView>
-                    <View flex={1}>
-                        <Animated.View
-                            style={{
-                                ...StyleSheet.absoluteFillObject,
-                                opacity: backdropOpacity
-                            }}
-                        >
-                            <View flex={1} color={"modal"}>
-                                <TouchableWithoutFeedback onPress={closeFunc}>
-                                    <View flex={full?0.1:1}/>
-                                </TouchableWithoutFeedback>
-                            </View>
-                        </Animated.View>
-                        {enableSwipeToClose ? (
-                            <PanGestureHandler
-                                onGestureEvent={onGestureEvent}
-                                onHandlerStateChange={onHandlerStateChange}
-                                activeOffsetY={10}
+                    <KeyboardView>
+                        <View flex={1}>
+                            <Animated.View
+                                style={{
+                                    ...StyleSheet.absoluteFillObject,
+                                    opacity: backdropOpacity
+                                }}
                             >
+                                <View flex={1} color={"modal"}>
+                                    <TouchableWithoutFeedback onPress={closeFunc}>
+                                        <View flex={full?0.1:1}/>
+                                    </TouchableWithoutFeedback>
+                                </View>
+                            </Animated.View>
+                            {enableSwipeToClose ? (
+                                <PanGestureHandler
+                                    onGestureEvent={onGestureEvent}
+                                    onHandlerStateChange={onHandlerStateChange}
+                                    activeOffsetY={10}
+                                >
+                                    <Animated.View
+                                        style={{
+                                            transform: [
+                                                { translateY: Animated.add(translateY, sheetTranslateY) }
+                                            ],
+                                            ...(full ? {
+                                                flex: 1,
+                                                paddingTop: height * 0.1
+                                            } : {
+                                                position: "absolute",
+                                                bottom: 0, left: 0, right: 0,
+                                                maxHeight: height * 0.9
+                                            })
+                                        }}
+                                    >
+                                        <View
+                                            color={"background"}
+                                            btrr={22}
+                                            btlr={22}
+                                            style={full ? {
+                                                flex: 1,
+                                            } : {
+                                                position: "absolute",
+                                                bottom: 0, left: 0, right: 0,
+                                                maxHeight: height * 0.9
+                                            }}
+                                        >
+                                            <View onTouchEnd={closeFunc} pv={10} pb={25}>
+                                                <View width={50} height={4} color={"medium"} br={3} align={"center"}/>
+                                            </View>
+
+                                            {showCloseBtn&&(
+                                                <View absolute right={10} top={10}>
+                                                    <TouchableOpacity onPress={closeFunc}>
+                                                        <View size={32} br={32/2} fd={"flex-center"} color={"shade"}>
+                                                            <Svg icon={cancel} size={10} color={"text"}/>
+                                                        </View>
+                                                    </TouchableOpacity>
+                                                </View>
+                                            )}
+                                            {children}
+                                            <View height={ios ? 40 : 20}/>
+                                        </View>
+                                    </Animated.View>
+                                </PanGestureHandler>
+                            ) : (
                                 <Animated.View
                                     style={{
-                                        transform: [
-                                            { translateY: Animated.add(translateY, sheetTranslateY) }
-                                        ],
+                                        transform: [{ translateY: sheetTranslateY }],
                                         ...(full ? {
                                             flex: 1,
                                             paddingTop: height * 0.1
@@ -180,10 +225,9 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                                             maxHeight: height * 0.9
                                         }}
                                     >
-                                        <View onTouchEnd={closeFunc} pv={10} pb={25}>
+                                        <View pv={10} pb={25} onTouchStart={closeFunc}>
                                             <View width={50} height={4} color={"medium"} br={3} align={"center"}/>
                                         </View>
-
                                         {showCloseBtn&&(
                                             <View absolute right={10} top={10}>
                                                 <TouchableOpacity onPress={closeFunc}>
@@ -197,52 +241,9 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                                         <View height={ios ? 40 : 20}/>
                                     </View>
                                 </Animated.View>
-                            </PanGestureHandler>
-                        ) : (
-                            <Animated.View
-                                style={{
-                                    transform: [{ translateY: sheetTranslateY }],
-                                    ...(full ? {
-                                        flex: 1,
-                                        paddingTop: height * 0.1
-                                    } : {
-                                        position: "absolute",
-                                        bottom: 0, left: 0, right: 0,
-                                        maxHeight: height * 0.9
-                                    })
-                                }}
-                            >
-                        <View
-                            color={"background"}
-                            btrr={22}
-                            btlr={22}
-                                    style={full ? {
-                                        flex: 1,
-                                    } : {
-                                        position: "absolute",
-                                        bottom: 0, left: 0, right: 0,
-                                        maxHeight: height * 0.9
-                            }}
-                        >
-                            <View pv={10} pb={25} onTouchStart={closeFunc}>
-                                <View width={50} height={4} color={"medium"} br={3} align={"center"}/>
-                            </View>
-                            {showCloseBtn&&(
-                                <View absolute right={10} top={10}>
-                                    <TouchableOpacity onPress={closeFunc}>
-                                        <View size={32} br={32/2} fd={"flex-center"} color={"shade"}>
-                                            <Svg icon={cancel} size={10} color={"text"}/>
-                                        </View>
-                                    </TouchableOpacity>
-                                </View>
                             )}
-                            {children}
-                            <View height={ios ? 40 : 20}/>
                         </View>
-                            </Animated.View>
-                        )}
-                    </View>
-                </KeyboardView>
+                    </KeyboardView>
                 </GestureHandlerRootView>
             </Mod>
         </>
