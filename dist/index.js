@@ -3869,6 +3869,7 @@ var Modal3 = (props) => {
       }
     }
   };
+  const { bottom } = use_dimensions_default();
   return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_jsx_runtime16.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
     import_react_native15.Modal,
     {
@@ -3932,7 +3933,7 @@ var Modal3 = (props) => {
                       /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { onTouchEnd: closeFunc, pv: 10, pb: 25, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { width: 50, height: 4, color: "medium", br: 3, align: "center" }) }),
                       showCloseBtn && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { absolute: true, right: 10, top: 10, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(TouchableOpacity_default, { onPress: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { size: 32, br: 32 / 2, fd: "flex-center", color: "shade", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Svg_default, { icon: cancel, size: 10, color: "text" }) }) }) }),
                       children,
-                      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { height: ios ? 40 : 20 })
+                      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { height: bottom + 10 })
                     ]
                   }
                 )
@@ -3974,7 +3975,7 @@ var Modal3 = (props) => {
                   /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { pv: 10, pb: 25, onTouchStart: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { width: 50, height: 4, color: "medium", br: 3, align: "center" }) }),
                   showCloseBtn && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { absolute: true, right: 10, top: 10, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(TouchableOpacity_default, { onPress: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { size: 32, br: 32 / 2, fd: "flex-center", color: "shade", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Svg_default, { icon: cancel, size: 10, color: "text" }) }) }) }),
                   children,
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { height: ios ? 40 : 20 })
+                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { height: bottom + 10 })
                 ]
               }
             )

@@ -3687,6 +3687,7 @@ var Modal3 = (props) => {
       }
     }
   };
+  const { bottom } = use_dimensions_default();
   return /* @__PURE__ */ jsx16(Fragment6, { children: /* @__PURE__ */ jsx16(
     Mod,
     {
@@ -3750,7 +3751,7 @@ var Modal3 = (props) => {
                       /* @__PURE__ */ jsx16(View_default, { onTouchEnd: closeFunc, pv: 10, pb: 25, children: /* @__PURE__ */ jsx16(View_default, { width: 50, height: 4, color: "medium", br: 3, align: "center" }) }),
                       showCloseBtn && /* @__PURE__ */ jsx16(View_default, { absolute: true, right: 10, top: 10, children: /* @__PURE__ */ jsx16(TouchableOpacity_default, { onPress: closeFunc, children: /* @__PURE__ */ jsx16(View_default, { size: 32, br: 32 / 2, fd: "flex-center", color: "shade", children: /* @__PURE__ */ jsx16(Svg_default, { icon: cancel, size: 10, color: "text" }) }) }) }),
                       children,
-                      /* @__PURE__ */ jsx16(View_default, { height: ios ? 40 : 20 })
+                      /* @__PURE__ */ jsx16(View_default, { height: bottom + 10 })
                     ]
                   }
                 )
@@ -3792,7 +3793,7 @@ var Modal3 = (props) => {
                   /* @__PURE__ */ jsx16(View_default, { pv: 10, pb: 25, onTouchStart: closeFunc, children: /* @__PURE__ */ jsx16(View_default, { width: 50, height: 4, color: "medium", br: 3, align: "center" }) }),
                   showCloseBtn && /* @__PURE__ */ jsx16(View_default, { absolute: true, right: 10, top: 10, children: /* @__PURE__ */ jsx16(TouchableOpacity_default, { onPress: closeFunc, children: /* @__PURE__ */ jsx16(View_default, { size: 32, br: 32 / 2, fd: "flex-center", color: "shade", children: /* @__PURE__ */ jsx16(Svg_default, { icon: cancel, size: 10, color: "text" }) }) }) }),
                   children,
-                  /* @__PURE__ */ jsx16(View_default, { height: ios ? 40 : 20 })
+                  /* @__PURE__ */ jsx16(View_default, { height: bottom + 10 })
                 ]
               }
             )
