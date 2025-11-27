@@ -132,6 +132,7 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                 visible={modal}
                 onRequestClose={closeFunc}
                 navigationBarTranslucent
+                statusBarTranslucent
             >
                 <GestureHandlerRootView style={{ flex: 1 }}>
                     <KeyboardView>
