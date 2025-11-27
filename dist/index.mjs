@@ -4502,10 +4502,10 @@ import { useState as useState5 } from "react";
 import { TouchableWithoutFeedback as TouchableWithoutFeedback4, useColorScheme } from "react-native";
 import DatePicker from "react-native-date-picker";
 import { jsx as jsx29, jsxs as jsxs11 } from "react/jsx-runtime";
-var DateSelect = ({ placeholder, bw, mt, label, error, onChangeText, value = /* @__PURE__ */ new Date(), style, minimumDate }) => {
+var DateSelect = ({ placeholder, bw, mt, label, error, onChangeText, value, style, minimumDate }) => {
   const [open, setOpen] = useState5(false);
-  const [date, setDate] = useState5(value);
-  const [edited, setEdited] = useState5(false);
+  const [date, setDate] = useState5(value || /* @__PURE__ */ new Date());
+  const [edited, setEdited] = useState5(!!value);
   const isDarkMode = useColorScheme() === "dark";
   const { colors } = use_color_default();
   const textColor = isDarkMode ? colors.background : colors.text;

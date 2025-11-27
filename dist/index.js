@@ -4680,10 +4680,10 @@ var import_react15 = require("react");
 var import_react_native23 = require("react-native");
 var import_react_native_date_picker = __toESM(require("react-native-date-picker"));
 var import_jsx_runtime29 = require("react/jsx-runtime");
-var DateSelect = ({ placeholder, bw, mt, label, error, onChangeText, value = /* @__PURE__ */ new Date(), style, minimumDate }) => {
+var DateSelect = ({ placeholder, bw, mt, label, error, onChangeText, value, style, minimumDate }) => {
   const [open, setOpen] = (0, import_react15.useState)(false);
-  const [date, setDate] = (0, import_react15.useState)(value);
-  const [edited, setEdited] = (0, import_react15.useState)(false);
+  const [date, setDate] = (0, import_react15.useState)(value || /* @__PURE__ */ new Date());
+  const [edited, setEdited] = (0, import_react15.useState)(!!value);
   const isDarkMode = (0, import_react_native23.useColorScheme)() === "dark";
   const { colors } = use_color_default();
   const textColor = isDarkMode ? colors.background : colors.text;

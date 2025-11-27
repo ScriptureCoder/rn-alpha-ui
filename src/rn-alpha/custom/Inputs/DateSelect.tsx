@@ -20,10 +20,10 @@ export type DateSelectProps = {
     bw?:number
 }
 
-const DateSelect: React.FC<DateSelectProps> = ({placeholder,bw,mt,label,error,onChangeText,value=new Date(),style,minimumDate}) => {
+const DateSelect: React.FC<DateSelectProps> = ({placeholder,bw,mt,label,error,onChangeText,value,style,minimumDate}) => {
     const [open, setOpen] = useState(false)
-    const [date,setDate] = useState<Date>(value);
-    const [edited,setEdited] = useState(false);
+    const [date,setDate] = useState<Date>(value || new Date());
+    const [edited,setEdited] = useState(!!value);
     const isDarkMode = useColorScheme() === 'dark';
     const {colors} = useColor();
     const textColor = isDarkMode?colors.background:colors.text;
