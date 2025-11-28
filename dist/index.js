@@ -49,6 +49,7 @@ __export(index_exports, {
   DateTimeInput: () => DateTimeInput_default,
   ErrorMessage: () => import_formik.ErrorMessage,
   ErrorText: () => ErrorText_default,
+  ErrorView: () => ErrorView_default,
   Field: () => import_formik.Field,
   FlatList: () => FlatList_default,
   Form: () => import_formik.Form,
@@ -5325,6 +5326,19 @@ var TabButton = (props) => {
 };
 var TabButton_default = TabButton;
 
+// src/rn-alpha/custom/ErrorView.tsx
+var import_jsx_runtime40 = require("react/jsx-runtime");
+var ErrorView = (props) => {
+  let { error, refetch, mt } = props;
+  return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_jsx_runtime40.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(View_default, { flex: 1, color: "background", mt, children: /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(View_default, { flex: 1, p: 15, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(View_default, { fd: "col-center", mt: 40, children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Text_default, { mt: 34, size: 13, color: "medium", children: error }) }),
+    refetch && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(View_default, { mt: 40, w: 200, align: "center", children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Button_default, { title: "Try again", pv: 10, onPress: () => {
+      refetch == null ? void 0 : refetch();
+    } }) })
+  ] }) }) });
+};
+var ErrorView_default = ErrorView;
+
 // src/hooks/use-page-config.ts
 var import_react_native_safe_area_context5 = require("react-native-safe-area-context");
 var usePageConfig = (options) => {
@@ -5360,6 +5374,7 @@ var import_formik = require("formik");
   DateTimeInput,
   ErrorMessage,
   ErrorText,
+  ErrorView,
   Field,
   FlatList,
   Form,

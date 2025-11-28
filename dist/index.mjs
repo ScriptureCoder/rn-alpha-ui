@@ -5147,6 +5147,19 @@ var TabButton = (props) => {
 };
 var TabButton_default = TabButton;
 
+// src/rn-alpha/custom/ErrorView.tsx
+import { Fragment as Fragment16, jsx as jsx40, jsxs as jsxs16 } from "react/jsx-runtime";
+var ErrorView = (props) => {
+  let { error, refetch, mt } = props;
+  return /* @__PURE__ */ jsx40(Fragment16, { children: /* @__PURE__ */ jsx40(View_default, { flex: 1, color: "background", mt, children: /* @__PURE__ */ jsxs16(View_default, { flex: 1, p: 15, children: [
+    /* @__PURE__ */ jsx40(View_default, { fd: "col-center", mt: 40, children: /* @__PURE__ */ jsx40(Text_default, { mt: 34, size: 13, color: "medium", children: error }) }),
+    refetch && /* @__PURE__ */ jsx40(View_default, { mt: 40, w: 200, align: "center", children: /* @__PURE__ */ jsx40(Button_default, { title: "Try again", pv: 10, onPress: () => {
+      refetch == null ? void 0 : refetch();
+    } }) })
+  ] }) }) });
+};
+var ErrorView_default = ErrorView;
+
 // src/hooks/use-page-config.ts
 import { useSafeAreaInsets as useSafeAreaInsets3 } from "react-native-safe-area-context";
 var usePageConfig = (options) => {
@@ -5181,6 +5194,7 @@ export {
   DateTimeInput_default as DateTimeInput,
   ErrorMessage,
   ErrorText_default as ErrorText,
+  ErrorView_default as ErrorView,
   Field,
   FlatList_default as FlatList,
   Form,
