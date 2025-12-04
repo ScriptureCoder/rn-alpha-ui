@@ -2,9 +2,11 @@ import React, { PropsWithChildren, ReactElement } from 'react';
 import * as yup from 'yup';
 export { yup as Yup };
 export { ErrorMessage, Field, Form, Formik, useField, useFormik } from 'formik';
-import { ViewProps, FlexAlignType, View as View$1, StyleProp, ViewStyle, TextProps, ScrollViewProps, Animated, ScrollView as ScrollView$1, FlatListProps, FlatList as FlatList$1, TouchableHighlightProps, TouchableOpacityProps, ImageSourcePropType, AccessibilityRole, ImageBackgroundProps, TextStyle, StatusBarStyle, KeyboardTypeOptions, TextInput as TextInput$1, TextInputProps, DimensionValue } from 'react-native';
+import { ViewProps, FlexAlignType, StyleProp, ViewStyle, TextProps, ScrollViewProps, FlatListProps, TouchableHighlightProps, TouchableOpacityProps, ImageSourcePropType, AccessibilityRole, ImageBackgroundProps, TextStyle, StatusBarStyle, KeyboardTypeOptions, TextInput as TextInput$1, TextInputProps, DimensionValue } from 'react-native';
 import * as react_native_safe_area_context from 'react-native-safe-area-context';
 import { Edge } from 'react-native-safe-area-context';
+import { NativeSyntheticEvent } from 'react-native/Libraries/Types/CoreEventTypes';
+import { NativeScrollEvent } from 'react-native/Libraries/Components/ScrollView/ScrollView';
 import FastImage from '@d11/react-native-fast-image';
 export { default as dayjs } from 'dayjs';
 
@@ -109,11 +111,12 @@ declare const scheme: {
 type ColorsProps = (typeof scheme)['light'];
 type ColorProps = keyof (typeof scheme)['light'];
 
-interface CustomViewProps extends Omit<ViewProps, 'ref'> {
+interface Props$a extends ViewProps {
+    ref?: any;
     flex?: number;
     color?: ColorProps | string;
     align?: FlexAlignType;
-    fd?: 'flex-center' | 'flex-justify' | 'flex-item' | 'flex-between' | 'flex-space' | 'flex-evenly' | 'flex-row' | 'col-center' | 'col-between' | 'col-evenly' | 'col-reverse' | 'flex-start' | 'flex-end' | 'flex-stretch' | 'col-start' | 'col-end' | 'col-stretch' | 'col-around' | 'row-reverse' | 'flex-wrap' | 'col-wrap';
+    fd?: 'flex-center' | 'flex-justify' | 'flex-item' | 'flex-item-reverse' | 'flex-between' | 'flex-evenly' | 'flex-between-reverse' | 'flex-space' | 'flex-row' | 'flex-row-reverse' | 'col-center' | 'col-between' | 'col-reverse' | 'col-evenly';
     br?: number;
     bc?: ColorProps | string;
     bw?: number;
@@ -129,11 +132,11 @@ interface CustomViewProps extends Omit<ViewProps, 'ref'> {
     height?: number | string;
     w?: number | string;
     h?: number | string;
-    minW?: number | string;
-    maxW?: number | string;
-    minH?: number | string;
-    maxH?: number | string;
-    size?: number | string;
+    minW?: number;
+    maxW?: number;
+    minH?: number;
+    maxH?: number;
+    size?: number | any;
     btrr?: number;
     btlr?: number;
     bbrr?: number;
@@ -142,89 +145,62 @@ interface CustomViewProps extends Omit<ViewProps, 'ref'> {
     shadow?: number;
     wrap?: boolean;
     overflow?: 'visible' | 'hidden' | 'scroll';
-    opacity?: number;
+    opacity?: number | any;
     zIndex?: number;
     gap?: number;
-    children?: React.ReactNode;
-    aspectRatio?: number;
-    aspect?: 'square' | 'video' | 'golden' | 'portrait' | 'landscape';
-    fullWidth?: boolean;
-    fullHeight?: boolean;
-    screenWidth?: boolean;
-    screenHeight?: boolean;
-    center?: boolean;
-    centerX?: boolean;
-    centerY?: boolean;
-    absolute?: boolean;
-    relative?: boolean;
-    fixed?: boolean;
-    rounded?: boolean;
-    roundedSm?: boolean;
-    roundedLg?: boolean;
-    roundedXl?: boolean;
-    roundedFull?: boolean;
-    elevated?: boolean;
-    elevatedSm?: boolean;
-    elevatedLg?: boolean;
-    elevatedXl?: boolean;
-    hidden?: boolean;
-    visible?: boolean;
-    disabled?: boolean;
+    children?: any;
 }
 type AnimatedProps = {
-    scale?: number;
-    sx?: number;
-    sy?: number;
-    ty?: number;
-    tx?: number;
-    rotate?: number;
-    skewX?: number;
-    skewY?: number;
-    perspective?: number;
+    scale?: any;
+    sx?: any;
+    sy?: any;
+    ty?: any;
+    tx?: any;
 };
-type SpacingProps$7 = {
+type SpacingProps$5 = {
     padding?: number;
     margin?: number;
     p?: number;
     m?: number;
     ph?: number;
     pv?: number;
+    px?: number;
+    py?: number;
     pt?: number;
     pb?: number;
     pl?: number;
     pr?: number;
     mh?: number;
     mv?: number;
+    mx?: number;
+    my?: number;
     mt?: number;
     mb?: number;
     ml?: number;
     mr?: number;
-    px?: number;
-    py?: number;
-    space?: number;
-    spaceX?: number;
-    spaceY?: number;
 };
 type PositionProps$1 = {
     position?: 'absolute' | 'relative';
+    absolute?: boolean;
     inset?: number;
     insetX?: number;
     insetY?: number;
     top?: number;
     bottom?: number;
     right?: number;
-    left?: number;
+    left?: number | any;
 };
-declare const View: React.ForwardRefExoticComponent<CustomViewProps & AnimatedProps & SpacingProps$7 & PositionProps$1 & React.RefAttributes<View$1>>;
+type CustomViewProps = Props$a & AnimatedProps & SpacingProps$5 & PositionProps$1;
+declare const View: React.FC<CustomViewProps>;
 
-type SafeAreaProps = Omit<CustomViewProps, 'children'> & SpacingProps$7 & PositionProps$1 & {
+type SafeAreaProps = Omit<CustomViewProps, 'children'> & SpacingProps$5 & PositionProps$1 & {
     edges?: Edge[];
     children?: React.ReactNode;
     containerStyle?: StyleProp<ViewStyle>;
 };
 declare const SafeAreaView: React.FC<SafeAreaProps>;
 
-type SpacingProps$6 = {
+type SpacingProps$4 = {
     padding?: number;
     margin?: number;
     p?: number;
@@ -285,140 +261,39 @@ type AdaptiveProps = {
     minSize?: number;
     maxSize?: number;
 };
-type Props$8 = TextProps & SpacingProps$6 & TypographyProps & AnimationProps$4 & AdaptiveProps;
-declare const Text: React.FC<Props$8>;
+type Props$9 = TextProps & SpacingProps$4 & TypographyProps & AnimationProps$4 & AdaptiveProps;
+declare const Text: React.FC<Props$9>;
 
-type SpacingProps$5 = {
-    padding?: number | string;
-    margin?: number | string;
-    p?: number | string;
-    m?: number | string;
-    ph?: number;
-    pv?: number;
-    pt?: number;
-    pb?: number;
-    pl?: number;
-    pr?: number;
-    mh?: number;
-    mv?: number;
-    mt?: number;
-    mb?: number;
-    ml?: number;
-    mr?: number;
-    px?: number;
-    py?: number;
-};
-type LayoutProps$5 = {
-    flex?: number;
-    width?: number | string;
-    height?: number | string;
-    w?: number | string;
-    h?: number | string;
-    minW?: number | string;
-    maxW?: number | string;
-    minH?: number | string;
-    maxH?: number | string;
-    fullWidth?: boolean;
-    fullHeight?: boolean;
-    center?: boolean;
-    centerX?: boolean;
-    centerY?: boolean;
-    absolute?: boolean;
-    relative?: boolean;
-    hidden?: boolean;
-    visible?: boolean;
-    disabled?: boolean;
-};
-type ScrollProps = {
+type RefreshProps = {
+    refreshing?: boolean;
+    onRefresh?: () => void;
+    bounces?: boolean;
     svs?: boolean;
     shs?: boolean;
-    cs?: ViewStyle;
-    contentPadding?: number | string;
-    contentPaddingHorizontal?: number;
-    contentPaddingVertical?: number;
-    contentPaddingTop?: number;
-    contentPaddingBottom?: number;
-    contentPaddingLeft?: number;
-    contentPaddingRight?: number;
-    scrollX?: Animated.Value;
-    scrollY?: Animated.Value;
-    opacity?: number;
-    scale?: number;
-    rotate?: number;
-    translateX?: number;
-    translateY?: number;
-    refreshColor?: ColorProps | string;
-    refreshTintColor?: ColorProps | string;
-    refreshTitle?: string;
-    refreshTitleColor?: ColorProps | string;
-};
-declare const ScrollView: React.ForwardRefExoticComponent<ScrollViewProps & SpacingProps$5 & LayoutProps$5 & ScrollProps & React.RefAttributes<ScrollView$1>>;
-
-type SpacingProps$4 = {
     padding?: number | string;
-    margin?: number | string;
     p?: number | string;
-    m?: number | string;
     ph?: number;
-    pv?: number;
-    pt?: number;
+    scrollX?: any;
+    scrollY?: any;
+    onScroll?: () => void;
+    ref?: any;
     pb?: number;
-    pl?: number;
-    pr?: number;
-    mh?: number;
-    mv?: number;
-    mt?: number;
-    mb?: number;
-    ml?: number;
-    mr?: number;
-    px?: number;
-    py?: number;
+    pt?: number;
+    cs?: ViewStyle;
+    color?: ColorProps;
 };
-type LayoutProps$4 = {
-    flex?: number;
-    width?: number | string;
-    height?: number | string;
-    w?: number | string;
-    h?: number | string;
-    minW?: number | string;
-    maxW?: number | string;
-    minH?: number | string;
-    maxH?: number | string;
-    fullWidth?: boolean;
-    fullHeight?: boolean;
-    center?: boolean;
-    centerX?: boolean;
-    centerY?: boolean;
-    absolute?: boolean;
-    relative?: boolean;
-    hidden?: boolean;
-    visible?: boolean;
-    disabled?: boolean;
-};
-type FlatListCustomProps = {
+declare const ScrollView: React.FC<ScrollViewProps & RefreshProps>;
+
+type Props$8 = {
+    ref?: any;
+    scrollX?: any;
+    scrollY?: any;
+    onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
     svs?: boolean;
     shs?: boolean;
-    cs?: ViewStyle;
-    contentPadding?: number | string;
-    contentPaddingHorizontal?: number;
-    contentPaddingVertical?: number;
-    contentPaddingTop?: number;
-    contentPaddingBottom?: number;
-    contentPaddingLeft?: number;
-    contentPaddingRight?: number;
-    scrollX?: Animated.Value;
-    scrollY?: Animated.Value;
-    opacity?: number;
-    scale?: number;
-    rotate?: number;
-    translateX?: number;
-    translateY?: number;
-    refreshColor?: ColorProps | string;
-    refreshTintColor?: ColorProps | string;
-    refreshTitle?: string;
-    refreshTitleColor?: ColorProps | string;
 };
-declare const FlatList: React.ForwardRefExoticComponent<FlatListProps<any> & SpacingProps$4 & LayoutProps$4 & FlatListCustomProps & React.RefAttributes<FlatList$1<any>>>;
+type CustomFlatListProps = Props$8 & SpacingProps$5;
+declare const FlatList: React.FC<FlatListProps<any> & CustomFlatListProps>;
 
 declare const TouchableHighlight: React.FC<TouchableHighlightProps>;
 
@@ -943,7 +818,7 @@ type Props$3 = OptionModalCustomProps & SpacingProps & LayoutProps & BorderProps
 };
 declare const OptionModal: React.FC<Props$3>;
 
-type PageProps = CustomViewProps & SpacingProps$7 & PositionProps$1 & {
+type PageProps = CustomViewProps & SpacingProps$5 & PositionProps$1 & {
     statusBarStyle?: StatusBarStyle;
     statusBarColor?: ColorProps | string;
     statusTextColor?: 'light' | 'dark' | StatusBarStyle;
@@ -1166,7 +1041,7 @@ type props = {
 };
 declare const Preloader: React.FC<props>;
 
-type ProgressBarProps = SpacingProps$7 & {
+type ProgressBarProps = SpacingProps$5 & {
     progress?: number;
     color?: ColorProps | string;
     background?: ColorProps | string;

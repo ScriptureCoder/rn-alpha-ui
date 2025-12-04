@@ -1,4 +1,4 @@
-import {useWindowDimensions} from "react-native";
+import {StatusBar, useWindowDimensions} from "react-native";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
 
 const useDimensions = () => {
@@ -9,6 +9,7 @@ const useDimensions = () => {
         width, height,
         isBigDevice: width > 500,
         isSmallDevice: width < 375,
+        statusHeight: StatusBar.currentHeight,
         ...insets
     }
 }

@@ -18,7 +18,7 @@ import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 
 // src/rn-alpha/default/View.tsx
-import React2, { useMemo as useMemo2, useCallback as useCallback2 } from "react";
+import React2 from "react";
 import { Animated, View as Parent } from "react-native";
 
 // src/constants/elevation.ts
@@ -391,110 +391,10 @@ var use_color_default = useColor;
 
 // src/rn-alpha/default/View.tsx
 import { jsx as jsx2 } from "react/jsx-runtime";
-var FLEX_DIRECTIONS = {
-  "flex-center": {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  "col-center": {
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  "col-between": {
-    flexDirection: "column",
-    justifyContent: "space-between"
-  },
-  "col-evenly": {
-    flexDirection: "column",
-    justifyContent: "space-evenly"
-  },
-  "col-reverse": {
-    flexDirection: "column-reverse"
-  },
-  "flex-row": {
-    flexDirection: "row"
-  },
-  "flex-justify": {
-    flexDirection: "row",
-    justifyContent: "center"
-  },
-  "flex-item": {
-    flexDirection: "row",
-    alignItems: "center"
-  },
-  "flex-between": {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between"
-  },
-  "flex-space": {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-evenly"
-  },
-  "flex-evenly": {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-evenly"
-  },
-  // New flex directions
-  "flex-start": {
-    flexDirection: "row",
-    alignItems: "flex-start"
-  },
-  "flex-end": {
-    flexDirection: "row",
-    alignItems: "flex-end"
-  },
-  "flex-stretch": {
-    flexDirection: "row",
-    alignItems: "stretch"
-  },
-  "col-start": {
-    flexDirection: "column",
-    alignItems: "flex-start"
-  },
-  "col-end": {
-    flexDirection: "column",
-    alignItems: "flex-end"
-  },
-  "col-stretch": {
-    flexDirection: "column",
-    alignItems: "stretch"
-  },
-  "col-around": {
-    flexDirection: "column",
-    justifyContent: "space-around"
-  },
-  "row-reverse": {
-    flexDirection: "row-reverse"
-  },
-  "flex-wrap": {
-    flexDirection: "row",
-    flexWrap: "wrap"
-  },
-  "col-wrap": {
-    flexDirection: "column",
-    flexWrap: "wrap"
-  }
-};
-var ASPECT_RATIOS = {
-  square: 1,
-  video: 16 / 9,
-  golden: 1.618,
-  portrait: 3 / 4,
-  landscape: 4 / 3
-};
 var View = React2.forwardRef((props, ref) => {
   const { colors } = use_color_default();
   const { componentProps } = useUIContext();
   const viewDefaults = componentProps.View || {};
-  const mergedProps = {
-    ...viewDefaults,
-    ...props
-  };
   const {
     style,
     color,
@@ -511,6 +411,8 @@ var View = React2.forwardRef((props, ref) => {
     ml,
     mr,
     mv,
+    mx,
+    my,
     pb,
     ph,
     pl,
@@ -527,8 +429,6 @@ var View = React2.forwardRef((props, ref) => {
     bw,
     bbw,
     btw,
-    blw,
-    brw,
     bc,
     brc,
     blc,
@@ -538,9 +438,12 @@ var View = React2.forwardRef((props, ref) => {
     btrr,
     bblr,
     bbrr,
+    blw,
+    brw,
     shadow,
     wrap,
     position,
+    absolute,
     inset,
     insetX,
     insetY,
@@ -564,304 +467,201 @@ var View = React2.forwardRef((props, ref) => {
     minH,
     maxH,
     bs,
-    // New props
-    aspectRatio,
-    aspect,
-    fullWidth,
-    fullHeight,
-    screenWidth,
-    screenHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    fixed,
-    rounded,
-    roundedSm,
-    roundedLg,
-    roundedXl,
-    roundedFull,
-    elevated,
-    elevatedSm,
-    elevatedLg,
-    elevatedXl,
-    hidden,
-    visible,
-    disabled,
-    rotate,
-    skewX,
-    skewY,
-    perspective,
-    space,
-    spaceX,
-    spaceY,
     ...otherProps
-  } = mergedProps;
-  const resolveColor = useCallback2((colorValue) => {
-    if (!colorValue) return void 0;
-    return colors[colorValue] || colorValue;
-  }, [colors]);
-  const computedStyle = useMemo2(() => {
-    var _a, _b;
-    let autoPosition = position;
-    if (!autoPosition && (top !== void 0 || right !== void 0 || bottom !== void 0 || left !== void 0)) {
-      autoPosition = "absolute";
-    }
-    let positionProps = { position: autoPosition, top, right, bottom, left };
-    if (insetY !== void 0) {
-      positionProps.position = "absolute";
-      if (top === void 0) positionProps.top = insetY;
-      if (bottom === void 0) positionProps.bottom = insetY;
-    }
-    if (insetX !== void 0) {
-      positionProps.position = "absolute";
-      if (left === void 0) positionProps.left = insetX;
-      if (right === void 0) positionProps.right = insetX;
-    }
-    if (inset !== void 0) {
-      positionProps.position = "absolute";
-      if (top === void 0) positionProps.top = inset;
-      if (right === void 0) positionProps.right = inset;
-      if (bottom === void 0) positionProps.bottom = inset;
-      if (left === void 0) positionProps.left = inset;
-    }
-    let finalAspectRatio = aspectRatio;
-    if (aspect && ASPECT_RATIOS[aspect]) {
-      finalAspectRatio = ASPECT_RATIOS[aspect];
-    }
-    let finalWidth = (_a = size != null ? size : width2) != null ? _a : w;
-    let finalHeight = (_b = size != null ? size : height2) != null ? _b : h;
-    if (fullWidth) finalWidth = "100%";
-    if (fullHeight) finalHeight = "100%";
-    if (screenWidth) finalWidth = "100vw";
-    if (screenHeight) finalHeight = "100vh";
-    let finalBorderRadius = br;
-    if (rounded) finalBorderRadius = 4;
-    if (roundedSm) finalBorderRadius = 2;
-    if (roundedLg) finalBorderRadius = 8;
-    if (roundedXl) finalBorderRadius = 12;
-    if (roundedFull) finalBorderRadius = 9999;
-    let finalShadow = shadow;
-    if (elevated) finalShadow = 2;
-    if (elevatedSm) finalShadow = 1;
-    if (elevatedLg) finalShadow = 4;
-    if (elevatedXl) finalShadow = 8;
-    let finalPosition = position;
-    if (absolute) finalPosition = "absolute";
-    if (relative) finalPosition = "relative";
-    if (fixed) finalPosition = "absolute";
-    let centerStyles = {};
-    if (center) {
-      centerStyles = { alignItems: "center", justifyContent: "center" };
-    } else {
-      if (centerX) centerStyles = { ...centerStyles, alignItems: "center" };
-      if (centerY) centerStyles = { ...centerStyles, justifyContent: "center" };
-    }
-    let finalPadding = padding != null ? padding : p;
-    let finalMargin = margin != null ? margin : m;
-    if (space !== void 0) {
-      finalPadding = space;
-      finalMargin = space;
-    }
-    if (spaceX !== void 0) {
-      finalPadding = spaceX;
-      finalMargin = spaceX;
-    }
-    if (spaceY !== void 0) {
-      finalPadding = spaceY;
-      finalMargin = spaceY;
-    }
-    const transform = [];
-    if (scale) transform.push({ scale });
-    if (ty) transform.push({ translateY: ty });
-    if (tx) transform.push({ translateX: tx });
-    if (sx) transform.push({ scaleX: sx });
-    if (sy) transform.push({ scaleY: sy });
-    if (rotate) transform.push({ rotate: `${rotate}deg` });
-    if (skewX) transform.push({ skewX: `${skewX}deg` });
-    if (skewY) transform.push({ skewY: `${skewY}deg` });
-    let finalOpacity = opacity;
-    let pointerEvents = void 0;
-    if (hidden) {
-      finalOpacity = 0;
-      pointerEvents = "none";
-    }
-    if (visible) {
-      finalOpacity = 1;
-    }
-    if (disabled) {
-      finalOpacity = 0.5;
-      pointerEvents = "none";
-    }
-    return {
-      flex,
-      padding: finalPadding,
-      margin: finalMargin,
-      width: finalWidth,
-      height: finalHeight,
-      aspectRatio: finalAspectRatio,
-      alignSelf: align,
-      backgroundColor: resolveColor(color),
-      ...fd ? FLEX_DIRECTIONS[fd] : {},
-      ...centerStyles,
-      marginTop: mt,
-      marginBottom: mb,
-      marginRight: mr,
-      marginLeft: ml,
-      marginHorizontal: mh,
-      marginVertical: mv,
-      paddingTop: pt,
-      paddingBottom: pb,
-      paddingVertical: pv != null ? pv : py,
-      paddingHorizontal: ph != null ? ph : px,
-      paddingLeft: pl,
-      paddingRight: pr,
-      borderRadius: finalBorderRadius,
-      borderWidth: bw,
-      borderBottomWidth: bbw,
-      borderTopWidth: btw,
-      borderColor: resolveColor(bc),
-      borderRightColor: resolveColor(brc),
-      borderLeftColor: resolveColor(blc),
-      borderTopColor: resolveColor(btc),
-      borderBottomColor: resolveColor(bbc),
-      borderTopRightRadius: btrr,
-      borderTopLeftRadius: btlr,
-      borderBottomLeftRadius: bblr,
-      borderBottomRightRadius: bbrr,
-      borderLeftWidth: blw,
-      borderRightWidth: brw,
-      borderStyle: bs,
-      flexWrap: wrap ? "wrap" : void 0,
-      ...elevation(finalShadow != null ? finalShadow : 0),
-      position: finalPosition,
-      ...positionProps,
-      overflow,
-      opacity: finalOpacity,
-      zIndex,
-      maxWidth: maxW,
-      minWidth: minW,
-      minHeight: minH,
-      maxHeight: maxH,
-      gap,
-      transform: transform.length > 0 ? transform : void 0,
-      pointerEvents,
-      perspective
-    };
-  }, [
-    flex,
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    width2,
-    w,
-    height2,
-    h,
-    size,
-    align,
-    color,
-    fd,
-    br,
-    bw,
-    bbw,
-    btw,
-    blw,
-    brw,
-    bc,
-    brc,
-    blc,
-    btc,
-    bbc,
-    btlr,
-    btrr,
-    bblr,
-    bbrr,
-    shadow,
-    wrap,
+  } = props;
+  let positionProps = {
     position,
-    inset,
-    insetX,
-    insetY,
     top,
     right,
     bottom,
-    left,
-    overflow,
-    opacity,
-    zIndex,
-    gap,
-    scale,
-    ty,
-    tx,
-    sx,
-    sy,
-    maxW,
-    minW,
-    minH,
-    maxH,
-    bs,
-    aspectRatio,
-    aspect,
-    fullWidth,
-    fullHeight,
-    screenWidth,
-    screenHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    fixed,
-    rounded,
-    roundedSm,
-    roundedLg,
-    roundedXl,
-    roundedFull,
-    elevated,
-    elevatedSm,
-    elevatedLg,
-    elevatedXl,
-    hidden,
-    visible,
-    disabled,
-    rotate,
-    skewX,
-    skewY,
-    perspective,
-    space,
-    spaceX,
-    spaceY,
-    resolveColor
-  ]);
-  const needsAnimation = scale || tx || ty || sx || sy || opacity !== void 0 && typeof opacity === "number";
-  const Comp = needsAnimation ? Animated.View : Parent;
+    left
+  };
+  if (top || right || bottom || left || absolute) {
+    positionProps.position = "absolute";
+  }
+  let flexDirection = {};
+  if (fd === "flex-center") {
+    flexDirection = {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center"
+    };
+  } else if (fd === "col-center") {
+    flexDirection = {
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center"
+    };
+  } else if (fd === "col-between") {
+    flexDirection = {
+      flexDirection: "column",
+      // alignItems:"center",
+      justifyContent: "space-between"
+    };
+  } else if (fd === "col-evenly") {
+    flexDirection = {
+      flexDirection: "column",
+      // alignItems:"center",
+      justifyContent: "space-evenly"
+    };
+  } else if (fd === "col-reverse") {
+    flexDirection = {
+      flexDirection: "column-reverse"
+    };
+  }
+  if (fd === "flex-row") {
+    flexDirection = {
+      flexDirection: "row"
+    };
+  } else if (fd === "flex-row-reverse") {
+    flexDirection = {
+      flexDirection: "row-reverse"
+    };
+  } else if (fd === "flex-justify") {
+    flexDirection = {
+      flexDirection: "row",
+      justifyContent: "center"
+    };
+  } else if (fd === "flex-item") {
+    flexDirection = {
+      flexDirection: "row",
+      alignItems: "center"
+    };
+  } else if (fd === "flex-item-reverse") {
+    flexDirection = {
+      flexDirection: "row-reverse",
+      alignItems: "center"
+    };
+  } else if (fd === "flex-between") {
+    flexDirection = {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between"
+    };
+  } else if (fd === "flex-evenly") {
+    flexDirection = {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-evenly"
+    };
+  } else if (fd === "flex-between-reverse") {
+    flexDirection = {
+      flexDirection: "row-reverse",
+      alignItems: "center",
+      justifyContent: "space-between"
+    };
+  } else if (fd === "flex-space") {
+    flexDirection = {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-evenly"
+    };
+  }
+  if (insetY !== void 0) {
+    positionProps.position = "absolute";
+    positionProps.top = insetY;
+    positionProps.bottom = insetY;
+  }
+  if (insetX !== void 0) {
+    positionProps.position = "absolute";
+    positionProps.right = insetX;
+    positionProps.left = insetX;
+  }
+  if (inset !== void 0) {
+    positionProps = {
+      position: "absolute",
+      right: inset,
+      left: inset,
+      top: inset,
+      bottom: inset
+    };
+  }
+  const animated = scale || tx || ty || sx || sy || opacity && isNaN(opacity);
+  const Comp = animated ? Animated.View : Parent;
+  const transform = [];
+  if (scale) {
+    transform.push({ scale });
+  }
+  if (ty) {
+    transform.push({ translateY: ty });
+  }
+  if (tx) {
+    transform.push({ translateX: tx });
+  }
+  if (sx) {
+    transform.push({ scaleX: sx });
+  }
+  if (sy) {
+    transform.push({ scaleX: sy });
+  }
   return /* @__PURE__ */ jsx2(
     Comp,
     {
       ref,
       ...otherProps,
-      style: [computedStyle, style],
+      style: [
+        {
+          flex,
+          padding: padding || p,
+          margin: margin || m,
+          width: size || width2 || w,
+          height: size || height2 || h,
+          alignSelf: align,
+          backgroundColor: color ? colors[color] ? colors[color] : color : void 0,
+          ...flexDirection,
+          marginTop: mt,
+          marginBottom: mb,
+          marginRight: mr,
+          marginLeft: ml,
+          marginHorizontal: mh || mx,
+          marginVertical: mv || my,
+          paddingTop: pt,
+          paddingBottom: pb,
+          paddingVertical: pv || py,
+          paddingHorizontal: ph || px,
+          paddingLeft: pl,
+          paddingRight: pr,
+          borderRadius: br,
+          borderWidth: bw,
+          borderBottomWidth: bbw,
+          borderTopWidth: btw,
+          borderColor: bc ? colors[bc] ? colors[bc] : bc : void 0,
+          borderRightColor: brc ? colors[brc] ? colors[brc] : brc : void 0,
+          borderLeftColor: blc ? colors[blc] ? colors[blc] : blc : void 0,
+          borderTopColor: btc ? colors[btc] ? colors[btc] : btc : void 0,
+          borderBottomColor: bbc ? colors[bbc] ? colors[bbc] : bbc : void 0,
+          borderTopRightRadius: btrr,
+          borderTopLeftRadius: btlr,
+          borderBottomLeftRadius: bblr,
+          borderBottomRightRadius: bbrr,
+          borderLeftWidth: blw,
+          borderRightWidth: brw,
+          borderStyle: bs,
+          flexWrap: wrap ? "wrap" : void 0,
+          ...elevation(shadow || 0),
+          position: positionProps.position,
+          top: positionProps.top,
+          right: positionProps.right,
+          bottom: positionProps.bottom,
+          left: positionProps.left,
+          overflow,
+          opacity,
+          zIndex,
+          maxWidth: maxW,
+          minWidth: minW,
+          minHeight: minH,
+          maxHeight: maxH,
+          gap
+        },
+        {
+          transform
+        },
+        style
+      ],
       children
     }
   );
 });
-View.displayName = "View";
 var View_default = View;
 
 // src/rn-alpha/custom/SafeAreaView.tsx
@@ -894,7 +694,7 @@ var SafeAreaView = ({
 var SafeAreaView_default = SafeAreaView;
 
 // src/rn-alpha/default/Text.tsx
-import React3, { useMemo as useMemo3 } from "react";
+import React3, { useMemo as useMemo2 } from "react";
 import { Text as Char, PixelRatio } from "react-native";
 
 // src/hooks/use-dimensions.ts
@@ -976,7 +776,7 @@ var Text = React3.forwardRef((props, ref) => {
     translateY,
     ...restProps
   } = mergedProps;
-  const computedStyle = useMemo3(() => {
+  const computedStyle = useMemo2(() => {
     var _a;
     const resolveColor = (colorValue) => {
       if (!colorValue) return void 0;
@@ -1156,289 +956,94 @@ var Text = React3.forwardRef((props, ref) => {
 var Text_default = Text;
 
 // src/rn-alpha/default/ScrollView.tsx
-import React4, { useMemo as useMemo4, useCallback as useCallback3 } from "react";
-import {
-  Animated as Animated2,
-  RefreshControl,
-  ScrollView as Scroll
-} from "react-native";
+import React4 from "react";
+import { Animated as Animated2, RefreshControl, ScrollView as Scroll } from "react-native";
 import { jsx as jsx5 } from "react/jsx-runtime";
 var ScrollView = React4.forwardRef((props, ref) => {
-  const { colors } = use_color_default();
-  const { componentProps } = useUIContext();
-  const scrollViewDefaults = componentProps.ScrollView || {};
-  const mergedProps = {
-    ...scrollViewDefaults,
-    ...props
-  };
   const {
-    // Spacing props
     padding,
     p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
+    refreshing,
+    onRefresh,
+    children,
+    bounces,
+    style,
     ph,
-    pl,
-    pv,
+    pb,
     pt,
-    pr,
-    px,
-    py,
-    // Layout props
-    flex,
-    width: width2,
-    w,
-    height: height2,
-    h,
-    minW,
-    maxW,
-    minH,
-    maxH,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    // Scroll custom props (simplified)
     svs,
     shs,
-    cs,
-    contentPadding,
-    contentPaddingHorizontal,
-    contentPaddingVertical,
-    contentPaddingTop,
-    contentPaddingBottom,
-    contentPaddingLeft,
-    contentPaddingRight,
-    scrollX,
     scrollY,
-    refreshColor,
-    refreshTintColor,
-    refreshTitle,
-    refreshTitleColor,
-    // Animation props
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    // Other props (all standard ScrollView props)
-    style,
-    children,
+    scrollX,
+    onScroll,
+    color,
+    cs = {},
     ...otherProps
-  } = mergedProps;
-  const resolveColor = useCallback3((colorValue) => {
-    if (!colorValue) return void 0;
-    return colors[colorValue] || colorValue;
-  }, [colors]);
-  const computedStyle = useMemo4(() => {
-    let finalWidth = width2 != null ? width2 : w;
-    let finalHeight = height2 != null ? height2 : h;
-    if (fullWidth) finalWidth = "100%";
-    if (fullHeight) finalHeight = "100%";
-    let centerStyles = {};
-    if (center) {
-      centerStyles = { alignItems: "center", justifyContent: "center" };
-    } else {
-      if (centerX) centerStyles = { ...centerStyles, alignItems: "center" };
-      if (centerY) centerStyles = { ...centerStyles, justifyContent: "center" };
-    }
-    let finalPadding = padding != null ? padding : p;
-    let finalMargin = margin != null ? margin : m;
-    const transform = [];
-    if (scale) transform.push({ scale });
-    if (translateX) transform.push({ translateX });
-    if (translateY) transform.push({ translateY });
-    if (rotate) transform.push({ rotate: `${rotate}deg` });
-    let finalOpacity = opacity;
-    if (hidden) finalOpacity = 0;
-    if (visible) finalOpacity = 1;
-    if (disabled) finalOpacity = 0.5;
-    let finalPosition = void 0;
-    if (absolute) finalPosition = "absolute";
-    if (relative) finalPosition = "relative";
-    return {
-      flex,
-      width: finalWidth,
-      height: finalHeight,
-      minWidth: minW,
-      maxWidth: maxW,
-      minHeight: minH,
-      maxHeight: maxH,
-      ...centerStyles,
-      // Spacing
-      padding: finalPadding,
-      margin: finalMargin,
-      marginTop: mt,
-      marginBottom: mb,
-      marginRight: mr,
-      marginLeft: ml,
-      marginHorizontal: mh,
-      marginVertical: mv,
-      paddingTop: pt,
-      paddingBottom: pb,
-      paddingVertical: pv != null ? pv : py,
-      paddingHorizontal: ph != null ? ph : px,
-      paddingLeft: pl,
-      paddingRight: pr,
-      // Layout
-      position: finalPosition,
-      opacity: finalOpacity,
-      transform: transform.length > 0 ? transform : void 0
-    };
-  }, [
-    flex,
-    width2,
-    w,
-    height2,
-    h,
-    minW,
-    maxW,
-    minH,
-    maxH,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    resolveColor
-  ]);
-  const contentContainerStyle = useMemo4(() => {
-    var _a, _b;
-    const baseStyle = {
-      paddingBottom: (_a = contentPaddingBottom != null ? contentPaddingBottom : pb) != null ? _a : 40,
-      paddingTop: (_b = contentPaddingTop != null ? contentPaddingTop : pt) != null ? _b : 0,
-      paddingHorizontal: contentPaddingHorizontal != null ? contentPaddingHorizontal : ph,
-      paddingVertical: contentPaddingVertical != null ? contentPaddingVertical : pv,
-      paddingLeft: contentPaddingLeft != null ? contentPaddingLeft : pl,
-      paddingRight: contentPaddingRight != null ? contentPaddingRight : pr,
-      padding: contentPadding
-    };
-    return { ...baseStyle, ...cs };
-  }, [
-    contentPaddingBottom,
-    pb,
-    contentPaddingTop,
-    pt,
-    contentPaddingHorizontal,
-    ph,
-    contentPaddingVertical,
-    pv,
-    contentPaddingLeft,
-    pl,
-    contentPaddingRight,
-    pr,
-    contentPadding,
-    cs
-  ]);
-  const refreshControl = useMemo4(() => {
-    const { onRefresh, refreshing } = otherProps;
-    if (!onRefresh) return void 0;
-    return /* @__PURE__ */ jsx5(
-      RefreshControl,
-      {
-        refreshing: refreshing || false,
-        onRefresh,
-        tintColor: refreshTintColor ? resolveColor(refreshTintColor) : void 0,
-        colors: refreshColor ? [resolveColor(refreshColor)] : void 0,
-        title: refreshTitle,
-        titleColor: refreshTitleColor ? resolveColor(refreshTitleColor) : void 0
-      }
-    );
-  }, [refreshTintColor, refreshColor, refreshTitle, refreshTitleColor, resolveColor, otherProps]);
+  } = props;
   const animated = scrollX || scrollY;
   const Comp = animated ? Animated2.ScrollView : Scroll;
-  const handleScroll = useMemo4(() => {
-    const { onScroll } = otherProps;
-    if (animated && (scrollX || scrollY)) {
-      return Animated2.event(
-        [
-          {
-            nativeEvent: {
-              contentOffset: {
-                x: scrollX,
-                y: scrollY
-              }
-            }
-          }
-        ],
-        { useNativeDriver: true, listener: onScroll }
-      );
-    }
-    return onScroll;
-  }, [animated, scrollX, scrollY, otherProps]);
+  const contentOffset = {};
+  if (scrollY) {
+    console.log(contentOffset.y);
+    contentOffset.y = scrollY;
+  }
+  if (scrollX) {
+    contentOffset.x = scrollX;
+  }
+  const { colors } = use_color_default();
   return /* @__PURE__ */ jsx5(
     Comp,
     {
       ref,
+      contentContainerStyle: {
+        ...cs,
+        paddingBottom: pb || 40,
+        paddingTop: pt || 0,
+        backgroundColor: color ? colors[color] ? colors[color] : color : void 0
+      },
+      style: [{
+        padding: padding || p,
+        paddingHorizontal: ph
+      }, style],
       ...otherProps,
-      style: [computedStyle, style],
-      contentContainerStyle,
-      refreshControl,
-      onScroll: handleScroll,
+      keyboardShouldPersistTaps: "handled",
+      bounces,
+      refreshControl: onRefresh ? /* @__PURE__ */ jsx5(
+        RefreshControl,
+        {
+          refreshing: refreshing || false,
+          onRefresh
+        }
+      ) : void 0,
+      onScroll: animated ? Animated2.event(
+        [{
+          nativeEvent: {
+            contentOffset
+          }
+        }],
+        { useNativeDriver: true }
+      ) : () => {
+        onScroll == null ? void 0 : onScroll();
+      },
+      scrollEventThrottle: 16,
       showsVerticalScrollIndicator: svs,
       showsHorizontalScrollIndicator: shs,
       children
     }
   );
 });
-ScrollView.displayName = "ScrollView";
 var ScrollView_default = ScrollView;
 
 // src/rn-alpha/default/FlatList.tsx
-import React5, { useMemo as useMemo5 } from "react";
-import { Animated as Animated3, FlatList as Parent2, RefreshControl as RefreshControl2 } from "react-native";
+import React5 from "react";
+import { Animated as Animated3, FlatList as Parent3 } from "react-native";
 import { jsx as jsx6 } from "react/jsx-runtime";
 var FlatList = React5.forwardRef((props, ref) => {
-  const { colors } = use_color_default();
-  const { componentProps } = useUIContext();
-  const flatListDefaults = componentProps.FlatList || {};
-  const mergedProps = {
-    ...flatListDefaults,
-    ...props
-  };
   const {
-    // Spacing props
+    scrollY,
+    scrollX,
+    onScroll,
+    style,
     padding,
     p,
     margin,
@@ -1455,242 +1060,58 @@ var FlatList = React5.forwardRef((props, ref) => {
     pv,
     pt,
     pr,
-    px,
-    py,
-    // Layout props
-    flex,
-    width: width2,
-    w,
-    height: height2,
-    h,
-    minW,
-    maxW,
-    minH,
-    maxH,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    // FlatList custom props (simplified)
     svs,
     shs,
-    cs,
-    contentPadding,
-    contentPaddingHorizontal,
-    contentPaddingVertical,
-    contentPaddingTop,
-    contentPaddingBottom,
-    contentPaddingLeft,
-    contentPaddingRight,
-    scrollX,
-    scrollY,
-    refreshColor,
-    refreshTintColor,
-    refreshTitle,
-    refreshTitleColor,
-    // Animation props
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    // Other props (all standard FlatList props)
-    style,
     ...otherProps
-  } = mergedProps;
-  const computedStyle = useMemo5(() => {
-    let finalWidth = width2 != null ? width2 : w;
-    let finalHeight = height2 != null ? height2 : h;
-    if (fullWidth) finalWidth = "100%";
-    if (fullHeight) finalHeight = "100%";
-    let centerStyles = {};
-    if (center) {
-      centerStyles = { alignItems: "center", justifyContent: "center" };
-    } else {
-      if (centerX) centerStyles = { ...centerStyles, alignItems: "center" };
-      if (centerY) centerStyles = { ...centerStyles, justifyContent: "center" };
-    }
-    let finalPadding = padding != null ? padding : p;
-    let finalMargin = margin != null ? margin : m;
-    const transform = [];
-    if (scale) transform.push({ scale });
-    if (translateX) transform.push({ translateX });
-    if (translateY) transform.push({ translateY });
-    if (rotate) transform.push({ rotate: `${rotate}deg` });
-    let finalOpacity = opacity;
-    if (hidden) finalOpacity = 0;
-    if (visible) finalOpacity = 1;
-    if (disabled) finalOpacity = 0.5;
-    let finalPosition = void 0;
-    if (absolute) finalPosition = "absolute";
-    if (relative) finalPosition = "relative";
-    const viewStyle = {
-      flex,
-      width: finalWidth,
-      // Cast to any to handle string values like '100%'
-      height: finalHeight,
-      // Cast to any to handle string values like '100%'
-      minWidth: minW,
-      // Cast to any to handle string values
-      maxWidth: maxW,
-      // Cast to any to handle string values
-      minHeight: minH,
-      // Cast to any to handle string values
-      maxHeight: maxH,
-      // Cast to any to handle string values
-      ...centerStyles,
-      // Spacing
-      padding: finalPadding,
-      // Cast to any to handle string values
-      margin: finalMargin,
-      // Cast to any to handle string values
-      marginTop: mt,
-      marginBottom: mb,
-      marginRight: mr,
-      marginLeft: ml,
-      marginHorizontal: mh,
-      marginVertical: mv,
-      paddingTop: pt,
-      paddingBottom: pb,
-      paddingVertical: pv != null ? pv : py,
-      paddingHorizontal: ph != null ? ph : px,
-      paddingLeft: pl,
-      paddingRight: pr,
-      // Layout
-      position: finalPosition,
-      opacity: finalOpacity,
-      transform: transform.length > 0 ? transform : void 0
-    };
-    return viewStyle;
-  }, [
-    flex,
-    width2,
-    w,
-    height2,
-    h,
-    minW,
-    maxW,
-    minH,
-    maxH,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY
-  ]);
-  const contentContainerStyle = useMemo5(() => {
-    var _a, _b;
-    const baseStyle = {
-      paddingBottom: (_a = contentPaddingBottom != null ? contentPaddingBottom : pb) != null ? _a : 40,
-      paddingTop: (_b = contentPaddingTop != null ? contentPaddingTop : pt) != null ? _b : 0,
-      paddingHorizontal: contentPaddingHorizontal != null ? contentPaddingHorizontal : ph,
-      paddingVertical: contentPaddingVertical != null ? contentPaddingVertical : pv,
-      paddingLeft: contentPaddingLeft != null ? contentPaddingLeft : pl,
-      paddingRight: contentPaddingRight != null ? contentPaddingRight : pr,
-      padding: contentPadding
-    };
-    return { ...baseStyle, ...cs };
-  }, [
-    contentPaddingBottom,
-    pb,
-    contentPaddingTop,
-    pt,
-    contentPaddingHorizontal,
-    ph,
-    contentPaddingVertical,
-    pv,
-    contentPaddingLeft,
-    pl,
-    contentPaddingRight,
-    pr,
-    contentPadding,
-    cs
-  ]);
-  const refreshControl = useMemo5(() => {
-    const { onRefresh, refreshing } = otherProps;
-    if (!onRefresh) return void 0;
-    return /* @__PURE__ */ jsx6(
-      RefreshControl2,
-      {
-        refreshing: refreshing || false,
-        onRefresh,
-        tintColor: refreshTintColor ? colors[refreshTintColor] || refreshTintColor : void 0,
-        colors: refreshColor ? [colors[refreshColor] || refreshColor] : void 0,
-        title: refreshTitle,
-        titleColor: refreshTitleColor ? colors[refreshTitleColor] || refreshTitleColor : void 0
-      }
-    );
-  }, [refreshTintColor, refreshColor, refreshTitle, refreshTitleColor, colors, otherProps]);
+  } = props;
   const animated = scrollX || scrollY;
-  const Comp = animated ? Animated3.FlatList : Parent2;
-  const handleScroll = useMemo5(() => {
-    const { onScroll } = otherProps;
-    if (animated && (scrollX || scrollY)) {
-      return Animated3.event(
-        [
-          {
-            nativeEvent: {
-              contentOffset: {
-                x: scrollX,
-                y: scrollY
-              }
-            }
-          }
-        ],
-        { useNativeDriver: true, listener: onScroll }
-      );
-    }
-    return onScroll;
-  }, [animated, scrollX, scrollY, otherProps]);
+  const Comp = animated ? Animated3.FlatList : Parent3;
+  const contentOffset = {};
+  if (scrollY) {
+    contentOffset.y = scrollY;
+  }
+  if (scrollX) {
+    contentOffset.x = scrollX;
+  }
   return /* @__PURE__ */ jsx6(
     Comp,
     {
       ref,
-      ...otherProps,
-      style: [computedStyle, style],
-      contentContainerStyle,
       showsVerticalScrollIndicator: svs,
       showsHorizontalScrollIndicator: shs,
-      refreshControl,
-      onScroll: handleScroll
+      ...otherProps,
+      keyboardShouldPersistTaps: "handled",
+      style: [
+        {
+          marginTop: mt,
+          marginBottom: mb,
+          marginRight: mr,
+          marginLeft: ml,
+          marginHorizontal: mh,
+          marginVertical: mv,
+          paddingTop: pt,
+          paddingBottom: pb,
+          paddingVertical: pv,
+          paddingHorizontal: ph,
+          paddingLeft: pl,
+          paddingRight: pr
+        },
+        style
+      ],
+      onScroll: animated ? Animated3.event(
+        [{
+          nativeEvent: {
+            contentOffset
+          }
+        }],
+        { useNativeDriver: true }
+      ) : (event) => {
+        onScroll == null ? void 0 : onScroll(event);
+      },
+      scrollEventThrottle: 16
     }
   );
 });
-FlatList.displayName = "FlatList";
 var FlatList_default = FlatList;
 
 // src/rn-alpha/default/TouchableHighlight.tsx
@@ -1872,7 +1293,7 @@ var Image = (props) => {
 var Image_default = Image;
 
 // src/rn-alpha/default/KeyboardView.tsx
-import { useMemo as useMemo6 } from "react";
+import { useMemo as useMemo3 } from "react";
 
 // src/constants/layout.ts
 import { Dimensions as Dimensions2, Platform, StatusBar } from "react-native";
@@ -1968,7 +1389,7 @@ var KeyboardView = (props) => {
     children,
     ...otherProps
   } = props;
-  const computedStyle = useMemo6(() => {
+  const computedStyle = useMemo3(() => {
     const resolveColor = (colorValue) => {
       if (!colorValue) return void 0;
       return colors[colorValue] || colorValue;
@@ -2110,11 +1531,11 @@ var KeyboardView = (props) => {
     py,
     colors
   ]);
-  const keyboardBehavior = useMemo6(() => {
+  const keyboardBehavior = useMemo3(() => {
     if (behavior) return behavior;
     return ios ? "padding" : "height";
   }, [behavior, ios]);
-  const keyboardOffset = useMemo6(() => {
+  const keyboardOffset = useMemo3(() => {
     if (keyboardVerticalOffset !== void 0) return keyboardVerticalOffset;
     if (ios && iosOffset !== void 0) return iosOffset;
     if (Platform2.OS === "android" && androidOffset !== void 0) return androidOffset;
@@ -2139,8 +1560,8 @@ var KeyboardView = (props) => {
 var KeyboardView_default = KeyboardView;
 
 // src/rn-alpha/default/ImageBackground.tsx
-import { useMemo as useMemo7 } from "react";
-import { ImageBackground as Parent3 } from "react-native";
+import { useMemo as useMemo4 } from "react";
+import { ImageBackground as Parent4 } from "react-native";
 import { jsx as jsx12 } from "react/jsx-runtime";
 var ImageBackground = (props) => {
   const { colors } = use_color_default();
@@ -2237,7 +1658,7 @@ var ImageBackground = (props) => {
     children,
     ...otherProps
   } = props;
-  const computedStyle = useMemo7(() => {
+  const computedStyle = useMemo4(() => {
     const resolveColor = (colorValue) => {
       if (!colorValue) return void 0;
       return colors[colorValue] || colorValue;
@@ -2406,7 +1827,7 @@ var ImageBackground = (props) => {
     colors
   ]);
   return /* @__PURE__ */ jsx12(
-    Parent3,
+    Parent4,
     {
       ...otherProps,
       source,
@@ -2420,7 +1841,7 @@ var ImageBackground = (props) => {
 var ImageBackground_default = ImageBackground;
 
 // src/rn-alpha/custom/AlertModal.tsx
-import { useMemo as useMemo8 } from "react";
+import { useMemo as useMemo5 } from "react";
 import { Modal } from "react-native";
 import { jsx as jsx13, jsxs } from "react/jsx-runtime";
 var AlertModal = (props) => {
@@ -2529,26 +1950,26 @@ var AlertModal = (props) => {
     style,
     ...otherProps
   } = props;
-  const closeFunc = useMemo8(() => {
+  const closeFunc = useMemo5(() => {
     return () => {
       setModal(false);
     };
   }, [setModal]);
-  const backdropStyle = useMemo8(() => {
+  const backdropStyle = useMemo5(() => {
     const backdropColorValue = backdropColor ? colors[backdropColor] || backdropColor : colors.modal;
     return {
       backgroundColor: backdropColorValue,
       opacity: backdropOpacity
     };
   }, [backdropColor, backdropOpacity, colors]);
-  const computedContentStyle = useMemo8(() => {
+  const computedContentStyle = useMemo5(() => {
     return {
       maxWidth: 400,
       flex: 1,
       ...contentStyle
     };
   }, [contentStyle]);
-  const computedTitleStyle = useMemo8(() => {
+  const computedTitleStyle = useMemo5(() => {
     return {
       fontSize: 16,
       fontWeight: "600",
@@ -2556,14 +1977,14 @@ var AlertModal = (props) => {
       ...titleStyle
     };
   }, [titleStyle]);
-  const computedTextStyle = useMemo8(() => {
+  const computedTextStyle = useMemo5(() => {
     return {
       fontSize: 13,
       textAlign: "center",
       ...textStyle
     };
   }, [textStyle]);
-  const computedButtonContainerStyle = useMemo8(() => {
+  const computedButtonContainerStyle = useMemo5(() => {
     return {
       gap: 12,
       ...buttonContainerStyle
@@ -2582,7 +2003,7 @@ var AlertModal = (props) => {
     closeFunc();
     onCancel == null ? void 0 : onCancel();
   };
-  const modalContent = useMemo8(() => {
+  const modalContent = useMemo5(() => {
     if (customContent) {
       return customContent;
     }
@@ -2658,7 +2079,7 @@ var AlertModal = (props) => {
 var AlertModal_default = AlertModal;
 
 // src/rn-alpha/custom/OptionModal.tsx
-import { useMemo as useMemo9 } from "react";
+import { useMemo as useMemo6 } from "react";
 import { Modal as Modal2 } from "react-native";
 import { jsx as jsx14, jsxs as jsxs2 } from "react/jsx-runtime";
 var OptionModal = (props) => {
@@ -2765,19 +2186,19 @@ var OptionModal = (props) => {
     style,
     ...otherProps
   } = props;
-  const closeFunc = useMemo9(() => {
+  const closeFunc = useMemo6(() => {
     return () => {
       setModal(false);
     };
   }, [setModal]);
-  const backdropStyle = useMemo9(() => {
+  const backdropStyle = useMemo6(() => {
     const backdropColorValue = backdropColor ? colors[backdropColor] || backdropColor : colors.modal;
     return {
       backgroundColor: backdropColorValue,
       opacity: backdropOpacity
     };
   }, [backdropColor, backdropOpacity, colors]);
-  const computedContentStyle = useMemo9(() => {
+  const computedContentStyle = useMemo6(() => {
     return {
       maxWidth: maxWidth || 400,
       minWidth: minWidth || 280,
@@ -2786,7 +2207,7 @@ var OptionModal = (props) => {
       ...contentStyle
     };
   }, [maxWidth, minWidth, maxHeight, minHeight, contentStyle]);
-  const computedOptionStyle = useMemo9(() => {
+  const computedOptionStyle = useMemo6(() => {
     return {
       flexDirection: "row",
       alignItems: "center",
@@ -2796,13 +2217,13 @@ var OptionModal = (props) => {
       ...optionStyle
     };
   }, [optionStyle]);
-  const computedOptionTextStyle = useMemo9(() => {
+  const computedOptionTextStyle = useMemo6(() => {
     return {
       fontSize: 13,
       ...optionTextStyle
     };
   }, [optionTextStyle]);
-  const computedOptionIconStyle = useMemo9(() => {
+  const computedOptionIconStyle = useMemo6(() => {
     return {
       width: 40,
       height: 40,
@@ -2825,7 +2246,7 @@ var OptionModal = (props) => {
       closeFunc();
     }
   };
-  const optionsList = useMemo9(() => {
+  const optionsList = useMemo6(() => {
     if (customContent) {
       return customContent;
     }
@@ -2922,7 +2343,7 @@ var OptionModal = (props) => {
 var OptionModal_default = OptionModal;
 
 // src/rn-alpha/custom/Page.tsx
-import { useMemo as useMemo10 } from "react";
+import { useMemo as useMemo7 } from "react";
 import { StatusBar as StatusBar2, Platform as Platform3 } from "react-native";
 import { useSafeAreaInsets as useSafeAreaInsets2 } from "react-native-safe-area-context";
 import { Fragment as Fragment5, jsx as jsx15, jsxs as jsxs3 } from "react/jsx-runtime";
@@ -2949,7 +2370,7 @@ var Page = ({
 }) => {
   const { colors, colorMode } = use_color_default();
   const insets = useSafeAreaInsets2();
-  const resolvedStatusColor = useMemo10(() => {
+  const resolvedStatusColor = useMemo7(() => {
     if (statusBarColor) {
       return typeof statusBarColor === "string" && colors[statusBarColor] ? colors[statusBarColor] : statusBarColor;
     }
@@ -2958,7 +2379,7 @@ var Page = ({
     }
     return typeof color === "string" && colors[color] ? colors[color] : void 0;
   }, [statusBarColor, color, colors, edgeToEdge]);
-  const inferredStatusStyle = useMemo10(() => {
+  const inferredStatusStyle = useMemo7(() => {
     if (statusTextColor === "light") return "light-content";
     if (statusTextColor === "dark") return "dark-content";
     if (statusTextColor) return statusTextColor;
@@ -2967,7 +2388,7 @@ var Page = ({
     }
     return colorMode === "dark" ? "light-content" : "dark-content";
   }, [statusTextColor, colorMode, edgeToEdge, resolvedStatusColor]);
-  const safeAreaPadding = useMemo10(() => {
+  const safeAreaPadding = useMemo7(() => {
     var _a, _b, _c, _d;
     if (safeAreaMode === "none") return {};
     if (safeAreaMode === "manual" && customInsets) {
@@ -3011,7 +2432,7 @@ var Page = ({
 var Page_default = Page;
 
 // src/rn-alpha/custom/Modal.tsx
-import { useRef, useEffect as useEffect2 } from "react";
+import { useRef, useEffect as useEffect3 } from "react";
 import { TouchableWithoutFeedback, Modal as Mod, Animated as Animated4, Dimensions as Dimensions3, StyleSheet } from "react-native";
 import { PanGestureHandler, State, GestureHandlerRootView } from "react-native-gesture-handler";
 
@@ -3619,7 +3040,7 @@ var Modal3 = (props) => {
       setModal(false);
     });
   };
-  useEffect2(() => {
+  useEffect3(() => {
     if (modal) {
       translateY.setValue(0);
       Animated4.parallel([
@@ -3806,7 +3227,7 @@ var Modal3 = (props) => {
 var Modal_default = Modal3;
 
 // src/rn-alpha/custom/LoadingDots.tsx
-import { useEffect as useEffect3, useRef as useRef2 } from "react";
+import { useEffect as useEffect4, useRef as useRef2 } from "react";
 import { Animated as Animated5, Easing } from "react-native";
 import { jsx as jsx17 } from "react/jsx-runtime";
 var LoadingDots = (props) => {
@@ -3815,7 +3236,7 @@ var LoadingDots = (props) => {
   const progress = useRef2(
     Array.from({ length: count }, () => new Animated5.Value(0))
   ).current;
-  useEffect3(() => {
+  useEffect4(() => {
     const animations = progress.map(
       (value, index) => Animated5.loop(
         Animated5.sequence([
@@ -3941,7 +3362,7 @@ var Svg = ({ icon, color, size, w }) => {
 var Svg_default = Svg;
 
 // src/rn-alpha/custom/Inputs/Input.tsx
-import { useState as useState3 } from "react";
+import { useState as useState4 } from "react";
 import { TextInput } from "react-native";
 
 // src/utils/money.ts
@@ -4087,7 +3508,7 @@ var ErrorText_default = ErrorText;
 // src/rn-alpha/custom/Inputs/Input.tsx
 import { jsx as jsx22, jsxs as jsxs6 } from "react/jsx-runtime";
 var Input = (props) => {
-  const [focus, setFocus] = useState3(false);
+  const [focus, setFocus] = useState4(false);
   const { colors } = use_color_default();
   const { componentProps } = useUIContext();
   const inputDefaults = componentProps.Input || {};
@@ -4208,13 +3629,13 @@ var NumPadKeyboard = (props) => {
 var NumPadKeyboard_default = NumPadKeyboard;
 
 // src/rn-alpha/custom/Inputs/Switch.tsx
-import { Switch as Parent4 } from "react-native";
+import { Switch as Parent5 } from "react-native";
 import { jsx as jsx24 } from "react/jsx-runtime";
 var Switch = (props) => {
   const { colors } = use_color_default();
   const { disabled, active, onToggle } = props;
   return /* @__PURE__ */ jsx24(
-    Parent4,
+    Parent5,
     {
       trackColor: { false: colors.medium, true: colors.primary },
       thumbColor: colors.light,
@@ -4228,7 +3649,7 @@ var Switch = (props) => {
 var Switch_default = Switch;
 
 // src/rn-alpha/custom/Inputs/Select.tsx
-import { useEffect as useEffect4, useState as useState4 } from "react";
+import { useEffect as useEffect5, useState as useState5 } from "react";
 import {
   TouchableWithoutFeedback as TouchableWithoutFeedback3,
   TouchableOpacity as TouchableOpacity2,
@@ -4271,13 +3692,13 @@ var Select = (props) => {
     renderSelect,
     color
   } = props;
-  const [modal, setModal] = useState4(false);
-  const [current, setCurrent] = useState4({ value: "", label: "", text: "", icon: null, output: null });
-  const [filter2, setFilter] = useState4("");
+  const [modal, setModal] = useState5(false);
+  const [current, setCurrent] = useState5({ value: "", label: "", text: "", icon: null, output: null });
+  const [filter2, setFilter] = useState5("");
   const { colors } = use_color_default();
   const { control, select: selectConfig } = InputConfig_default;
   const fieldColor = color ? (_a = colors[color]) != null ? _a : color : (_b = colors[control.backgroundColorToken]) != null ? _b : colors.background;
-  useEffect4(() => {
+  useEffect5(() => {
     var _a2;
     const selected = (_a2 = options == null ? void 0 : options.filter((r) => r.value === defaultValue)) == null ? void 0 : _a2[0];
     if (selected) {
@@ -4501,14 +3922,14 @@ var SearchInput = (props) => {
 var SearchInput_default = SearchInput;
 
 // src/rn-alpha/custom/Inputs/DateSelect.tsx
-import { useState as useState5 } from "react";
+import { useState as useState6 } from "react";
 import { TouchableWithoutFeedback as TouchableWithoutFeedback4, useColorScheme } from "react-native";
 import DatePicker from "react-native-date-picker";
 import { jsx as jsx29, jsxs as jsxs11 } from "react/jsx-runtime";
 var DateSelect = ({ placeholder, bw, mt, label, error, onChangeText, value, style, minimumDate }) => {
-  const [open, setOpen] = useState5(false);
-  const [date, setDate] = useState5(value || /* @__PURE__ */ new Date());
-  const [edited, setEdited] = useState5(!!value);
+  const [open, setOpen] = useState6(false);
+  const [date, setDate] = useState6(value || /* @__PURE__ */ new Date());
+  const [edited, setEdited] = useState6(!!value);
   const isDarkMode = useColorScheme() === "dark";
   const { colors } = use_color_default();
   const textColor = isDarkMode ? colors.background : colors.text;
@@ -4563,21 +3984,21 @@ var DateSelect = ({ placeholder, bw, mt, label, error, onChangeText, value, styl
 var DateSelect_default = DateSelect;
 
 // src/rn-alpha/custom/Inputs/DateTimeInput.tsx
-import { useEffect as useEffect5, useState as useState6 } from "react";
+import { useEffect as useEffect6, useState as useState7 } from "react";
 import { Keyboard as Keyboard2, TouchableWithoutFeedback as TouchableWithoutFeedback5, useColorScheme as useColorScheme2 } from "react-native";
 import DatePicker2 from "react-native-date-picker";
 import { jsx as jsx30, jsxs as jsxs12 } from "react/jsx-runtime";
 var DateTimeInput = (props) => {
   const { disabled, placeholder, mode = "date", bw, mt, label, error, onChangeText, value, style, minimumDate } = props;
-  const [open, setOpen] = useState6(false);
-  const [date, setDate] = useState6();
-  const [edited, setEdited] = useState6(false);
+  const [open, setOpen] = useState7(false);
+  const [date, setDate] = useState7();
+  const [edited, setEdited] = useState7(false);
   const isDarkMode = useColorScheme2() === "dark";
   const { colors } = use_color_default();
   const textColor = isDarkMode ? colors.light : colors.dark;
   const { control, datePicker } = InputConfig_default;
   const backgroundColor = colors[control.backgroundColorToken] || colors.background;
-  useEffect5(() => {
+  useEffect6(() => {
     if (value) {
       setDate(value);
       setEdited(true);
@@ -4683,7 +4104,7 @@ var Checkbox = (props) => {
 var Checkbox_default = Checkbox;
 
 // src/rn-alpha/custom/Inputs/Password.tsx
-import { forwardRef, useState as useState7 } from "react";
+import { forwardRef, useState as useState8 } from "react";
 import { TextInput as TextInput3 } from "react-native";
 import { jsx as jsx32, jsxs as jsxs13 } from "react/jsx-runtime";
 var Password = forwardRef((props, ref) => {
@@ -4699,8 +4120,8 @@ var Password = forwardRef((props, ref) => {
     label,
     onSubmitEditing
   } = props;
-  const [focus, setFocus] = useState7(false);
-  const [show, setShow] = useState7(false);
+  const [focus, setFocus] = useState8(false);
+  const [show, setShow] = useState8(false);
   const { colors } = use_color_default();
   const bc = error ? colors.danger : focus ? colors.primary : colors.border;
   const { control, textField, password } = InputConfig_default;
@@ -4760,7 +4181,7 @@ var Password = forwardRef((props, ref) => {
 var Password_default = Password;
 
 // src/rn-alpha/custom/Preloader.tsx
-import { useEffect as useEffect6, useRef as useRef3 } from "react";
+import { useEffect as useEffect7, useRef as useRef3 } from "react";
 import { Animated as Animated6, Easing as Easing2, Modal as Modal4 } from "react-native";
 import { Fragment as Fragment13, jsx as jsx33, jsxs as jsxs14 } from "react/jsx-runtime";
 var Preloader = (props) => {
@@ -4768,7 +4189,7 @@ var Preloader = (props) => {
   const { colors } = use_color_default();
   const scaleAnimation = useRef3(new Animated6.Value(1)).current;
   const loopRef = useRef3(null);
-  useEffect6(() => {
+  useEffect7(() => {
     var _a;
     (_a = loopRef.current) == null ? void 0 : _a.stop();
     if (loading) {
@@ -4983,12 +4404,12 @@ var OtpInput = (props) => {
 var OtpInput_default = OtpInput;
 
 // src/rn-alpha/custom/Menu.tsx
-import { useState as useState8 } from "react";
+import { useState as useState9 } from "react";
 import { Menu as Component, MenuItem } from "react-native-material-menu";
 import { Fragment as Fragment15, jsx as jsx37 } from "react/jsx-runtime";
 var Menu = (props) => {
   const { anchor, options, color, pressColor } = props;
-  const [modal, setModal] = useState8(false);
+  const [modal, setModal] = useState9(false);
   const { colors } = use_color_default();
   return /* @__PURE__ */ jsx37(Fragment15, { children: /* @__PURE__ */ jsx37(
     Component,
@@ -5124,7 +4545,7 @@ var LinearGradientComponent = ({
 var Gradient_default = LinearGradientComponent;
 
 // src/rn-alpha/custom/TabButton.tsx
-import { useState as useState9 } from "react";
+import { useState as useState10 } from "react";
 import { jsx as jsx39 } from "react/jsx-runtime";
 var TabButton = (props) => {
   const {
@@ -5139,7 +4560,7 @@ var TabButton = (props) => {
     activeColor,
     activeTextColor
   } = props;
-  const [tab, setTab] = useState9(index || 0);
+  const [tab, setTab] = useState10(index || 0);
   return /* @__PURE__ */ jsx39(View_default, { ph: ph || 15, mt: mt || 5, children: /* @__PURE__ */ jsx39(View_default, { color: color || "shade", p: 3, br: 20, fd: "flex-row", bc: bc || "border", bw: 0.5, overflow: "hidden", children: options.map((title, i) => /* @__PURE__ */ jsx39(View_default, { flex: 1, color: tab === i ? activeColor || "primary" : "", br: 20, children: /* @__PURE__ */ jsx39(TouchableOpacity_default, { onPress: () => {
     setTab(i);
     onTabPress(i);
