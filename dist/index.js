@@ -3296,120 +3296,122 @@ var Modal3 = (props) => {
     }
   };
   const { bottom } = use_dimensions_default();
-  return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_jsx_runtime16.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
-    import_react_native15.Modal,
-    {
-      animationType: "none",
-      transparent: true,
-      visible: modal,
-      onRequestClose: closeFunc,
-      navigationBarTranslucent: true,
-      statusBarTranslucent: true,
-      children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_react_native_gesture_handler.GestureHandlerRootView, { style: { flex: 1 }, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(KeyboardView_default, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(View_default, { flex: 1, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
-          import_react_native15.Animated.View,
-          {
-            style: {
-              ...import_react_native15.StyleSheet.absoluteFillObject,
-              opacity: backdropOpacity
-            },
-            children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { flex: 1, color: "modal", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_react_native15.TouchableWithoutFeedback, { onPress: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { flex: full ? 0.1 : 1 }) }) })
-          }
-        ),
-        enableSwipeToClose ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
-          import_react_native_gesture_handler.PanGestureHandler,
-          {
-            onGestureEvent,
-            onHandlerStateChange,
-            activeOffsetY: 10,
-            children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
-              import_react_native15.Animated.View,
-              {
-                style: {
-                  transform: [
-                    { translateY: import_react_native15.Animated.add(translateY, sheetTranslateY) }
-                  ],
-                  ...full ? {
-                    flex: 1,
-                    paddingTop: height * 0.1
-                  } : {
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    maxHeight: height * 0.9
-                  }
-                },
-                children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
-                  View_default,
-                  {
-                    color: "background",
-                    btrr: 22,
-                    btlr: 22,
-                    style: full ? {
-                      flex: 1
+  return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(import_jsx_runtime16.Fragment, { children: [
+    modal && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { bottom: 0, insetX: 0, height: bottom + 10, color: "background", zIndex: 1 }),
+    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+      import_react_native15.Modal,
+      {
+        animationType: "none",
+        transparent: true,
+        visible: modal,
+        onRequestClose: closeFunc,
+        statusBarTranslucent: true,
+        children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_react_native_gesture_handler.GestureHandlerRootView, { style: { flex: 1 }, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(KeyboardView_default, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(View_default, { flex: 1, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+            import_react_native15.Animated.View,
+            {
+              style: {
+                ...import_react_native15.StyleSheet.absoluteFillObject,
+                opacity: backdropOpacity
+              },
+              children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { flex: 1, color: "modal", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_react_native15.TouchableWithoutFeedback, { onPress: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { flex: full ? 0.1 : 1 }) }) })
+            }
+          ),
+          enableSwipeToClose ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+            import_react_native_gesture_handler.PanGestureHandler,
+            {
+              onGestureEvent,
+              onHandlerStateChange,
+              activeOffsetY: 10,
+              children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+                import_react_native15.Animated.View,
+                {
+                  style: {
+                    transform: [
+                      { translateY: import_react_native15.Animated.add(translateY, sheetTranslateY) }
+                    ],
+                    ...full ? {
+                      flex: 1,
+                      paddingTop: height * 0.1
                     } : {
                       position: "absolute",
                       bottom: 0,
                       left: 0,
                       right: 0,
                       maxHeight: height * 0.9
-                    },
-                    children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { onTouchEnd: closeFunc, pv: 10, pb: 25, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { width: 50, height: 4, color: "medium", br: 3, align: "center" }) }),
-                      showCloseBtn && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { absolute: true, right: 10, top: 10, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(TouchableOpacity_default, { onPress: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { size: 32, br: 32 / 2, fd: "flex-center", color: "shade", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Svg_default, { icon: cancel, size: 10, color: "text" }) }) }) }),
-                      children,
-                      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { height: bottom + 10 })
-                    ]
-                  }
-                )
-              }
-            )
-          }
-        ) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
-          import_react_native15.Animated.View,
-          {
-            style: {
-              transform: [{ translateY: sheetTranslateY }],
-              ...full ? {
-                flex: 1,
-                paddingTop: height * 0.1
-              } : {
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                maxHeight: height * 0.9
-              }
-            },
-            children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
-              View_default,
-              {
-                color: "background",
-                btrr: 22,
-                btlr: 22,
-                style: full ? {
-                  flex: 1
+                    }
+                  },
+                  children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+                    View_default,
+                    {
+                      color: "background",
+                      btrr: 22,
+                      btlr: 22,
+                      style: full ? {
+                        flex: 1
+                      } : {
+                        position: "absolute",
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        maxHeight: height * 0.9
+                      },
+                      children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { onTouchEnd: closeFunc, pv: 10, pb: 25, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { width: 50, height: 4, color: "medium", br: 3, align: "center" }) }),
+                        showCloseBtn && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { absolute: true, right: 10, top: 10, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(TouchableOpacity_default, { onPress: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { size: 32, br: 32 / 2, fd: "flex-center", color: "shade", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Svg_default, { icon: cancel, size: 10, color: "text" }) }) }) }),
+                        children,
+                        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { height: bottom + 10 })
+                      ]
+                    }
+                  )
+                }
+              )
+            }
+          ) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+            import_react_native15.Animated.View,
+            {
+              style: {
+                transform: [{ translateY: sheetTranslateY }],
+                ...full ? {
+                  flex: 1,
+                  paddingTop: height * 0.1
                 } : {
                   position: "absolute",
                   bottom: 0,
                   left: 0,
                   right: 0,
                   maxHeight: height * 0.9
-                },
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { pv: 10, pb: 25, onTouchStart: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { width: 50, height: 4, color: "medium", br: 3, align: "center" }) }),
-                  showCloseBtn && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { absolute: true, right: 10, top: 10, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(TouchableOpacity_default, { onPress: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { size: 32, br: 32 / 2, fd: "flex-center", color: "shade", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Svg_default, { icon: cancel, size: 10, color: "text" }) }) }) }),
-                  children,
-                  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { height: bottom + 10 })
-                ]
-              }
-            )
-          }
-        )
-      ] }) }) })
-    }
-  ) });
+                }
+              },
+              children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+                View_default,
+                {
+                  color: "background",
+                  btrr: 22,
+                  btlr: 22,
+                  style: full ? {
+                    flex: 1
+                  } : {
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    maxHeight: height * 0.9
+                  },
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { pv: 10, pb: 25, onTouchStart: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { width: 50, height: 4, color: "medium", br: 3, align: "center" }) }),
+                    showCloseBtn && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { absolute: true, right: 10, top: 10, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(TouchableOpacity_default, { onPress: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { size: 32, br: 32 / 2, fd: "flex-center", color: "shade", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Svg_default, { icon: cancel, size: 10, color: "text" }) }) }) }),
+                    children,
+                    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { height: bottom + 10 })
+                  ]
+                }
+              )
+            }
+          )
+        ] }) }) })
+      }
+    )
+  ] });
 };
 var Modal_default = Modal3;
 
