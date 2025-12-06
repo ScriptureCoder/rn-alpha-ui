@@ -47,9 +47,11 @@ __export(index_exports, {
   ColorProvider: () => ColorProvider,
   DateSelect: () => DateSelect_default,
   DateTimeInput: () => DateTimeInput_default,
+  EmptyState: () => EmptyState_default,
   ErrorMessage: () => import_formik.ErrorMessage,
   ErrorText: () => ErrorText_default,
   ErrorView: () => ErrorView_default,
+  FabButton: () => FabButton_default,
   Field: () => import_formik.Field,
   FlatList: () => FlatList_default,
   Form: () => import_formik.Form,
@@ -4503,6 +4505,7 @@ var TextInput4 = import_react19.default.forwardRef((props, ref) => {
     br,
     flex,
     error,
+    style,
     ...others
   } = props;
   return /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(View_default, { mt, children: [
@@ -4512,7 +4515,7 @@ var TextInput4 = import_react19.default.forwardRef((props, ref) => {
       {
         ref,
         onChangeText,
-        style: {
+        style: [style, {
           flex,
           borderWidth: bw,
           borderTopWidth: btw,
@@ -4527,9 +4530,9 @@ var TextInput4 = import_react19.default.forwardRef((props, ref) => {
           maxHeight: maxH,
           minHeight: minH,
           fontSize: size,
-          fontFamily: `Poppins-${weight || "Regular"}`,
+          // fontFamily:`Nunito-${weight||'Regular'}`,
           borderRadius: br
-        },
+        }],
         placeholder,
         placeholderTextColor: colors.placeholder,
         ...others
@@ -4766,6 +4769,41 @@ var ErrorView = (props) => {
 };
 var ErrorView_default = ErrorView;
 
+// src/rn-alpha/custom/EmptyState.tsx
+var import_jsx_runtime41 = require("react/jsx-runtime");
+var EmptyState = (props) => {
+  const {
+    icon,
+    iconSize,
+    text,
+    btn,
+    mt
+  } = props;
+  return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(View_default, { maxW: 300, gap: 24, fd: "col-center", align: "center", mv: 40, mt, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(Svg_default, { icon, size: iconSize || 96, color: "medium" }),
+    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(Text_default, { size: 13, color: "medium", align: "center", children: text }),
+    btn && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+      Button_default,
+      {
+        title: btn.title,
+        size: 13,
+        onPress: btn.onPress,
+        ph: 24
+      }
+    )
+  ] });
+};
+var EmptyState_default = EmptyState;
+
+// src/rn-alpha/custom/FabButton.tsx
+var import_react_native30 = require("react-native");
+var import_jsx_runtime42 = require("react/jsx-runtime");
+var FabButton = (props) => {
+  const { icon, bottom, onPress, text, size } = props;
+  return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(View_default, { position: "absolute", right: 20, bottom: bottom || 35, overflow: "hidden", children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_react_native30.TouchableWithoutFeedback, { onPress, children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(View_default, { size: 55, br: 16, color: "primary", fd: "flex-center", ph: text ? 20 : 0, zIndex: 1, children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(Svg_default, { icon, size: size || 18, color: "light" }) }) }) });
+};
+var FabButton_default = FabButton;
+
 // src/hooks/use-page-config.ts
 var import_react_native_safe_area_context5 = require("react-native-safe-area-context");
 var usePageConfig = (options) => {
@@ -4799,9 +4837,11 @@ var import_formik = require("formik");
   ColorProvider,
   DateSelect,
   DateTimeInput,
+  EmptyState,
   ErrorMessage,
   ErrorText,
   ErrorView,
+  FabButton,
   Field,
   FlatList,
   Form,

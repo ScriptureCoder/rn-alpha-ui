@@ -4320,6 +4320,7 @@ var TextInput4 = React19.forwardRef((props, ref) => {
     br,
     flex,
     error,
+    style,
     ...others
   } = props;
   return /* @__PURE__ */ jsxs15(View_default, { mt, children: [
@@ -4329,7 +4330,7 @@ var TextInput4 = React19.forwardRef((props, ref) => {
       {
         ref,
         onChangeText,
-        style: {
+        style: [style, {
           flex,
           borderWidth: bw,
           borderTopWidth: btw,
@@ -4344,9 +4345,9 @@ var TextInput4 = React19.forwardRef((props, ref) => {
           maxHeight: maxH,
           minHeight: minH,
           fontSize: size,
-          fontFamily: `Poppins-${weight || "Regular"}`,
+          // fontFamily:`Nunito-${weight||'Regular'}`,
           borderRadius: br
-        },
+        }],
         placeholder,
         placeholderTextColor: colors.placeholder,
         ...others
@@ -4406,12 +4407,12 @@ var OtpInput = (props) => {
 var OtpInput_default = OtpInput;
 
 // src/rn-alpha/custom/Menu.tsx
-import { useState as useState9 } from "react";
+import { useState as useState10 } from "react";
 import { Menu as Component, MenuItem } from "react-native-material-menu";
 import { Fragment as Fragment15, jsx as jsx37 } from "react/jsx-runtime";
 var Menu = (props) => {
   const { anchor, options, color, pressColor } = props;
-  const [modal, setModal] = useState9(false);
+  const [modal, setModal] = useState10(false);
   const { colors } = use_color_default();
   return /* @__PURE__ */ jsx37(Fragment15, { children: /* @__PURE__ */ jsx37(
     Component,
@@ -4547,7 +4548,7 @@ var LinearGradientComponent = ({
 var Gradient_default = LinearGradientComponent;
 
 // src/rn-alpha/custom/TabButton.tsx
-import { useState as useState10 } from "react";
+import { useState as useState11 } from "react";
 import { jsx as jsx39 } from "react/jsx-runtime";
 var TabButton = (props) => {
   const {
@@ -4562,7 +4563,7 @@ var TabButton = (props) => {
     activeColor,
     activeTextColor
   } = props;
-  const [tab, setTab] = useState10(index || 0);
+  const [tab, setTab] = useState11(index || 0);
   return /* @__PURE__ */ jsx39(View_default, { ph: ph || 15, mt: mt || 5, children: /* @__PURE__ */ jsx39(View_default, { color: color || "shade", p: 3, br: 20, fd: "flex-row", bc: bc || "border", bw: 0.5, overflow: "hidden", children: options.map((title, i) => /* @__PURE__ */ jsx39(View_default, { flex: 1, color: tab === i ? activeColor || "primary" : "", br: 20, children: /* @__PURE__ */ jsx39(TouchableOpacity_default, { onPress: () => {
     setTab(i);
     onTabPress(i);
@@ -4582,6 +4583,41 @@ var ErrorView = (props) => {
   ] }) }) });
 };
 var ErrorView_default = ErrorView;
+
+// src/rn-alpha/custom/EmptyState.tsx
+import { jsx as jsx41, jsxs as jsxs17 } from "react/jsx-runtime";
+var EmptyState = (props) => {
+  const {
+    icon,
+    iconSize,
+    text,
+    btn,
+    mt
+  } = props;
+  return /* @__PURE__ */ jsxs17(View_default, { maxW: 300, gap: 24, fd: "col-center", align: "center", mv: 40, mt, children: [
+    /* @__PURE__ */ jsx41(Svg_default, { icon, size: iconSize || 96, color: "medium" }),
+    /* @__PURE__ */ jsx41(Text_default, { size: 13, color: "medium", align: "center", children: text }),
+    btn && /* @__PURE__ */ jsx41(
+      Button_default,
+      {
+        title: btn.title,
+        size: 13,
+        onPress: btn.onPress,
+        ph: 24
+      }
+    )
+  ] });
+};
+var EmptyState_default = EmptyState;
+
+// src/rn-alpha/custom/FabButton.tsx
+import { TouchableWithoutFeedback as TouchableWithoutFeedback7 } from "react-native";
+import { jsx as jsx42 } from "react/jsx-runtime";
+var FabButton = (props) => {
+  const { icon, bottom, onPress, text, size } = props;
+  return /* @__PURE__ */ jsx42(View_default, { position: "absolute", right: 20, bottom: bottom || 35, overflow: "hidden", children: /* @__PURE__ */ jsx42(TouchableWithoutFeedback7, { onPress, children: /* @__PURE__ */ jsx42(View_default, { size: 55, br: 16, color: "primary", fd: "flex-center", ph: text ? 20 : 0, zIndex: 1, children: /* @__PURE__ */ jsx42(Svg_default, { icon, size: size || 18, color: "light" }) }) }) });
+};
+var FabButton_default = FabButton;
 
 // src/hooks/use-page-config.ts
 import { useSafeAreaInsets as useSafeAreaInsets3 } from "react-native-safe-area-context";
@@ -4615,9 +4651,11 @@ export {
   ColorProvider,
   DateSelect_default as DateSelect,
   DateTimeInput_default as DateTimeInput,
+  EmptyState_default as EmptyState,
   ErrorMessage,
   ErrorText_default as ErrorText,
   ErrorView_default as ErrorView,
+  FabButton_default as FabButton,
   Field,
   FlatList_default as FlatList,
   Form,

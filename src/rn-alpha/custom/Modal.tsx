@@ -128,7 +128,7 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
 
     return (
         <>
-            {modal&&(
+            {modal&&!ios&&(
                 <View bottom={0} insetX={0} height={bottom+10} color={"background"} zIndex={1}/>
             )}
             <Mod

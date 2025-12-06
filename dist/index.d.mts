@@ -1066,7 +1066,8 @@ type IconButtonProps = {
 declare const IconBtn: React.FC<IconButtonProps>;
 
 type Props = {
-    onChangeText?: (value: any) => void;
+    ref?: any;
+    onChangeText: (value: any) => void;
     bbw?: number;
     btw?: number;
     bw?: number;
@@ -1075,18 +1076,19 @@ type Props = {
     pv?: number;
     ph?: number;
     pt?: number;
+    placeholder?: string;
     label?: string;
     mt?: number;
     maxH?: number;
     minH?: number;
     size?: number;
     weight?: Weight;
-    color?: ColorProps | string;
+    color?: ColorProps;
     br?: number;
-    error?: string;
+    error?: any;
     flex?: number;
 };
-declare const TextInput: React.ForwardRefExoticComponent<Props & TextInputProps & React.RefAttributes<TextInput$1>>;
+declare const TextInput: React.FC<Props & TextInputProps>;
 
 type OtpInputProps = {
     setCode: (value: string) => void;
@@ -1179,6 +1181,27 @@ type ErrorViewProps = {
     mt?: number;
 };
 declare const ErrorView: React.FC<ErrorViewProps>;
+
+type EmptyStateProps = {
+    icon: string;
+    text: string;
+    iconSize?: number;
+    btn?: {
+        title: string;
+        onPress: () => void;
+    };
+    mt?: number;
+};
+declare const EmptyState: React.FC<EmptyStateProps>;
+
+type FabButtonProps = {
+    icon: any;
+    bottom?: number;
+    onPress: () => void;
+    text?: string;
+    size?: number;
+};
+declare const FabButton: React.FC<FabButtonProps>;
 
 type ComponentProps = {
     Text?: Record<string, any>;
@@ -1435,4 +1458,4 @@ declare const backspace = "\n    <svg viewBox=\"0 0 26 26\" fill=\"none\" xmlns=
 
 declare function money(num: number, decimal: number): string;
 
-export { AlertModal, type AlphaUIContextValue, AlphaUIProvider, type AlphaUIProviderProps, Button, Checkbox, type ColorModes, ColorProvider, type ColorProviderProps, type ComponentProps, DateSelect, DateTimeInput, ErrorText, ErrorView, FlatList, IconBtn as IconButton, Image, ImageBackground, Input, KEY, KeyboardView, Label, LinearGradientComponent as LinearGradient, Loader, LoadingDots, Menu, Modal, type ModalProps, NumPadKeyboard, OptionModal, OtpInput, Page, Password, Preloader, ProgressBar, SafeAreaView, ScrollView, SearchInput, Select, Svg, Switch, TabButton, Text, TextInput, TouchableHighlight, TouchableNativeFeedback, TouchableOpacity, type UIContextValue, UIProvider, type UIProviderProps, View, type Weight, add, addUser, arrow, arrowBottom, arrowDown, arrowLeft, arrowRight, arrowUp, backspace, backward, bank, bell, bill, blue, bolt, book, calendar, calender, call, camera, cancel, card, category, chart, chat, check, checkCircle, chevronBack, chevronDown, chevronRight, clock, comment, configureComponentProps, contact, copy, download, editNote, ellipsis, ellipsisH, exchange, exit, eye, eyeOff, filter, fingerprint, folder, forward, getComponentProps, globe, hand, headset, info, interest, like, liked, link, list, location, lock, locked, meeting, member, members, mention, mic, micLive, micOff, money, newMessage, noteIcon, notification, only, pen, people, person, picture, pin, playIcon, plus, plusd, post, privacy, reaction, read, refresh, repeat, reply, resetComponentProps, savings, scope, search, selectToggle, send, settings, share, star, success, sun, target, thumbUp, trash, useAlphaUIContext, useColor, useColorContext, useDimensions, usePageConfig, useUIContext, user, users, video, volume };
+export { AlertModal, type AlphaUIContextValue, AlphaUIProvider, type AlphaUIProviderProps, Button, Checkbox, type ColorModes, ColorProvider, type ColorProviderProps, type ComponentProps, DateSelect, DateTimeInput, EmptyState, ErrorText, ErrorView, FabButton, FlatList, IconBtn as IconButton, Image, ImageBackground, Input, KEY, KeyboardView, Label, LinearGradientComponent as LinearGradient, Loader, LoadingDots, Menu, Modal, type ModalProps, NumPadKeyboard, OptionModal, OtpInput, Page, Password, Preloader, ProgressBar, SafeAreaView, ScrollView, SearchInput, Select, Svg, Switch, TabButton, Text, TextInput, TouchableHighlight, TouchableNativeFeedback, TouchableOpacity, type UIContextValue, UIProvider, type UIProviderProps, View, type Weight, add, addUser, arrow, arrowBottom, arrowDown, arrowLeft, arrowRight, arrowUp, backspace, backward, bank, bell, bill, blue, bolt, book, calendar, calender, call, camera, cancel, card, category, chart, chat, check, checkCircle, chevronBack, chevronDown, chevronRight, clock, comment, configureComponentProps, contact, copy, download, editNote, ellipsis, ellipsisH, exchange, exit, eye, eyeOff, filter, fingerprint, folder, forward, getComponentProps, globe, hand, headset, info, interest, like, liked, link, list, location, lock, locked, meeting, member, members, mention, mic, micLive, micOff, money, newMessage, noteIcon, notification, only, pen, people, person, picture, pin, playIcon, plus, plusd, post, privacy, reaction, read, refresh, repeat, reply, resetComponentProps, savings, scope, search, selectToggle, send, settings, share, star, success, sun, target, thumbUp, trash, useAlphaUIContext, useColor, useColorContext, useDimensions, usePageConfig, useUIContext, user, users, video, volume };

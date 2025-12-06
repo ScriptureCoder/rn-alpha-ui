@@ -42,6 +42,8 @@ export { default as LinearGradient } from './custom/Gradient';
 export { default as TabButton } from './custom/TabButton';
 export { default as LoadingDots } from './custom/LoadingDots';
 export { default as ErrorView } from './custom/ErrorView';
+export { default as EmptyState } from './custom/EmptyState';
+export { default as FabButton } from './custom/FabButton';
 
 export { default as useColor } from 'hooks/use-color.ts';
 export { default as useDimensions } from 'hooks/use-dimensions.ts';
