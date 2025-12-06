@@ -3299,7 +3299,7 @@ var Modal3 = (props) => {
   };
   const { bottom } = use_dimensions_default();
   return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(import_jsx_runtime16.Fragment, { children: [
-    modal && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { bottom: 0, insetX: 0, height: bottom + 10, color: "background", zIndex: 1 }),
+    modal && !ios && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { bottom: 0, insetX: 0, height: bottom + 10, color: "background", zIndex: 1 }),
     /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
       import_react_native15.Modal,
       {

@@ -3110,7 +3110,7 @@ var Modal3 = (props) => {
   };
   const { bottom } = use_dimensions_default();
   return /* @__PURE__ */ jsxs4(Fragment6, { children: [
-    modal && /* @__PURE__ */ jsx16(View_default, { bottom: 0, insetX: 0, height: bottom + 10, color: "background", zIndex: 1 }),
+    modal && !ios && /* @__PURE__ */ jsx16(View_default, { bottom: 0, insetX: 0, height: bottom + 10, color: "background", zIndex: 1 }),
     /* @__PURE__ */ jsx16(
       Mod,
       {
