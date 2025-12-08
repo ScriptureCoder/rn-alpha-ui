@@ -1293,274 +1293,31 @@ var Image = (props) => {
 var Image_default = Image;
 
 // src/rn-alpha/default/KeyboardView.tsx
-import { useMemo as useMemo3 } from "react";
-
-// src/constants/layout.ts
-import { Dimensions as Dimensions2, Platform, StatusBar } from "react-native";
-var width = Dimensions2.get("window").width;
-var height = Dimensions2.get("window").height;
-var ios = Platform.OS === "ios";
-var android = Platform.OS === "android";
-var isSmallDevice = width < 375;
-var statusHeight = ios ? StatusBar.currentHeight || 42 : 0;
-
-// src/rn-alpha/default/KeyboardView.tsx
-import { KeyboardAvoidingView, Platform as Platform2 } from "react-native";
-import { jsx as jsx11 } from "react/jsx-runtime";
+import Animated4, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
+import { useKeyboardHandler } from "react-native-keyboard-controller";
+import { Fragment as Fragment5, jsx as jsx11 } from "react/jsx-runtime";
 var KeyboardView = (props) => {
-  const { colors } = use_color_default();
-  const {
-    // Layout props
-    w,
-    h,
-    size,
-    flex = 1,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    // Border props
-    br,
-    bc,
-    bw,
-    bbw,
-    btw,
-    blw,
-    brw,
-    brc,
-    blc,
-    btc,
-    bbc,
-    btrr,
-    btlr,
-    bbrr,
-    bblr,
-    bs,
-    // Color props
-    color,
-    backgroundColor,
-    // Animation props
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    skewX,
-    skewY,
-    perspective,
-    // Keyboard props
-    behavior,
-    keyboardVerticalOffset,
-    iosOffset,
-    androidOffset,
-    enabled = true,
-    contentContainerStyle,
-    // Accessibility
-    accessibilityLabel,
-    accessibilityHint,
-    accessibilityRole,
-    // Spacing props
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    // Other props
-    style,
-    children,
-    ...otherProps
-  } = props;
-  const computedStyle = useMemo3(() => {
-    const resolveColor = (colorValue) => {
-      if (!colorValue) return void 0;
-      return colors[colorValue] || colorValue;
-    };
-    let finalWidth = size != null ? size : w;
-    let finalHeight = size != null ? size : h;
-    if (fullWidth) finalWidth = "100%";
-    if (fullHeight) finalHeight = "100%";
-    let centerStyles = {};
-    if (center) {
-      centerStyles = { alignItems: "center", justifyContent: "center" };
-    } else {
-      if (centerX) centerStyles = { ...centerStyles, alignItems: "center" };
-      if (centerY) centerStyles = { ...centerStyles, justifyContent: "center" };
+  const { children } = props;
+  const bottom = useSharedValue(0);
+  useKeyboardHandler({
+    onStart: (e) => {
+      "worklet";
+      bottom.value = withTiming(e.height);
     }
-    let finalPadding = padding != null ? padding : p;
-    let finalMargin = margin != null ? margin : m;
-    const transform = [];
-    if (scale) transform.push({ scale });
-    if (translateX) transform.push({ translateX });
-    if (translateY) transform.push({ translateY });
-    if (rotate) transform.push({ rotate: `${rotate}deg` });
-    if (skewX) transform.push({ skewX: `${skewX}deg` });
-    if (skewY) transform.push({ skewY: `${skewY}deg` });
-    let finalOpacity = opacity;
-    if (hidden) finalOpacity = 0;
-    if (visible) finalOpacity = 1;
-    if (disabled) finalOpacity = 0.5;
-    let finalPosition = void 0;
-    if (absolute) finalPosition = "absolute";
-    if (relative) finalPosition = "relative";
-    const viewStyle = {
-      flex,
-      width: finalWidth,
-      // Cast to any to handle string values like '100%'
-      height: finalHeight,
-      // Cast to any to handle string values like '100%'
-      borderRadius: br,
-      backgroundColor: resolveColor(backgroundColor),
-      ...centerStyles,
-      // Spacing
-      padding: finalPadding,
-      // Cast to any to handle string values
-      margin: finalMargin,
-      // Cast to any to handle string values
-      marginTop: mt,
-      marginBottom: mb,
-      marginRight: mr,
-      marginLeft: ml,
-      marginHorizontal: mh,
-      marginVertical: mv,
-      paddingTop: pt,
-      paddingBottom: pb,
-      paddingVertical: pv != null ? pv : py,
-      paddingHorizontal: ph != null ? ph : px,
-      paddingLeft: pl,
-      paddingRight: pr,
-      // Position
-      position: finalPosition,
-      // Border
-      borderWidth: bw,
-      borderBottomWidth: bbw,
-      borderTopWidth: btw,
-      borderLeftWidth: blw,
-      borderRightWidth: brw,
-      borderColor: resolveColor(bc),
-      borderRightColor: resolveColor(brc),
-      borderLeftColor: resolveColor(blc),
-      borderTopColor: resolveColor(btc),
-      borderBottomColor: resolveColor(bbc),
-      borderTopRightRadius: btrr,
-      borderTopLeftRadius: btlr,
-      borderBottomLeftRadius: bblr,
-      borderBottomRightRadius: bbrr,
-      borderStyle: bs,
-      // Animation
-      opacity: finalOpacity,
-      transform: transform.length > 0 ? transform : void 0
-    };
-    return viewStyle;
-  }, [
-    w,
-    h,
-    size,
-    flex,
-    fullWidth,
-    fullHeight,
-    center,
-    centerX,
-    centerY,
-    absolute,
-    relative,
-    hidden,
-    visible,
-    disabled,
-    br,
-    bc,
-    bw,
-    bbw,
-    btw,
-    blw,
-    brw,
-    brc,
-    blc,
-    btc,
-    bbc,
-    btrr,
-    btlr,
-    bbrr,
-    bblr,
-    bs,
-    color,
-    backgroundColor,
-    opacity,
-    scale,
-    rotate,
-    translateX,
-    translateY,
-    skewX,
-    skewY,
-    perspective,
-    padding,
-    p,
-    margin,
-    m,
-    mt,
-    mb,
-    mh,
-    ml,
-    mr,
-    mv,
-    pb,
-    ph,
-    pl,
-    pv,
-    pt,
-    pr,
-    px,
-    py,
-    colors
-  ]);
-  const keyboardBehavior = useMemo3(() => {
-    if (behavior) return behavior;
-    return ios ? "padding" : "height";
-  }, [behavior, ios]);
-  const keyboardOffset = useMemo3(() => {
-    if (keyboardVerticalOffset !== void 0) return keyboardVerticalOffset;
-    if (ios && iosOffset !== void 0) return iosOffset;
-    if (Platform2.OS === "android" && androidOffset !== void 0) return androidOffset;
-    return ios ? iosOffset || 0 : 30;
-  }, [keyboardVerticalOffset, iosOffset, androidOffset, ios]);
-  return /* @__PURE__ */ jsx11(
-    KeyboardAvoidingView,
-    {
-      ...otherProps,
-      behavior: keyboardBehavior,
-      style: [computedStyle, style],
-      enabled,
-      keyboardVerticalOffset: keyboardOffset,
-      contentContainerStyle,
-      accessibilityLabel,
-      accessibilityHint,
-      accessibilityRole,
-      children
-    }
-  );
+    /*onEnd: () => {
+        'worklet'; // <--- REQUIRED
+        bottom.value = withTiming(0);
+    }*/
+  });
+  const footerStyle = useAnimatedStyle(() => ({
+    paddingBottom: bottom.value
+  }));
+  return /* @__PURE__ */ jsx11(Fragment5, { children: /* @__PURE__ */ jsx11(Animated4.View, { style: [{ flex: 1 }, footerStyle], children }) });
 };
 var KeyboardView_default = KeyboardView;
 
 // src/rn-alpha/default/ImageBackground.tsx
-import { useMemo as useMemo4 } from "react";
+import { useMemo as useMemo3 } from "react";
 import { ImageBackground as Parent4 } from "react-native";
 import { jsx as jsx12 } from "react/jsx-runtime";
 var ImageBackground = (props) => {
@@ -1658,7 +1415,7 @@ var ImageBackground = (props) => {
     children,
     ...otherProps
   } = props;
-  const computedStyle = useMemo4(() => {
+  const computedStyle = useMemo3(() => {
     const resolveColor = (colorValue) => {
       if (!colorValue) return void 0;
       return colors[colorValue] || colorValue;
@@ -1841,7 +1598,7 @@ var ImageBackground = (props) => {
 var ImageBackground_default = ImageBackground;
 
 // src/rn-alpha/custom/AlertModal.tsx
-import { useMemo as useMemo5 } from "react";
+import { useMemo as useMemo4 } from "react";
 import { Modal } from "react-native";
 import { jsx as jsx13, jsxs } from "react/jsx-runtime";
 var AlertModal = (props) => {
@@ -1950,26 +1707,26 @@ var AlertModal = (props) => {
     style,
     ...otherProps
   } = props;
-  const closeFunc = useMemo5(() => {
+  const closeFunc = useMemo4(() => {
     return () => {
       setModal(false);
     };
   }, [setModal]);
-  const backdropStyle = useMemo5(() => {
+  const backdropStyle = useMemo4(() => {
     const backdropColorValue = backdropColor ? colors[backdropColor] || backdropColor : colors.modal;
     return {
       backgroundColor: backdropColorValue,
       opacity: backdropOpacity
     };
   }, [backdropColor, backdropOpacity, colors]);
-  const computedContentStyle = useMemo5(() => {
+  const computedContentStyle = useMemo4(() => {
     return {
       maxWidth: 400,
       flex: 1,
       ...contentStyle
     };
   }, [contentStyle]);
-  const computedTitleStyle = useMemo5(() => {
+  const computedTitleStyle = useMemo4(() => {
     return {
       fontSize: 16,
       fontWeight: "600",
@@ -1977,14 +1734,14 @@ var AlertModal = (props) => {
       ...titleStyle
     };
   }, [titleStyle]);
-  const computedTextStyle = useMemo5(() => {
+  const computedTextStyle = useMemo4(() => {
     return {
       fontSize: 13,
       textAlign: "center",
       ...textStyle
     };
   }, [textStyle]);
-  const computedButtonContainerStyle = useMemo5(() => {
+  const computedButtonContainerStyle = useMemo4(() => {
     return {
       gap: 12,
       ...buttonContainerStyle
@@ -2003,7 +1760,7 @@ var AlertModal = (props) => {
     closeFunc();
     onCancel == null ? void 0 : onCancel();
   };
-  const modalContent = useMemo5(() => {
+  const modalContent = useMemo4(() => {
     if (customContent) {
       return customContent;
     }
@@ -2079,7 +1836,7 @@ var AlertModal = (props) => {
 var AlertModal_default = AlertModal;
 
 // src/rn-alpha/custom/OptionModal.tsx
-import { useMemo as useMemo6 } from "react";
+import { useMemo as useMemo5 } from "react";
 import { Modal as Modal2 } from "react-native";
 import { jsx as jsx14, jsxs as jsxs2 } from "react/jsx-runtime";
 var OptionModal = (props) => {
@@ -2186,19 +1943,19 @@ var OptionModal = (props) => {
     style,
     ...otherProps
   } = props;
-  const closeFunc = useMemo6(() => {
+  const closeFunc = useMemo5(() => {
     return () => {
       setModal(false);
     };
   }, [setModal]);
-  const backdropStyle = useMemo6(() => {
+  const backdropStyle = useMemo5(() => {
     const backdropColorValue = backdropColor ? colors[backdropColor] || backdropColor : colors.modal;
     return {
       backgroundColor: backdropColorValue,
       opacity: backdropOpacity
     };
   }, [backdropColor, backdropOpacity, colors]);
-  const computedContentStyle = useMemo6(() => {
+  const computedContentStyle = useMemo5(() => {
     return {
       maxWidth: maxWidth || 400,
       minWidth: minWidth || 280,
@@ -2207,7 +1964,7 @@ var OptionModal = (props) => {
       ...contentStyle
     };
   }, [maxWidth, minWidth, maxHeight, minHeight, contentStyle]);
-  const computedOptionStyle = useMemo6(() => {
+  const computedOptionStyle = useMemo5(() => {
     return {
       flexDirection: "row",
       alignItems: "center",
@@ -2217,13 +1974,13 @@ var OptionModal = (props) => {
       ...optionStyle
     };
   }, [optionStyle]);
-  const computedOptionTextStyle = useMemo6(() => {
+  const computedOptionTextStyle = useMemo5(() => {
     return {
       fontSize: 13,
       ...optionTextStyle
     };
   }, [optionTextStyle]);
-  const computedOptionIconStyle = useMemo6(() => {
+  const computedOptionIconStyle = useMemo5(() => {
     return {
       width: 40,
       height: 40,
@@ -2246,7 +2003,7 @@ var OptionModal = (props) => {
       closeFunc();
     }
   };
-  const optionsList = useMemo6(() => {
+  const optionsList = useMemo5(() => {
     if (customContent) {
       return customContent;
     }
@@ -2343,10 +2100,10 @@ var OptionModal = (props) => {
 var OptionModal_default = OptionModal;
 
 // src/rn-alpha/custom/Page.tsx
-import { useMemo as useMemo7 } from "react";
-import { StatusBar as StatusBar2, Platform as Platform3 } from "react-native";
+import { useMemo as useMemo6 } from "react";
+import { StatusBar, Platform } from "react-native";
 import { useSafeAreaInsets as useSafeAreaInsets2 } from "react-native-safe-area-context";
-import { Fragment as Fragment5, jsx as jsx15, jsxs as jsxs3 } from "react/jsx-runtime";
+import { Fragment as Fragment6, jsx as jsx15, jsxs as jsxs3 } from "react/jsx-runtime";
 var Page = ({
   children,
   statusBarStyle,
@@ -2370,7 +2127,7 @@ var Page = ({
 }) => {
   const { colors, colorMode } = use_color_default();
   const insets = useSafeAreaInsets2();
-  const resolvedStatusColor = useMemo7(() => {
+  const resolvedStatusColor = useMemo6(() => {
     if (statusBarColor) {
       return typeof statusBarColor === "string" && colors[statusBarColor] ? colors[statusBarColor] : statusBarColor;
     }
@@ -2379,7 +2136,7 @@ var Page = ({
     }
     return typeof color === "string" && colors[color] ? colors[color] : void 0;
   }, [statusBarColor, color, colors, edgeToEdge]);
-  const inferredStatusStyle = useMemo7(() => {
+  const inferredStatusStyle = useMemo6(() => {
     if (statusTextColor === "light") return "light-content";
     if (statusTextColor === "dark") return "dark-content";
     if (statusTextColor) return statusTextColor;
@@ -2388,7 +2145,7 @@ var Page = ({
     }
     return colorMode === "dark" ? "light-content" : "dark-content";
   }, [statusTextColor, colorMode, edgeToEdge, resolvedStatusColor]);
-  const safeAreaPadding = useMemo7(() => {
+  const safeAreaPadding = useMemo6(() => {
     var _a, _b, _c, _d;
     if (safeAreaMode === "none") return {};
     if (safeAreaMode === "manual" && customInsets) {
@@ -2407,13 +2164,13 @@ var Page = ({
     };
   }, [safeAreaMode, customInsets, insets, pt, pb, pl, pr]);
   const barStyle = statusBarStyle != null ? statusBarStyle : inferredStatusStyle;
-  return /* @__PURE__ */ jsxs3(Fragment5, { children: [
+  return /* @__PURE__ */ jsxs3(Fragment6, { children: [
     /* @__PURE__ */ jsx15(
-      StatusBar2,
+      StatusBar,
       {
         translucent: statusBarTranslucent,
         barStyle,
-        backgroundColor: Platform3.OS === "android" ? resolvedStatusColor : void 0
+        backgroundColor: Platform.OS === "android" ? resolvedStatusColor : void 0
       }
     ),
     /* @__PURE__ */ jsx15(
@@ -2433,8 +2190,17 @@ var Page_default = Page;
 
 // src/rn-alpha/custom/Modal.tsx
 import { useRef, useEffect as useEffect3 } from "react";
-import { TouchableWithoutFeedback, Modal as Mod, Animated as Animated4, Dimensions as Dimensions3, StyleSheet } from "react-native";
+import { TouchableWithoutFeedback, Modal as Mod, Animated as Animated5, Dimensions as Dimensions3, StyleSheet } from "react-native";
 import { PanGestureHandler, State, GestureHandlerRootView } from "react-native-gesture-handler";
+
+// src/constants/layout.ts
+import { Dimensions as Dimensions2, Platform as Platform2, StatusBar as StatusBar2 } from "react-native";
+var width = Dimensions2.get("window").width;
+var height = Dimensions2.get("window").height;
+var ios = Platform2.OS === "ios";
+var android = Platform2.OS === "android";
+var isSmallDevice = width < 375;
+var statusHeight = ios ? StatusBar2.currentHeight || 42 : 0;
 
 // src/assets/icons/index.ts
 var check = `
@@ -3016,21 +2782,21 @@ var backspace = `
 `;
 
 // src/rn-alpha/custom/Modal.tsx
-import { Fragment as Fragment6, jsx as jsx16, jsxs as jsxs4 } from "react/jsx-runtime";
+import { Fragment as Fragment7, jsx as jsx16, jsxs as jsxs4 } from "react/jsx-runtime";
 var Modal3 = (props) => {
   const { modal, setModal, onClose, full, children, enableSwipeToClose = true, showCloseBtn } = props;
-  const translateY = useRef(new Animated4.Value(0)).current;
-  const sheetTranslateY = useRef(new Animated4.Value(full ? 0 : height)).current;
-  const backdropOpacity = useRef(new Animated4.Value(0)).current;
+  const translateY = useRef(new Animated5.Value(0)).current;
+  const sheetTranslateY = useRef(new Animated5.Value(full ? 0 : height)).current;
+  const backdropOpacity = useRef(new Animated5.Value(0)).current;
   const screenHeight = Dimensions3.get("window").height;
   const closeFunc = () => {
-    Animated4.parallel([
-      Animated4.timing(sheetTranslateY, {
+    Animated5.parallel([
+      Animated5.timing(sheetTranslateY, {
         toValue: height,
         duration: 250,
         useNativeDriver: true
       }),
-      Animated4.timing(backdropOpacity, {
+      Animated5.timing(backdropOpacity, {
         toValue: 0,
         duration: 250,
         useNativeDriver: true
@@ -3043,13 +2809,13 @@ var Modal3 = (props) => {
   useEffect3(() => {
     if (modal) {
       translateY.setValue(0);
-      Animated4.parallel([
-        Animated4.timing(sheetTranslateY, {
+      Animated5.parallel([
+        Animated5.timing(sheetTranslateY, {
           toValue: 0,
           duration: 300,
           useNativeDriver: true
         }),
-        Animated4.timing(backdropOpacity, {
+        Animated5.timing(backdropOpacity, {
           toValue: 1,
           duration: 300,
           useNativeDriver: true
@@ -3075,14 +2841,14 @@ var Modal3 = (props) => {
         if (translationY > 80 || velocityY > 300) {
           closeFunc();
         } else {
-          Animated4.parallel([
-            Animated4.spring(translateY, {
+          Animated5.parallel([
+            Animated5.spring(translateY, {
               toValue: 0,
               useNativeDriver: true,
               tension: 100,
               friction: 8
             }),
-            Animated4.spring(backdropOpacity, {
+            Animated5.spring(backdropOpacity, {
               toValue: 1,
               useNativeDriver: true,
               tension: 100,
@@ -3091,14 +2857,14 @@ var Modal3 = (props) => {
           ]).start();
         }
       } else {
-        Animated4.parallel([
-          Animated4.spring(translateY, {
+        Animated5.parallel([
+          Animated5.spring(translateY, {
             toValue: 0,
             useNativeDriver: true,
             tension: 200,
             friction: 8
           }),
-          Animated4.spring(backdropOpacity, {
+          Animated5.spring(backdropOpacity, {
             toValue: 1,
             useNativeDriver: true,
             tension: 200,
@@ -3109,7 +2875,7 @@ var Modal3 = (props) => {
     }
   };
   const { bottom } = use_dimensions_default();
-  return /* @__PURE__ */ jsxs4(Fragment6, { children: [
+  return /* @__PURE__ */ jsxs4(Fragment7, { children: [
     modal && !ios && /* @__PURE__ */ jsx16(View_default, { bottom: 0, insetX: 0, height: bottom + 10, color: "background", zIndex: 1 }),
     /* @__PURE__ */ jsx16(
       Mod,
@@ -3121,7 +2887,7 @@ var Modal3 = (props) => {
         statusBarTranslucent: true,
         children: /* @__PURE__ */ jsx16(GestureHandlerRootView, { style: { flex: 1 }, children: /* @__PURE__ */ jsx16(KeyboardView_default, { children: /* @__PURE__ */ jsxs4(View_default, { flex: 1, children: [
           /* @__PURE__ */ jsx16(
-            Animated4.View,
+            Animated5.View,
             {
               style: {
                 ...StyleSheet.absoluteFillObject,
@@ -3137,11 +2903,11 @@ var Modal3 = (props) => {
               onHandlerStateChange,
               activeOffsetY: 10,
               children: /* @__PURE__ */ jsx16(
-                Animated4.View,
+                Animated5.View,
                 {
                   style: {
                     transform: [
-                      { translateY: Animated4.add(translateY, sheetTranslateY) }
+                      { translateY: Animated5.add(translateY, sheetTranslateY) }
                     ],
                     ...full ? {
                       flex: 1,
@@ -3181,7 +2947,7 @@ var Modal3 = (props) => {
               )
             }
           ) : /* @__PURE__ */ jsx16(
-            Animated4.View,
+            Animated5.View,
             {
               style: {
                 transform: [{ translateY: sheetTranslateY }],
@@ -3230,26 +2996,26 @@ var Modal_default = Modal3;
 
 // src/rn-alpha/custom/LoadingDots.tsx
 import { useEffect as useEffect4, useRef as useRef2 } from "react";
-import { Animated as Animated5, Easing } from "react-native";
+import { Animated as Animated6, Easing } from "react-native";
 import { jsx as jsx17 } from "react/jsx-runtime";
 var LoadingDots = (props) => {
   const { color, size = 6, duration = 600, count = 3 } = props;
   const { colors } = use_color_default();
   const progress = useRef2(
-    Array.from({ length: count }, () => new Animated5.Value(0))
+    Array.from({ length: count }, () => new Animated6.Value(0))
   ).current;
   useEffect4(() => {
     const animations = progress.map(
-      (value, index) => Animated5.loop(
-        Animated5.sequence([
-          Animated5.delay(index * (duration / count)),
-          Animated5.timing(value, {
+      (value, index) => Animated6.loop(
+        Animated6.sequence([
+          Animated6.delay(index * (duration / count)),
+          Animated6.timing(value, {
             toValue: 1,
             duration: duration / 2,
             easing: Easing.inOut(Easing.ease),
             useNativeDriver: true
           }),
-          Animated5.timing(value, {
+          Animated6.timing(value, {
             toValue: 0,
             duration: duration / 2,
             easing: Easing.inOut(Easing.ease),
@@ -3264,7 +3030,7 @@ var LoadingDots = (props) => {
     };
   }, [progress, duration, count]);
   return /* @__PURE__ */ jsx17(View_default, { fd: "flex-row", children: progress.map((value, index) => /* @__PURE__ */ jsx17(
-    Animated5.View,
+    Animated6.View,
     {
       style: {
         width: size,
@@ -3292,7 +3058,7 @@ var LoadingDots = (props) => {
 var LoadingDots_default = LoadingDots;
 
 // src/rn-alpha/custom/Button.tsx
-import { Fragment as Fragment7, jsx as jsx18, jsxs as jsxs5 } from "react/jsx-runtime";
+import { Fragment as Fragment8, jsx as jsx18, jsxs as jsxs5 } from "react/jsx-runtime";
 var Button = (props) => {
   const { colors } = use_color_default();
   const { componentProps } = useUIContext();
@@ -3321,7 +3087,7 @@ var Button = (props) => {
     loading
   } = mergedProps;
   const disable = disabled || loading;
-  return /* @__PURE__ */ jsx18(Fragment7, { children: /* @__PURE__ */ jsx18(TouchableOpacity_default, { onPress, disabled: disable, children: /* @__PURE__ */ jsxs5(
+  return /* @__PURE__ */ jsx18(Fragment8, { children: /* @__PURE__ */ jsx18(TouchableOpacity_default, { onPress, disabled: disable, children: /* @__PURE__ */ jsxs5(
     View_default,
     {
       mv,
@@ -3475,11 +3241,11 @@ var inputConfig = {
 var InputConfig_default = inputConfig;
 
 // src/rn-alpha/custom/Inputs/Label.tsx
-import { Fragment as Fragment8, jsx as jsx20 } from "react/jsx-runtime";
+import { Fragment as Fragment9, jsx as jsx20 } from "react/jsx-runtime";
 var Label = (props) => {
   const { label, error, focus, value } = props;
   const color = error ? "danger" : focus ? "primary" : "text";
-  return /* @__PURE__ */ jsx20(Fragment8, { children: /* @__PURE__ */ jsx20(View_default, { mb: InputConfig_default.label.spacingBottom, children: /* @__PURE__ */ jsx20(
+  return /* @__PURE__ */ jsx20(Fragment9, { children: /* @__PURE__ */ jsx20(View_default, { mb: InputConfig_default.label.spacingBottom, children: /* @__PURE__ */ jsx20(
     Text_default,
     {
       size: InputConfig_default.label.size,
@@ -3603,7 +3369,7 @@ var Input_default = Input;
 
 // src/rn-alpha/custom/Inputs/NumPadKeyboard.tsx
 import { TouchableWithoutFeedback as TouchableWithoutFeedback2 } from "react-native";
-import { Fragment as Fragment9, jsx as jsx23, jsxs as jsxs7 } from "react/jsx-runtime";
+import { Fragment as Fragment10, jsx as jsx23, jsxs as jsxs7 } from "react/jsx-runtime";
 var NumPadKeyboard = (props) => {
   const { setValue, max, onDone, children } = props;
   const numbers = [
@@ -3612,7 +3378,7 @@ var NumPadKeyboard = (props) => {
     ["7", "8", "9"],
     ["", "0", "Del"]
   ];
-  return /* @__PURE__ */ jsx23(Fragment9, { children: /* @__PURE__ */ jsx23(View_default, { fd: "col-between", gap: 25, children: numbers.map((item, i) => /* @__PURE__ */ jsx23(View_default, { fd: "flex-center", children: item.map((value, i2) => /* @__PURE__ */ jsxs7(View_default, { flex: 1, fd: "flex-center", children: [
+  return /* @__PURE__ */ jsx23(Fragment10, { children: /* @__PURE__ */ jsx23(View_default, { fd: "col-between", gap: 25, children: numbers.map((item, i) => /* @__PURE__ */ jsx23(View_default, { fd: "flex-center", children: item.map((value, i2) => /* @__PURE__ */ jsxs7(View_default, { flex: 1, fd: "flex-center", children: [
     !!value && /* @__PURE__ */ jsx23(TouchableWithoutFeedback2, { onPress: () => {
       if (value === "Del") {
         setValue((pin2) => pin2.slice(0, -1));
@@ -3661,10 +3427,10 @@ import { UIActivityIndicator } from "react-native-indicators";
 
 // src/rn-alpha/custom/Loader.tsx
 import { SkypeIndicator as Animate } from "react-native-indicators";
-import { Fragment as Fragment10, jsx as jsx25, jsxs as jsxs8 } from "react/jsx-runtime";
+import { Fragment as Fragment11, jsx as jsx25, jsxs as jsxs8 } from "react/jsx-runtime";
 var Loader = ({ text, loading, color }) => {
   const { colors } = use_color_default();
-  return /* @__PURE__ */ jsx25(Fragment10, { children: loading && /* @__PURE__ */ jsxs8(View_default, { flex: 1, fd: "col-center", pv: 25, children: [
+  return /* @__PURE__ */ jsx25(Fragment11, { children: loading && /* @__PURE__ */ jsxs8(View_default, { flex: 1, fd: "col-center", pv: 25, children: [
     /* @__PURE__ */ jsx25(Animate, { size: 35, count: 6, color: color || colors.primary }),
     text && /* @__PURE__ */ jsx25(Text_default, { size: 15, mt: 15, color: "text", children: text })
   ] }) });
@@ -3672,7 +3438,7 @@ var Loader = ({ text, loading, color }) => {
 var Loader_default = Loader;
 
 // src/rn-alpha/custom/Inputs/Select.tsx
-import { Fragment as Fragment11, jsx as jsx26, jsxs as jsxs9 } from "react/jsx-runtime";
+import { Fragment as Fragment12, jsx as jsx26, jsxs as jsxs9 } from "react/jsx-runtime";
 var Select = (props) => {
   var _a, _b;
   const {
@@ -3729,7 +3495,7 @@ var Select = (props) => {
     onChange(current);
     setFilter("");
   };
-  return /* @__PURE__ */ jsxs9(Fragment11, { children: [
+  return /* @__PURE__ */ jsxs9(Fragment12, { children: [
     renderSelect ? /* @__PURE__ */ jsx26(TouchableWithoutFeedback3, { disabled, onPress: () => {
       Keyboard.dismiss();
       setModal(true);
@@ -3866,12 +3632,12 @@ var IconBtn = ({
 var IconBtn_default = IconBtn;
 
 // src/rn-alpha/custom/Inputs/SearchInput.tsx
-import { Fragment as Fragment12, jsx as jsx28, jsxs as jsxs10 } from "react/jsx-runtime";
+import { Fragment as Fragment13, jsx as jsx28, jsxs as jsxs10 } from "react/jsx-runtime";
 var SearchInput = (props) => {
   const { filter: filter2, setFilter, placeholder = "Search", style, onSubmit, focus } = props;
   const { colors } = use_color_default();
   const searchField = InputConfig_default.searchField;
-  return /* @__PURE__ */ jsx28(Fragment12, { children: /* @__PURE__ */ jsxs10(
+  return /* @__PURE__ */ jsx28(Fragment13, { children: /* @__PURE__ */ jsxs10(
     View_default,
     {
       br: searchField.radius,
@@ -4184,26 +3950,26 @@ var Password_default = Password;
 
 // src/rn-alpha/custom/Preloader.tsx
 import { useEffect as useEffect7, useRef as useRef3 } from "react";
-import { Animated as Animated6, Easing as Easing2, Modal as Modal4 } from "react-native";
-import { Fragment as Fragment13, jsx as jsx33, jsxs as jsxs14 } from "react/jsx-runtime";
+import { Animated as Animated7, Easing as Easing2, Modal as Modal4 } from "react-native";
+import { Fragment as Fragment14, jsx as jsx33, jsxs as jsxs14 } from "react/jsx-runtime";
 var Preloader = (props) => {
   const { text, title, loading, close, opacity } = props;
   const { colors } = use_color_default();
-  const scaleAnimation = useRef3(new Animated6.Value(1)).current;
+  const scaleAnimation = useRef3(new Animated7.Value(1)).current;
   const loopRef = useRef3(null);
   useEffect7(() => {
     var _a;
     (_a = loopRef.current) == null ? void 0 : _a.stop();
     if (loading) {
-      const loop = Animated6.loop(
-        Animated6.sequence([
-          Animated6.timing(scaleAnimation, {
+      const loop = Animated7.loop(
+        Animated7.sequence([
+          Animated7.timing(scaleAnimation, {
             toValue: 1.5,
             duration: 350,
             easing: Easing2.inOut(Easing2.ease),
             useNativeDriver: true
           }),
-          Animated6.timing(scaleAnimation, {
+          Animated7.timing(scaleAnimation, {
             toValue: 1,
             duration: 350,
             easing: Easing2.inOut(Easing2.ease),
@@ -4226,7 +3992,7 @@ var Preloader = (props) => {
       loopRef.current = null;
     };
   }, [loading, scaleAnimation]);
-  return /* @__PURE__ */ jsx33(Fragment13, { children: /* @__PURE__ */ jsx33(
+  return /* @__PURE__ */ jsx33(Fragment14, { children: /* @__PURE__ */ jsx33(
     Modal4,
     {
       transparent: true,
@@ -4239,7 +4005,7 @@ var Preloader = (props) => {
       children: /* @__PURE__ */ jsx33(View_default, { flex: 1, color: "#1F2021A3", fd: "flex-center", children: /* @__PURE__ */ jsxs14(View_default, { height: 120, position: "absolute", fd: "col-center", opacity, children: [
         /* @__PURE__ */ jsx33(Text_default, { size: 16, color: "text", weight: "Bold", children: title }),
         /* @__PURE__ */ jsx33(
-          Animated6.View,
+          Animated7.View,
           {
             style: {
               transform: [{ scale: scaleAnimation }]
@@ -4255,6 +4021,8 @@ var Preloader = (props) => {
 var Preloader_default = Preloader;
 
 // src/rn-alpha/custom/ProgressBar.tsx
+import { useRef as useRef4, useEffect as useEffect8 } from "react";
+import { Animated as Animated8, Easing as Easing3 } from "react-native";
 import { jsx as jsx34 } from "react/jsx-runtime";
 var clamp = (value) => Math.min(Math.max(value, 0), 1);
 var ProgressBar = ({
@@ -4263,14 +4031,37 @@ var ProgressBar = ({
   background = "shade",
   height: height2 = 6,
   radius,
+  duration = 300,
   style,
   ...spacing
 }) => {
   const { colors } = use_color_default();
   const resolvedProgress = clamp(progress);
   const barRadius = radius != null ? radius : height2 / 2;
+  const animatedProgress = useRef4(new Animated8.Value(resolvedProgress)).current;
+  const animationRef = useRef4(null);
+  useEffect8(() => {
+    var _a;
+    (_a = animationRef.current) == null ? void 0 : _a.stop();
+    animationRef.current = Animated8.timing(animatedProgress, {
+      toValue: resolvedProgress,
+      duration,
+      easing: Easing3.inOut(Easing3.ease),
+      useNativeDriver: false
+    });
+    animationRef.current.start();
+    return () => {
+      var _a2;
+      (_a2 = animationRef.current) == null ? void 0 : _a2.stop();
+      animationRef.current = null;
+    };
+  }, [resolvedProgress, duration, animatedProgress]);
   const resolvedBackground = typeof background === "string" && colors[background] ? colors[background] : background;
   const resolvedColor = typeof color === "string" && colors[color] ? colors[color] : color;
+  const animatedWidth = animatedProgress.interpolate({
+    inputRange: [0, 1],
+    outputRange: ["0%", "100%"]
+  });
   return /* @__PURE__ */ jsx34(
     View_default,
     {
@@ -4280,12 +4071,14 @@ var ProgressBar = ({
       style,
       ...spacing,
       children: /* @__PURE__ */ jsx34(
-        View_default,
+        Animated8.View,
         {
-          color: resolvedColor,
-          h: height2,
-          br: barRadius,
-          style: { width: `${resolvedProgress * 100}%` }
+          style: {
+            backgroundColor: resolvedColor,
+            height: height2,
+            borderRadius: barRadius,
+            width: animatedWidth
+          }
         }
       )
     }
@@ -4361,7 +4154,7 @@ var TextInput_default = TextInput4;
 // src/rn-alpha/custom/Inputs/OtpInput.tsx
 import { OtpInput as Input2 } from "react-native-otp-entry";
 import { Keyboard as Keyboard3 } from "react-native";
-import { Fragment as Fragment14, jsx as jsx36 } from "react/jsx-runtime";
+import { Fragment as Fragment15, jsx as jsx36 } from "react/jsx-runtime";
 var OtpInput = (props) => {
   const { pinCount = 4, setCode, secureTextEntry = true, color } = props;
   const { colors } = use_color_default();
@@ -4369,7 +4162,7 @@ var OtpInput = (props) => {
   const otp = InputConfig_default.otp;
   const cellWidth = pinCount > 4 ? size : otp.width;
   const cellHeight = pinCount > 4 ? size + 5 : otp.height;
-  return /* @__PURE__ */ jsx36(Fragment14, { children: /* @__PURE__ */ jsx36(
+  return /* @__PURE__ */ jsx36(Fragment15, { children: /* @__PURE__ */ jsx36(
     Input2,
     {
       numberOfDigits: pinCount || 6,
@@ -4409,12 +4202,12 @@ var OtpInput_default = OtpInput;
 // src/rn-alpha/custom/Menu.tsx
 import { useState as useState10 } from "react";
 import { Menu as Component, MenuItem } from "react-native-material-menu";
-import { Fragment as Fragment15, jsx as jsx37 } from "react/jsx-runtime";
+import { Fragment as Fragment16, jsx as jsx37 } from "react/jsx-runtime";
 var Menu = (props) => {
   const { anchor, options, color, pressColor } = props;
   const [modal, setModal] = useState10(false);
   const { colors } = use_color_default();
-  return /* @__PURE__ */ jsx37(Fragment15, { children: /* @__PURE__ */ jsx37(
+  return /* @__PURE__ */ jsx37(Fragment16, { children: /* @__PURE__ */ jsx37(
     Component,
     {
       visible: modal,
@@ -4572,10 +4365,10 @@ var TabButton = (props) => {
 var TabButton_default = TabButton;
 
 // src/rn-alpha/custom/ErrorView.tsx
-import { Fragment as Fragment16, jsx as jsx40, jsxs as jsxs16 } from "react/jsx-runtime";
+import { Fragment as Fragment17, jsx as jsx40, jsxs as jsxs16 } from "react/jsx-runtime";
 var ErrorView = (props) => {
   let { error, refetch, mt } = props;
-  return /* @__PURE__ */ jsx40(Fragment16, { children: /* @__PURE__ */ jsx40(View_default, { flex: 1, color: "background", mt, children: /* @__PURE__ */ jsxs16(View_default, { flex: 1, p: 15, children: [
+  return /* @__PURE__ */ jsx40(Fragment17, { children: /* @__PURE__ */ jsx40(View_default, { flex: 1, color: "background", mt, children: /* @__PURE__ */ jsxs16(View_default, { flex: 1, p: 15, children: [
     /* @__PURE__ */ jsx40(View_default, { fd: "col-center", mt: 40, children: /* @__PURE__ */ jsx40(Text_default, { mt: 34, size: 13, color: "medium", children: error }) }),
     refetch && /* @__PURE__ */ jsx40(View_default, { mt: 40, w: 200, align: "center", children: /* @__PURE__ */ jsx40(Button_default, { title: "Try again", pv: 10, onPress: () => {
       refetch == null ? void 0 : refetch();

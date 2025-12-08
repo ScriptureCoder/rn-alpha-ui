@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+import React, { useRef, useEffect } from 'react';
+import { StyleProp, ViewStyle, Animated, Easing } from 'react-native';
 import View, { SpacingProps } from '../default/View';
 import useColor from 'hooks/use-color.ts';
 import { ColorProps } from '../../constants/colors';
@@ -10,6 +10,7 @@ export type ProgressBarProps = SpacingProps & {
   background?: ColorProps | string;
   height?: number;
   radius?: number;
+  duration?: number;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -21,12 +22,33 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   background = 'shade',
   height = 6,
   radius,
+  duration = 300,
   style,
   ...spacing
 }) => {
   const { colors } = useColor();
   const resolvedProgress = clamp(progress);
   const barRadius = radius ?? height / 2;
+  const animatedProgress = useRef(new Animated.Value(resolvedProgress)).current;
+  const animationRef = useRef<Animated.CompositeAnimation | null>(null);
+
+  useEffect(() => {
+    animationRef.current?.stop();
+    
+    animationRef.current = Animated.timing(animatedProgress, {
+      toValue: resolvedProgress,
+      duration,
+      easing: Easing.inOut(Easing.ease),
+      useNativeDriver: false,
+    });
+
+    animationRef.current.start();
+
+    return () => {
+      animationRef.current?.stop();
+      animationRef.current = null;
+    };
+  }, [resolvedProgress, duration, animatedProgress]);
 
   const resolvedBackground =
     typeof background === 'string' && colors[background as ColorProps]
@@ -38,6 +60,11 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
       ? colors[color as ColorProps]
       : color;
 
+  const animatedWidth = animatedProgress.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0%', '100%'],
+  });
+
   return (
     <View
       color={resolvedBackground}
@@ -46,11 +73,13 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
       style={style}
       {...spacing}
     >
-      <View
-        color={resolvedColor}
-        h={height}
-        br={barRadius}
-        style={{ width: `${resolvedProgress * 100}%` }}
+      <Animated.View
+        style={{
+          backgroundColor: resolvedColor,
+          height,
+          borderRadius: barRadius,
+          width: animatedWidth,
+        }}
       />
     </View>
   );

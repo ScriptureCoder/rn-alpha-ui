@@ -7,6 +7,7 @@ import {height, ios} from "constants/layout.ts";
 import KeyboardView from '../default/KeyboardView';
 import {Svg, TouchableOpacity, useDimensions} from "../index.ts";
 import {cancel} from "assets/icons";
+import {ColorProps} from "constants/colors.ts";
 
 type Props = {
     onClose?:()=>void
