@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { StyleProp, ViewStyle, Animated, Easing } from 'react-native';
 import View, { SpacingProps } from '../default/View';
 import useColor from 'hooks/use-color.ts';
-import { ColorProps } from '../../constants/colors';
+import { ColorProps } from 'constants/colors.ts';
 
 export type ProgressBarProps = SpacingProps & {
   progress?: number;
@@ -34,7 +34,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 
   useEffect(() => {
     animationRef.current?.stop();
-    
+
     animationRef.current = Animated.timing(animatedProgress, {
       toValue: resolvedProgress,
       duration,

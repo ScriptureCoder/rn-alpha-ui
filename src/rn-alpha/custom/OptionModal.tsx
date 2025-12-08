@@ -381,7 +381,7 @@ const OptionModal: React.FC<Props> = (props) => {
       style={modalStyle}
     >
       {keyboardAvoidingView ? (
-        <KeyboardView keyboardVerticalOffset={keyboardVerticalOffset}>
+        <KeyboardView>
           <View flex={1} style={backdropStyle} fd={"flex-center"} p={25}>
             {optionsList}
             <View inset={0} onTouchEnd={handleBackdropPress} />

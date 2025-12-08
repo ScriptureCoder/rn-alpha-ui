@@ -1293,8 +1293,9 @@ var Image = (props) => {
 var Image_default = Image;
 
 // src/rn-alpha/default/KeyboardView.tsx
-import Animated4, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
+import { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 import { useKeyboardHandler } from "react-native-keyboard-controller";
+import { Animated as Animated4 } from "react-native";
 import { Fragment as Fragment5, jsx as jsx11 } from "react/jsx-runtime";
 var KeyboardView = (props) => {
   const { children } = props;
@@ -1823,7 +1824,7 @@ var AlertModal = (props) => {
       accessibilityHint,
       accessibilityRole,
       style: modalStyle,
-      children: keyboardAvoidingView ? /* @__PURE__ */ jsx13(KeyboardView_default, { keyboardVerticalOffset, children: /* @__PURE__ */ jsxs(View_default, { flex: 1, style: backdropStyle, fd: "flex-center", p: 25, children: [
+      children: keyboardAvoidingView ? /* @__PURE__ */ jsx13(KeyboardView_default, { children: /* @__PURE__ */ jsxs(View_default, { flex: 1, style: backdropStyle, fd: "flex-center", p: 25, children: [
         modalContent,
         /* @__PURE__ */ jsx13(View_default, { inset: 0, onTouchEnd: handleBackdropPress })
       ] }) }) : /* @__PURE__ */ jsxs(View_default, { flex: 1, style: backdropStyle, fd: "flex-center", p: 25, children: [
@@ -2087,7 +2088,7 @@ var OptionModal = (props) => {
       accessibilityHint,
       accessibilityRole,
       style: modalStyle,
-      children: keyboardAvoidingView ? /* @__PURE__ */ jsx14(KeyboardView_default, { keyboardVerticalOffset, children: /* @__PURE__ */ jsxs2(View_default, { flex: 1, style: backdropStyle, fd: "flex-center", p: 25, children: [
+      children: keyboardAvoidingView ? /* @__PURE__ */ jsx14(KeyboardView_default, { children: /* @__PURE__ */ jsxs2(View_default, { flex: 1, style: backdropStyle, fd: "flex-center", p: 25, children: [
         optionsList,
         /* @__PURE__ */ jsx14(View_default, { inset: 0, onTouchEnd: handleBackdropPress })
       ] }) }) : /* @__PURE__ */ jsxs2(View_default, { flex: 1, style: backdropStyle, fd: "flex-center", p: 25, children: [

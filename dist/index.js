@@ -1482,8 +1482,9 @@ var Image = (props) => {
 var Image_default = Image;
 
 // src/rn-alpha/default/KeyboardView.tsx
-var import_react_native_reanimated = __toESM(require("react-native-reanimated"));
+var import_react_native_reanimated = require("react-native-reanimated");
 var import_react_native_keyboard_controller = require("react-native-keyboard-controller");
+var import_react_native9 = require("react-native");
 var import_jsx_runtime11 = require("react/jsx-runtime");
 var KeyboardView = (props) => {
   const { children } = props;
@@ -1501,13 +1502,13 @@ var KeyboardView = (props) => {
   const footerStyle = (0, import_react_native_reanimated.useAnimatedStyle)(() => ({
     paddingBottom: bottom.value
   }));
-  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(import_jsx_runtime11.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(import_react_native_reanimated.default.View, { style: [{ flex: 1 }, footerStyle], children }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(import_jsx_runtime11.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(import_react_native9.Animated.View, { style: [{ flex: 1 }, footerStyle], children }) });
 };
 var KeyboardView_default = KeyboardView;
 
 // src/rn-alpha/default/ImageBackground.tsx
 var import_react6 = require("react");
-var import_react_native9 = require("react-native");
+var import_react_native10 = require("react-native");
 var import_jsx_runtime12 = require("react/jsx-runtime");
 var ImageBackground = (props) => {
   const { colors } = use_color_default();
@@ -1773,7 +1774,7 @@ var ImageBackground = (props) => {
     colors
   ]);
   return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
-    import_react_native9.ImageBackground,
+    import_react_native10.ImageBackground,
     {
       ...otherProps,
       source,
@@ -1788,7 +1789,7 @@ var ImageBackground_default = ImageBackground;
 
 // src/rn-alpha/custom/AlertModal.tsx
 var import_react7 = require("react");
-var import_react_native10 = require("react-native");
+var import_react_native11 = require("react-native");
 var import_jsx_runtime13 = require("react/jsx-runtime");
 var AlertModal = (props) => {
   const { colors } = use_color_default();
@@ -2000,7 +2001,7 @@ var AlertModal = (props) => {
     handleCancelPress
   ]);
   return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-    import_react_native10.Modal,
+    import_react_native11.Modal,
     {
       animationType,
       transparent,
@@ -2012,7 +2013,7 @@ var AlertModal = (props) => {
       accessibilityHint,
       accessibilityRole,
       style: modalStyle,
-      children: keyboardAvoidingView ? /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(KeyboardView_default, { keyboardVerticalOffset, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(View_default, { flex: 1, style: backdropStyle, fd: "flex-center", p: 25, children: [
+      children: keyboardAvoidingView ? /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(KeyboardView_default, { children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(View_default, { flex: 1, style: backdropStyle, fd: "flex-center", p: 25, children: [
         modalContent,
         /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(View_default, { inset: 0, onTouchEnd: handleBackdropPress })
       ] }) }) : /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(View_default, { flex: 1, style: backdropStyle, fd: "flex-center", p: 25, children: [
@@ -2026,7 +2027,7 @@ var AlertModal_default = AlertModal;
 
 // src/rn-alpha/custom/OptionModal.tsx
 var import_react8 = require("react");
-var import_react_native11 = require("react-native");
+var import_react_native12 = require("react-native");
 var import_jsx_runtime14 = require("react/jsx-runtime");
 var OptionModal = (props) => {
   const { colors } = use_color_default();
@@ -2264,7 +2265,7 @@ var OptionModal = (props) => {
     handleOptionPress
   ]);
   return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
-    import_react_native11.Modal,
+    import_react_native12.Modal,
     {
       animationType,
       transparent,
@@ -2276,7 +2277,7 @@ var OptionModal = (props) => {
       accessibilityHint,
       accessibilityRole,
       style: modalStyle,
-      children: keyboardAvoidingView ? /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(KeyboardView_default, { keyboardVerticalOffset, children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(View_default, { flex: 1, style: backdropStyle, fd: "flex-center", p: 25, children: [
+      children: keyboardAvoidingView ? /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(KeyboardView_default, { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(View_default, { flex: 1, style: backdropStyle, fd: "flex-center", p: 25, children: [
         optionsList,
         /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(View_default, { inset: 0, onTouchEnd: handleBackdropPress })
       ] }) }) : /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(View_default, { flex: 1, style: backdropStyle, fd: "flex-center", p: 25, children: [
@@ -2290,7 +2291,7 @@ var OptionModal_default = OptionModal;
 
 // src/rn-alpha/custom/Page.tsx
 var import_react9 = require("react");
-var import_react_native12 = require("react-native");
+var import_react_native13 = require("react-native");
 var import_react_native_safe_area_context4 = require("react-native-safe-area-context");
 var import_jsx_runtime15 = require("react/jsx-runtime");
 var Page = ({
@@ -2355,11 +2356,11 @@ var Page = ({
   const barStyle = statusBarStyle != null ? statusBarStyle : inferredStatusStyle;
   return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(import_jsx_runtime15.Fragment, { children: [
     /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
-      import_react_native12.StatusBar,
+      import_react_native13.StatusBar,
       {
         translucent: statusBarTranslucent,
         barStyle,
-        backgroundColor: import_react_native12.Platform.OS === "android" ? resolvedStatusColor : void 0
+        backgroundColor: import_react_native13.Platform.OS === "android" ? resolvedStatusColor : void 0
       }
     ),
     /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
@@ -2379,17 +2380,17 @@ var Page_default = Page;
 
 // src/rn-alpha/custom/Modal.tsx
 var import_react10 = require("react");
-var import_react_native14 = require("react-native");
+var import_react_native15 = require("react-native");
 var import_react_native_gesture_handler = require("react-native-gesture-handler");
 
 // src/constants/layout.ts
-var import_react_native13 = require("react-native");
-var width = import_react_native13.Dimensions.get("window").width;
-var height = import_react_native13.Dimensions.get("window").height;
-var ios = import_react_native13.Platform.OS === "ios";
-var android = import_react_native13.Platform.OS === "android";
+var import_react_native14 = require("react-native");
+var width = import_react_native14.Dimensions.get("window").width;
+var height = import_react_native14.Dimensions.get("window").height;
+var ios = import_react_native14.Platform.OS === "ios";
+var android = import_react_native14.Platform.OS === "android";
 var isSmallDevice = width < 375;
-var statusHeight = ios ? import_react_native13.StatusBar.currentHeight || 42 : 0;
+var statusHeight = ios ? import_react_native14.StatusBar.currentHeight || 42 : 0;
 
 // src/assets/icons/index.ts
 var check = `
@@ -2974,18 +2975,18 @@ var backspace = `
 var import_jsx_runtime16 = require("react/jsx-runtime");
 var Modal3 = (props) => {
   const { modal, setModal, onClose, full, children, enableSwipeToClose = true, showCloseBtn } = props;
-  const translateY = (0, import_react10.useRef)(new import_react_native14.Animated.Value(0)).current;
-  const sheetTranslateY = (0, import_react10.useRef)(new import_react_native14.Animated.Value(full ? 0 : height)).current;
-  const backdropOpacity = (0, import_react10.useRef)(new import_react_native14.Animated.Value(0)).current;
-  const screenHeight = import_react_native14.Dimensions.get("window").height;
+  const translateY = (0, import_react10.useRef)(new import_react_native15.Animated.Value(0)).current;
+  const sheetTranslateY = (0, import_react10.useRef)(new import_react_native15.Animated.Value(full ? 0 : height)).current;
+  const backdropOpacity = (0, import_react10.useRef)(new import_react_native15.Animated.Value(0)).current;
+  const screenHeight = import_react_native15.Dimensions.get("window").height;
   const closeFunc = () => {
-    import_react_native14.Animated.parallel([
-      import_react_native14.Animated.timing(sheetTranslateY, {
+    import_react_native15.Animated.parallel([
+      import_react_native15.Animated.timing(sheetTranslateY, {
         toValue: height,
         duration: 250,
         useNativeDriver: true
       }),
-      import_react_native14.Animated.timing(backdropOpacity, {
+      import_react_native15.Animated.timing(backdropOpacity, {
         toValue: 0,
         duration: 250,
         useNativeDriver: true
@@ -2998,13 +2999,13 @@ var Modal3 = (props) => {
   (0, import_react10.useEffect)(() => {
     if (modal) {
       translateY.setValue(0);
-      import_react_native14.Animated.parallel([
-        import_react_native14.Animated.timing(sheetTranslateY, {
+      import_react_native15.Animated.parallel([
+        import_react_native15.Animated.timing(sheetTranslateY, {
           toValue: 0,
           duration: 300,
           useNativeDriver: true
         }),
-        import_react_native14.Animated.timing(backdropOpacity, {
+        import_react_native15.Animated.timing(backdropOpacity, {
           toValue: 1,
           duration: 300,
           useNativeDriver: true
@@ -3030,14 +3031,14 @@ var Modal3 = (props) => {
         if (translationY > 80 || velocityY > 300) {
           closeFunc();
         } else {
-          import_react_native14.Animated.parallel([
-            import_react_native14.Animated.spring(translateY, {
+          import_react_native15.Animated.parallel([
+            import_react_native15.Animated.spring(translateY, {
               toValue: 0,
               useNativeDriver: true,
               tension: 100,
               friction: 8
             }),
-            import_react_native14.Animated.spring(backdropOpacity, {
+            import_react_native15.Animated.spring(backdropOpacity, {
               toValue: 1,
               useNativeDriver: true,
               tension: 100,
@@ -3046,14 +3047,14 @@ var Modal3 = (props) => {
           ]).start();
         }
       } else {
-        import_react_native14.Animated.parallel([
-          import_react_native14.Animated.spring(translateY, {
+        import_react_native15.Animated.parallel([
+          import_react_native15.Animated.spring(translateY, {
             toValue: 0,
             useNativeDriver: true,
             tension: 200,
             friction: 8
           }),
-          import_react_native14.Animated.spring(backdropOpacity, {
+          import_react_native15.Animated.spring(backdropOpacity, {
             toValue: 1,
             useNativeDriver: true,
             tension: 200,
@@ -3067,7 +3068,7 @@ var Modal3 = (props) => {
   return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(import_jsx_runtime16.Fragment, { children: [
     modal && !ios && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { bottom: 0, insetX: 0, height: bottom + 10, color: "background", zIndex: 1 }),
     /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
-      import_react_native14.Modal,
+      import_react_native15.Modal,
       {
         animationType: "none",
         transparent: true,
@@ -3076,13 +3077,13 @@ var Modal3 = (props) => {
         statusBarTranslucent: true,
         children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_react_native_gesture_handler.GestureHandlerRootView, { style: { flex: 1 }, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(KeyboardView_default, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(View_default, { flex: 1, children: [
           /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
-            import_react_native14.Animated.View,
+            import_react_native15.Animated.View,
             {
               style: {
-                ...import_react_native14.StyleSheet.absoluteFillObject,
+                ...import_react_native15.StyleSheet.absoluteFillObject,
                 opacity: backdropOpacity
               },
-              children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { flex: 1, color: "modal", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_react_native14.TouchableWithoutFeedback, { onPress: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { flex: full ? 0.1 : 1 }) }) })
+              children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { flex: 1, color: "modal", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_react_native15.TouchableWithoutFeedback, { onPress: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(View_default, { flex: full ? 0.1 : 1 }) }) })
             }
           ),
           enableSwipeToClose ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
@@ -3092,11 +3093,11 @@ var Modal3 = (props) => {
               onHandlerStateChange,
               activeOffsetY: 10,
               children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
-                import_react_native14.Animated.View,
+                import_react_native15.Animated.View,
                 {
                   style: {
                     transform: [
-                      { translateY: import_react_native14.Animated.add(translateY, sheetTranslateY) }
+                      { translateY: import_react_native15.Animated.add(translateY, sheetTranslateY) }
                     ],
                     ...full ? {
                       flex: 1,
@@ -3136,7 +3137,7 @@ var Modal3 = (props) => {
               )
             }
           ) : /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
-            import_react_native14.Animated.View,
+            import_react_native15.Animated.View,
             {
               style: {
                 transform: [{ translateY: sheetTranslateY }],
@@ -3185,29 +3186,29 @@ var Modal_default = Modal3;
 
 // src/rn-alpha/custom/LoadingDots.tsx
 var import_react11 = require("react");
-var import_react_native15 = require("react-native");
+var import_react_native16 = require("react-native");
 var import_jsx_runtime17 = require("react/jsx-runtime");
 var LoadingDots = (props) => {
   const { color, size = 6, duration = 600, count = 3 } = props;
   const { colors } = use_color_default();
   const progress = (0, import_react11.useRef)(
-    Array.from({ length: count }, () => new import_react_native15.Animated.Value(0))
+    Array.from({ length: count }, () => new import_react_native16.Animated.Value(0))
   ).current;
   (0, import_react11.useEffect)(() => {
     const animations = progress.map(
-      (value, index) => import_react_native15.Animated.loop(
-        import_react_native15.Animated.sequence([
-          import_react_native15.Animated.delay(index * (duration / count)),
-          import_react_native15.Animated.timing(value, {
+      (value, index) => import_react_native16.Animated.loop(
+        import_react_native16.Animated.sequence([
+          import_react_native16.Animated.delay(index * (duration / count)),
+          import_react_native16.Animated.timing(value, {
             toValue: 1,
             duration: duration / 2,
-            easing: import_react_native15.Easing.inOut(import_react_native15.Easing.ease),
+            easing: import_react_native16.Easing.inOut(import_react_native16.Easing.ease),
             useNativeDriver: true
           }),
-          import_react_native15.Animated.timing(value, {
+          import_react_native16.Animated.timing(value, {
             toValue: 0,
             duration: duration / 2,
-            easing: import_react_native15.Easing.inOut(import_react_native15.Easing.ease),
+            easing: import_react_native16.Easing.inOut(import_react_native16.Easing.ease),
             useNativeDriver: true
           })
         ])
@@ -3219,7 +3220,7 @@ var LoadingDots = (props) => {
     };
   }, [progress, duration, count]);
   return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(View_default, { fd: "flex-row", children: progress.map((value, index) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
-    import_react_native15.Animated.View,
+    import_react_native16.Animated.View,
     {
       style: {
         width: size,
@@ -3320,7 +3321,7 @@ var Svg_default = Svg;
 
 // src/rn-alpha/custom/Inputs/Input.tsx
 var import_react12 = require("react");
-var import_react_native16 = require("react-native");
+var import_react_native17 = require("react-native");
 
 // src/utils/money.ts
 function money(num, decimal) {
@@ -3511,7 +3512,7 @@ var Input = (props) => {
         children: [
           money2 && textField.showMoneyIcon && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(View_default, { fd: "flex-center", pl: textField.iconSpacing, children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(Text_default, { size: 16, color: "text2", mb: ios ? 0 : -2.5, children: naira }) }),
           /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
-            import_react_native16.TextInput,
+            import_react_native17.TextInput,
             {
               returnKeyType: keyboardType === "number-pad" || money2 ? "done" : void 0,
               style: {
@@ -3557,7 +3558,7 @@ var Input = (props) => {
 var Input_default = Input;
 
 // src/rn-alpha/custom/Inputs/NumPadKeyboard.tsx
-var import_react_native17 = require("react-native");
+var import_react_native18 = require("react-native");
 var import_jsx_runtime23 = require("react/jsx-runtime");
 var NumPadKeyboard = (props) => {
   const { setValue, max, onDone, children } = props;
@@ -3568,7 +3569,7 @@ var NumPadKeyboard = (props) => {
     ["", "0", "Del"]
   ];
   return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_jsx_runtime23.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(View_default, { fd: "col-between", gap: 25, children: numbers.map((item, i) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(View_default, { fd: "flex-center", children: item.map((value, i2) => /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(View_default, { flex: 1, fd: "flex-center", children: [
-    !!value && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_react_native17.TouchableWithoutFeedback, { onPress: () => {
+    !!value && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_react_native18.TouchableWithoutFeedback, { onPress: () => {
       if (value === "Del") {
         setValue((pin2) => pin2.slice(0, -1));
       } else {
@@ -3586,13 +3587,13 @@ var NumPadKeyboard = (props) => {
 var NumPadKeyboard_default = NumPadKeyboard;
 
 // src/rn-alpha/custom/Inputs/Switch.tsx
-var import_react_native18 = require("react-native");
+var import_react_native19 = require("react-native");
 var import_jsx_runtime24 = require("react/jsx-runtime");
 var Switch = (props) => {
   const { colors } = use_color_default();
   const { disabled, active, onToggle } = props;
   return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
-    import_react_native18.Switch,
+    import_react_native19.Switch,
     {
       trackColor: { false: colors.medium, true: colors.primary },
       thumbColor: colors.light,
@@ -3607,7 +3608,7 @@ var Switch_default = Switch;
 
 // src/rn-alpha/custom/Inputs/Select.tsx
 var import_react13 = require("react");
-var import_react_native19 = require("react-native");
+var import_react_native20 = require("react-native");
 var import_react_native_indicators2 = require("react-native-indicators");
 
 // src/rn-alpha/custom/Loader.tsx
@@ -3659,7 +3660,7 @@ var Select = (props) => {
     }
   }, []);
   const handleSelect = (data) => {
-    import_react_native19.Keyboard.dismiss();
+    import_react_native20.Keyboard.dismiss();
     if (current.value === data.value) {
       const value = { value: "", label: "", text: "" };
       setCurrent(value);
@@ -3681,13 +3682,13 @@ var Select = (props) => {
     setFilter("");
   };
   return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(import_jsx_runtime26.Fragment, { children: [
-    renderSelect ? /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_react_native19.TouchableWithoutFeedback, { disabled, onPress: () => {
-      import_react_native19.Keyboard.dismiss();
+    renderSelect ? /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_react_native20.TouchableWithoutFeedback, { disabled, onPress: () => {
+      import_react_native20.Keyboard.dismiss();
       setModal(true);
     }, children: renderSelect(current) }) : /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(View_default, { style: { marginTop: mt, ...style }, children: [
       label && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Label_default, { label }),
-      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_react_native19.TouchableWithoutFeedback, { disabled, onPress: () => {
-        import_react_native19.Keyboard.dismiss();
+      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_react_native20.TouchableWithoutFeedback, { disabled, onPress: () => {
+        import_react_native20.Keyboard.dismiss();
         setModal(true);
       }, children: /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(
         View_default,
@@ -3751,7 +3752,7 @@ var Select = (props) => {
             ListHeaderComponent: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(View_default, { h: 20 }),
             showsVerticalScrollIndicator: true,
             keyExtractor: (item, index) => item.value + "select" + index,
-            renderItem: ({ item, index }) => /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_react_native19.TouchableOpacity, { onPress: () => handleSelect(item), children: /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(View_default, { fd: "flex-between", pv: selectConfig.optionPaddingVertical, btw: index ? 1 : 0, bc: "border", children: [
+            renderItem: ({ item, index }) => /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_react_native20.TouchableOpacity, { onPress: () => handleSelect(item), children: /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(View_default, { fd: "flex-between", pv: selectConfig.optionPaddingVertical, btw: index ? 1 : 0, bc: "border", children: [
               /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(View_default, { flex: 1, mr: 10, fd: "flex-item", gap: selectConfig.optionGap, children: [
                 item.icon,
                 /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(View_default, { flex: 1, ml: item.icon ? 5 : 0, children: [
@@ -3770,10 +3771,10 @@ var Select = (props) => {
 var Select_default = Select;
 
 // src/rn-alpha/custom/Inputs/SearchInput.tsx
-var import_react_native21 = require("react-native");
+var import_react_native22 = require("react-native");
 
 // src/rn-alpha/custom/IconBtn.tsx
-var import_react_native20 = require("react-native");
+var import_react_native21 = require("react-native");
 var import_jsx_runtime27 = require("react/jsx-runtime");
 var IconBtn = ({
   icon,
@@ -3792,7 +3793,7 @@ var IconBtn = ({
   const resolvedBackground = background && typeof background === "string" && colors[background] ? colors[background] : background;
   const radius = Math.min(width2, height2) / 2;
   return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
-    import_react_native20.TouchableOpacity,
+    import_react_native21.TouchableOpacity,
     {
       onPress,
       disabled,
@@ -3837,7 +3838,7 @@ var SearchInput = (props) => {
       children: [
         /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(Svg_default, { icon: search, size: searchField.iconSize, color: "medium" }),
         /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
-          import_react_native21.TextInput,
+          import_react_native22.TextInput,
           {
             autoFocus: focus,
             style: {
@@ -3876,14 +3877,14 @@ var SearchInput_default = SearchInput;
 
 // src/rn-alpha/custom/Inputs/DateSelect.tsx
 var import_react14 = require("react");
-var import_react_native22 = require("react-native");
+var import_react_native23 = require("react-native");
 var import_react_native_date_picker = __toESM(require("react-native-date-picker"));
 var import_jsx_runtime29 = require("react/jsx-runtime");
 var DateSelect = ({ placeholder, bw, mt, label, error, onChangeText, value, style, minimumDate }) => {
   const [open, setOpen] = (0, import_react14.useState)(false);
   const [date, setDate] = (0, import_react14.useState)(value || /* @__PURE__ */ new Date());
   const [edited, setEdited] = (0, import_react14.useState)(!!value);
-  const isDarkMode = (0, import_react_native22.useColorScheme)() === "dark";
+  const isDarkMode = (0, import_react_native23.useColorScheme)() === "dark";
   const { colors } = use_color_default();
   const textColor = isDarkMode ? colors.background : colors.text;
   const { control, datePicker } = InputConfig_default;
@@ -3899,7 +3900,7 @@ var DateSelect = ({ placeholder, bw, mt, label, error, onChangeText, value, styl
   };
   return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(View_default, { mt, style, children: [
     label && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Label_default, { label }),
-    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_react_native22.TouchableWithoutFeedback, { onPress: onOpen, children: /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_react_native23.TouchableWithoutFeedback, { onPress: onOpen, children: /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(
       View_default,
       {
         br: control.radius,
@@ -3938,7 +3939,7 @@ var DateSelect_default = DateSelect;
 
 // src/rn-alpha/custom/Inputs/DateTimeInput.tsx
 var import_react15 = require("react");
-var import_react_native23 = require("react-native");
+var import_react_native24 = require("react-native");
 var import_react_native_date_picker2 = __toESM(require("react-native-date-picker"));
 var import_jsx_runtime30 = require("react/jsx-runtime");
 var DateTimeInput = (props) => {
@@ -3946,7 +3947,7 @@ var DateTimeInput = (props) => {
   const [open, setOpen] = (0, import_react15.useState)(false);
   const [date, setDate] = (0, import_react15.useState)();
   const [edited, setEdited] = (0, import_react15.useState)(false);
-  const isDarkMode = (0, import_react_native23.useColorScheme)() === "dark";
+  const isDarkMode = (0, import_react_native24.useColorScheme)() === "dark";
   const { colors } = use_color_default();
   const textColor = isDarkMode ? colors.light : colors.dark;
   const { control, datePicker } = InputConfig_default;
@@ -3964,7 +3965,7 @@ var DateTimeInput = (props) => {
     onChangeText(date2);
   };
   const onOpen = () => {
-    import_react_native23.Keyboard.dismiss();
+    import_react_native24.Keyboard.dismiss();
     setTimeout(() => {
       setOpen(true);
     }, 40);
@@ -3972,7 +3973,7 @@ var DateTimeInput = (props) => {
   return /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(View_default, { mt, style, children: [
     label && /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Label_default, { label, focus: open, value: edited, error: !!error }),
     /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
-      import_react_native23.TouchableWithoutFeedback,
+      import_react_native24.TouchableWithoutFeedback,
       {
         onPress: onOpen,
         disabled,
@@ -4017,7 +4018,7 @@ var DateTimeInput = (props) => {
 var DateTimeInput_default = DateTimeInput;
 
 // src/rn-alpha/custom/Inputs/Checkbox.tsx
-var import_react_native24 = require("react-native");
+var import_react_native25 = require("react-native");
 var import_jsx_runtime31 = require("react/jsx-runtime");
 var Checkbox = (props) => {
   const { selected, setSelected, color = "primary", box } = props;
@@ -4029,7 +4030,7 @@ var Checkbox = (props) => {
     innerSize
   } = InputConfig_default.checkbox;
   const br = box ? squareRadius : circularRadius;
-  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_react_native24.TouchableWithoutFeedback, { onPress: () => setSelected(!selected), children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(View_default, { children: selected ? /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_react_native25.TouchableWithoutFeedback, { onPress: () => setSelected(!selected), children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(View_default, { children: selected ? /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
     View_default,
     {
       color: box ? "primary" : "background",
@@ -4058,7 +4059,7 @@ var Checkbox_default = Checkbox;
 
 // src/rn-alpha/custom/Inputs/Password.tsx
 var import_react16 = require("react");
-var import_react_native25 = require("react-native");
+var import_react_native26 = require("react-native");
 var import_jsx_runtime32 = require("react/jsx-runtime");
 var Password = (0, import_react16.forwardRef)((props, ref) => {
   const {
@@ -4092,7 +4093,7 @@ var Password = (0, import_react16.forwardRef)((props, ref) => {
         pl: textField.paddingHorizontal,
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
-            import_react_native25.TextInput,
+            import_react_native26.TextInput,
             {
               ref,
               returnKeyType: keyboardType === "number-pad" ? "done" : void 0,
@@ -4135,29 +4136,29 @@ var Password_default = Password;
 
 // src/rn-alpha/custom/Preloader.tsx
 var import_react17 = require("react");
-var import_react_native26 = require("react-native");
+var import_react_native27 = require("react-native");
 var import_jsx_runtime33 = require("react/jsx-runtime");
 var Preloader = (props) => {
   const { text, title, loading, close, opacity } = props;
   const { colors } = use_color_default();
-  const scaleAnimation = (0, import_react17.useRef)(new import_react_native26.Animated.Value(1)).current;
+  const scaleAnimation = (0, import_react17.useRef)(new import_react_native27.Animated.Value(1)).current;
   const loopRef = (0, import_react17.useRef)(null);
   (0, import_react17.useEffect)(() => {
     var _a;
     (_a = loopRef.current) == null ? void 0 : _a.stop();
     if (loading) {
-      const loop = import_react_native26.Animated.loop(
-        import_react_native26.Animated.sequence([
-          import_react_native26.Animated.timing(scaleAnimation, {
+      const loop = import_react_native27.Animated.loop(
+        import_react_native27.Animated.sequence([
+          import_react_native27.Animated.timing(scaleAnimation, {
             toValue: 1.5,
             duration: 350,
-            easing: import_react_native26.Easing.inOut(import_react_native26.Easing.ease),
+            easing: import_react_native27.Easing.inOut(import_react_native27.Easing.ease),
             useNativeDriver: true
           }),
-          import_react_native26.Animated.timing(scaleAnimation, {
+          import_react_native27.Animated.timing(scaleAnimation, {
             toValue: 1,
             duration: 350,
-            easing: import_react_native26.Easing.inOut(import_react_native26.Easing.ease),
+            easing: import_react_native27.Easing.inOut(import_react_native27.Easing.ease),
             useNativeDriver: true
           })
         ]),
@@ -4178,7 +4179,7 @@ var Preloader = (props) => {
     };
   }, [loading, scaleAnimation]);
   return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_jsx_runtime33.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
-    import_react_native26.Modal,
+    import_react_native27.Modal,
     {
       transparent: true,
       visible: loading,
@@ -4190,7 +4191,7 @@ var Preloader = (props) => {
       children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(View_default, { flex: 1, color: "#1F2021A3", fd: "flex-center", children: /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(View_default, { height: 120, position: "absolute", fd: "col-center", opacity, children: [
         /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Text_default, { size: 16, color: "text", weight: "Bold", children: title }),
         /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
-          import_react_native26.Animated.View,
+          import_react_native27.Animated.View,
           {
             style: {
               transform: [{ scale: scaleAnimation }]
@@ -4207,7 +4208,7 @@ var Preloader_default = Preloader;
 
 // src/rn-alpha/custom/ProgressBar.tsx
 var import_react18 = require("react");
-var import_react_native27 = require("react-native");
+var import_react_native28 = require("react-native");
 var import_jsx_runtime34 = require("react/jsx-runtime");
 var clamp = (value) => Math.min(Math.max(value, 0), 1);
 var ProgressBar = ({
@@ -4223,15 +4224,15 @@ var ProgressBar = ({
   const { colors } = use_color_default();
   const resolvedProgress = clamp(progress);
   const barRadius = radius != null ? radius : height2 / 2;
-  const animatedProgress = (0, import_react18.useRef)(new import_react_native27.Animated.Value(resolvedProgress)).current;
+  const animatedProgress = (0, import_react18.useRef)(new import_react_native28.Animated.Value(resolvedProgress)).current;
   const animationRef = (0, import_react18.useRef)(null);
   (0, import_react18.useEffect)(() => {
     var _a;
     (_a = animationRef.current) == null ? void 0 : _a.stop();
-    animationRef.current = import_react_native27.Animated.timing(animatedProgress, {
+    animationRef.current = import_react_native28.Animated.timing(animatedProgress, {
       toValue: resolvedProgress,
       duration,
-      easing: import_react_native27.Easing.inOut(import_react_native27.Easing.ease),
+      easing: import_react_native28.Easing.inOut(import_react_native28.Easing.ease),
       useNativeDriver: false
     });
     animationRef.current.start();
@@ -4256,7 +4257,7 @@ var ProgressBar = ({
       style,
       ...spacing,
       children: /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
-        import_react_native27.Animated.View,
+        import_react_native28.Animated.View,
         {
           style: {
             backgroundColor: resolvedColor,
@@ -4273,7 +4274,7 @@ var ProgressBar_default = ProgressBar;
 
 // src/rn-alpha/custom/Inputs/TextInput.tsx
 var import_react19 = __toESM(require("react"));
-var import_react_native28 = require("react-native");
+var import_react_native29 = require("react-native");
 var import_jsx_runtime35 = require("react/jsx-runtime");
 var TextInput4 = import_react19.default.forwardRef((props, ref) => {
   const { colors } = use_color_default();
@@ -4304,7 +4305,7 @@ var TextInput4 = import_react19.default.forwardRef((props, ref) => {
   return /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(View_default, { mt, children: [
     label && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Text_default, { size: 13, color: "text", children: label }),
     /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
-      import_react_native28.TextInput,
+      import_react_native29.TextInput,
       {
         ref,
         onChangeText,
@@ -4338,7 +4339,7 @@ var TextInput_default = TextInput4;
 
 // src/rn-alpha/custom/Inputs/OtpInput.tsx
 var import_react_native_otp_entry = require("react-native-otp-entry");
-var import_react_native29 = require("react-native");
+var import_react_native30 = require("react-native");
 var import_jsx_runtime36 = require("react/jsx-runtime");
 var OtpInput = (props) => {
   const { pinCount = 4, setCode, secureTextEntry = true, color } = props;
@@ -4356,7 +4357,7 @@ var OtpInput = (props) => {
       onTextChange: (text) => console.log(text),
       onFilled: (code) => {
         setCode(code);
-        import_react_native29.Keyboard.dismiss();
+        import_react_native30.Keyboard.dismiss();
       },
       secureTextEntry,
       textInputProps: {
@@ -4589,11 +4590,11 @@ var EmptyState = (props) => {
 var EmptyState_default = EmptyState;
 
 // src/rn-alpha/custom/FabButton.tsx
-var import_react_native30 = require("react-native");
+var import_react_native31 = require("react-native");
 var import_jsx_runtime42 = require("react/jsx-runtime");
 var FabButton = (props) => {
   const { icon, bottom, onPress, text, size } = props;
-  return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(View_default, { position: "absolute", right: 20, bottom: bottom || 35, overflow: "hidden", children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_react_native30.TouchableWithoutFeedback, { onPress, children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(View_default, { size: 55, br: 16, color: "primary", fd: "flex-center", ph: text ? 20 : 0, zIndex: 1, children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(Svg_default, { icon, size: size || 18, color: "light" }) }) }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(View_default, { position: "absolute", right: 20, bottom: bottom || 35, overflow: "hidden", children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_react_native31.TouchableWithoutFeedback, { onPress, children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(View_default, { size: 55, br: 16, color: "primary", fd: "flex-center", ph: text ? 20 : 0, zIndex: 1, children: /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(Svg_default, { icon, size: size || 18, color: "light" }) }) }) });
 };
 var FabButton_default = FabButton;
 
