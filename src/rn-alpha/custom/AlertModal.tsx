@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import { Modal, ModalProps as RNModalProps, ViewStyle, TextStyle, AccessibilityRole } from "react-native";
-import KeyboardView from "../default/KeyboardView";
 import View from "../default/View";
 import { Button, Svg, Text } from '..';
 import { ModalProps } from "types";
@@ -324,12 +323,12 @@ const AlertModal: React.FC<Props> = (props) => {
       style={modalStyle}
     >
       {keyboardAvoidingView ? (
-        <KeyboardView>
+        <>
           <View flex={1} style={backdropStyle} fd={"flex-center"} p={25}>
             {modalContent}
             <View inset={0} onTouchEnd={handleBackdropPress} />
           </View>
-        </KeyboardView>
+        </>
       ) : (
         <View flex={1} style={backdropStyle} fd={"flex-center"} p={25}>
           {modalContent}

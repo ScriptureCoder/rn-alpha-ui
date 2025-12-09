@@ -12,7 +12,6 @@ export { default as TouchableHighlight } from './default/TouchableHighlight';
 export { default as TouchableNativeFeedback } from './default/TouchableNativeFeedback';
 export { default as TouchableOpacity } from './default/TouchableOpacity';
 export { default as Image } from './default/Image';
-export { default as KeyboardView } from './default/KeyboardView';
 export { default as ImageBackground } from './default/ImageBackground';
 export { default as AlertModal } from './custom/AlertModal';
 export { default as OptionModal } from './custom/OptionModal';

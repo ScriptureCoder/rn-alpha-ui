@@ -3,7 +3,6 @@ import {ModalProps} from "types";
 import {Modal} from "react-native";
 import View from "../default/View";
 import { Text } from '..';
-import KeyboardView from "../default/KeyboardView";
 
 export type PageModalProps = {
     close?:()=>void
@@ -29,7 +28,7 @@ const OptionModal: React.FC<PageModalProps&ModalProps> = (props) => {
                 visible={modal}
                 onRequestClose={closeFunc}
             >
-                <KeyboardView>
+                <>
                     <View flex={1} color={"modal"} fd={"flex-center"} p={25}>
                         <View color={"background"} p={10} br={10} maxW={400} flex={1} zIndex={1}>
                             <View p={10}>
@@ -48,7 +47,7 @@ const OptionModal: React.FC<PageModalProps&ModalProps> = (props) => {
                             <View inset={0} onTouchEnd={closeFunc}/>
                         )}
                     </View>
-                </KeyboardView>
+                </>
             </Modal>
         </>
     );

@@ -3,7 +3,7 @@ import { StyleProp, ViewStyle } from 'react-native';
 import { Edge, SafeAreaView as NativeSafeAreaView } from 'react-native-safe-area-context';
 import View, { CustomViewProps, PositionProps, SpacingProps } from '../default/View';
 import useColor from 'hooks/use-color.ts';
-import { ColorProps } from '../../constants/colors';
+import { ColorProps } from 'constants/colors.ts';
 
 export type SafeAreaProps = Omit<CustomViewProps, 'children'> &
   SpacingProps &

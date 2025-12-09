@@ -4,7 +4,6 @@ import {PanGestureHandler, State, GestureHandlerRootView} from "react-native-ges
 import {ModalProps} from "types";
 import View from '../default/View';
 import {height, ios} from "constants/layout.ts";
-import KeyboardView from '../default/KeyboardView';
 import {Svg, TouchableOpacity, useDimensions} from "../index.ts";
 import {cancel} from "assets/icons";
 import {ColorProps} from "constants/colors.ts";
@@ -141,7 +140,7 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                 statusBarTranslucent
             >
                 <GestureHandlerRootView style={{ flex: 1 }}>
-                    <KeyboardView>
+                    <>
                         <View flex={1}>
                             <Animated.View
                                 style={{
@@ -250,7 +249,7 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                                 </Animated.View>
                             )}
                         </View>
-                    </KeyboardView>
+                    </>
                 </GestureHandlerRootView>
             </Mod>
         </>

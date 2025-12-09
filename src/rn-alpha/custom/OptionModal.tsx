@@ -4,7 +4,6 @@ import { KEY, Svg, Text, TouchableOpacity, View } from '..';
 import { ModalProps } from "types";
 import { ColorProps } from "constants/colors.ts";
 import useColor from "hooks/use-color.ts";
-import KeyboardView from "../default/KeyboardView";
 
 export type SpacingProps = {
   padding?: number | string;
@@ -381,12 +380,12 @@ const OptionModal: React.FC<Props> = (props) => {
       style={modalStyle}
     >
       {keyboardAvoidingView ? (
-        <KeyboardView>
+        <>
           <View flex={1} style={backdropStyle} fd={"flex-center"} p={25}>
             {optionsList}
             <View inset={0} onTouchEnd={handleBackdropPress} />
           </View>
-        </KeyboardView>
+        </>
       ) : (
         <View flex={1} style={backdropStyle} fd={"flex-center"} p={25}>
           {optionsList}
