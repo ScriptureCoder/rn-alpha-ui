@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { Modal, AccessibilityRole } from "react-native";
 import { KEY, Svg, Text, TouchableOpacity, View } from '..';
-import { ModalProps } from "../../types";
-import { ColorProps } from "../../constants/colors";
+import { ModalProps } from "types";
+import { ColorProps } from "constants/colors.ts";
 import useColor from "hooks/use-color.ts";
 import KeyboardView from "../default/KeyboardView";
 

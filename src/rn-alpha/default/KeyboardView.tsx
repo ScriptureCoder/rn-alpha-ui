@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, {useAnimatedStyle, useSharedValue, withTiming} from 'react-native-reanimated';
 import {useKeyboardHandler} from "react-native-keyboard-controller";
-import { Animated } from "react-native";
+import {useDimensions} from "../index.ts";
 
 type KeyboardViewProps = {
   children?: React.ReactNode;
@@ -11,6 +11,8 @@ const KeyboardView: React.FC<KeyboardViewProps> = (props) => {
   const {children} = props;
 
   const bottom = useSharedValue(0);
+  const dim = useDimensions()
+
 
   useKeyboardHandler({
     onStart: (e) => {
@@ -24,7 +26,7 @@ const KeyboardView: React.FC<KeyboardViewProps> = (props) => {
   });
 
   const footerStyle = useAnimatedStyle(() => ({
-    paddingBottom: bottom.value,
+    paddingBottom: bottom.value - dim.bottom,
   }));
 
   return (

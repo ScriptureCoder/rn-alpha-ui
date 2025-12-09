@@ -1293,13 +1293,13 @@ var Image = (props) => {
 var Image_default = Image;
 
 // src/rn-alpha/default/KeyboardView.tsx
-import { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
+import Animated4, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 import { useKeyboardHandler } from "react-native-keyboard-controller";
-import { Animated as Animated4 } from "react-native";
 import { Fragment as Fragment5, jsx as jsx11 } from "react/jsx-runtime";
 var KeyboardView = (props) => {
   const { children } = props;
   const bottom = useSharedValue(0);
+  const dim = use_dimensions_default();
   useKeyboardHandler({
     onStart: (e) => {
       "worklet";
@@ -1311,7 +1311,7 @@ var KeyboardView = (props) => {
     }*/
   });
   const footerStyle = useAnimatedStyle(() => ({
-    paddingBottom: bottom.value
+    paddingBottom: bottom.value - dim.bottom
   }));
   return /* @__PURE__ */ jsx11(Fragment5, { children: /* @__PURE__ */ jsx11(Animated4.View, { style: [{ flex: 1 }, footerStyle], children }) });
 };
