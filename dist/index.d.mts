@@ -2,7 +2,7 @@ import React, { PropsWithChildren, ReactElement } from 'react';
 import * as yup from 'yup';
 export { yup as Yup };
 export { ErrorMessage, Field, Form, Formik, useField, useFormik } from 'formik';
-import { ViewProps, FlexAlignType, StyleProp, ViewStyle, TextProps, ScrollViewProps, FlatListProps, TouchableHighlightProps, TouchableOpacityProps, ImageSourcePropType, ImageBackgroundProps, AccessibilityRole, TextStyle, StatusBarStyle, KeyboardTypeOptions, TextInput as TextInput$1, TextInputProps, DimensionValue } from 'react-native';
+import { ViewProps, FlexAlignType, StyleProp, ViewStyle, TextProps, ScrollViewProps, FlatListProps, TouchableOpacityProps, ImageSourcePropType, ImageBackgroundProps, AccessibilityRole, TextStyle, StatusBarStyle, KeyboardTypeOptions, TextInput as TextInput$1, TextInputProps, DimensionValue } from 'react-native';
 import * as react_native_safe_area_context from 'react-native-safe-area-context';
 import { Edge } from 'react-native-safe-area-context';
 import { NativeSyntheticEvent } from 'react-native/Libraries/Types/CoreEventTypes';
@@ -295,6 +295,14 @@ type Props$7 = {
 type CustomFlatListProps = Props$7 & SpacingProps$4;
 declare const FlatList: React.FC<FlatListProps<any> & CustomFlatListProps>;
 
+type TouchableHighlightProps = {
+    children: React.ReactElement;
+    onPress?: () => void;
+    onLongPress?: () => void;
+    style?: ViewStyle;
+    color?: ColorProps;
+    disabled?: boolean;
+};
 declare const TouchableHighlight: React.FC<TouchableHighlightProps>;
 
 type TouchableNativeFeedbackProps = {

@@ -1,20 +1,32 @@
-import React, {useState} from 'react';
-import {TouchableHighlightProps, TouchableHighlight as Touch} from "react-native";
-import useColor from "../../hooks/use-color";
+import React from 'react';
+import { TouchableHighlight as Base, ViewStyle } from "react-native";
+import { ColorProps } from "constants/colors";
+import {useColor} from "../index.ts";
+
+type TouchableHighlightProps = {
+    children:React.ReactElement
+    onPress?:()=>void
+    onLongPress?:()=>void
+    style?:ViewStyle
+    color?:ColorProps
+    disabled?:boolean
+}
 
 const TouchableHighlight: React.FC<TouchableHighlightProps> = (props) => {
-    const {colors} = useColor()
+    const {onLongPress, disabled, children, onPress, style, color} = props;
+    const {colors} = useColor();
+
     return (
-        <>
-            <Touch
-                {...props}
-                underlayColor={props.underlayColor||colors.shade}
-            >
-                <>
-                    {props.children}
-                </>
-            </Touch>
-        </>
+        <Base
+            activeOpacity={0.6}
+            underlayColor={color?colors[color]:colors.shade}
+            onPress={onPress}
+            onLongPress={onLongPress}
+            style={style}
+            disabled={disabled}
+        >
+            {children}
+        </Base>
     );
 };
 

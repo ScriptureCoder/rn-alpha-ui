@@ -1306,15 +1306,20 @@ var FlatList_default = FlatList;
 var import_react_native6 = require("react-native");
 var import_jsx_runtime7 = require("react/jsx-runtime");
 var TouchableHighlight = (props) => {
+  const { onLongPress, disabled, children, onPress, style, color } = props;
   const { colors } = use_color_default();
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_jsx_runtime7.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
     import_react_native6.TouchableHighlight,
     {
-      ...props,
-      underlayColor: props.underlayColor || colors.shade,
-      children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_jsx_runtime7.Fragment, { children: props.children })
+      activeOpacity: 0.6,
+      underlayColor: color ? colors[color] : colors.shade,
+      onPress,
+      onLongPress,
+      style,
+      disabled,
+      children
     }
-  ) });
+  );
 };
 var TouchableHighlight_default = TouchableHighlight;
 
