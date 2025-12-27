@@ -14,11 +14,13 @@ const Switch: React.FC<SwitchProps> = (props) => {
 
     return (
 	    <Parent
-			onTouchEnd={()=>onToggle(!active)}
+			onTouchStart={()=>onToggle(!active)}
 		    trackColor={{ false: colors.medium, true: colors.primary }}
 		    thumbColor={colors.light}
 		    ios_backgroundColor={colors.shade}
-		    onValueChange={()=>onToggle(!active)}
+		    onValueChange={()=> {
+				// onToggle(!active)
+			}}
 		    value={active}
 		    disabled={disabled}
 	    />
