@@ -2953,7 +2953,7 @@ var backspace = `
 // src/rn-alpha/custom/Modal.tsx
 var import_jsx_runtime15 = require("react/jsx-runtime");
 var Modal3 = (props) => {
-  const { modal, setModal, onClose, full, children, enableSwipeToClose = true, showCloseBtn } = props;
+  const { modal, setModal, onClose, full, children, enableSwipeToClose = true, showCloseBtn, bg } = props;
   const translateY = (0, import_react10.useRef)(new import_react_native14.Animated.Value(0)).current;
   const sheetTranslateY = (0, import_react10.useRef)(new import_react_native14.Animated.Value(full ? 0 : height)).current;
   const backdropOpacity = (0, import_react10.useRef)(new import_react_native14.Animated.Value(0)).current;
@@ -3062,7 +3062,7 @@ var Modal3 = (props) => {
                 ...import_react_native14.StyleSheet.absoluteFillObject,
                 opacity: backdropOpacity
               },
-              children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(View_default, { flex: 1, color: "modal", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_react_native14.TouchableWithoutFeedback, { onPress: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(View_default, { flex: full ? 0.1 : 1 }) }) })
+              children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(View_default, { flex: 1, color: bg || "modal", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_react_native14.TouchableWithoutFeedback, { onPress: closeFunc, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(View_default, { flex: full ? 0.1 : 1 }) }) })
             }
           ),
           enableSwipeToClose ? /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
@@ -3574,6 +3574,7 @@ var Switch = (props) => {
   return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
     import_react_native18.Switch,
     {
+      onTouchEnd: () => onToggle(!active),
       trackColor: { false: colors.medium, true: colors.primary },
       thumbColor: colors.light,
       ios_backgroundColor: colors.shade,

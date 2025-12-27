@@ -721,6 +721,7 @@ type Props$2 = {
     full?: boolean;
     enableSwipeToClose?: boolean;
     showCloseBtn?: boolean;
+    bg?: ColorProps;
 };
 declare const Modal: React.FC<ModalProps & Props$2>;
 

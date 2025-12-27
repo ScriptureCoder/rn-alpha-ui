@@ -14,10 +14,11 @@ type Props = {
     full?:boolean
     enableSwipeToClose?:boolean
     showCloseBtn?:boolean
+    bg?:ColorProps
 }
 
 const Modal: React.FC<ModalProps&Props> = (props) => {
-    const { modal,setModal,onClose,full, children, enableSwipeToClose=true, showCloseBtn } = props;
+    const { modal,setModal,onClose,full, children, enableSwipeToClose=true, showCloseBtn, bg } = props;
     const translateY = useRef(new Animated.Value(0)).current;
     const sheetTranslateY = useRef(new Animated.Value(full ? 0 : height)).current;
     const backdropOpacity = useRef(new Animated.Value(0)).current;
@@ -148,7 +149,7 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                                     opacity: backdropOpacity
                                 }}
                             >
-                                <View flex={1} color={"modal"}>
+                                <View flex={1} color={bg||"modal"}>
                                     <TouchableWithoutFeedback onPress={closeFunc}>
                                         <View flex={full?0.1:1}/>
                                     </TouchableWithoutFeedback>

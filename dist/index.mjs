@@ -2765,7 +2765,7 @@ var backspace = `
 // src/rn-alpha/custom/Modal.tsx
 import { Fragment as Fragment7, jsx as jsx15, jsxs as jsxs4 } from "react/jsx-runtime";
 var Modal3 = (props) => {
-  const { modal, setModal, onClose, full, children, enableSwipeToClose = true, showCloseBtn } = props;
+  const { modal, setModal, onClose, full, children, enableSwipeToClose = true, showCloseBtn, bg } = props;
   const translateY = useRef(new Animated4.Value(0)).current;
   const sheetTranslateY = useRef(new Animated4.Value(full ? 0 : height)).current;
   const backdropOpacity = useRef(new Animated4.Value(0)).current;
@@ -2874,7 +2874,7 @@ var Modal3 = (props) => {
                 ...StyleSheet.absoluteFillObject,
                 opacity: backdropOpacity
               },
-              children: /* @__PURE__ */ jsx15(View_default, { flex: 1, color: "modal", children: /* @__PURE__ */ jsx15(TouchableWithoutFeedback, { onPress: closeFunc, children: /* @__PURE__ */ jsx15(View_default, { flex: full ? 0.1 : 1 }) }) })
+              children: /* @__PURE__ */ jsx15(View_default, { flex: 1, color: bg || "modal", children: /* @__PURE__ */ jsx15(TouchableWithoutFeedback, { onPress: closeFunc, children: /* @__PURE__ */ jsx15(View_default, { flex: full ? 0.1 : 1 }) }) })
             }
           ),
           enableSwipeToClose ? /* @__PURE__ */ jsx15(
@@ -3386,6 +3386,7 @@ var Switch = (props) => {
   return /* @__PURE__ */ jsx23(
     Parent5,
     {
+      onTouchEnd: () => onToggle(!active),
       trackColor: { false: colors.medium, true: colors.primary },
       thumbColor: colors.light,
       ios_backgroundColor: colors.shade,
