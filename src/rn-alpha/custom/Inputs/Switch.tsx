@@ -14,7 +14,7 @@ const Switch: React.FC<SwitchProps> = (props) => {
 
     return (
 	    <Parent
-			onTouchStart={()=>onToggle(!active)}
+			onTouchEnd={()=>onToggle(!active)}
 		    trackColor={{ false: colors.medium, true: colors.primary }}
 		    thumbColor={colors.light}
 		    ios_backgroundColor={colors.shade}

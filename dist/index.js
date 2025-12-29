@@ -3578,7 +3578,8 @@ var Switch = (props) => {
       trackColor: { false: colors.medium, true: colors.primary },
       thumbColor: colors.light,
       ios_backgroundColor: colors.shade,
-      onValueChange: () => onToggle(!active),
+      onValueChange: () => {
+      },
       value: active,
       disabled
     }
