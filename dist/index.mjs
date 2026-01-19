@@ -977,6 +977,7 @@ var ScrollView = React4.forwardRef((props, ref) => {
     scrollX,
     onScroll,
     color,
+    flex,
     cs = {},
     ...otherProps
   } = props;
@@ -999,7 +1000,8 @@ var ScrollView = React4.forwardRef((props, ref) => {
         ...cs,
         paddingBottom: pb || 40,
         paddingTop: pt || 0,
-        backgroundColor: color ? colors[color] ? colors[color] : color : void 0
+        backgroundColor: color ? colors[color] ? colors[color] : color : void 0,
+        flexGrow: flex
       },
       style: [{
         padding: padding || p,

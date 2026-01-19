@@ -281,6 +281,7 @@ type RefreshProps = {
     pt?: number;
     cs?: ViewStyle;
     color?: ColorProps;
+    flex?: number;
 };
 declare const ScrollView: React.FC<ScrollViewProps & RefreshProps>;
 
