@@ -892,6 +892,7 @@ type PasswordProps = {
     bw?: number;
     onSubmitEditing?: () => void;
     ref?: React.ForwardedRef<TextInput$1>;
+    maxLength?: number;
 };
 declare const Password: React.FC<PasswordProps>;
 

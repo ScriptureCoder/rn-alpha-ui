@@ -4,7 +4,7 @@ import IconBtn from "../IconBtn";
 import inputConfig from "./InputConfig";
 import { ErrorText, Label, View } from "../..";
 import useColor from "hooks/use-color.ts";
-import { eye, eyeOff } from "../../../assets/icons";
+import { eye, eyeOff } from "assets/icons";
 import {ColorProps} from "constants/colors";
 
 export type PasswordProps = {
@@ -19,6 +19,7 @@ export type PasswordProps = {
     bw?:number
     onSubmitEditing?:()=>void
     ref?:React.ForwardedRef<TextInput>
+    maxLength?:number
 }
 
 const Password: React.FC<PasswordProps> = forwardRef((props, ref:React.ForwardedRef<TextInput>)=>{
@@ -32,7 +33,8 @@ const Password: React.FC<PasswordProps> = forwardRef((props, ref:React.Forwarded
         value,
         style,
         label,
-        onSubmitEditing
+        onSubmitEditing,
+        maxLength
     } = props;
 
     const [focus,setFocus] = useState(false);
@@ -76,6 +78,7 @@ const Password: React.FC<PasswordProps> = forwardRef((props, ref:React.Forwarded
                         setFocus(true)
                     }}
                     onSubmitEditing={onSubmitEditing}
+                    maxLength={maxLength}
                 />
                 <IconBtn
                     icon={show?eye:eyeOff}

@@ -3871,7 +3871,8 @@ var Password = forwardRef((props, ref) => {
     value,
     style,
     label,
-    onSubmitEditing
+    onSubmitEditing,
+    maxLength
   } = props;
   const [focus, setFocus] = useState8(false);
   const [show, setShow] = useState8(false);
@@ -3913,7 +3914,8 @@ var Password = forwardRef((props, ref) => {
               onFocus: () => {
                 setFocus(true);
               },
-              onSubmitEditing
+              onSubmitEditing,
+              maxLength
             }
           ),
           /* @__PURE__ */ jsx31(

@@ -4055,7 +4055,8 @@ var Password = (0, import_react16.forwardRef)((props, ref) => {
     value,
     style,
     label,
-    onSubmitEditing
+    onSubmitEditing,
+    maxLength
   } = props;
   const [focus, setFocus] = (0, import_react16.useState)(false);
   const [show, setShow] = (0, import_react16.useState)(false);
@@ -4097,7 +4098,8 @@ var Password = (0, import_react16.forwardRef)((props, ref) => {
               onFocus: () => {
                 setFocus(true);
               },
-              onSubmitEditing
+              onSubmitEditing,
+              maxLength
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
