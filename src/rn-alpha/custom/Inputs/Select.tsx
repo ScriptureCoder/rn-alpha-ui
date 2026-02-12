@@ -185,7 +185,7 @@ const Select: React.FC<SelectProps> = (props) => {
                         )}
                     </View>
                     <View flex={1}>
-                        <Loader loading={loading||false}/>
+                        <Loader loading={loading||false} text={"Loading..."}/>
                         <FlatList
                             style={{paddingHorizontal:selectConfig.modalPadding}}
                             data={!loading&&options?.filter((r:any)=>{

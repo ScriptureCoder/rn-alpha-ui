@@ -16,7 +16,7 @@ const Loader: React.FC<Props> = ({text,loading,color}) => {
       <>
         {loading&&(
             <View flex={1} fd={"col-center"} pv={25}>
-              <Animate size={35} count={6} color={color||colors.primary}/>
+              {/*<Animate size={35} count={6} color={color||colors.primary}/>*/}
               {text&&(
                   <Text size={15} mt={15} color={"text"}>{text}</Text>
               )}
