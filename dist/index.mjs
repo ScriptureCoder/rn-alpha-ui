@@ -3408,15 +3408,15 @@ import {
   TouchableOpacity as TouchableOpacity2,
   Keyboard
 } from "react-native";
-import { UIActivityIndicator } from "react-native-indicators";
+import { LoaderKitView as LoaderKitView2 } from "react-native-loader-kit";
 
 // src/rn-alpha/custom/Loader.tsx
-import { SkypeIndicator as Animate } from "react-native-indicators";
+import { LoaderKitView } from "react-native-loader-kit";
 import { Fragment as Fragment11, jsx as jsx24, jsxs as jsxs8 } from "react/jsx-runtime";
 var Loader = ({ text, loading, color }) => {
   const { colors } = use_color_default();
   return /* @__PURE__ */ jsx24(Fragment11, { children: loading && /* @__PURE__ */ jsxs8(View_default, { flex: 1, fd: "col-center", pv: 25, children: [
-    /* @__PURE__ */ jsx24(Animate, { size: 35, count: 6, color: color || colors.primary }),
+    /* @__PURE__ */ jsx24(LoaderKitView, { name: "BallPulse", style: { width: 35, height: 35 }, color: color || colors.primary }),
     text && /* @__PURE__ */ jsx24(Text_default, { size: 15, mt: 15, color: "text", children: text })
   ] }) });
 };
@@ -3528,7 +3528,7 @@ var Select = (props) => {
               ),
               !!current.text && /* @__PURE__ */ jsx25(Text_default, { color: "medium", children: current.value ? current.text : "" })
             ] }),
-            /* @__PURE__ */ jsx25(View_default, { ml: 5, children: loading ? /* @__PURE__ */ jsx25(UIActivityIndicator, { size: selectConfig.loaderSize, color: colors.text2 }) : /* @__PURE__ */ jsx25(Svg_default, { icon: selectToggle, color: "text", size: selectConfig.dropdownIconSize }) })
+            /* @__PURE__ */ jsx25(View_default, { ml: 5, children: loading ? /* @__PURE__ */ jsx25(LoaderKitView2, { name: "BallDoubleBounce", style: { width: selectConfig.loaderSize, height: selectConfig.loaderSize }, color: colors.text2 }) : /* @__PURE__ */ jsx25(Svg_default, { icon: selectToggle, color: "text", size: selectConfig.dropdownIconSize }) })
           ]
         }
       ) }),
@@ -3540,7 +3540,7 @@ var Select = (props) => {
         search2 && /* @__PURE__ */ jsx25(View_default, { children: /* @__PURE__ */ jsx25(SearchInput_default, { filter: filter2, setFilter }) })
       ] }),
       /* @__PURE__ */ jsxs9(View_default, { flex: 1, children: [
-        /* @__PURE__ */ jsx25(Loader_default, { loading: loading || false }),
+        /* @__PURE__ */ jsx25(Loader_default, { loading: loading || false, text: "Loading..." }),
         /* @__PURE__ */ jsx25(
           FlatList_default,
           {

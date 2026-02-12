@@ -3592,15 +3592,15 @@ var Switch_default = Switch;
 // src/rn-alpha/custom/Inputs/Select.tsx
 var import_react13 = require("react");
 var import_react_native19 = require("react-native");
-var import_react_native_indicators2 = require("react-native-indicators");
+var import_react_native_loader_kit2 = require("react-native-loader-kit");
 
 // src/rn-alpha/custom/Loader.tsx
-var import_react_native_indicators = require("react-native-indicators");
+var import_react_native_loader_kit = require("react-native-loader-kit");
 var import_jsx_runtime24 = require("react/jsx-runtime");
 var Loader = ({ text, loading, color }) => {
   const { colors } = use_color_default();
   return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_jsx_runtime24.Fragment, { children: loading && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(View_default, { flex: 1, fd: "col-center", pv: 25, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_react_native_indicators.SkypeIndicator, { size: 35, count: 6, color: color || colors.primary }),
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_react_native_loader_kit.LoaderKitView, { name: "BallPulse", style: { width: 35, height: 35 }, color: color || colors.primary }),
     text && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(Text_default, { size: 15, mt: 15, color: "text", children: text })
   ] }) });
 };
@@ -3712,7 +3712,7 @@ var Select = (props) => {
               ),
               !!current.text && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Text_default, { color: "medium", children: current.value ? current.text : "" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(View_default, { ml: 5, children: loading ? /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_react_native_indicators2.UIActivityIndicator, { size: selectConfig.loaderSize, color: colors.text2 }) : /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Svg_default, { icon: selectToggle, color: "text", size: selectConfig.dropdownIconSize }) })
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(View_default, { ml: 5, children: loading ? /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_react_native_loader_kit2.LoaderKitView, { name: "BallDoubleBounce", style: { width: selectConfig.loaderSize, height: selectConfig.loaderSize }, color: colors.text2 }) : /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Svg_default, { icon: selectToggle, color: "text", size: selectConfig.dropdownIconSize }) })
           ]
         }
       ) }),
@@ -3724,7 +3724,7 @@ var Select = (props) => {
         search2 && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(View_default, { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(SearchInput_default, { filter: filter2, setFilter }) })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(View_default, { flex: 1, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Loader_default, { loading: loading || false }),
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Loader_default, { loading: loading || false, text: "Loading..." }),
         /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
           FlatList_default,
           {

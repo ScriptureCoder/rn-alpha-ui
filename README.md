@@ -15,9 +15,9 @@ That installs only the UI library (good when the native dependencies already exi
 If you haven’t configured the bundled native modules yet, you can install them alongside the library in one go:
 
 ```bash
-npm install @scripturecoder/rn-alpha-ui @d11/react-native-fast-image@8.9.2 country-code-emoji dayjs react-native-date-picker@5.0.12 react-native-indicators react-native-linear-gradient react-native-material-menu react-native-otp-entry react-native-safe-area-context react-native-svg@15.12.0 react-native-keyboard-controller react-native-reanimated
+npm install @scripturecoder/rn-alpha-ui @d11/react-native-fast-image@8.9.2 country-code-emoji dayjs react-native-date-picker@5.0.12 react-native-loader-kit react-native-linear-gradient react-native-material-menu react-native-otp-entry react-native-safe-area-context react-native-svg@15.12.0 react-native-keyboard-controller react-native-reanimated
 # or
-yarn add @scripturecoder/rn-alpha-ui @d11/react-native-fast-image@8.9.2 country-code-emoji dayjs react-native-date-picker@5.0.12 react-native-indicators react-native-linear-gradient react-native-material-menu react-native-otp-entry react-native-safe-area-context react-native-svg@15.12.0 react-native-keyboard-controller react-native-reanimated
+yarn add @scripturecoder/rn-alpha-ui @d11/react-native-fast-image@8.9.2 country-code-emoji dayjs react-native-date-picker@5.0.12 react-native-loader-kit react-native-linear-gradient react-native-material-menu react-native-otp-entry react-native-safe-area-context react-native-svg@15.12.0 react-native-keyboard-controller react-native-reanimated
 ```
 
 

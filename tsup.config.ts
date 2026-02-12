@@ -19,7 +19,7 @@ export default defineConfig({
     'react-native-date-picker',
     'react-native-otp-entry',
     'react-native-material-menu',
-    'react-native-indicators',
+    'react-native-loader-kit',
     '@d11/react-native-fast-image',
     'country-code-emoji',
     'dayjs'
