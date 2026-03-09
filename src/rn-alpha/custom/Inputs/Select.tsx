@@ -160,7 +160,7 @@ const Select: React.FC<SelectProps> = (props) => {
                                 </View>
                                 <View ml={5}>
                                     {loading ?
-                                        <LoaderKitView name={'BallDoubleBounce'} style={{ width: selectConfig.loaderSize, height: selectConfig.loaderSize }} color={colors.text2} /> :
+                                        <LoaderKitView name={'LineSpinFadeLoader'} style={{ width: selectConfig.loaderSize, height: selectConfig.loaderSize }} color={colors.text2} /> :
                                         <Svg icon={selectToggle} color={"text"} size={selectConfig.dropdownIconSize} />
                                     }
                                 </View>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {KeyboardTypeOptions, TextInput, ViewStyle} from "react-native";
+import {KeyboardTypeOptions, TextInput, TextInputProps, ViewStyle} from "react-native";
 import separator from "../../../utils/money";
 import {naira} from "../../../config";
 import Label from "./Label";
@@ -11,7 +11,7 @@ import {ios} from "constants/layout.ts";
 import {ColorProps} from "constants/colors";
 import { useUIContext } from '../../../theme/alpha-ui-context';
 
-export type InputProps = {
+export interface InputProps extends TextInputProps {
     placeholder?:string
     label:string
     onChangeText:(value:any)=>void
@@ -67,7 +67,8 @@ const Input: React.FC<InputProps> = (props) => {
         label,
         ph,
         autoFocus,
-        onSubmitEditing
+        onSubmitEditing,
+        ...otherProps
     } = mergedProps
 
     const bc = error?colors.danger:focus?colors.primary:colors.border
@@ -91,6 +92,7 @@ const Input: React.FC<InputProps> = (props) => {
                     </View>
                 )}
                 <TextInput
+                    {...otherProps}
                     returnKeyType={(keyboardType==='number-pad'||money)?'done':undefined}
                     style={{
                         flex:1,

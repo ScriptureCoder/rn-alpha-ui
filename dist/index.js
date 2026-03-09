@@ -3600,7 +3600,7 @@ var import_jsx_runtime24 = require("react/jsx-runtime");
 var Loader = ({ text, loading, color }) => {
   const { colors } = use_color_default();
   return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_jsx_runtime24.Fragment, { children: loading && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(View_default, { flex: 1, fd: "col-center", pv: 25, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_react_native_loader_kit.LoaderKitView, { name: "BallPulse", style: { width: 35, height: 35 }, color: color || colors.primary }),
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_react_native_loader_kit.LoaderKitView, { name: "LineSpinFadeLoader", style: { width: 35, height: 35 }, color: color || colors.primary }),
     text && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(Text_default, { size: 15, mt: 15, color: "text", children: text })
   ] }) });
 };
@@ -3712,7 +3712,7 @@ var Select = (props) => {
               ),
               !!current.text && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Text_default, { color: "medium", children: current.value ? current.text : "" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(View_default, { ml: 5, children: loading ? /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_react_native_loader_kit2.LoaderKitView, { name: "BallDoubleBounce", style: { width: selectConfig.loaderSize, height: selectConfig.loaderSize }, color: colors.text2 }) : /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Svg_default, { icon: selectToggle, color: "text", size: selectConfig.dropdownIconSize }) })
+            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(View_default, { ml: 5, children: loading ? /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_react_native_loader_kit2.LoaderKitView, { name: "LineSpinFadeLoader", style: { width: selectConfig.loaderSize, height: selectConfig.loaderSize }, color: colors.text2 }) : /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Svg_default, { icon: selectToggle, color: "text", size: selectConfig.dropdownIconSize }) })
           ]
         }
       ) }),
