@@ -43,7 +43,7 @@ const ScrollView: React.FC<ScrollViewProps&RefreshProps> = React.forwardRef((pro
 
     const contentOffset:any = {};
     if (scrollY){
-        console.log(contentOffset.y);
+        // console.log(contentOffset.y);
         contentOffset.y = scrollY
     }
     if (scrollX){

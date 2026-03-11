@@ -27,7 +27,7 @@ const OtpInput: React.FC<OtpInputProps> = (props) => {
 				numberOfDigits={pinCount||6}
 				focusColor={colors.primary}
 				focusStickBlinkingDuration={500}
-				onTextChange={(text) => console.log(text)}
+				// onTextChange={(text) => console.log(text)}
 				onFilled={(code)=>{
 					setCode(code)
 					Keyboard.dismiss()

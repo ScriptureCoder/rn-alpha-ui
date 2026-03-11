@@ -2,7 +2,7 @@ import React, { PropsWithChildren, ReactElement } from 'react';
 import * as yup from 'yup';
 export { yup as Yup };
 export { ErrorMessage, Field, Form, Formik, useField, useFormik } from 'formik';
-import { ViewProps, FlexAlignType, StyleProp, ViewStyle, TextProps, ScrollViewProps, FlatListProps, TouchableOpacityProps, ImageSourcePropType, ImageBackgroundProps, AccessibilityRole, TextStyle, StatusBarStyle, KeyboardTypeOptions, TextInput as TextInput$1, TextInputProps, DimensionValue } from 'react-native';
+import { ViewProps, FlexAlignType, StyleProp, ViewStyle, TextProps, ScrollViewProps, FlatListProps, TouchableOpacityProps, ImageSourcePropType, ImageBackgroundProps, AccessibilityRole, TextStyle, StatusBarStyle, TextInputProps, KeyboardTypeOptions, TextInput as TextInput$1, DimensionValue } from 'react-native';
 import * as react_native_safe_area_context from 'react-native-safe-area-context';
 import { Edge } from 'react-native-safe-area-context';
 import { NativeSyntheticEvent } from 'react-native/Libraries/Types/CoreEventTypes';
@@ -755,7 +755,7 @@ type SvgProps = {
 };
 declare const Svg: React.FC<SvgProps>;
 
-type InputProps = {
+interface InputProps extends TextInputProps {
     placeholder?: string;
     label: string;
     onChangeText: (value: any) => void;
@@ -777,7 +777,7 @@ type InputProps = {
     onFocus?: () => void;
     onSubmitEditing?: () => void;
     autoFocus?: boolean;
-};
+}
 declare const Input: React.FC<InputProps>;
 
 type NumPadKeyboardProps = {

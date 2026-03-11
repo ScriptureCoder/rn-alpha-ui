@@ -985,7 +985,6 @@ var ScrollView = React4.forwardRef((props, ref) => {
   const Comp = animated ? Animated2.ScrollView : Scroll;
   const contentOffset = {};
   if (scrollY) {
-    console.log(contentOffset.y);
     contentOffset.y = scrollY;
   }
   if (scrollX) {
@@ -3288,7 +3287,8 @@ var Input = (props) => {
     label,
     ph,
     autoFocus,
-    onSubmitEditing
+    onSubmitEditing,
+    ...otherProps
   } = mergedProps;
   const bc = error ? colors.danger : focus ? colors.primary : colors.border;
   const { control, textField } = InputConfig_default;
@@ -3307,6 +3307,7 @@ var Input = (props) => {
           /* @__PURE__ */ jsx21(
             TextInput,
             {
+              ...otherProps,
               returnKeyType: keyboardType === "number-pad" || money2 ? "done" : void 0,
               style: {
                 flex: 1,
@@ -4155,7 +4156,6 @@ var OtpInput = (props) => {
       numberOfDigits: pinCount || 6,
       focusColor: colors.primary,
       focusStickBlinkingDuration: 500,
-      onTextChange: (text) => console.log(text),
       onFilled: (code) => {
         setCode(code);
         Keyboard3.dismiss();

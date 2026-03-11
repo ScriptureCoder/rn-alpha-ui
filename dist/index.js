@@ -1173,7 +1173,6 @@ var ScrollView = import_react4.default.forwardRef((props, ref) => {
   const Comp = animated ? import_react_native4.Animated.ScrollView : import_react_native4.ScrollView;
   const contentOffset = {};
   if (scrollY) {
-    console.log(contentOffset.y);
     contentOffset.y = scrollY;
   }
   if (scrollX) {
@@ -3476,7 +3475,8 @@ var Input = (props) => {
     label,
     ph,
     autoFocus,
-    onSubmitEditing
+    onSubmitEditing,
+    ...otherProps
   } = mergedProps;
   const bc = error ? colors.danger : focus ? colors.primary : colors.border;
   const { control, textField } = InputConfig_default;
@@ -3495,6 +3495,7 @@ var Input = (props) => {
           /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
             import_react_native16.TextInput,
             {
+              ...otherProps,
               returnKeyType: keyboardType === "number-pad" || money2 ? "done" : void 0,
               style: {
                 flex: 1,
@@ -4339,7 +4340,6 @@ var OtpInput = (props) => {
       numberOfDigits: pinCount || 6,
       focusColor: colors.primary,
       focusStickBlinkingDuration: 500,
-      onTextChange: (text) => console.log(text),
       onFilled: (code) => {
         setCode(code);
         import_react_native29.Keyboard.dismiss();
