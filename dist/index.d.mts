@@ -292,6 +292,8 @@ type Props$7 = {
     onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
     svs?: boolean;
     shs?: boolean;
+    flex?: number;
+    cs?: ViewStyle;
 };
 type CustomFlatListProps = Props$7 & SpacingProps$4;
 declare const FlatList: React.FC<FlatListProps<any> & CustomFlatListProps>;

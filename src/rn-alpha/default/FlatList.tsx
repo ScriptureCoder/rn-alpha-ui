@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react';
-import {Animated, FlatList as Parent, FlatListProps} from "react-native";
+import {Animated, FlatList as Parent, FlatListProps, ViewStyle} from "react-native";
 import {SpacingProps} from "./View";
 import { NativeSyntheticEvent } from "react-native/Libraries/Types/CoreEventTypes";
 import { NativeScrollEvent } from "react-native/Libraries/Components/ScrollView/ScrollView";
@@ -11,6 +11,8 @@ export type Props = {
   onScroll?:(event: NativeSyntheticEvent<NativeScrollEvent>)=>void,
   svs?:boolean
   shs?:boolean
+  flex?: number
+  cs?:ViewStyle
 }
 
 export type CustomFlatListProps = Props&SpacingProps
@@ -27,6 +29,8 @@ const FlatList: React.FC<FlatListProps<any>&CustomFlatListProps> = React.forward
     pb, ph, pl, pv, pt, pr,
     svs,
     shs,
+    flex,
+    cs={},
     ...otherProps
   } = props
 
@@ -48,6 +52,10 @@ const FlatList: React.FC<FlatListProps<any>&CustomFlatListProps> = React.forward
           showsHorizontalScrollIndicator={shs}
           {...otherProps}
           keyboardShouldPersistTaps='handled'
+          contentContainerStyle={{
+            ...cs,
+            flexGrow: flex
+          }}
           style={[
             {
               marginTop:mt,

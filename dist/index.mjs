@@ -1063,6 +1063,8 @@ var FlatList = React5.forwardRef((props, ref) => {
     pr,
     svs,
     shs,
+    flex,
+    cs = {},
     ...otherProps
   } = props;
   const animated = scrollX || scrollY;
@@ -1082,6 +1084,10 @@ var FlatList = React5.forwardRef((props, ref) => {
       showsHorizontalScrollIndicator: shs,
       ...otherProps,
       keyboardShouldPersistTaps: "handled",
+      contentContainerStyle: {
+        ...cs,
+        flexGrow: flex
+      },
       style: [
         {
           marginTop: mt,
