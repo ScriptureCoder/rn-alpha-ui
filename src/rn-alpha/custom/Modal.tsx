@@ -193,7 +193,7 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                                             </View>
 
                                             {showCloseBtn&&(
-                                                <View absolute right={10} top={10}>
+                                                <View absolute right={10} top={10} zIndex={10}>
                                                     <TouchableOpacity onPress={closeFunc}>
                                                         <View size={32} br={32/2} fd={"flex-center"} color={"shade"}>
                                                             <Svg icon={cancel} size={10} color={"text"}/>
@@ -236,7 +236,7 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
                                             <View width={50} height={4} color={"medium"} br={3} align={"center"}/>
                                         </View>
                                         {showCloseBtn&&(
-                                            <View absolute right={10} top={10}>
+                                            <View absolute right={10} top={10} zIndex={10}>
                                                 <TouchableOpacity onPress={closeFunc}>
                                                     <View size={32} br={32/2} fd={"flex-center"} color={"shade"}>
                                                         <Svg icon={cancel} size={10} color={"text"}/>
