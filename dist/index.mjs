@@ -2990,7 +2990,7 @@ var LoadingDots = (props) => {
     {
       name: "LineSpinFadeLoader",
       style: { width: size, height: size },
-      color: color || colors.primary
+      color: colors[color || "primary"]
     }
   ) });
 };
