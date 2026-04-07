@@ -1057,7 +1057,6 @@ declare const TabButton: React.FC<TabButtonProps>;
 type LoadingDotsProps = {
     color: ColorProps | string;
     size?: number;
-    duration?: number;
     count?: number;
 };
 declare const LoadingDots: React.FC<LoadingDotsProps>;
