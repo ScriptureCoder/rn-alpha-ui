@@ -18,7 +18,7 @@ const LoadingDots: React.FC<LoadingDotsProps> = (props) => {
             <LoaderKitView
                 name={'LineSpinFadeLoader'}
                 style={{ width: size, height: size }}
-                color={color || colors.primary}
+                color={colors[color||"primary"]}
             />
         </View>
     );
