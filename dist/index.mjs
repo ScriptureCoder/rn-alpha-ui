@@ -2980,19 +2980,65 @@ var Modal3 = (props) => {
 var Modal_default = Modal3;
 
 // src/rn-alpha/custom/LoadingDots.tsx
-import { LoaderKitView } from "react-native-loader-kit";
+import { useEffect as useEffect4, useRef as useRef2 } from "react";
+import { Animated as Animated5, Easing } from "react-native";
 import { jsx as jsx16 } from "react/jsx-runtime";
 var LoadingDots = (props) => {
-  const { color, size = 6 } = props;
+  const { color, size = 6, duration = 600, count = 3 } = props;
   const { colors } = use_color_default();
-  return /* @__PURE__ */ jsx16(View_default, { children: /* @__PURE__ */ jsx16(
-    LoaderKitView,
+  const progress = useRef2(
+    Array.from({ length: count }, () => new Animated5.Value(0))
+  ).current;
+  useEffect4(() => {
+    const animations = progress.map(
+      (value, index) => Animated5.loop(
+        Animated5.sequence([
+          Animated5.delay(index * (duration / count)),
+          Animated5.timing(value, {
+            toValue: 1,
+            duration: duration / 2,
+            easing: Easing.inOut(Easing.ease),
+            useNativeDriver: true
+          }),
+          Animated5.timing(value, {
+            toValue: 0,
+            duration: duration / 2,
+            easing: Easing.inOut(Easing.ease),
+            useNativeDriver: true
+          })
+        ])
+      )
+    );
+    animations.forEach((animation) => animation.start());
+    return () => {
+      animations.forEach((animation) => animation.stop());
+    };
+  }, [progress, duration, count]);
+  return /* @__PURE__ */ jsx16(View_default, { fd: "flex-row", children: progress.map((value, index) => /* @__PURE__ */ jsx16(
+    Animated5.View,
     {
-      name: "LineSpinFadeLoader",
-      style: { width: size, height: size },
-      color: colors[color || "primary"]
-    }
-  ) });
+      style: {
+        width: size,
+        height: size,
+        borderRadius: size / 2,
+        backgroundColor: colors[color],
+        marginLeft: index === 0 ? 0 : size * 0.6,
+        opacity: value.interpolate({
+          inputRange: [0, 1],
+          outputRange: [0.3, 1]
+        }),
+        transform: [
+          {
+            scale: value.interpolate({
+              inputRange: [0, 1],
+              outputRange: [0.6, 1]
+            })
+          }
+        ]
+      }
+    },
+    index
+  )) });
 };
 var LoadingDots_default = LoadingDots;
 
@@ -3069,7 +3115,7 @@ var Svg = ({ icon, color, size, w }) => {
 var Svg_default = Svg;
 
 // src/rn-alpha/custom/Inputs/Input.tsx
-import { useState as useState3 } from "react";
+import { useState as useState4 } from "react";
 import { TextInput } from "react-native";
 
 // src/utils/money.ts
@@ -3215,7 +3261,7 @@ var ErrorText_default = ErrorText;
 // src/rn-alpha/custom/Inputs/Input.tsx
 import { jsx as jsx21, jsxs as jsxs6 } from "react/jsx-runtime";
 var Input = (props) => {
-  const [focus, setFocus] = useState3(false);
+  const [focus, setFocus] = useState4(false);
   const { colors } = use_color_default();
   const { componentProps } = useUIContext();
   const inputDefaults = componentProps.Input || {};
@@ -3360,21 +3406,21 @@ var Switch = (props) => {
 var Switch_default = Switch;
 
 // src/rn-alpha/custom/Inputs/Select.tsx
-import { useEffect as useEffect4, useState as useState4 } from "react";
+import { useEffect as useEffect5, useState as useState5 } from "react";
 import {
   TouchableWithoutFeedback as TouchableWithoutFeedback3,
   TouchableOpacity as TouchableOpacity2,
   Keyboard
 } from "react-native";
-import { LoaderKitView as LoaderKitView3 } from "react-native-loader-kit";
+import { LoaderKitView as LoaderKitView2 } from "react-native-loader-kit";
 
 // src/rn-alpha/custom/Loader.tsx
-import { LoaderKitView as LoaderKitView2 } from "react-native-loader-kit";
+import { LoaderKitView } from "react-native-loader-kit";
 import { Fragment as Fragment11, jsx as jsx24, jsxs as jsxs8 } from "react/jsx-runtime";
 var Loader = ({ text, loading, color }) => {
   const { colors } = use_color_default();
   return /* @__PURE__ */ jsx24(Fragment11, { children: loading && /* @__PURE__ */ jsxs8(View_default, { flex: 1, fd: "col-center", pv: 25, children: [
-    /* @__PURE__ */ jsx24(LoaderKitView2, { name: "LineSpinFadeLoader", style: { width: 35, height: 35 }, color: color || colors.primary }),
+    /* @__PURE__ */ jsx24(LoaderKitView, { name: "LineSpinFadeLoader", style: { width: 35, height: 35 }, color: color || colors.primary }),
     text && /* @__PURE__ */ jsx24(Text_default, { size: 15, mt: 15, color: "text", children: text })
   ] }) });
 };
@@ -3403,13 +3449,13 @@ var Select = (props) => {
     renderSelect,
     color
   } = props;
-  const [modal, setModal] = useState4(false);
-  const [current, setCurrent] = useState4({ value: "", label: "", text: "", icon: null, output: null });
-  const [filter2, setFilter] = useState4("");
+  const [modal, setModal] = useState5(false);
+  const [current, setCurrent] = useState5({ value: "", label: "", text: "", icon: null, output: null });
+  const [filter2, setFilter] = useState5("");
   const { colors } = use_color_default();
   const { control, select: selectConfig } = InputConfig_default;
   const fieldColor = color ? (_a = colors[color]) != null ? _a : color : (_b = colors[control.backgroundColorToken]) != null ? _b : colors.background;
-  useEffect4(() => {
+  useEffect5(() => {
     var _a2;
     const selected = (_a2 = options == null ? void 0 : options.filter((r) => r.value === defaultValue)) == null ? void 0 : _a2[0];
     if (selected) {
@@ -3486,7 +3532,7 @@ var Select = (props) => {
               ),
               !!current.text && /* @__PURE__ */ jsx25(Text_default, { color: "medium", children: current.value ? current.text : "" })
             ] }),
-            /* @__PURE__ */ jsx25(View_default, { ml: 5, children: loading ? /* @__PURE__ */ jsx25(LoaderKitView3, { name: "LineSpinFadeLoader", style: { width: selectConfig.loaderSize, height: selectConfig.loaderSize }, color: colors.text2 }) : /* @__PURE__ */ jsx25(Svg_default, { icon: selectToggle, color: "text", size: selectConfig.dropdownIconSize }) })
+            /* @__PURE__ */ jsx25(View_default, { ml: 5, children: loading ? /* @__PURE__ */ jsx25(LoaderKitView2, { name: "LineSpinFadeLoader", style: { width: selectConfig.loaderSize, height: selectConfig.loaderSize }, color: colors.text2 }) : /* @__PURE__ */ jsx25(Svg_default, { icon: selectToggle, color: "text", size: selectConfig.dropdownIconSize }) })
           ]
         }
       ) }),
@@ -3633,14 +3679,14 @@ var SearchInput = (props) => {
 var SearchInput_default = SearchInput;
 
 // src/rn-alpha/custom/Inputs/DateSelect.tsx
-import { useState as useState5 } from "react";
+import { useState as useState6 } from "react";
 import { TouchableWithoutFeedback as TouchableWithoutFeedback4, useColorScheme } from "react-native";
 import DatePicker from "react-native-date-picker";
 import { jsx as jsx28, jsxs as jsxs11 } from "react/jsx-runtime";
 var DateSelect = ({ placeholder, bw, mt, label, error, onChangeText, value, style, minimumDate }) => {
-  const [open, setOpen] = useState5(false);
-  const [date, setDate] = useState5(value || /* @__PURE__ */ new Date());
-  const [edited, setEdited] = useState5(!!value);
+  const [open, setOpen] = useState6(false);
+  const [date, setDate] = useState6(value || /* @__PURE__ */ new Date());
+  const [edited, setEdited] = useState6(!!value);
   const isDarkMode = useColorScheme() === "dark";
   const { colors } = use_color_default();
   const textColor = isDarkMode ? colors.background : colors.text;
@@ -3695,21 +3741,21 @@ var DateSelect = ({ placeholder, bw, mt, label, error, onChangeText, value, styl
 var DateSelect_default = DateSelect;
 
 // src/rn-alpha/custom/Inputs/DateTimeInput.tsx
-import { useEffect as useEffect5, useState as useState6 } from "react";
+import { useEffect as useEffect6, useState as useState7 } from "react";
 import { Keyboard as Keyboard2, TouchableWithoutFeedback as TouchableWithoutFeedback5, useColorScheme as useColorScheme2 } from "react-native";
 import DatePicker2 from "react-native-date-picker";
 import { jsx as jsx29, jsxs as jsxs12 } from "react/jsx-runtime";
 var DateTimeInput = (props) => {
   const { disabled, placeholder, mode = "date", bw, mt, label, error, onChangeText, value, style, minimumDate } = props;
-  const [open, setOpen] = useState6(false);
-  const [date, setDate] = useState6();
-  const [edited, setEdited] = useState6(false);
+  const [open, setOpen] = useState7(false);
+  const [date, setDate] = useState7();
+  const [edited, setEdited] = useState7(false);
   const isDarkMode = useColorScheme2() === "dark";
   const { colors } = use_color_default();
   const textColor = isDarkMode ? colors.light : colors.dark;
   const { control, datePicker } = InputConfig_default;
   const backgroundColor = colors[control.backgroundColorToken] || colors.background;
-  useEffect5(() => {
+  useEffect6(() => {
     if (value) {
       setDate(value);
       setEdited(true);
@@ -3815,7 +3861,7 @@ var Checkbox = (props) => {
 var Checkbox_default = Checkbox;
 
 // src/rn-alpha/custom/Inputs/Password.tsx
-import { forwardRef, useState as useState7 } from "react";
+import { forwardRef, useState as useState8 } from "react";
 import { TextInput as TextInput3 } from "react-native";
 import { jsx as jsx31, jsxs as jsxs13 } from "react/jsx-runtime";
 var Password = forwardRef((props, ref) => {
@@ -3832,8 +3878,8 @@ var Password = forwardRef((props, ref) => {
     onSubmitEditing,
     maxLength
   } = props;
-  const [focus, setFocus] = useState7(false);
-  const [show, setShow] = useState7(false);
+  const [focus, setFocus] = useState8(false);
+  const [show, setShow] = useState8(false);
   const { colors } = use_color_default();
   const bc = error ? colors.danger : focus ? colors.primary : colors.border;
   const { control, textField, password } = InputConfig_default;
@@ -3894,30 +3940,30 @@ var Password = forwardRef((props, ref) => {
 var Password_default = Password;
 
 // src/rn-alpha/custom/Preloader.tsx
-import { useEffect as useEffect6, useRef as useRef2 } from "react";
-import { Animated as Animated5, Easing, Modal as Modal4 } from "react-native";
+import { useEffect as useEffect7, useRef as useRef3 } from "react";
+import { Animated as Animated6, Easing as Easing2, Modal as Modal4 } from "react-native";
 import { Fragment as Fragment14, jsx as jsx32, jsxs as jsxs14 } from "react/jsx-runtime";
 var Preloader = (props) => {
   const { text, title, loading, close, opacity } = props;
   const { colors } = use_color_default();
-  const scaleAnimation = useRef2(new Animated5.Value(1)).current;
-  const loopRef = useRef2(null);
-  useEffect6(() => {
+  const scaleAnimation = useRef3(new Animated6.Value(1)).current;
+  const loopRef = useRef3(null);
+  useEffect7(() => {
     var _a;
     (_a = loopRef.current) == null ? void 0 : _a.stop();
     if (loading) {
-      const loop = Animated5.loop(
-        Animated5.sequence([
-          Animated5.timing(scaleAnimation, {
+      const loop = Animated6.loop(
+        Animated6.sequence([
+          Animated6.timing(scaleAnimation, {
             toValue: 1.5,
             duration: 350,
-            easing: Easing.inOut(Easing.ease),
+            easing: Easing2.inOut(Easing2.ease),
             useNativeDriver: true
           }),
-          Animated5.timing(scaleAnimation, {
+          Animated6.timing(scaleAnimation, {
             toValue: 1,
             duration: 350,
-            easing: Easing.inOut(Easing.ease),
+            easing: Easing2.inOut(Easing2.ease),
             useNativeDriver: true
           })
         ]),
@@ -3950,7 +3996,7 @@ var Preloader = (props) => {
       children: /* @__PURE__ */ jsx32(View_default, { flex: 1, color: "#1F2021A3", fd: "flex-center", children: /* @__PURE__ */ jsxs14(View_default, { height: 120, position: "absolute", fd: "col-center", opacity, children: [
         /* @__PURE__ */ jsx32(Text_default, { size: 16, color: "text", weight: "Bold", children: title }),
         /* @__PURE__ */ jsx32(
-          Animated5.View,
+          Animated6.View,
           {
             style: {
               transform: [{ scale: scaleAnimation }]
@@ -3966,8 +4012,8 @@ var Preloader = (props) => {
 var Preloader_default = Preloader;
 
 // src/rn-alpha/custom/ProgressBar.tsx
-import { useRef as useRef3, useEffect as useEffect7 } from "react";
-import { Animated as Animated6, Easing as Easing2 } from "react-native";
+import { useRef as useRef4, useEffect as useEffect8 } from "react";
+import { Animated as Animated7, Easing as Easing3 } from "react-native";
 import { jsx as jsx33 } from "react/jsx-runtime";
 var clamp = (value) => Math.min(Math.max(value, 0), 1);
 var ProgressBar = ({
@@ -3983,15 +4029,15 @@ var ProgressBar = ({
   const { colors } = use_color_default();
   const resolvedProgress = clamp(progress);
   const barRadius = radius != null ? radius : height2 / 2;
-  const animatedProgress = useRef3(new Animated6.Value(resolvedProgress)).current;
-  const animationRef = useRef3(null);
-  useEffect7(() => {
+  const animatedProgress = useRef4(new Animated7.Value(resolvedProgress)).current;
+  const animationRef = useRef4(null);
+  useEffect8(() => {
     var _a;
     (_a = animationRef.current) == null ? void 0 : _a.stop();
-    animationRef.current = Animated6.timing(animatedProgress, {
+    animationRef.current = Animated7.timing(animatedProgress, {
       toValue: resolvedProgress,
       duration,
-      easing: Easing2.inOut(Easing2.ease),
+      easing: Easing3.inOut(Easing3.ease),
       useNativeDriver: false
     });
     animationRef.current.start();
@@ -4016,7 +4062,7 @@ var ProgressBar = ({
       style,
       ...spacing,
       children: /* @__PURE__ */ jsx33(
-        Animated6.View,
+        Animated7.View,
         {
           style: {
             backgroundColor: resolvedColor,
@@ -4032,10 +4078,10 @@ var ProgressBar = ({
 var ProgressBar_default = ProgressBar;
 
 // src/rn-alpha/custom/Inputs/TextInput.tsx
-import React18 from "react";
+import React19 from "react";
 import { TextInput as Element } from "react-native";
 import { jsx as jsx34, jsxs as jsxs15 } from "react/jsx-runtime";
-var TextInput4 = React18.forwardRef((props, ref) => {
+var TextInput4 = React19.forwardRef((props, ref) => {
   const { colors } = use_color_default();
   const {
     onChangeText,
@@ -4144,12 +4190,12 @@ var OtpInput = (props) => {
 var OtpInput_default = OtpInput;
 
 // src/rn-alpha/custom/Menu.tsx
-import { useState as useState9 } from "react";
+import { useState as useState10 } from "react";
 import { Menu as Component, MenuItem } from "react-native-material-menu";
 import { Fragment as Fragment16, jsx as jsx36 } from "react/jsx-runtime";
 var Menu = (props) => {
   const { anchor, options, color, pressColor } = props;
-  const [modal, setModal] = useState9(false);
+  const [modal, setModal] = useState10(false);
   const { colors } = use_color_default();
   return /* @__PURE__ */ jsx36(Fragment16, { children: /* @__PURE__ */ jsx36(
     Component,
@@ -4285,7 +4331,7 @@ var LinearGradientComponent = ({
 var Gradient_default = LinearGradientComponent;
 
 // src/rn-alpha/custom/TabButton.tsx
-import { useState as useState10 } from "react";
+import { useState as useState11 } from "react";
 import { jsx as jsx38 } from "react/jsx-runtime";
 var TabButton = (props) => {
   const {
@@ -4300,7 +4346,7 @@ var TabButton = (props) => {
     activeColor,
     activeTextColor
   } = props;
-  const [tab, setTab] = useState10(index || 0);
+  const [tab, setTab] = useState11(index || 0);
   return /* @__PURE__ */ jsx38(View_default, { ph: ph || 15, mt: mt || 5, children: /* @__PURE__ */ jsx38(View_default, { color: color || "shade", p: 3, br: 20, fd: "flex-row", bc: bc || "border", bw: 0.5, overflow: "hidden", children: options.map((title, i) => /* @__PURE__ */ jsx38(View_default, { flex: 1, color: tab === i ? activeColor || "primary" : "", br: 20, children: /* @__PURE__ */ jsx38(TouchableOpacity_default, { onPress: () => {
     setTab(i);
     onTabPress(i);
