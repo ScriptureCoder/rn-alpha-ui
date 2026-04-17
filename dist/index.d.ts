@@ -794,6 +794,9 @@ type SwitchProps = {
     disabled?: boolean;
     active: boolean;
     onToggle: (value: boolean) => void;
+    bg?: ColorProps | string;
+    trackPositive?: ColorProps | string;
+    trackNegative?: ColorProps | string;
 };
 declare const Switch: React.FC<SwitchProps>;
 

@@ -3388,14 +3388,24 @@ import { Switch as Parent5 } from "react-native";
 import { jsx as jsx23 } from "react/jsx-runtime";
 var Switch = (props) => {
   const { colors } = use_color_default();
-  const { disabled, active, onToggle } = props;
+  const {
+    disabled,
+    active,
+    onToggle,
+    bg,
+    trackPositive,
+    trackNegative
+  } = props;
   return /* @__PURE__ */ jsx23(
     Parent5,
     {
       onTouchEnd: () => onToggle(!active),
-      trackColor: { false: colors.medium, true: colors.primary },
+      trackColor: {
+        false: colors[trackNegative || "medium"],
+        true: colors[trackPositive || "primary"]
+      },
       thumbColor: colors.light,
-      ios_backgroundColor: colors.shade,
+      ios_backgroundColor: colors[bg || "shade"],
       onValueChange: () => {
       },
       value: active,
