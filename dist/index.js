@@ -1194,7 +1194,6 @@ var ScrollView = import_react4.default.forwardRef((props, ref) => {
         padding: padding || p,
         paddingHorizontal: ph
       }, style],
-      ...otherProps,
       keyboardShouldPersistTaps: "handled",
       bounces,
       refreshControl: onRefresh ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
@@ -1204,6 +1203,7 @@ var ScrollView = import_react4.default.forwardRef((props, ref) => {
           onRefresh
         }
       ) : void 0,
+      ...otherProps,
       onScroll: animated ? import_react_native4.Animated.event(
         [{
           nativeEvent: {
@@ -2984,6 +2984,7 @@ var Modal3 = (props) => {
   };
   (0, import_react10.useEffect)(() => {
     if (modal) {
+      import_react_native14.Keyboard.dismiss();
       translateY.setValue(0);
       import_react_native14.Animated.parallel([
         import_react_native14.Animated.timing(sheetTranslateY, {

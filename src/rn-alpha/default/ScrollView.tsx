@@ -67,7 +67,6 @@ const ScrollView: React.FC<ScrollViewProps&RefreshProps> = React.forwardRef((pro
                 padding:( padding || p ) as number,
                 paddingHorizontal: ph
             },style]}
-            {...otherProps}
             keyboardShouldPersistTaps='handled'
             bounces={bounces}
             refreshControl={
@@ -77,6 +76,7 @@ const ScrollView: React.FC<ScrollViewProps&RefreshProps> = React.forwardRef((pro
                         onRefresh={onRefresh}
                     />:undefined
             }
+            {...otherProps}
             onScroll={
                 animated?
                     Animated.event(

@@ -1006,7 +1006,6 @@ var ScrollView = React4.forwardRef((props, ref) => {
         padding: padding || p,
         paddingHorizontal: ph
       }, style],
-      ...otherProps,
       keyboardShouldPersistTaps: "handled",
       bounces,
       refreshControl: onRefresh ? /* @__PURE__ */ jsx5(
@@ -1016,6 +1015,7 @@ var ScrollView = React4.forwardRef((props, ref) => {
           onRefresh
         }
       ) : void 0,
+      ...otherProps,
       onScroll: animated ? Animated2.event(
         [{
           nativeEvent: {
@@ -2178,7 +2178,7 @@ var Page_default = Page;
 
 // src/rn-alpha/custom/Modal.tsx
 import { useRef, useEffect as useEffect3 } from "react";
-import { TouchableWithoutFeedback, Modal as Mod, Animated as Animated4, Dimensions as Dimensions3, StyleSheet } from "react-native";
+import { TouchableWithoutFeedback, Modal as Mod, Animated as Animated4, Dimensions as Dimensions3, StyleSheet, Keyboard } from "react-native";
 import { PanGestureHandler, State, GestureHandlerRootView } from "react-native-gesture-handler";
 
 // src/constants/layout.ts
@@ -2796,6 +2796,7 @@ var Modal3 = (props) => {
   };
   useEffect3(() => {
     if (modal) {
+      Keyboard.dismiss();
       translateY.setValue(0);
       Animated4.parallel([
         Animated4.timing(sheetTranslateY, {
@@ -3420,7 +3421,7 @@ import { useEffect as useEffect5, useState as useState5 } from "react";
 import {
   TouchableWithoutFeedback as TouchableWithoutFeedback3,
   TouchableOpacity as TouchableOpacity2,
-  Keyboard
+  Keyboard as Keyboard2
 } from "react-native";
 import { LoaderKitView as LoaderKitView2 } from "react-native-loader-kit";
 
@@ -3473,7 +3474,7 @@ var Select = (props) => {
     }
   }, []);
   const handleSelect = (data) => {
-    Keyboard.dismiss();
+    Keyboard2.dismiss();
     if (current.value === data.value) {
       const value = { value: "", label: "", text: "" };
       setCurrent(value);
@@ -3496,12 +3497,12 @@ var Select = (props) => {
   };
   return /* @__PURE__ */ jsxs9(Fragment12, { children: [
     renderSelect ? /* @__PURE__ */ jsx25(TouchableWithoutFeedback3, { disabled, onPress: () => {
-      Keyboard.dismiss();
+      Keyboard2.dismiss();
       setModal(true);
     }, children: renderSelect(current) }) : /* @__PURE__ */ jsxs9(View_default, { style: { marginTop: mt, ...style }, children: [
       label && /* @__PURE__ */ jsx25(Label_default, { label }),
       /* @__PURE__ */ jsx25(TouchableWithoutFeedback3, { disabled, onPress: () => {
-        Keyboard.dismiss();
+        Keyboard2.dismiss();
         setModal(true);
       }, children: /* @__PURE__ */ jsxs9(
         View_default,
@@ -3752,7 +3753,7 @@ var DateSelect_default = DateSelect;
 
 // src/rn-alpha/custom/Inputs/DateTimeInput.tsx
 import { useEffect as useEffect6, useState as useState7 } from "react";
-import { Keyboard as Keyboard2, TouchableWithoutFeedback as TouchableWithoutFeedback5, useColorScheme as useColorScheme2 } from "react-native";
+import { Keyboard as Keyboard3, TouchableWithoutFeedback as TouchableWithoutFeedback5, useColorScheme as useColorScheme2 } from "react-native";
 import DatePicker2 from "react-native-date-picker";
 import { jsx as jsx29, jsxs as jsxs12 } from "react/jsx-runtime";
 var DateTimeInput = (props) => {
@@ -3778,7 +3779,7 @@ var DateTimeInput = (props) => {
     onChangeText(date2);
   };
   const onOpen = () => {
-    Keyboard2.dismiss();
+    Keyboard3.dismiss();
     setTimeout(() => {
       setOpen(true);
     }, 40);
@@ -4154,7 +4155,7 @@ var TextInput_default = TextInput4;
 
 // src/rn-alpha/custom/Inputs/OtpInput.tsx
 import { OtpInput as Input2 } from "react-native-otp-entry";
-import { Keyboard as Keyboard3 } from "react-native";
+import { Keyboard as Keyboard4 } from "react-native";
 import { Fragment as Fragment15, jsx as jsx35 } from "react/jsx-runtime";
 var OtpInput = (props) => {
   const { pinCount = 4, setCode, secureTextEntry = true, color } = props;
@@ -4171,7 +4172,7 @@ var OtpInput = (props) => {
       focusStickBlinkingDuration: 500,
       onFilled: (code) => {
         setCode(code);
-        Keyboard3.dismiss();
+        Keyboard4.dismiss();
       },
       secureTextEntry,
       textInputProps: {

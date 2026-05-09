@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import {TouchableWithoutFeedback, Modal as Mod, Animated, Dimensions, StyleSheet} from "react-native";
+import {TouchableWithoutFeedback, Modal as Mod, Animated, Dimensions, StyleSheet, Keyboard} from "react-native";
 import {PanGestureHandler, State, GestureHandlerRootView} from "react-native-gesture-handler";
 import {ModalProps} from "types";
 import View from '../default/View';
@@ -47,6 +47,7 @@ const Modal: React.FC<ModalProps&Props> = (props) => {
     // Animate sheet in when modal opens
     useEffect(() => {
         if (modal) {
+            Keyboard.dismiss();
             // Reset translateY to 0 when opening
             translateY.setValue(0);
             // Animate both sheet and backdrop in
