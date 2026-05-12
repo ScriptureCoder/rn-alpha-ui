@@ -1054,6 +1054,7 @@ type TabButtonProps = {
     textColor?: ColorProps;
     activeTextColor?: ColorProps;
     activeColor?: ColorProps;
+    size?: number;
 };
 declare const TabButton: React.FC<TabButtonProps>;
 

@@ -4355,13 +4355,14 @@ var TabButton = (props) => {
     color,
     textColor,
     activeColor,
-    activeTextColor
+    activeTextColor,
+    size
   } = props;
   const [tab, setTab] = useState11(index || 0);
   return /* @__PURE__ */ jsx38(View_default, { ph: ph || 15, mt: mt || 5, children: /* @__PURE__ */ jsx38(View_default, { color: color || "shade", p: 3, br: 20, fd: "flex-row", bc: bc || "border", bw: 0.5, overflow: "hidden", children: options.map((title, i) => /* @__PURE__ */ jsx38(View_default, { flex: 1, color: tab === i ? activeColor || "primary" : "", br: 20, children: /* @__PURE__ */ jsx38(TouchableOpacity_default, { onPress: () => {
     setTab(i);
     onTabPress(i);
-  }, children: /* @__PURE__ */ jsx38(View_default, { pv: 8, children: /* @__PURE__ */ jsx38(Text_default, { align: "center", size: 13, weight: "SemiBold", color: tab === i ? activeTextColor || "light" : textColor || "text", children: title }) }) }) }, KEY + i)) }) });
+  }, children: /* @__PURE__ */ jsx38(View_default, { pv: 8, children: /* @__PURE__ */ jsx38(Text_default, { align: "center", size: size || 13, weight: "SemiBold", color: tab === i ? activeTextColor || "light" : textColor || "text", children: title }) }) }) }, KEY + i)) }) });
 };
 var TabButton_default = TabButton;
 

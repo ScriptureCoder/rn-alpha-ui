@@ -13,13 +13,16 @@ type TabButtonProps = {
     textColor?: ColorProps
     activeTextColor?: ColorProps
     activeColor?: ColorProps
+    size?: number
 }
 
 const TabButton: React.FC<TabButtonProps> = (props) => {
     const {
         ph,
         bc,
-        index, options, onTabPress, mt, color, textColor, activeColor, activeTextColor} = props;
+        index, options, onTabPress, mt, color, textColor, activeColor, activeTextColor,
+        size
+    } = props;
     const [tab,setTab] = useState(index||0);
     return (
         <View ph={ph||15} mt={mt||5}>
@@ -31,7 +34,7 @@ const TabButton: React.FC<TabButtonProps> = (props) => {
                             onTabPress(i)
                         }}>
                             <View pv={8}>
-                                <Text align={"center"} size={13} weight={"SemiBold"} color={tab===i?(activeTextColor||"light"):textColor||"text"}>{title}</Text>
+                                <Text align={"center"} size={size||13} weight={"SemiBold"} color={tab===i?(activeTextColor||"light"):textColor||"text"}>{title}</Text>
                             </View>
                         </TouchableOpacity>
                     </View>
