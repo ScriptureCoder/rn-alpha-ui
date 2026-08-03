@@ -23,7 +23,7 @@ const ErrorView: React.FC<ErrorViewProps> = (props) => {
 			        </View>
 			        {refetch&&(
 				        <View mt={40} w={200} align={"center"}>
-					        <Button title={"Try again"} pv={10} onPress={()=>{refetch?.()}}/>
+					        <Button title={"Try again"} pv={10} br={16} onPress={()=>{refetch?.()}}/>
 				        </View>
 			        )}
 		        </View>
