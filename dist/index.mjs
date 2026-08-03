@@ -2768,6 +2768,9 @@ var backspace = `
 </defs>
 </svg>
 `;
+var caution = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="ionicon"><path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192Z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32px"/><path d="M250.26 166.05 256 288l5.73-121.95a5.74 5.74 0 0 0-5.79-6h0a5.74 5.74 0 0 0-5.68 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32px"/><path d="M256 367.91a20 20 0 1 1 20-20 20 20 0 0 1-20 20"/></svg>
+`;
 
 // src/rn-alpha/custom/Modal.tsx
 import { Fragment as Fragment7, jsx as jsx15, jsxs as jsxs4 } from "react/jsx-runtime";
@@ -4370,9 +4373,10 @@ var TabButton_default = TabButton;
 import { Fragment as Fragment17, jsx as jsx39, jsxs as jsxs16 } from "react/jsx-runtime";
 var ErrorView = (props) => {
   let { error, refetch, mt } = props;
-  return /* @__PURE__ */ jsx39(Fragment17, { children: /* @__PURE__ */ jsx39(View_default, { flex: 1, color: "background", mt, children: /* @__PURE__ */ jsxs16(View_default, { flex: 1, p: 15, children: [
-    /* @__PURE__ */ jsx39(View_default, { fd: "col-center", mt: 40, children: /* @__PURE__ */ jsx39(Text_default, { mt: 34, size: 13, color: "medium", children: error }) }),
-    refetch && /* @__PURE__ */ jsx39(View_default, { mt: 40, w: 200, align: "center", children: /* @__PURE__ */ jsx39(Button_default, { title: "Try again", pv: 10, onPress: () => {
+  return /* @__PURE__ */ jsx39(Fragment17, { children: /* @__PURE__ */ jsx39(View_default, { flex: 1, color: "background", fd: "col-center", mt, children: /* @__PURE__ */ jsxs16(View_default, { flex: 1, p: 15, gap: 40, children: [
+    /* @__PURE__ */ jsx39(View_default, { fd: "flex-center", children: /* @__PURE__ */ jsx39(Svg_default, { icon: caution, size: 40, color: "text" }) }),
+    /* @__PURE__ */ jsx39(View_default, { fd: "col-center", children: /* @__PURE__ */ jsx39(Text_default, { mt: 34, size: 13, color: "medium", align: "center", children: error }) }),
+    refetch && /* @__PURE__ */ jsx39(View_default, { mt: 40, w: 200, align: "center", children: /* @__PURE__ */ jsx39(Button_default, { title: "Try again", pv: 10, br: 16, onPress: () => {
       refetch == null ? void 0 : refetch();
     } }) })
   ] }) }) });
@@ -4511,6 +4515,7 @@ export {
   cancel,
   card,
   category,
+  caution,
   chart,
   chat,
   check,
