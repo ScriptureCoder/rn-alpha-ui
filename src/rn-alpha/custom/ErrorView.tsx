@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import { Button, Svg, Text, View } from '..';
+import {caution} from "assets/icons";
 
 export type ErrorViewProps = {
 	error:string
@@ -12,10 +13,13 @@ const ErrorView: React.FC<ErrorViewProps> = (props) => {
 
     return (
         <>
-	        <View flex={1} color={"background"} mt={mt}>
-		        <View flex={1} p={15}>
-			        <View fd={"col-center"} mt={40}>
-				        <Text mt={34} size={13} color={"medium"}>{error}</Text>
+	        <View flex={1} color={"background"} fd={"col-center"} mt={mt}>
+		        <View flex={1} p={15} gap={40}>
+					<View fd={"flex-center"}>
+						<Svg icon={caution} size={40} color={"text"}/>
+					</View>
+			        <View fd={"col-center"}>
+				        <Text mt={34} size={13} color={"medium"} align={"center"}>{error}</Text>
 			        </View>
 			        {refetch&&(
 				        <View mt={40} w={200} align={"center"}>
